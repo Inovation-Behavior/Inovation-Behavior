@@ -12,55 +12,65 @@
             <div class="team-row">
                 <div class="profile-box">
                     <div class="profile-card">
-                        <img src="../../public/teamimg/worker/刘夏.jpg">
-                        <div class="profile-name">
-                            <h4>{{ $t('team.LiuXia1') }}</h4>
-                            <small>{{ $t('team.LiuXia2') }}</small>
+                        <div style="display: flex;">
+                            <img src="../../public/teamimg/worker/刘夏.jpg">
+                            <div class="profile-name">
+                                <h4>{{ $t('team.LiuXia1') }}</h4>
+                                <small>{{ $t('team.LiuXia2') }}</small>
+                            </div>
                         </div>
-
                         <div style="display: flex; flex-direction: column;justify-content: center;">
                             <p class="profile-p">{{ $t('team.LiuXiaP') }}</p>
-                            <a class="profile-href" href="https://sicip.tongji.edu.cn/lx/list.htm" target="_blank">{{$t('team.more')}}</a>
+                            <a class="profile-href" href="https://sicip.tongji.edu.cn/lx/list.htm" target="_blank">{{
+                                $t('team.more') }}</a>
                         </div>
                     </div>
                 </div>
                 <div class="profile-box">
                     <div class="profile-card">
-                        <img src="../../public/teamimg/worker/王晓璐.jpg">
-                        <div class="profile-name">
-                            <h4>{{ $t('team.WangXiaolu1') }}</h4>
-                            <small>{{ $t('team.WangXiaolu2') }}</small>
+                        <div style="display: flex;">
+                            <img src="../../public/teamimg/worker/王晓璐.jpg">
+                            <div class="profile-name">
+                                <h4>{{ $t('team.WangXiaolu1') }}</h4>
+                                <small>{{ $t('team.WangXiaolu2') }}</small>
+                            </div>
                         </div>
                         <div style="display: flex; flex-direction: column;justify-content: center;">
                             <p class="profile-p">{{ $t('team.WangXiaoluP') }}</p>
-                            <a class="profile-href" href="https://www.lucyxiaoluwang.com/" target="_blank">{{$t('team.more')}}</a>
+                            <a class="profile-href" href="https://www.lucyxiaoluwang.com/" target="_blank">{{
+                                $t('team.more') }}</a>
                         </div>
                     </div>
                 </div>
                 <div class="profile-box">
                     <div class="profile-card">
-                        <img src="../../public/teamimg/worker/陈栗.jpg">
-                        <div class="profile-name">
-                            <h4>{{ $t('team.ChenLi1') }}</h4>
-                            <small>{{ $t('team.ChenLi2') }}</small>
+                        <div style="display: flex;">
+                            <img src="../../public/teamimg/worker/陈栗.jpg">
+                            <div class="profile-name">
+                                <h4>{{ $t('team.ChenLi1') }}</h4>
+                                <small>{{ $t('team.ChenLi2') }}</small>
+                            </div>
                         </div>
                         <div style="display: flex; flex-direction: column;justify-content: center;">
                             <p class="profile-p">{{ $t('team.ChenLiP') }}</p>
                             <a class="profile-href" href="https://www.gu.se/om-universitetet/hitta-person/lichen"
-                                target="_blank">{{$t('team.more')}}</a>
+                                target="_blank">{{ $t('team.more') }}</a>
                         </div>
                     </div>
                 </div>
                 <div class="profile-box">
                     <div class="profile-card">
-                        <img src="../../public/teamimg/worker/王洁.jpg">
-                        <div class="profile-name">
-                            <h4>{{ $t('team.WangJie1') }}</h4>
-                            <small>{{ $t('team.WangJie2') }}</small>
+                        <div style="display: flex;">
+                            <img src="../../public/teamimg/worker/王洁.jpg">
+                            <div class="profile-name">
+                                <h4>{{ $t('team.WangJie1') }}</h4>
+                                <small>{{ $t('team.WangJie2') }}</small>
+                            </div>
                         </div>
                         <div style="display: flex; flex-direction: column;justify-content: center;">
                             <p class="profile-p">{{ $t('team.WangJieP') }}</p>
-                            <a class="profile-href" href="https://faculty.tongji.edu.cn/JieWang/zh_CN/" target="_blank">{{$t('team.more')}}</a>
+                            <a class="profile-href" href="https://faculty.tongji.edu.cn/JieWang/zh_CN/" target="_blank">{{
+                                $t('team.more') }}</a>
                         </div>
                     </div>
                 </div>
@@ -126,7 +136,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #f3f3f3;
+    // background-color: #f3f3f3;
 }
 
 .title-box {
@@ -155,11 +165,13 @@ body {
     margin: 20px auto;
     gap: 30px;
 }
-.profile-name{
+
+.profile-name {
     padding: 30px;
     white-space: nowrap;
     width: 80px;
 }
+
 .team-row {
     display: flex;
     flex-wrap: wrap;
@@ -287,6 +299,9 @@ small {
     .title-box,
     .worker-box {
         width: 100%;
-        padding: 15px;
+        // padding: 15px;
+    }
+    .profile-card{
+        flex-direction: column;
     }
 }</style>

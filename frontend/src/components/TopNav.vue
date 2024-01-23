@@ -5,7 +5,7 @@
                 <img style="width: 250px" src="../public/img/logo.png">
                 <!-- <p>占个logo位</p> -->
             </div>
-            <div style="display: flex;flex-direction: column;gap: 10px;">
+            <div class="nav-box">
                 <div class="nav-search">
                     <div class="search-box">
                         <el-input v-model="store.searchQuery" :prefix-icon="Search" @keyup.enter="handleSearch">
@@ -154,17 +154,28 @@ const redirectToTeam = () => {
     border-color: #b3b3b3;
     /* 鼠标悬浮时的边框色 */
 }
+.nav-box{
+    display: flex;flex-direction: column;gap: 10px;
+}
 @media (max-width: 768px) {
+    .nav-logo {
+        display: block; /* 在小屏幕上显示logo */
+        width: 100%; /* 调整宽度 */
+        justify-content: center; /* 居中对齐 */
+    }
+
     .nav-container {
         flex-direction: column; /* 将导航容器设置为垂直布局 */
-        
+    }
+
+    .nav-box{
+        display: flex;
+        justify-content: center;
+        align-items: center; 
     }
 
     .nav-search, .nav-menu {
         width: 100%; /* 调整搜索框和菜单的宽度 */
-    }
-    #el-header{
-        height: 200px;
     }
 }
 </style>
