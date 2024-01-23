@@ -176,7 +176,7 @@ const redirectToTeam = () => {
     }
 
     .nav-search, .nav-menu {
-        width: 100%; /* 调整搜索框和菜单的宽度 */
+        width: 100vw; /* 调整搜索框和菜单的宽度 */
     }
 }
 </style>
