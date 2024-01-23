@@ -154,13 +154,7 @@ const redirectToTeam = () => {
     border-color: #b3b3b3;
     /* 鼠标悬浮时的边框色 */
 }
-@media (max-width: 968px) {
-    .nav-logo {
-        display: block; /* 在小屏幕上显示logo */
-        width: 100%; /* 调整宽度 */
-        justify-content: center; /* 居中对齐 */
-    }
-
+@media (max-width: 768px) {
     .nav-container {
         flex-direction: column; /* 将导航容器设置为垂直布局 */
         
