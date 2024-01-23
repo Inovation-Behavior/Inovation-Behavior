@@ -1,12 +1,12 @@
 <template>
-    <el-header style="display: flex; height: 120px;width: 100%;">
+    <div id="whole-box" >
         <div class="nav-container">
             <div class="nav-logo">
                 <img id="logo-img" src="../public/img/logo.png">
                 <!-- <p>占个logo位</p> -->
             </div>
             <div class="nav-box">
-                
+
                 <div class="nav-menu-horizontal">
                     <el-menu mode="horizontal" :ellipsis="false">
                         <el-menu-item index="1" @click="redirectToPlatform" :class="{ 'blue-text': menutextcolor === 1 }">{{
@@ -49,9 +49,10 @@
                 <div class="nav-menu-dropdown">
                     <el-dropdown trgger="hover" style="border: none;box-shadow: none;">
                         <span class="el-dropdown-link">
-                            <el-icon style="width: 72px;">
+                            {{ $t('topnav.menu') }}
+                            <!-- <el-icon style="width: 72px;">
                                 <More />
-                            </el-icon>
+                            </el-icon> -->
                         </span>
                         <template #dropdown>
                             <el-dropdown-menu slot="dropdown">
@@ -92,7 +93,7 @@
                 </div>
             </div>
         </div>
-    </el-header>
+    </div>
 </template>
     
   
@@ -151,6 +152,10 @@ const redirectToTeam = () => {
 </script>
 
 <style scoped>
+#whole-box{
+    display: flex; height: 120px;width: 100%;
+    /* border: 1px solid black; */
+}
 .nav-logo {
     display: flex;
 }
@@ -254,11 +259,39 @@ const redirectToTeam = () => {
     .nav-logo {
         display: none;
     }
-    .nav-box{
+
+    .nav-box {
         align-items: center;
     }
+
     #logo-img {
         width: 160px;
     }
-}</style>
+}
+@media(max-width: 450px){
+    .nav-logo {
+        display: flex;
+    }
+    .nav-menu-horizontal {
+        display: none;
+    }
+    .nav-menu-dropdown {
+        display: block;
+    }
+    #language-dropdonw{
+        display: none;
+    }
+    .nav-box{
+        flex-direction:row;
+        justify-content: center;
+    }
+    .el-header{
+        height: 80px;
+    }
+    #whole-box{
+        height: 80px;
+        margin-top: -20px;
+    }
+}
+</style>
     

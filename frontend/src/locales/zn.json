@@ -9,7 +9,8 @@
         "News": "新闻",
         "IP_Economics": "知识产权经济",
         "IP_Intelligence": "知识产权数智",
-        "Patent_Value_Survey": "专利价值调研"
+        "Patent_Value_Survey": "专利价值调研",
+        "menu":"菜单"
     },
     "team": {
         "LiuXia2": "Liu Xia",

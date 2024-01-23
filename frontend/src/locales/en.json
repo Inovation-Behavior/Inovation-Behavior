@@ -9,7 +9,8 @@
         "News": "News",
         "IP_Economics": "IP_Economics",
         "IP_Intelligence": "IP_Intelligence",
-        "Patent_Value_Survey": "Patent_Value_Survey"
+        "Patent_Value_Survey": "Patent_Value_Survey",
+        "menu":"menu"
     },
     "team": {
         "LiuXia1": "Liu Xia",
