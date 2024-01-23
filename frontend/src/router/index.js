@@ -11,7 +11,7 @@ const routes = [
     // News
     path: '/news',
     name: 'news',
-    component: () => import('../views/News/news.vue')
+    component: () => import('../views/News/News.vue')
   },
   {
     // TeamMember
