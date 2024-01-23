@@ -2,7 +2,7 @@
     <el-header style="display: flex; height: 150px;width: 100%;">
         <div class="nav-container">
             <div class="nav-logo">
-                <img style="width: 250px" src="../public/img/logo.png">
+                <img id="logo-img" src="../public/img/logo.png">
                 <!-- <p>占个logo位</p> -->
             </div>
             <div class="nav-box">
@@ -139,6 +139,9 @@ const redirectToTeam = () => {
 .nav-logo {
     display: flex;
 }
+#logo-img{
+    width: 250px;
+}
 
 .nav-container {
     width: 100%;
@@ -222,7 +225,9 @@ const redirectToTeam = () => {
     .nav-menu-dropdown {
         display: block;
     }
-
+    #logo-img{
+        width: 120px;
+    }
 }
 
 </style>
