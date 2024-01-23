@@ -162,7 +162,7 @@ body {
     flex-wrap: wrap;
     /* justify-content: center; */
     align-items: center;
-    margin: 20px auto;
+    margin: 10px auto;
     gap: 30px;
 }
 
