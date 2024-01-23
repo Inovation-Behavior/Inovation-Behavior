@@ -1,5 +1,5 @@
 <template>
-    <el-header>
+    <el-header style="display: flex;">
         <div class="nav-container">
             <div style="display: flex;width: 40%;">
                 <img style="width: 50%;" src="../public/img/logo.png">
@@ -21,21 +21,20 @@
                         $t('Team') }}</el-menu-item>
                 </el-menu>
             </div>
-
-            <div class="nav-right">
-                <el-dropdown trgger="hover" @command="handleLanguageChange" style="border: none;box-shadow: none;">
-                    <span class="el-dropdown-link">
-                        {{ $t('language') }}<i class="el-icon-arrow-down el-icon--right"></i>
-                    </span>
-                    <template #dropdown>
-                        <el-dropdown-menu slot="dropdown">
-                            <el-dropdown-item command="en">{{ $t('English') }}</el-dropdown-item>
-                            <el-dropdown-item command="zn">{{ $t('Chinese') }}</el-dropdown-item>
-                            <el-dropdown-item command="de">{{ $t('German') }}</el-dropdown-item>
-                        </el-dropdown-menu>
-                    </template>
-                </el-dropdown>
-            </div>
+        </div>
+        <div class="nav-right">
+            <el-dropdown trgger="hover" @command="handleLanguageChange" style="border: none;box-shadow: none;">
+                <span class="el-dropdown-link">
+                    {{ $t('language') }}<i class="el-icon-arrow-down el-icon--right"></i>
+                </span>
+                <template #dropdown>
+                    <el-dropdown-menu slot="dropdown">
+                        <el-dropdown-item command="en">{{ $t('English') }}</el-dropdown-item>
+                        <el-dropdown-item command="zn">{{ $t('Chinese') }}</el-dropdown-item>
+                        <el-dropdown-item command="de">{{ $t('German') }}</el-dropdown-item>
+                    </el-dropdown-menu>
+                </template>
+            </el-dropdown>
         </div>
     </el-header>
 </template>
@@ -47,7 +46,7 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
-let {ctx} = getCurrentInstance()
+let { ctx } = getCurrentInstance()
 const handleLanguageChange = (language) => {
     ctx.$i18n.locale = language;
 }
@@ -102,16 +101,29 @@ const redirectToTeam = () => {
 }
 
 .nav-right {
+    border-left: 1px solid #f3f3f3;
     display: flex;
     align-items: center;
 }
 
 .el-dropdown-link {
-    word-wrap: nowrap;
-    text-wrap: nowrap;
     cursor: pointer;
     display: flex;
     align-items: center;
+    word-wrap: nowrap;
+    margin-left: 5px;
+    text-wrap: nowrap;
+    padding: 5px 10px; /* 添加内边距以增加可点击区域 */
+    border: 1px solid #ccc; /* 添加边框 */
+    border-radius: 4px; /* 圆角边框 */
+    background-color: #f9f9f9; /* 背景色 */
+    transition: background-color 0.3s, border-color 0.3s; /* 过渡效果 */
 }
+
+.el-dropdown-link:hover {
+    background-color: #e6e6e6; /* 鼠标悬浮时的背景色 */
+    border-color: #b3b3b3; /* 鼠标悬浮时的边框色 */
+}
+
 </style>
     
