@@ -6,26 +6,7 @@
                 <!-- <p>占个logo位</p> -->
             </div>
             <div class="nav-box">
-                <div class="nav-search">
-                    <!-- <div class="search-box"> -->
-                    <el-input style="max-width: 200px;" v-model="store.searchQuery" :prefix-icon="Search"
-                        @keyup.enter="handleSearch">
-                    </el-input>
-                    <!-- </div> -->
-
-                    <el-dropdown trgger="hover" @command="handleLanguageChange" style="border: none;box-shadow: none;">
-                        <span class="el-dropdown-link">
-                            {{ $t('language') }}<i class="el-icon-arrow-down el-icon--right"></i>
-                        </span>
-                        <template #dropdown>
-                            <el-dropdown-menu slot="dropdown">
-                                <el-dropdown-item command="en">{{ $t('topnav.English') }}</el-dropdown-item>
-                                <el-dropdown-item command="zn">{{ $t('topnav.Chinese') }}</el-dropdown-item>
-                                <el-dropdown-item command="de">{{ $t('topnav.German') }}</el-dropdown-item>
-                            </el-dropdown-menu>
-                        </template>
-                    </el-dropdown>
-                </div>
+                
                 <div class="nav-menu-horizontal">
                     <el-menu mode="horizontal" :ellipsis="false">
                         <el-menu-item index="1" @click="redirectToPlatform" :class="{ 'blue-text': menutextcolor === 1 }">{{
@@ -43,6 +24,27 @@
                         <el-menu-item index="6" @click="redirectToTeam" :class="{ 'blue-text': menutextcolor === 6 }">{{
                             $t('topnav.Team') }}</el-menu-item>
                     </el-menu>
+                </div>
+                <div class="nav-search">
+                    <!-- <div class="search-box"> -->
+                    <el-input style="max-width: 200px;" v-model="store.searchQuery" :prefix-icon="Search"
+                        @keyup.enter="handleSearch">
+                    </el-input>
+                    <!-- </div> -->
+
+                    <el-dropdown id="language-dropdonw" trgger="hover" @command="handleLanguageChange"
+                        style="border: none;box-shadow: none;">
+                        <span class="el-dropdown-link">
+                            {{ $t('language') }}<i class="el-icon-arrow-down el-icon--right"></i>
+                        </span>
+                        <template #dropdown>
+                            <el-dropdown-menu slot="dropdown">
+                                <el-dropdown-item command="en">{{ $t('topnav.English') }}</el-dropdown-item>
+                                <el-dropdown-item command="zn">{{ $t('topnav.Chinese') }}</el-dropdown-item>
+                                <el-dropdown-item command="de">{{ $t('topnav.German') }}</el-dropdown-item>
+                            </el-dropdown-menu>
+                        </template>
+                    </el-dropdown>
                 </div>
                 <div class="nav-menu-dropdown">
                     <el-dropdown trgger="hover" style="border: none;box-shadow: none;">
@@ -71,6 +73,19 @@
                                 <el-dropdown-item index="6" @click="redirectToTeam"
                                     :class="{ 'blue-text': menutextcolor === 6 }">{{
                                         $t('topnav.Team') }}</el-dropdown-item>
+                                <el-dropdown trgger="hover" @command="handleLanguageChange"
+                                    style="border: none;box-shadow: none;">
+                                    <span class="el-dropdown-link">
+                                        {{ $t('language') }}<i class="el-icon-arrow-down el-icon--right"></i>
+                                    </span>
+                                    <template #dropdown>
+                                        <el-dropdown-menu slot="dropdown">
+                                            <el-dropdown-item command="en">{{ $t('topnav.English') }}</el-dropdown-item>
+                                            <el-dropdown-item command="zn">{{ $t('topnav.Chinese') }}</el-dropdown-item>
+                                            <el-dropdown-item command="de">{{ $t('topnav.German') }}</el-dropdown-item>
+                                        </el-dropdown-menu>
+                                    </template>
+                                </el-dropdown>
                             </el-dropdown-menu>
                         </template>
                     </el-dropdown>
@@ -139,7 +154,8 @@ const redirectToTeam = () => {
 .nav-logo {
     display: flex;
 }
-#logo-img{
+
+#logo-img {
     width: 250px;
 }
 
@@ -200,7 +216,6 @@ const redirectToTeam = () => {
 }
 
 
-
 @media (max-width: 1060px) {
     .el-menu-item {
         font-size: 10px;
@@ -208,27 +223,42 @@ const redirectToTeam = () => {
     }
 }
 
-@media(min-width: 768px){
+@media(min-width: 768px) {
     @media (min-width: 769px) {
-    .nav-menu-horizontal {
-        display: flex;
-    }
-    .nav-menu-dropdown {
-        display: none; 
+        .nav-menu-horizontal {
+            display: flex;
+        }
+
+        .nav-menu-dropdown {
+            display: none;
+        }
     }
 }
-}
+
 @media(max-width: 768px) {
-    .nav-menu-horizontal {
+
+    /* .nav-menu-horizontal {
+        display: none;
+    }
+
+    #language-dropdonw{
         display: none;
     }
     .nav-menu-dropdown {
         display: block;
+    } */
+    .nav-menu-dropdown {
+        display: none;
     }
-    #logo-img{
-        width: 120px;
-    }
-}
 
-</style>
+    .nav-logo {
+        display: none;
+    }
+    .nav-box{
+        align-items: center;
+    }
+    #logo-img {
+        width: 160px;
+    }
+}</style>
     
