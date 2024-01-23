@@ -1,5 +1,5 @@
 <template>
-    <el-header style="display: flex; height: 150px;width: 100%;">
+    <el-header style="display: flex; height: 120px;width: 100%;">
         <div class="nav-container">
             <div class="nav-logo">
                 <img id="logo-img" src="../public/img/logo.png">
