@@ -1,5 +1,5 @@
 <template>
-    <el-header style="display: flex; height: 150px;width: 100%;">
+    <el-header style="display: flex; height: 180px;width: 100%;">
         <div class="nav-container">
             <div class="nav-logo">
                 <img style="width: 250px" src="../public/img/logo.png">
@@ -7,10 +7,10 @@
             </div>
             <div class="nav-box">
                 <div class="nav-search">
-                    <div class="search-box">
-                        <el-input v-model="store.searchQuery" :prefix-icon="Search" @keyup.enter="handleSearch">
+                    <!-- <div class="search-box"> -->
+                        <el-input style="max-width: 200px;" v-model="store.searchQuery" :prefix-icon="Search" @keyup.enter="handleSearch">
                         </el-input>
-                    </div>
+                    <!-- </div> -->
 
                     <el-dropdown trgger="hover" @command="handleLanguageChange" style="border: none;box-shadow: none;">
                         <span class="el-dropdown-link">
@@ -137,7 +137,7 @@ const redirectToTeam = () => {
 
 .nav-search {
     /* width: 100%; */
-    border-left: 1px solid #f3f3f3;
+    /* border-left: 1px solid #f3f3f3; */
     display: flex;
     justify-content: end;
     align-items: center;
@@ -185,18 +185,19 @@ const redirectToTeam = () => {
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-top: -100px;
     }
 
     .nav-search,
-    .nav-menu {
+    .nav-menu 
+    .el-menu{
         width: 100%;
+        /* border: 1px solid black; */
+        justify-content: center;
         /* 调整搜索框和菜单的宽度 */
     }
-
     .el-menu-item {
         font-size: 10px;
-        /* padding: 5px; */
+        padding: 10px;
     }
 }
 </style>
