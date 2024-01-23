@@ -1,5 +1,5 @@
 <template>
-    <el-header style="display: flex; height: 180px;width: 100%;">
+    <el-header style="display: flex; height: 150px;width: 100%;">
         <div class="nav-container">
             <div class="nav-logo">
                 <img style="width: 250px" src="../public/img/logo.png">
@@ -8,8 +8,9 @@
             <div class="nav-box">
                 <div class="nav-search">
                     <!-- <div class="search-box"> -->
-                        <el-input style="max-width: 200px;" v-model="store.searchQuery" :prefix-icon="Search" @keyup.enter="handleSearch">
-                        </el-input>
+                    <el-input style="max-width: 200px;" v-model="store.searchQuery" :prefix-icon="Search"
+                        @keyup.enter="handleSearch">
+                    </el-input>
                     <!-- </div> -->
 
                     <el-dropdown trgger="hover" @command="handleLanguageChange" style="border: none;box-shadow: none;">
@@ -25,7 +26,7 @@
                         </template>
                     </el-dropdown>
                 </div>
-                <div class="nav-menu">
+                <div class="nav-menu-horizontal">
                     <el-menu mode="horizontal" :ellipsis="false">
                         <el-menu-item index="1" @click="redirectToPlatform" :class="{ 'blue-text': menutextcolor === 1 }">{{
                             $t('topnav.OpenLicensingPlatform') }}</el-menu-item>
@@ -42,6 +43,37 @@
                         <el-menu-item index="6" @click="redirectToTeam" :class="{ 'blue-text': menutextcolor === 6 }">{{
                             $t('topnav.Team') }}</el-menu-item>
                     </el-menu>
+                </div>
+                <div class="nav-menu-dropdown">
+                    <el-dropdown trgger="hover" style="border: none;box-shadow: none;">
+                        <span class="el-dropdown-link">
+                            <el-icon style="width: 72px;">
+                                <More />
+                            </el-icon>
+                        </span>
+                        <template #dropdown>
+                            <el-dropdown-menu slot="dropdown">
+                                <el-dropdown-item index="1" @click="redirectToPlatform"
+                                    :class="{ 'blue-text': menutextcolor === 1 }">{{
+                                        $t('topnav.OpenLicensingPlatform') }}</el-dropdown-item>
+                                <el-dropdown-item index="2" @click="redirectToNews"
+                                    :class="{ 'blue-text': menutextcolor === 2 }">{{
+                                        $t('topnav.News') }}</el-dropdown-item>
+                                <el-dropdown-item index="3" @click="redirectToEconomics"
+                                    :class="{ 'blue-text': menutextcolor === 3 }">{{
+                                        $t('topnav.IP_Economics') }}</el-dropdown-item>
+                                <el-dropdown-item index="4" @click="redirectToIntelligence"
+                                    :class="{ 'blue-text': menutextcolor === 4 }">{{
+                                        $t('topnav.IP_Intelligence') }}</el-dropdown-item>
+                                <el-dropdown-item index="5" @click="redirectToSurvey"
+                                    :class="{ 'blue-text': menutextcolor === 5 }">{{
+                                        $t('topnav.Patent_Value_Survey') }}</el-dropdown-item>
+                                <el-dropdown-item index="6" @click="redirectToTeam"
+                                    :class="{ 'blue-text': menutextcolor === 6 }">{{
+                                        $t('topnav.Team') }}</el-dropdown-item>
+                            </el-dropdown-menu>
+                        </template>
+                    </el-dropdown>
                 </div>
             </div>
         </div>
@@ -167,25 +199,31 @@ const redirectToTeam = () => {
 
 
 @media (max-width: 1060px) {
-    
-
     .el-menu-item {
         font-size: 10px;
         padding: 10px;
     }
 }
 
-@media(max-width: 768px){
-    .nav-container {
-        flex-direction: column;
-        /* 将导航容器设置为垂直布局 */
-    }
-
-    .nav-box {
+@media(min-width: 768px){
+    @media (min-width: 769px) {
+    .nav-menu-horizontal {
         display: flex;
-        justify-content: center;
-        align-items: center;
+    }
+    .nav-menu-dropdown {
+        display: none; 
     }
 }
+}
+@media(max-width: 768px) {
+    .nav-menu-horizontal {
+        display: none;
+    }
+    .nav-menu-dropdown {
+        display: block;
+    }
+
+}
+
 </style>
     

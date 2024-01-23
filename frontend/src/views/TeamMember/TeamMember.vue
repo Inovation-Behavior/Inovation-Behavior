@@ -1,12 +1,12 @@
 <template>
     <body>
-        <div class="title-box">
+        <!-- <div class="title-box"> -->
             <!-- <h1>Inovation&Behavior</h1>
             <p>Brief Introduction Brief Introduction Brief Introduction Brief Introduction Brief Introduction Brief
                 Introduction</p> -->
             <!-- <h2 style="margin-top: 20px;">Our Team</h2>
         <p>Team Introduction Team Introduction Team Introduction Team Introduction Team Introduction</p> -->
-        </div>
+        <!-- </div> -->
         <div class="worker-box">
             <!-- <h2>Research Worker</h2> -->
             <div class="team-row">
