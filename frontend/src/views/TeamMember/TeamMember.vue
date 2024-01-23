@@ -14,51 +14,26 @@
                     <div class="profile-card">
                         <img src="../../public/teamimg/worker/刘夏.jpg">
                         <div class="profile-name">
-                            <h4>{{ $t('LiuXia1') }}</h4>
-                            <small>{{ $t('LiuXia2') }}</small>
+                            <h4>{{ $t('team.LiuXia1') }}</h4>
+                            <small>{{ $t('team.LiuXia2') }}</small>
                         </div>
 
                         <div style="display: flex; flex-direction: column;justify-content: center;">
-                            <p class="profile-p">{{ $t('LiuXiaP') }}</p>
-                            <a class="profile-href" href="https://sicip.tongji.edu.cn/lx/list.htm" target="_blank">{{$t('more')}}</a>
+                            <p class="profile-p">{{ $t('team.LiuXiaP') }}</p>
+                            <a class="profile-href" href="https://sicip.tongji.edu.cn/lx/list.htm" target="_blank">{{$t('team.more')}}</a>
                         </div>
                     </div>
                 </div>
-                <!-- <div class="profile-box">
-                <div class="profile-card">
-                    <img src="XiYangyang.png">
-                    <div style="padding: 30px;">
-                        <h4>DH</h4>
-                        <small>DH</small>
-                    </div>
-                </div>
-                <p class="profile-p">Director of the Max Planck Institute for Innovation and Competition, responsible
-                    for the Department of Economic Research (Research on Innovation and Entrepreneurship). He is also
-                    Honorary Professor of Business Administration at the Ludwig-Maximilians-Universitat Munich. From
-                    1998 to 2013, he headed the Institute for Innovation Research, Technology Management and
-                    Entrepreneurship. After graduating in mechanical engineering at the University of Dortmund, he
-                    initially worked as a research engineer in the UK and Germany. He then earned a master's degree from
-                    Harvard University as a McCloy Scholar and a doctorate from the Massachusetts Institute of
-                    Technology. From 1991 to 1998 he worked at the Mannheim Centre for European Economic Research, first
-                    as head of the research group and then as Deputy director since 1995. In 1996, he received a degree
-                    in economics from the University of Mannheim. As a consultant, Harhoff has worked in many public and
-                    private organizations, including as a member of the Board of Directors of the Volkswagen Foundation
-                    and the Scientific Advisory Board of the Federal Ministry of Economics, Chairman of the Economic and
-                    Scientific Advisory Board of the European Patent Office (ESAB) and Chairman of the German Federal
-                    Government's Committee of Experts on Research and Innovation (EFI). He is also an associate editor
-                    of Research Policy and the European Management Review. He is a member of the German Academy of
-                    Sciences Leopoldina and the Academy of Engineering.</p>
-            </div> -->
                 <div class="profile-box">
                     <div class="profile-card">
                         <img src="../../public/teamimg/worker/王晓璐.jpg">
                         <div class="profile-name">
-                            <h4>{{ $t('WangXiaolu1') }}</h4>
-                            <small>{{ $t('WangXiaolu2') }}</small>
+                            <h4>{{ $t('team.WangXiaolu1') }}</h4>
+                            <small>{{ $t('team.WangXiaolu2') }}</small>
                         </div>
                         <div style="display: flex; flex-direction: column;justify-content: center;">
-                            <p class="profile-p">{{ $t('WangXiaoluP') }}</p>
-                            <a class="profile-href" href="https://www.lucyxiaoluwang.com/" target="_blank">{{$t('more')}}</a>
+                            <p class="profile-p">{{ $t('team.WangXiaoluP') }}</p>
+                            <a class="profile-href" href="https://www.lucyxiaoluwang.com/" target="_blank">{{$t('team.more')}}</a>
                         </div>
                     </div>
                 </div>
@@ -66,13 +41,13 @@
                     <div class="profile-card">
                         <img src="../../public/teamimg/worker/陈栗.jpg">
                         <div class="profile-name">
-                            <h4>{{ $t('ChenLi1') }}</h4>
-                            <small>{{ $t('ChenLi2') }}</small>
+                            <h4>{{ $t('team.ChenLi1') }}</h4>
+                            <small>{{ $t('team.ChenLi2') }}</small>
                         </div>
                         <div style="display: flex; flex-direction: column;justify-content: center;">
-                            <p class="profile-p">{{ $t('ChenLiP') }}</p>
+                            <p class="profile-p">{{ $t('team.ChenLiP') }}</p>
                             <a class="profile-href" href="https://www.gu.se/om-universitetet/hitta-person/lichen"
-                                target="_blank">{{$t('more')}}</a>
+                                target="_blank">{{$t('team.more')}}</a>
                         </div>
                     </div>
                 </div>
@@ -80,12 +55,12 @@
                     <div class="profile-card">
                         <img src="../../public/teamimg/worker/王洁.jpg">
                         <div class="profile-name">
-                            <h4>{{ $t('WangJie1') }}</h4>
-                            <small>{{ $t('WangJie2') }}</small>
+                            <h4>{{ $t('team.WangJie1') }}</h4>
+                            <small>{{ $t('team.WangJie2') }}</small>
                         </div>
                         <div style="display: flex; flex-direction: column;justify-content: center;">
-                            <p class="profile-p">{{ $t('WangJieP') }}</p>
-                            <a class="profile-href" href="https://faculty.tongji.edu.cn/JieWang/zh_CN/" target="_blank">{{$t('more')}}</a>
+                            <p class="profile-p">{{ $t('team.WangJieP') }}</p>
+                            <a class="profile-href" href="https://faculty.tongji.edu.cn/JieWang/zh_CN/" target="_blank">{{$t('team.more')}}</a>
                         </div>
                     </div>
                 </div>
@@ -212,8 +187,8 @@ body {
 }
 
 .profile-box img {
-    width: 120px;
-    height: 160px;
+    width: 90px;
+    height: 120px;
     border-radius: 50%;
     border: 3px solid #eee;
 }

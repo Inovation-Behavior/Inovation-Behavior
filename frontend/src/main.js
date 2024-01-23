@@ -5,8 +5,10 @@ import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+
 import router from './router'
-import {createI18n} from 'vue-i18n';
+import { createI18n } from 'vue-i18n';
 import enMessages from './locales/en.json';
 import znMessages from './locales/zn.json';
 import deMessages from './locales/de.json';
@@ -26,6 +28,9 @@ const app = createApp(App)
 
 pinia.use(piniaPluginPersistedstate)
 
+for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+    app.component(key, component)
+}
 app.use(pinia)
 app.use(ElementPlus)
 app.use(router)
