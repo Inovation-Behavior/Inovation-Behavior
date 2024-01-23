@@ -1,5 +1,5 @@
 <template>
-    <div id="whole-box" >
+    <div id="whole-box">
         <div class="nav-container">
             <div class="nav-logo">
                 <img id="logo-img" src="../public/img/logo.png">
@@ -152,10 +152,13 @@ const redirectToTeam = () => {
 </script>
 
 <style scoped>
-#whole-box{
-    display: flex; height: 120px;width: 100%;
+#whole-box {
+    display: flex;
+    height: 120px;
+    width: 100%;
     /* border: 1px solid black; */
 }
+
 .nav-logo {
     display: flex;
 }
@@ -228,20 +231,19 @@ const redirectToTeam = () => {
     }
 }
 
-@media(min-width: 768px) {
-    @media (min-width: 769px) {
-        .nav-menu-horizontal {
-            display: flex;
-        }
+@media(min-width: 720px) {
 
-        .nav-menu-dropdown {
-            display: none;
-        }
+    .nav-menu-horizontal {
+        display: flex;
     }
+
+    .nav-menu-dropdown {
+        display: none;
+    }
+
 }
 
-@media(max-width: 768px) {
-
+@media(max-width: 720px) {
     /* .nav-menu-horizontal {
         display: none;
     }
@@ -263,35 +265,41 @@ const redirectToTeam = () => {
     /* .nav-box {
         align-items: center;
     } */
+}
 
+@media(max-width: 720px) {
     #logo-img {
         width: 160px;
     }
-}
-@media(max-width: 450px){
+
     .nav-logo {
         display: flex;
     }
+
     .nav-menu-horizontal {
         display: none;
     }
+
     .nav-menu-dropdown {
         display: block;
     }
-    #language-dropdonw{
+
+    #language-dropdonw {
         display: none;
     }
-    .nav-box{
-        flex-direction:row;
+
+    .nav-box {
+        flex-direction: row;
         justify-content: center;
     }
-    .el-header{
+
+    .el-header {
         height: 80px;
     }
-    #whole-box{
+
+    #whole-box {
         height: 80px;
         margin-top: -20px;
     }
-}
-</style>
+}</style>
     
