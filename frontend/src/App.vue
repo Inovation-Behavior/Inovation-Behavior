@@ -1,0 +1,17 @@
+<template>
+  <div style="display: flex; justify-content: center;width: 100%;">
+    <div style="padding: 20px;width: 100%; max-width: 1600px;">
+      <TopNav style="width: 100%;"></TopNav>
+      <div style="width: 100%;">
+        <router-view></router-view>
+      </div>
+    </div>
+  </div>
+</template>
+
+
+<script setup>
+import TopNav from './components/TopNav.vue';
+</script>
+
+<style></style>
