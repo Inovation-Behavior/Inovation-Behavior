@@ -1,7 +1,7 @@
 <template>
-    <el-header style="display: flex; height: 150px;">
+    <el-header style="display: flex; height: 150px;width: 100%;">
         <div class="nav-container">
-            <div class="nav-logo" >
+            <div class="nav-logo">
                 <img style="width: 250px" src="../public/img/logo.png">
                 <!-- <p>占个logo位</p> -->
             </div>
@@ -104,10 +104,12 @@ const redirectToTeam = () => {
 </script>
 
 <style scoped>
-.nav-logo{
+.nav-logo {
     display: flex;
 }
+
 .nav-container {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -116,13 +118,25 @@ const redirectToTeam = () => {
     background-color: #fff;
 }
 
-.nav-menu {
+.nav-box {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+    /* justify-content: center; */
+    /* border: 1px solid #000; */
+}
+
+.nav-menu {
+    /* border: 1px solid #000; */
+    /* width: 100%; */
     display: flex;
     align-items: center;
 }
 
 .nav-search {
+    /* width: 100%; */
     border-left: 1px solid #f3f3f3;
     display: flex;
     justify-content: end;
@@ -138,15 +152,9 @@ const redirectToTeam = () => {
     text-wrap: nowrap;
     padding: 5px 10px;
     color: #449cf4f9;
-    /* 添加内边距以增加可点击区域 */
-    /* border: 1px solid #ccc; */
-    /* 添加边框 */
     border-radius: 4px;
-    /* 圆角边框 */
     background-color: #f9f9f9;
-    /* 背景色 */
     transition: background-color 0.3s, border-color 0.3s;
-    /* 过渡效果 */
 }
 
 .el-dropdown-link:hover {
@@ -155,28 +163,40 @@ const redirectToTeam = () => {
     border-color: #b3b3b3;
     /* 鼠标悬浮时的边框色 */
 }
-.nav-box{
-    display: flex;flex-direction: column;gap: 10px;
-}
-@media (max-width: 768px) {
+
+
+
+@media (max-width: 1060px) {
     .nav-logo {
-        display: block; /* 在小屏幕上显示logo */
-        width: 100%; /* 调整宽度 */
-        justify-content: center; /* 居中对齐 */
+        display: block;
+        /* 在小屏幕上显示logo */
+        width: 100%;
+        /* 调整宽度 */
+        justify-content: center;
+        /* 居中对齐 */
     }
 
     .nav-container {
-        flex-direction: column; /* 将导航容器设置为垂直布局 */
+        flex-direction: column;
+        /* 将导航容器设置为垂直布局 */
     }
 
-    .nav-box{
+    .nav-box {
         display: flex;
         justify-content: center;
-        align-items: center; 
+        align-items: center;
+        margin-top: -100px;
     }
 
-    .nav-search, .nav-menu {
-        width: 100vw; /* 调整搜索框和菜单的宽度 */
+    .nav-search,
+    .nav-menu {
+        width: 100%;
+        /* 调整搜索框和菜单的宽度 */
+    }
+
+    .el-menu-item {
+        font-size: 10px;
+        /* padding: 5px; */
     }
 }
 </style>
