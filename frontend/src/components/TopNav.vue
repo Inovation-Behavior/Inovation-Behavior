@@ -167,15 +167,15 @@ const redirectToTeam = () => {
 
 
 @media (max-width: 1060px) {
-    .nav-logo {
-        display: block;
-        /* 在小屏幕上显示logo */
-        width: 100%;
-        /* 调整宽度 */
-        justify-content: center;
-        /* 居中对齐 */
-    }
+    
 
+    .el-menu-item {
+        font-size: 10px;
+        padding: 10px;
+    }
+}
+
+@media(max-width: 768px){
     .nav-container {
         flex-direction: column;
         /* 将导航容器设置为垂直布局 */
@@ -185,19 +185,6 @@ const redirectToTeam = () => {
         display: flex;
         justify-content: center;
         align-items: center;
-    }
-
-    .nav-search,
-    .nav-menu 
-    .el-menu{
-        width: 100%;
-        /* border: 1px solid black; */
-        justify-content: center;
-        /* 调整搜索框和菜单的宽度 */
-    }
-    .el-menu-item {
-        font-size: 10px;
-        padding: 10px;
     }
 }
 </style>
