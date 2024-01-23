@@ -252,17 +252,17 @@ const redirectToTeam = () => {
     .nav-menu-dropdown {
         display: block;
     } */
-    .nav-menu-dropdown {
+    /* .nav-menu-dropdown {
         display: none;
-    }
+    } */
 
-    .nav-logo {
+    /* .nav-logo {
         display: none;
-    }
+    } */
 
-    .nav-box {
+    /* .nav-box {
         align-items: center;
-    }
+    } */
 
     #logo-img {
         width: 160px;
