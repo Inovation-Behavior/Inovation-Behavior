@@ -287,7 +287,9 @@ const redirectToTeam = () => {
     #language-dropdonw {
         display: none;
     }
-
+    .nav-container{
+        justify-content: center;
+    }
     .nav-box {
         flex-direction: row;
         justify-content: center;
