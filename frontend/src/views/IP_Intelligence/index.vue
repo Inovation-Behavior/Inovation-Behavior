@@ -1,13 +1,13 @@
 <template>
-    <!-- <body> -->
+    <body>
     <div class="whole-box">
-        <el-menu class="menu" @select="handleSelect">
+        <el-menu class="menu" default-active="1"  @select="handleSelect">
             <el-menu-item index="1">{{ $t('intelligence.course') }}</el-menu-item>
             <el-menu-item index="2">{{ $t('intelligence.PatentPledge') }}</el-menu-item>
             <el-menu-item index="3">{{ $t('intelligence.TOP2500RD') }}</el-menu-item>
         </el-menu>
         <div class="content-box">
-            <div>
+            <div style="margin-bottom: 20px;margin-left:8px">
                 {{ $t(ChosedItem) }}
             </div>
             <div class="list-box">
@@ -17,8 +17,7 @@
             </div>
         </div>
     </div>
-    <!-- </body> -->
-    <!-- <vue-office-docx :src="docx" style="height: 100vh;" @rendered="renderedHandler" @error="errorHandler" /> -->
+    </body>
 </template>
 
 <script setup>
@@ -46,14 +45,14 @@ onMounted(() => {
     // console.log(menuList.indexOf(ChosedItem.value))
     getContentList(urllist[menuList.indexOf(ChosedItem.value)])
 })
-const contentInfo = (_id) =>{
+const contentInfo = (_id) => {
     router.push({
         path: `/intelligence/${urllist[menuList.indexOf(ChosedItem.value)]}/${_id}`
     })
 }
-const getContentList =async (source) => {
+const getContentList = async (source) => {
     const url = `${BaseUrl}/${source}?page=${page.value}&size=${pagesize}`
-    let response =await axios.get(url)
+    let response = await axios.get(url)
     console.log(response)
     if (response.status == 200) {
         console.log(response.data.data)
@@ -74,20 +73,29 @@ const errorHandler = () => {
 </script>
 
 <style lang="scss" scoped>
+/* 在此处定义你的颜色方案 */
+$primary-color: #4a90e2;
+$secondary-color: #f3f3f3;
+$text-color: #333;
+$shadow-color: rgba(0, 0, 0, 0.1);
+
 body {
-    // background-color: #f3f3f3;
+    // background-color: $secondary-color;
     margin-top: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    // border: 1px solid #000;
 }
 
 .whole-box {
     width: 100%;
     display: flex;
+    max-width: 1200px;
     justify-content: center;
-    // border: 1px solid #000;
+    box-shadow: 0 4px 8px $shadow-color;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
 }
 
 .content-box {
@@ -95,23 +103,32 @@ body {
     max-width: 1200px;
     display: flex;
     flex-direction: column;
+    padding: 15px;
 }
 
 .list-box {
     width: 100%;
     display: flex;
     flex-direction: column;
+    gap: 10px; /* 添加间隙 */
 }
 
 .menu {
     width: 200px;
-    border: none;
+    border-right: 1px solid $shadow-color;
 }
 
 .el-menu-item {
     font-size: large;
+    color: $text-color;
+
+    &:hover, &.is-active {
+        background-color: $primary-color;
+        color: white;
+    }
 }
 
+/* 响应式设计调整 */
 @media(max-width: 720px) {
     .el-menu-item {
         font-size: medium;
@@ -119,11 +136,19 @@ body {
 
     .menu {
         display: flex;
+        width: 100%;
+        border-right:none ;
     }
-
+    .el-menu-item{
+        /*width: 33%;*/
+        /*border: 1px solid black;*/
+        font-size: 14px;
+    }
+    
     .whole-box {
-        display: flex;
         flex-direction: column;
     }
+
 }
+
 </style>
