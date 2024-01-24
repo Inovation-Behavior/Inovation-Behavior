@@ -13,6 +13,8 @@ import enMessages from './locales/en.json';
 import znMessages from './locales/zn.json';
 import deMessages from './locales/de.json';
 
+import axios from 'axios'
+
 const i18n = createI18n({
     locale: 'en', // 设置默认语言
     fallbackLocale: 'en',

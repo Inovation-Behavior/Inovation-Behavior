@@ -25,14 +25,18 @@ const routes = [
     name: 'economics',
     component: () => import('../views/IP_Economics/index.vue')
   },
-  ,
   {
-    // IP_Economics
+    // IP_Intelligence
     path: '/intelligence',
     name: 'intelligence',
     component: () => import('../views/IP_Intelligence/index.vue')
   },
-  ,
+  {
+    // IP_Intelligence_Info
+    path: '/intelligence/courses/:_id',
+    name: 'intelligenceCourseInfo',
+    component: () => import('../views/IP_Intelligence/Info.vue')
+  },
   {
     // Patent_Value_Survey
     path: '/survey',

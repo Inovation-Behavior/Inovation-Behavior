@@ -35,7 +35,7 @@
                     <el-dropdown id="language-dropdonw" trgger="hover" @command="handleLanguageChange"
                         style="border: none;box-shadow: none;">
                         <span class="el-dropdown-link">
-                            {{ $t('language') }}<i class="el-icon-arrow-down el-icon--right"></i>
+                            {{ $t('topnav.language') }}<i class="el-icon-arrow-down el-icon--right"></i>
                         </span>
                         <template #dropdown>
                             <el-dropdown-menu slot="dropdown">
@@ -77,7 +77,7 @@
                                 <el-dropdown trgger="hover" @command="handleLanguageChange"
                                     style="border: none;box-shadow: none;">
                                     <span class="el-dropdown-link">
-                                        {{ $t('language') }}<i class="el-icon-arrow-down el-icon--right"></i>
+                                        {{ $t('topnav.language') }}<i class="el-icon-arrow-down el-icon--right"></i>
                                     </span>
                                     <template #dropdown>
                                         <el-dropdown-menu slot="dropdown">
@@ -156,6 +156,7 @@ const redirectToTeam = () => {
     display: flex;
     height: 120px;
     width: 100%;
+    justify-content: center;
     /* border: 1px solid black; */
 }
 
@@ -170,6 +171,7 @@ const redirectToTeam = () => {
 .nav-container {
     width: 100%;
     display: flex;
+    max-width: 1400px;
     justify-content: space-between;
     align-items: center;
     padding-top: 20px;
@@ -196,7 +198,7 @@ const redirectToTeam = () => {
 
 .nav-search {
     /* width: 100%; */
-    /* border-left: 1px solid #f3f3f3; */
+    /* border: 1px solid #170202; */
     display: flex;
     justify-content: end;
     align-items: center;
@@ -288,11 +290,12 @@ const redirectToTeam = () => {
         display: none;
     }
     .nav-container{
-        justify-content: center;
+        justify-content: space-between;
     }
     .nav-box {
         flex-direction: row;
-        justify-content: center;
+        justify-content: flex-end;
+        align-items: center;
     }
 
     .el-header {
