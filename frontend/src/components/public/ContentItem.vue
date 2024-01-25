@@ -1,39 +1,46 @@
 <template>
     <div class="item-box">
         <el-icon><ArrowRight /></el-icon>
-        <p v-for="lecturer in props.content.lecturers">{{ lecturer.name_zn }}&nbsp;&nbsp;</p>
+        <p v-for="lecturer in lecturers">{{ lecturer }}&nbsp;&nbsp;</p>
         <div class="vertical-line"></div>
-        <p>&nbsp;&nbsp;{{ props.content.title_zn }}</p>
+        <p>&nbsp;&nbsp;{{ title }}</p>
     </div>
 </template>
 
 <script setup>
+import {ref, onMounted,getCurrentInstance,watch} from 'vue'
+import { useGeneralStore } from '../../stores/general';
+const store = useGeneralStore()
+let { ctx } = getCurrentInstance()
+let lecturers = ref([])
 const props = defineProps({
     content: Object,
 });
 
-// "courselist": [
-//     {
-//         "_id": 1,
-//         "title_en": "Patent data and technological innovation",
-//         "title_zn": "专利数据与科技创新",
-//         "title_de": null,
-//         "url_en": "https://inovation-behavior-1316860845.cos.ap-shanghai.myqcloud.com/intelligence/course/1Patent%20data%20and%20technological%20innovation.docx",
-//         "url_zn": "https://inovation-behavior-1316860845.cos.ap-shanghai.myqcloud.com/intelligence/course/1%E4%B8%93%E5%88%A9%E6%95%B0%E6%8D%AE%E4%B8%8E%E7%A7%91%E6%8A%80%E5%88%9B%E6%96%B0.docx",
-//         "url_de": null,
-//         "lecturers": [
-//             {
-//                 "_id": 1,
-//                 "name_en": "Liu Xia",
-//                 "name_zn": "刘夏",
-//                 "name_de": "Liu Xia",
-//                 "course_id": 1
-//             }
-//         ]
-//     }
-// ],
-//     "count": 2
+let title = ref('')
+watch(() => store.changeLanguage, () => {
+    updateContent(ctx.$i18n.locale);
+});
 
+const updateContent = (locale) => {
+    lecturers.value = [];
+    if (locale === 'en') {
+        props.content.lecturers.forEach(lecturer => lecturers.value.push(lecturer.name_en));
+        title.value = props.content.title_en;
+    } else if (locale === 'zn') {
+        props.content.lecturers.forEach(lecturer => lecturers.value.push(lecturer.name_zn));
+        title.value = props.content.title_zn;
+    } else if (locale === 'de') {
+        props.content.lecturers.forEach(lecturer => lecturers.value.push(lecturer.name_de));
+        title.value = props.content.title_de;
+    }
+};
+
+onMounted(() =>{
+    lecturers.value = []
+    title.value = ''
+    updateContent(ctx.$i18n.locale);
+})
 </script>
 
 <style lang="scss" scoped>

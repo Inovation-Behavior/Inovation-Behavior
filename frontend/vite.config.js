@@ -4,7 +4,7 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   plugins: [vue()],
   server: {
-    open: true,//启动项目自动弹出浏览器
+    open: false,//启动项目自动弹出浏览器
     port: 8192,//启动端口
     proxy: {
       '/api': {

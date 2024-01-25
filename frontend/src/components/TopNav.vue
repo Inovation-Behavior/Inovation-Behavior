@@ -110,6 +110,7 @@ const router = useRouter()
 let { ctx } = getCurrentInstance()
 const handleLanguageChange = (language) => {
     ctx.$i18n.locale = language;
+    store.changeLanguage = !store.changeLanguage
 }
 
 const handleSearch = () => {

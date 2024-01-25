@@ -6,7 +6,7 @@
 
 <script setup>
 import { useRouter, useRoute } from 'vue-router';
-import { ref, onMounted } from 'vue'
+import { ref, onMounted,getCurrentInstance,watch } from 'vue'
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
 
@@ -19,10 +19,22 @@ import VueOfficeDocx from '@vue-office/docx'
 import '@vue-office/docx/lib/index.css'
 
 let docx = ref('')
-
+import { useGeneralStore } from '../../stores/general';
+const store = useGeneralStore()
 
 const _id = route.params._id;
 let type = ref('')
+let { ctx } = getCurrentInstance()
+let response =''
+
+watch(() => store.changeLanguage, () => {
+    if(ctx.$i18n.locale == 'zn')
+        docx.value = response.data.data.url_zn
+    else if(ctx.$i18n.locale == 'en')
+        docx.value = response.data.data.url_en
+    else if(ctx.$i18n.locale == 'de')
+        docx.value = response.data.data.url_de
+});
 
 onMounted(() => {
     const pathSegments = route.path.split('/');
@@ -30,10 +42,16 @@ onMounted(() => {
     getInfo()
     
 })
+
 const getInfo =async ()=>{
-    const response = await axios.get('/api/intelligence/'+ type.value + '/'+ _id)
+    response = await axios.get('/api/intelligence/'+ type.value + '/'+ _id)
     // console.log(response)
-    docx.value = response.data.data.url_zn
+    if(ctx.$i18n.locale == 'zn')
+        docx.value = response.data.data.url_zn
+    else if(ctx.$i18n.locale == 'en')
+        docx.value = response.data.data.url_en
+    else if(ctx.$i18n.locale == 'de')
+        docx.value = response.data.data.url_de
 }
 </script>
 
