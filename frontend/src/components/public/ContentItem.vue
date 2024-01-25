@@ -1,9 +1,9 @@
 <template>
     <div class="item-box">
         <el-icon><ArrowRight /></el-icon>
-        <p v-for="lecturer in lecturers">{{ lecturer }}&nbsp;&nbsp;</p>
-        <div class="vertical-line"></div>
-        <p>&nbsp;&nbsp;{{ title }}</p>
+        <p style="white-space: nowrap;" v-for="lecturer in lecturers">{{ lecturer }}&nbsp;&nbsp;</p>
+        <div v-if="lecturers.length > 0" class="vertical-line"><p>&nbsp;&nbsp;</p></div>
+        <p>{{ title }}</p>
     </div>
 </template>
 
@@ -56,5 +56,10 @@ onMounted(() =>{
   height: 10px; /* 竖线的高度 */
   width: 2px; /* 竖线的宽度 */
   background-color: rgba(0, 0, 0, 0.342); /* 竖线的颜色 */
+}
+@media (max-width: 720px) {
+    body, p {
+        font-size: 12px;
+    }
 }
 </style>
