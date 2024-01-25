@@ -72,9 +72,9 @@ const getInfo =async ()=>{
 
 :deep(.docx-wrapper > section.docx) {
     width: 100% !important;
-    padding: 20px !important;
+    padding: 0px !important;
     min-height: auto !important;
     box-shadow: none;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 </style>
