@@ -1,6 +1,6 @@
 <template>
     <div>
-        IP_Economics
+        Economics
     </div>
 </template>
 

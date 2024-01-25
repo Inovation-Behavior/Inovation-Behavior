@@ -28,4 +28,17 @@ public class IntelligenceController {
     {
         return Result.success(intelligenceService.getCourseById(id));
     }
+
+    @GetMapping("/patentpledge")
+    public Result getPatentPledgeByPage(@RequestParam(defaultValue = "1",required = false) Integer page,
+                                  @RequestParam(defaultValue = "10",required = false) Integer size)
+    {
+        return Result.success(intelligenceService.getPatentPledgeByPage(page,size));
+    }
+
+    @GetMapping("/patentpledge/{id}")
+    public Result getPatentPledgeByPage(@PathVariable("id") Long id)
+    {
+        return Result.success(intelligenceService.getPatentPledgeById(id));
+    }
 }

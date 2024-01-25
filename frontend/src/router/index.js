@@ -32,9 +32,15 @@ const routes = [
     component: () => import('../views/IP_Intelligence/index.vue')
   },
   {
-    // IP_Intelligence_Info
+    // IP_Intelligence_Course_Info
     path: '/intelligence/courses/:_id',
     name: 'intelligenceCourseInfo',
+    component: () => import('../views/IP_Intelligence/Info.vue')
+  },
+  {
+    // IP_Intelligence_PatentPledge_Info
+    path: '/intelligence/patentpledge/:_id',
+    name: 'intelligencePatentPledgeInfo',
     component: () => import('../views/IP_Intelligence/Info.vue')
   },
   {
