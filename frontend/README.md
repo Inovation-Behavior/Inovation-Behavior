@@ -1,7 +1,15 @@
-# Vue 3 + Vite
+### 国际化
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+文本内容存储在locals文件夹
 
-## Recommended IDE Setup
+没研究出来watch语言切换的方法，就在UseGeneralStore里加了个changeLanguage
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+watch(() => store.changeLanguage, () => {
+
+​    //updateContent(ctx.$i18n.locale);
+
+});
+
+具体如何使用详见Components/TopNav.vue（使用locales文件夹中的文本）
+
+components/public/ContentItem.vue（内容随语言实时切换）
