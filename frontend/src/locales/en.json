@@ -30,7 +30,8 @@
     "intelligence": {
         "course":"course",
         "PatentPledge": "PatentPledge",
-        "TOP2500RD": "TOP2500R&D"
+        "TOP2500RD": "TOP2500R&D",
+        "download": "download"
     },
     "economic":{
         "Top5List": "Top 5 List",

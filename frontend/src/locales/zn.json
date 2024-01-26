@@ -30,7 +30,8 @@
     "intelligence": {
         "course":"课程",
         "PatentPledge": "专利质押",
-        "TOP2500RD": "TOP2500R&D"
+        "TOP2500RD": "TOP2500R&D",
+        "download": "下载原文"
     },
     "economic":{
         "Top5List": "经济学TOP5议题一览",

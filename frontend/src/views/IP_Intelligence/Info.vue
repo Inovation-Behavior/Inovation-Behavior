@@ -1,6 +1,7 @@
 <template>
     <div class="whole-box">
-        <vue-office-docx :src="docx" style="height: 80vh; max-width: 1200px;" @rendered="renderedHandler" @error="errorHandler" />
+        <vue-office-docx :src="docx" style="height: 85vh; max-width: 1200px;overflow:auto" @rendered="renderedHandler" @error="errorHandler" />
+        <a style="width: 100%; max-width: 1200px;" :href="docx">{{$t('intelligence.download')}}</a>
     </div>
 </template>
 
@@ -65,6 +66,10 @@ const getInfo =async ()=>{
     align-items: center;
 }
 
+.vue-office-docx{
+    width: 100%;
+    
+}
 :deep(.docx-wrapper) {
     background-color: #fff;
     padding: 0;

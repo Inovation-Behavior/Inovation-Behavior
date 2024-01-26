@@ -21,16 +21,17 @@
         "ChenLi2": "陈栗",
         "WangJie1": "WangJie",
         "WangJie2": "王洁",
-        "LiuXiaP": "Assistant Professor, Tongji University, Shanghai International College of Intellectual Property. Visiting scholar, Zhejiang University. School of Management, co-supervisor of the Law and Economics Research Center of ETH Zurich, Switzerland. Research field: enterprise intellectual property strategy, intellectual property system and competition policy.",
-        "WangXiaoluP": "Assistant professor, University of Massachusetts Amherst. Research fellow at the Max Planck Institute for Innovation and Competition. Faculty Associate at the Canadian Centre for Health Economics Research field: economics of innovation & digitization in health care markets (national and global), Ph.D in Economics, Cornell University.",
-        "ChenLiP": "Assistant Professor, University of Gothenburg, Sweden. Research field: market design and industrial organization. PhD, Centre for Advanced Studies in European Economics and Statistics, Vrije Universiteit Brussels.",
-        "WangJieP": "Assistant Professor, University of Gothenburg, Sweden. Research field: market design and industrial organization. PhD, Centre for Advanced Studies in European Economics and Statistics, Vrije Universiteit Brussels",
-        "more": "more"
+        "LiuXiaP": "Assistenzprofessorin, Tongji-Universität, Shanghai International College of Intellectual Property. Gastwissenschaftlerin, Zhejiang Universität. School of Management, Co-Leiterin des Forschungszentrums f ü r Recht und Ökomomie der ETH Z ü rich, Schweiz. Forschungsgebiet: Unternehmensstrategie f ü r geistiges Schutzrechtsstrategie, Schutzrechtssystem und Wettbewerbspolitik.",
+        "WangXiaoluP": "Assistenzprofessorin, Tongji-Universität, Shanghai International College of Intellectual Property. Gastwissenschaftlerin, Zhejiang Universität. School of Management, Co-Leiterin des Forschungszentrums f ü r Recht und Ökomomie der ETH Z ü rich, Schweiz. Forschungsgebiet: Unternehmensstrategie f ü r geistiges Schutzrechtsstrategie, Schutzrechtssystem und Wettbewerbspolitik.",
+        "ChenLiP": "Assistenzprofessorin, Universität Göteborg, Schweden. Forschungsgebiet: Marktdesign und industrielle Organisation. PhD, Zentrum für fortgeschrittene Studien in europäischer Wirtschaft und Statistik, Vrije Universität Brüssel",
+        "WangJieP": "Assistenzprofessorin, Fakultät für Software, Tongji-Universität. Forschungsgebiet: Modellierung und Leistungs Bewertung von Netzwerksystemen, Mobile/Edge Computing. PhD, Fakultät für Elektrotechnik und Computertechnik der North Carolina State University. Shanghai bei Huawei Technology Co., LTD. und Ericsson (China) Communication Co., LTD. gearbeitet.",
+        "more": "mehr"
     },
     "intelligence": {
         "course":"course",
         "PatentPledge": "PatentPledge",
-        "TOP2500RD": "TOP2500R&D"
+        "TOP2500RD": "TOP2500R&D",
+        "download": "download"
     },
     "economic":{
         "Top5List": "Top 5 List",
