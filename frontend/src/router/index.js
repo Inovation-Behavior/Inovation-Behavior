@@ -26,6 +26,18 @@ const routes = [
     component: () => import('../views/IP_Economics/index.vue')
   },
   {
+    // IP_Economic_Article_Info
+    path: '/economic/articles/:_id',
+    name: 'economicArticleInfo',
+    component: () => import('../views/IP_Economics/Info.vue')
+  },
+  {
+    // IP_Economic_Courses_Info
+    path: '/economic/courses/:_id',
+    name: 'economicCoursesInfo',
+    component: () => import('../views/IP_Economics/Info.vue')
+  },
+  {
     // IP_Intelligence
     path: '/intelligence',
     name: 'intelligence',

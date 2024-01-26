@@ -6,6 +6,12 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+/**
+ * 通用课程类
+ * 用于存储需要标题、作者、docx文章链接的课程信息。
+ *
+ * @author litianlololo
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

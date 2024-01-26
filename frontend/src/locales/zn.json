@@ -29,7 +29,14 @@
     },
     "intelligence": {
         "course":"课程",
-        "PatentPledge": "PatentPledge",
+        "PatentPledge": "专利质押",
         "TOP2500RD": "TOP2500R&D"
+    },
+    "economic":{
+        "Top5List": "经济学TOP5议题一览",
+        "Courses": "课程",
+        "IPBox": "专利盒",
+        "OpenPatentLicensing" : "专利开放许可",
+        "PatentOpposition" : "专利异议"
     }
 }

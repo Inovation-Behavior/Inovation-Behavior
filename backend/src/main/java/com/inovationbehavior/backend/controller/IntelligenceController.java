@@ -20,7 +20,7 @@ public class IntelligenceController {
     public Result getCourseByPage(@RequestParam(defaultValue = "1",required = false) Integer page,
                                   @RequestParam(defaultValue = "10",required = false) Integer size)
     {
-        return Result.success(intelligenceService.getCourseByPage(page,size));
+        return Result.success(intelligenceService.getCourseByPage(page,size,"intelligence"));
     }
 
     @GetMapping("/courses/{id}")

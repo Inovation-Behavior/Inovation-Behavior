@@ -14,14 +14,16 @@ import java.util.List;
 public interface IntelligenceMapper {
     @Select("""
     SELECT count(*) FROM course
+    WHERE type = #{type}
     """)
-    Long courseCount();
+    Long courseCount(@Param("type") String type);
     @Select("""
         SELECT _id, title_en,title_zn,title_de, url_en, url_zn, url_de
         FROM course
+        WHERE type = #{type}
         LIMIT #{start},#{size}
     """)
-    List<Course> getCourseByPage(@Param("start") Integer start, @Param("size") Integer size);
+    List<Course> getCourseByPage(@Param("start") Integer start, @Param("size") Integer size, @Param("type") String type);
 
     @Select("""
         SELECT _id, name_en, name_zn, name_de, course_id

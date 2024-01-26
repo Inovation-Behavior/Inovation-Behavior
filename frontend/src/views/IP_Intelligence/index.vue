@@ -144,7 +144,7 @@ body {
 }
 
 .menu {
-    width: 200px;
+    width: 250px;
     border-right: 1px solid $shadow-color;
 }
 

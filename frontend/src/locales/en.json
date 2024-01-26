@@ -31,5 +31,12 @@
         "course":"course",
         "PatentPledge": "PatentPledge",
         "TOP2500RD": "TOP2500R&D"
+    },
+    "economic":{
+        "Top5List": "Top 5 List",
+        "Courses": "Courses",
+        "IPBox": "IP Box",
+        "OpenPatentLicensing" : "Open Patent Licensing",
+        "PatentOpposition" : "Patent Opposition"
     }
 }

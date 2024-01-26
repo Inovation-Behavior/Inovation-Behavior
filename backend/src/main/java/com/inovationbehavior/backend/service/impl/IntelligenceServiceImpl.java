@@ -17,10 +17,10 @@ public class IntelligenceServiceImpl implements IntelligenceService {
 
 
     @Override
-    public CourseList getCourseByPage(Integer page, Integer size) {
-        Long count = intelligenceMapper.courseCount();
+    public CourseList getCourseByPage(Integer page, Integer size,String type) {
+        Long count = intelligenceMapper.courseCount(type);
         Integer start = (page - 1) * size;
-        List<Course> courses = intelligenceMapper.getCourseByPage(start,size);
+        List<Course> courses = intelligenceMapper.getCourseByPage(start,size,type);
         for (Course course : courses) {
             List<Lecturer> lecturers = intelligenceMapper.getLecturersByCourseId(course.get_id());
             course.setLecturers(lecturers);
