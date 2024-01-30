@@ -26,4 +26,15 @@ public class Article {
     String url;
     String type;
     List<Author> authors;
+
+    public Article(String titleEn, String titleZn, String titleDe, String abstractEn, String abstractZn, String abstractDe, String url, String type) {
+        this.title_en = titleEn;
+        this.title_zn = titleZn;
+        this.title_de = titleDe;
+        this.abstract_en = abstractEn;
+        this.abstract_zn = abstractZn;
+        this.abstract_de = abstractDe;
+        this.url = url;
+        this.type = type;
+    }
 }

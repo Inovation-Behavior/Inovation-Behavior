@@ -40,9 +40,14 @@ const menuList = [
     'intelligence.PatentPledge',
     'intelligence.TOP2500RD'
 ]
+const typelist =[
+    'intelligence',
+    'patentpledge',
+    'top2500RD'
+]
 const urllist = [
     'courses',
-    'patentpledge',
+    'courses',
     'top2500RD'
 ]
 const BaseUrl = '/api/intelligence'
@@ -68,7 +73,7 @@ const contentInfo = (_id) => {
 //获取内容
 const getContentList = async (source) => {
     contentList.value = []
-    const url = `${BaseUrl}/${source}?page=${intelligenceStore.chosedPage}&size=${pagesize}`
+    const url = `${BaseUrl}/${source}?page=${intelligenceStore.chosedPage}&size=${pagesize}&type=${typelist[menuList.indexOf(ChosedItem.value)]}`
     let response = await axios.get(url)
     console.log(response)
     if (response.status == 200) {
