@@ -26,7 +26,7 @@ public class PutFile {
         COSClient cosClient = new COSClient(cred, clientConfig);
 
         String key = "course/"+filename;
-        String bucketName = "inovation-behavior-1316860845";
+        String bucketName = "inovation-behavior-1324093188";
 
         PutObjectRequest putObjectRequest = new PutObjectRequest(bucketName, key, file);
 
