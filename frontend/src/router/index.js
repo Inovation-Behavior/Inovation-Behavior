@@ -14,6 +14,12 @@ const routes = [
     component: () => import('../views/News/News.vue')
   },
   {
+    // News_Info
+    path: '/news/:id',
+    name: 'newsInfo',
+    component: () => import('../views/News/Info.vue')
+  },
+  {
     // TeamMember
     path: '/team',
     name: 'team',
@@ -59,7 +65,7 @@ const routes = [
     // Patent_Value_Survey
     path: '/',
     name: 'survey',
-    component: () => import('../views/Patent_Value_Survey/index.vue')
+    component: () => import('../views/Patent_Value_Survey/Survey.vue')
   },
 ]
 
