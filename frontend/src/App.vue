@@ -15,4 +15,8 @@
 import TopNav from './components/TopNav.vue';
 </script>
 
-<style></style>
+<style>
+body {
+  font-family: Arial, sans-serif;
+}
+</style>

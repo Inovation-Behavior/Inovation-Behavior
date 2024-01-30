@@ -17,6 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Course{
     Long _id;
+    String type;
     String title_en;
     String title_zn;
     String title_de;
