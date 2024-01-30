@@ -2,6 +2,7 @@ package com.inovationbehavior.backend.mapper;
 
 import com.inovationbehavior.backend.model.intelligence.Course;
 import com.inovationbehavior.backend.model.intelligence.Lecturer;
+import com.inovationbehavior.backend.provider.CourseSqlProvider;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -23,6 +24,9 @@ public interface CourseMapper {
             "url_zn = #{course.url_zn}, " +
             "url_de = #{course.url_de} " +
             "WHERE _id = #{course._id}")
+    int updateAllCourse(@Param("course") Course course);
+
+    @UpdateProvider(type = CourseSqlProvider.class, method = "updateCourseSql")
     int updateCourse(@Param("course") Course course);
 
     @Insert({
@@ -35,4 +39,9 @@ public interface CourseMapper {
     })
     int insertLecturers(@Param("lecturers") List<Lecturer> lecturers, @Param("courseId") Long courseId);
 
+    @Delete("""
+        DELETE FROM course
+        WHERE _id = #{course_id};
+    """)
+    void deleteCourse(@Param("course_id") Long course_id);
 }

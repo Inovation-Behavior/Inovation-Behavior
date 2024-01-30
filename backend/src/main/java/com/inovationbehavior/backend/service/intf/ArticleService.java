@@ -8,10 +8,9 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 
 @Service
-public interface CourseService {
-    Course createCourese(Course course, MultipartFile file_en, MultipartFile file_zn, MultipartFile file_de) throws IOException;
+public interface ArticleService {
+    Article createArticle(Article article);
+    void deleteArticle(Long id);
 
-    void deleteCourse(Long id);
-
-    void updateCourse(Course course);
+    void updateArticle(Article article);
 }

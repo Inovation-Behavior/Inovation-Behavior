@@ -1,6 +1,7 @@
 package com.inovationbehavior.backend.service.impl;
 
 import com.inovationbehavior.backend.mapper.CourseMapper;
+import com.inovationbehavior.backend.model.economic.Article;
 import com.inovationbehavior.backend.model.intelligence.Course;
 import com.inovationbehavior.backend.service.intf.CourseService;
 import com.inovationbehavior.backend.util.PutFile;
@@ -30,7 +31,7 @@ public class CourseServiceImpl implements CourseService {
         course.setUrl_de(file_de != null ? course.get_id() + file_de.getOriginalFilename() : null);
 
         //更新course
-        courseMapper.updateCourse(course);
+        courseMapper.updateAllCourse(course);
 //        course.set_id(courseId);
         if (course.getLecturers() != null && !course.getLecturers().isEmpty()) {
             courseMapper.insertLecturers(course.getLecturers(), course.get_id());
@@ -56,6 +57,16 @@ public class CourseServiceImpl implements CourseService {
                 putFile.PutFileToCOS(credentials, convFile, newFilename);
             }
         }
-        return null;
+        return course;
+    }
+
+    @Override
+    public void deleteCourse(Long id) {
+        courseMapper.deleteCourse(id);
+    }
+
+    @Override
+    public void updateCourse(Course course) {
+        courseMapper.updateCourse(course);
     }
 }
