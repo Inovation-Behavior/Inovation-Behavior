@@ -35,9 +35,10 @@ public class EconomicController {
 
     @GetMapping("/courses")
     public Result getCourseByPage(@RequestParam(defaultValue = "1",required = false) Integer page,
-                                  @RequestParam(defaultValue = "10",required = false) Integer size)
+                                  @RequestParam(defaultValue = "10",required = false) Integer size,
+                                  @RequestParam() String type)
     {
-        return Result.success(intelligenceService.getCourseByPage(page,size,"economic"));
+        return Result.success(intelligenceService.getCourseByPage(page,size,type));
     }
 
     @GetMapping("/courses/{id}")

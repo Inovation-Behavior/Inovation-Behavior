@@ -7,9 +7,9 @@
         "OpenLicensingPlatform": "OpenLicensingPlatform",
         "Team": "Team",
         "News": "News",
-        "IP_Economics": "IP_Economics",
-        "IP_Intelligence": "IP_Intelligence",
-        "Patent_Value_Survey": "Patent_Value_Survey",
+        "IP_Economics": "IP Economics",
+        "IP_Intelligence": "IP Intelligence",
+        "Patent_Value_Survey": "Patent Value Survey",
         "menu":"menu"
     },
     "team": {
@@ -30,7 +30,7 @@
     "intelligence": {
         "course":"course",
         "PatentPledge": "PatentPledge",
-        "TOP2500RD": "TOP2500R&D",
+        "TOP2500RD": "TOP 2500 R&D",
         "download": "download"
     },
     "economic":{

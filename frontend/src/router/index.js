@@ -3,7 +3,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 const routes = [
   {
     // OpenLicensingPlatform
-    path: '/',
+    path: '/platform',
     name: 'OpenLicensingPlatform',
     component: () => import('../views/OpenLicensingPlatform/Platform.vue')
   },
@@ -35,7 +35,7 @@ const routes = [
     // IP_Economic_Courses_Info
     path: '/economic/courses/:_id',
     name: 'economicCoursesInfo',
-    component: () => import('../views/IP_Economics/Info.vue')
+    component: () => import('../views/IP_Economics/courseInfo.vue')
   },
   {
     // IP_Intelligence
@@ -57,7 +57,7 @@ const routes = [
   },
   {
     // Patent_Value_Survey
-    path: '/survey',
+    path: '/',
     name: 'survey',
     component: () => import('../views/Patent_Value_Survey/index.vue')
   },

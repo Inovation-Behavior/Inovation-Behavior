@@ -11,7 +11,7 @@
                 {{ $t(ChosedItem) }}
             </div> -->
                 <div class="list-box">
-                    <div>
+                    <div class="item-box">
                         <div v-for="content in contentList" :key="content">
                             <ContentItem :content="content" @click="contentInfo(content._id)"></ContentItem>
                         </div>
@@ -108,25 +108,29 @@ body {
 .whole-box {
     width: 100%;
     display: flex;
-    max-width: 1200px;
+    max-width: 1400px;
     // justify-content: center;
-    box-shadow: 0 4px 8px $shadow-color;
+    // box-shadow: 0 4px 8px $shadow-color;
     background-color: white;
     padding: 20px;
-    border-radius: 8px;
+    // border-radius: 8px;
 }
 
 .content-box {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1400px;
     display: flex;
     flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
+    // border: 1px solid #000;
     padding-left: 30px;
 }
 
 .list-box {
-    width: 100%;
-    min-height: 70vh;
+    // border: 1px solid #000;
+    // width: 80%;
+    min-height: 80vh;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -143,9 +147,10 @@ body {
     }
 }
 
+
 .menu {
-    width: 250px;
-    border-right: 1px solid $shadow-color;
+    width: 300px;
+    // border-right: 1px solid $shadow-color;
 }
 
 .el-menu-item {
@@ -169,6 +174,7 @@ body {
         display: flex;
         width: 100%;
         border-right: none;
+        margin-bottom: 10px;
     }
 
     .el-menu-item {

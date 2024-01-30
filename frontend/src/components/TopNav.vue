@@ -2,25 +2,26 @@
     <div id="whole-box">
         <div class="nav-container">
             <div class="nav-logo">
-                <img id="logo-img" src="../public/img/logo.png">
+                <!-- <img id="logo-img" src="../public/img/logo.png"> -->
+                <p>Inovation&Behavior</p>
                 <!-- <p>占个logo位</p> -->
             </div>
             <div class="nav-box">
 
                 <div class="nav-menu-horizontal">
-                    <el-menu mode="horizontal" :ellipsis="false">
-                        <el-menu-item index="1" @click="redirectToPlatform" :class="{ 'blue-text': menutextcolor === 1 }">{{
-                            $t('topnav.OpenLicensingPlatform') }}</el-menu-item>
-                        <el-menu-item index="2" @click="redirectToNews" :class="{ 'blue-text': menutextcolor === 2 }">{{
-                            $t('topnav.News') }}</el-menu-item>
+                    <el-menu mode="horizontal" default-active="5" :ellipsis="false">
+                        <el-menu-item index="5" @click="redirectToSurvey" :class="{ 'blue-text': menutextcolor === 5 }">{{
+                            $t('topnav.Patent_Value_Survey') }}</el-menu-item>
                         <el-menu-item index="3" @click="redirectToEconomics"
                             :class="{ 'blue-text': menutextcolor === 3 }">{{
                                 $t('topnav.IP_Economics') }}</el-menu-item>
                         <el-menu-item index="4" @click="redirectToIntelligence"
                             :class="{ 'blue-text': menutextcolor === 4 }">{{
                                 $t('topnav.IP_Intelligence') }}</el-menu-item>
-                        <el-menu-item index="5" @click="redirectToSurvey" :class="{ 'blue-text': menutextcolor === 5 }">{{
-                            $t('topnav.Patent_Value_Survey') }}</el-menu-item>
+                        <el-menu-item index="1" @click="redirectToPlatform" :class="{ 'blue-text': menutextcolor === 1 }">{{
+                            $t('topnav.OpenLicensingPlatform') }}</el-menu-item>
+                        <el-menu-item index="2" @click="redirectToNews" :class="{ 'blue-text': menutextcolor === 2 }">{{
+                            $t('topnav.News') }}</el-menu-item>
                         <el-menu-item index="6" @click="redirectToTeam" :class="{ 'blue-text': menutextcolor === 6 }">{{
                             $t('topnav.Team') }}</el-menu-item>
                     </el-menu>
@@ -118,21 +119,8 @@ const handleSearch = () => {
     console.log('Searching for:', store.searchQuery)
 }
 
-const menutextcolor = computed(() => {
-    const path = router.currentRoute.value.path;
-    switch (path) {
-        case '/News': return 2;
-        case '/forum': return 3;
-        case '/IM': return 4;
-        case '/Games': return 5;
-        case '/Players': return 6;
-        case '/Team': return 7;
-        default: return 0;
-    }
-})
-
 const redirectToPlatform = () => {
-    router.push('/');
+    router.push('/platform');
 }
 const redirectToNews = () => {
     router.push('/news');
@@ -144,7 +132,7 @@ const redirectToIntelligence = () => {
     router.push('/intelligence');
 }
 const redirectToSurvey = () => {
-    router.push('/survey');
+    router.push('/');
 }
 const redirectToTeam = () => {
     router.push('/team');
@@ -163,6 +151,13 @@ const redirectToTeam = () => {
 
 .nav-logo {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    font-size: xx-large;
+    font-weight: bolder;
+    /* border: 1px solid black; */
 }
 
 #logo-img {
@@ -175,11 +170,14 @@ const redirectToTeam = () => {
     max-width: 1400px;
     justify-content: space-between;
     align-items: center;
-    padding-top: 20px;
+    /* border: 1px solid black; */
+    padding-top: 10px;
     width: 100%;
     background-color: #fff;
 }
-
+.el-menu-item{
+    font-size: large;
+}
 .nav-box {
     width: 100%;
     display: flex;
@@ -277,6 +275,10 @@ const redirectToTeam = () => {
 
     .nav-logo {
         display: flex;
+        padding-left: 0px;
+        padding-right: 5px;
+        margin-bottom: 0px;
+        font-size: medium;
     }
 
     .nav-menu-horizontal {

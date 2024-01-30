@@ -30,7 +30,7 @@
                 {{ $t(ChosedItem) }}
             </div> -->
                 <div class="list-box">
-                    <div v-if="ChosedItem!='economic.Courses'">
+                    <div v-if="ChosedItem!='economic.Courses' && ChosedItem != 'economic.Top5List' ">
                         <div v-for="content in contentList" :key="content">
                             <ArticleItem :content="content" @click="contentInfo(content._id)"></ArticleItem>
                         </div>
@@ -69,13 +69,13 @@ const menuList = [
 ]
 const typeList = [
     'Top 5 List',
-    'Courses',
+    'economic', //为避免与Intelligence冲突
     'IP Box',
     'Open Patent Licensing',
     'Patent Opposition'
 ]
 const urlList = [
-    'articles',
+    'courses',
     'courses',
     'articles',
     'articles',
@@ -97,6 +97,7 @@ const handleCurrentChange = async (newPage) => {
 }
 //跳转详情页
 const contentInfo = (_id) => {
+    console.log(`/economic/${urlList[menuList.indexOf(ChosedItem.value)]}/${_id}`)
     router.push({
         path: `/economic/${urlList[menuList.indexOf(ChosedItem.value)]}/${_id}`
     })
@@ -104,7 +105,6 @@ const contentInfo = (_id) => {
 //获取内容
 const getContentList = async (index) => {
     contentList.value = []
-    //分course和article 还没做
     console.log('index:', index, '  urlList[index]:', urlList[index])
     const url = `${BaseUrl}/${urlList[index]}?page=${store.chosedPage}&size=${pagesize}&type=${typeList[index]}`
     let response = await axios.get(url)
@@ -146,17 +146,17 @@ body {
 .whole-box {
     width: 100%;
     display: flex;
-    max-width: 1200px;
+    max-width: 1400px;
     // justify-content: center;
-    box-shadow: 0 4px 8px $shadow-color;
+    // box-shadow: 0 4px 8px $shadow-color;
     background-color: white;
     padding: 20px;
-    border-radius: 8px;
+    // border-radius: 8px;
 }
 
 .content-box {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1400px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -166,7 +166,7 @@ body {
 
 .list-box {
     width: 100%;
-    min-height: 70vh;
+    min-height: 80vh;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -185,7 +185,7 @@ body {
 
 .menu {
     width: 250px;
-    border-right: 1px solid $shadow-color;
+    // border-right: 1px solid $shadow-color;
 }
 
 .el-menu-item {
@@ -218,6 +218,7 @@ body {
     .menu-flex {
         // border: 1px solid black;
         // width: 100%;
+        margin-bottom: 10px;
         display: flex;
         background-color: #ffffff00;
     }

@@ -1,9 +1,9 @@
 <template>
     <body>
         <div class="whole-box">
-            <div class="side-box">
-                <p>这是侧边栏eeeeeeeeeeeee</p>
-            </div>
+            <!--<div class="side-box">-->
+            <!--    <p>这是侧边栏eeeeeeeeeeeee</p>-->
+            <!--</div>-->
             <div class="content-box">
                 <h4>{{ title }}</h4>
                 <p>{{ _abstract }}</p>
@@ -49,12 +49,13 @@ watch(() => store.changeLanguage, () => {
 });
 
 onMounted(() => {
-    getInfo()
-
+    const pathSegments = route.path.split('/');
+    getInfo(pathSegments[pathSegments.length - 2])
 })
 
-const getInfo = async () => {
-    response = await axios.get('/api/economic/articles/' + _id)
+const getInfo = async (str) => {
+    
+    response = await axios.get('/api/economic/'+str+'/' + _id)
     console.log(response)
     url.value = response.data.data.url
     if (ctx.$i18n.locale == 'zn') {
@@ -90,6 +91,12 @@ body {
     justify-content: center;
     align-items: center;
     // border: 1px solid black;
+    
+    a {
+        word-break: break-all; // 允许在任何字符间断行
+        color: #4a90e2; // 设置链接颜色，可根据需要调整
+        text-decoration: underline; // 设置下划线，可根据需要调整
+    }
 }
 
 .side-box {
