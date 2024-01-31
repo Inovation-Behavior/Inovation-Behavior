@@ -1,5 +1,12 @@
 <template>
     <body>
+        <div class="header-container">
+            <img class="head-img" src="../../public/img/Intelligence-head.jpg"/>
+            <div class="text-overlay">
+                <h2>{{ $t('topnav.IP_Intelligence') }}/</h2>
+                <h3>{{ $t(ChosedItem) }}</h3>
+            </div>
+        </div>
         <div class="whole-box">
             <el-menu class="menu" default-active="1" @select="handleSelect">
                 <el-menu-item index="1">{{ $t('intelligence.course') }}</el-menu-item>
@@ -106,10 +113,31 @@ body {
     // background-color: $secondary-color;
     margin-top: 10px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+.header-container {
+    position: relative; // 父容器设置为相对定位
+    width: 100%;
+    max-width: 1400px;
+}
+
+.head-img {
+    width: 100%;
+    opacity: 0.8;
+    object-fit: cover;
+    object-position: center;
+}
+
+.text-overlay {
+    position: absolute; // 文本部分设置为绝对定位
+    bottom: 0; // 定位到左下角
+    left: 0;
+    padding: 30px; // 根据需要调整文本的内边距
+    color: #fff; // 根据图片颜色调整文本颜色以确保可读性
+}
 .whole-box {
     width: 100%;
     display: flex;
@@ -196,6 +224,9 @@ body {
     .content-box {
         padding-left: 5px;
     }
-
+    .text-overlay{
+        padding-bottom: 0px;
+        padding-left: 10px;
+    }
 }
 </style>

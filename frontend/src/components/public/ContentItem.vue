@@ -1,5 +1,5 @@
 <template>
-    <div class="item-box">
+    <div id="item-box">
         <el-icon><ArrowRight /></el-icon>
         <!-- <p style="white-space: nowrap;" v-for="lecturer in lecturers">{{ lecturer }}&nbsp;&nbsp;</p> -->
         <!-- <div v-if="lecturers.length > 0" class="vertical-line"><p>&nbsp;&nbsp;</p></div> -->
@@ -44,7 +44,7 @@ onMounted(() =>{
 </script>
 
 <style lang="scss" scoped>
-.item-box {
+#item-box {
     display: flex;
     align-items: center;
     padding: 10px 15px; // 增加内边距以提高可读性
@@ -52,17 +52,21 @@ onMounted(() =>{
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // 添加轻微的阴影以提升层次感
     border-radius: 8px; // 添加圆角
     transition: all 0.3s ease; // 平滑过渡效果
+    margin-bottom: 5px;
 
     &:hover {
-        transform: translateY(-2px); // 悬停时轻微上移，增加交互感
+        // transform: translateY(-2px); // 悬停时轻微上移，增加交互感
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); // 悬停时加强阴影
         background-color: #4a91e220;
+        p {
+            color: #000; // 悬停时改变字体颜色
+        }
     }
 }
 
 p {
     margin: 0; // 移除默认的段落外边距
-    color: #333; // 使用深灰色以提高可读性
+    color: #2e3d49; // 使用深灰色以提高可读性
     font-size: 16px;
     //white-space: nowrap; // 保持标题不换行
     //text-overflow: ellipsis; // 文本过长时用省略号表示
