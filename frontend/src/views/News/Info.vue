@@ -1,7 +1,7 @@
 <template>
     <el-card>
-        <h3>{{ news.titleEn }}</h3>
-        <el-container><div v-html="news.containsEn"></div></el-container>
+        <h3 style="font-family: arial;">{{ news.titleEn }}</h3>
+        <el-container style="font-family: arial;"><div v-html="news.containsEn"></div></el-container>
         <h4>{{ news.time }}</h4>
     </el-card>
 </template>

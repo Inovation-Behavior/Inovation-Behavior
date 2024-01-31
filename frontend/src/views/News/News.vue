@@ -7,7 +7,7 @@
                         <img src="../../public/img/newsImg.jpg" style="width: 100%; height: 100%; object-fit: cover;">
                     </el-container>
                     <el-card style="margin-top: 0;margin-bottom: 1vh;" @click="getNewsDetail(item.id)">
-                        <h5>{{item.titleEn}}</h5>
+                        <h5 style="font-family: arial;">{{item.titleEn}}</h5>
                     </el-card>
                 </el-carousel-item>
             </el-carousel>
@@ -18,7 +18,7 @@
                     <img src="../../public/img/newsImg.jpg" style="width: 100%; height: 100%; object-fit: cover;">
                 </el-container>
                 <el-card style="width: 70vw;">
-                    <h5>{{ item.titleEn }}</h5>
+                    <h5 style="font-family: arial;">{{ item.titleEn }}</h5>
                     <p>{{ item.time }}</p>
                 </el-card>    
             </div>
