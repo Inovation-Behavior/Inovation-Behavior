@@ -7,7 +7,7 @@
                         <img src="../../public/img/newsImg.jpg" style="width: 100%; height: 100%; object-fit: cover;">
                     </el-container>
                     <el-card style="margin-top: 0;margin-bottom: 1vh;" @click="getNewsDetail(item.id)">
-                        <h5 style="font-family: arial;">{{item.titleEn}}</h5>
+                        <h5 style="font-family: arial;">{{item.title}}</h5>
                     </el-card>
                 </el-carousel-item>
             </el-carousel>
@@ -18,7 +18,7 @@
                     <img src="../../public/img/newsImg.jpg" style="width: 100%; height: 100%; object-fit: cover;">
                 </el-container>
                 <el-card style="width: 70vw;">
-                    <h5 style="font-family: arial;">{{ item.titleEn }}</h5>
+                    <h5 style="font-family: arial;">{{ item.title }}</h5>
                     <p>{{ item.time }}</p>
                 </el-card>    
             </div>
@@ -26,38 +26,58 @@
     </div>
 </template>
 
-<script>
-import axios from 'axios'
-export default {
-    data() {
-        return {
-            news: [],
+<script setup>
+import { useRouter, useRoute } from 'vue-router';
+import { ref, onMounted, getCurrentInstance, watch } from 'vue'
+import axios from 'axios';
+import { useGeneralStore } from '../../stores/general';
+
+
+const store = useGeneralStore();
+let news = ref([]);
+let response = '';
+const route = useRoute()
+let { ctx } = getCurrentInstance()
+
+const getNews = async () => {
+    try {
+        response = await axios.get('api/news');
+        if (response.status === 200) {
+            news.value = response.data.data;
+            updateLanguageValues();
         }
-    },
-    methods: {
-        getNewsDetail(id){
-            this.$router.push({
-                path: `/news/${id}`
-            })
-        },
-        async init() {
-            this.getNews();
-        },
-        async getNews() {
-            let response = await axios.get('api/news');
-            console.log(response)
-            if (response.status == 200) {
-                this.news = response.data.data
-            }
-        }
-    },
-    mounted(){
-        this.init();
-    },
-    computed: {
-    
-    },
+    } catch (error) {
+        console.error('Error fetching news details:', error);
+    }
+};
+
+const router = useRouter()
+const getNewsDetail = (id) => {
+    router.push({
+        path: `/news/${id}`
+    })
 }
+
+const updateLanguageValues = () => {
+    news.value.forEach(item => {
+        if (ctx.$i18n.locale == 'zn') {
+            item.title = item.titleZn;
+        } else if (ctx.$i18n.locale == 'en') {
+            item.title = item.titleEn;
+        } else if (ctx.$i18n.locale == 'de') {
+            item.title = item.titleDn;
+        }
+    });
+};
+
+onMounted(() => {
+    getNews();
+});
+
+watch(() => store.changeLanguage, () => {
+    console.log("Language changed");
+    updateLanguageValues();
+});
 </script>
 
 <style lang="scss" scoped>

@@ -1,38 +1,67 @@
 <template>
     <el-card>
-        <h3 style="font-family: arial;">{{ news.titleEn }}</h3>
-        <el-container style="font-family: arial;"><div v-html="news.containsEn"></div></el-container>
+        <h3 style="font-family: arial;">{{ title }}</h3>
+        <el-container style="font-family: arial;"><div v-html="contains"></div></el-container>
         <h4>{{ news.time }}</h4>
     </el-card>
 </template>
 
 <script>
-import axios from 'axios'
-export default {
-    data() {
-        return {
-            news:{},
-        }
-    },
-    methods: {
-        async init(){
-            this.getDetail();
-        },
-        async getDetail(){
-            let response = await axios.get('api/news/singleNews/' + this.$route.params.id);
-            console.log(response)
-            if (response.status == 200) {
-                this.news=response.data.data
-            }
-        }
-    },
-    mounted(){
-        this.init()
-    },
-    computed: {
+import { useRouter, useRoute } from 'vue-router';
+import { ref, onMounted, getCurrentInstance, watch } from 'vue'
+import axios from 'axios';
+import { useGeneralStore } from '../../stores/general';
 
+export default {
+    setup() {
+        const store = useGeneralStore();
+        let news = ref({});
+        let title = ref("");
+        let contains = ref("");
+        const route = useRoute()
+        let { ctx } = getCurrentInstance()
+
+        const getDetail = async () => {
+            try {
+                const response = await axios.get('api/news/singleNews/' + route.params.id);
+                if (response.status === 200) {
+                    news.value = response.data.data;
+                    updateLanguageValues();
+                }
+            } catch (error) {
+                console.error('Error fetching news details:', error);
+            }
+        };
+
+        const updateLanguageValues = () => {
+            if (ctx.$i18n.locale == 'zn') {
+                title.value = news.value.titleZn;
+                contains.value = news.value.containsZn;
+            } else if (ctx.$i18n.locale == 'en') {
+                title.value = news.value.titleEn;
+                contains.value = news.value.containsEn;
+            } else if (ctx.$i18n.locale == 'de') {
+                title.value = news.value.titleDn;
+                contains.value = news.value.containsDn;
+            }
+        };
+
+        onMounted(() => {
+            getDetail();
+        });
+
+        watch(() => store.changeLanguage, () => {
+            console.log("Language changed");
+            updateLanguageValues();
+        });
+
+        return {
+            news,
+            title,
+            contains,
+        };
     },
-}
+};
 </script>
 
 <style lang="scss" scoped>
