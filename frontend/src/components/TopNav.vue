@@ -3,7 +3,7 @@
         <div class="nav-container">
             <div class="nav-logo">
                 <!-- <img id="logo-img" src="../public/img/logo.png"> -->
-                <p>Inovation&Behavior</p>
+                <p>Innovation&Behavior</p>
                 <!-- <p>占个logo位</p> -->
             </div>
             <div class="nav-box">
