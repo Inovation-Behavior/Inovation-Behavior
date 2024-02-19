@@ -54,9 +54,12 @@ onMounted(() =>{
     transition: all 0.3s ease; // 平滑过渡效果
 
     &:hover {
-        transform: translateY(-2px); // 悬停时轻微上移，增加交互感
+        // transform: translateY(-2px); // 悬停时轻微上移，增加交互感
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); // 悬停时加强阴影
         background-color: #4a91e220;
+        p {
+            color: #000; // 悬停时改变字体颜色
+        }
     }
 }
 

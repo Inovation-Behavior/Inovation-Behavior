@@ -1,7 +1,7 @@
 <template>
     <body>
         <div class="header-container">
-            <img class="head-img" src="../../public/img/Economic-head.jpg"/>
+            <img class="head-img" src="../../public/img/economic-head.jpg"/>
             <div class="text-overlay">
                 <h2>{{ $t('topnav.IP_Economics') }}/</h2>
                 <h3>{{ $t(ChosedItem) }}</h3>
