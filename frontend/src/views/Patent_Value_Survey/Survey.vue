@@ -1,41 +1,42 @@
 <template>
     <el-container
-        style="display: flex;justify-content: center;align-items: center; font-size: large;font-weight: bolder;margin-top: 2vh; width: 100%; overflow: auto;">Patent
-        Value Survey (2024, Shanghai)</el-container>
+        style="display: flex;justify-content: center;align-items: center; font-size: large;font-weight: bolder;margin-top: 2vh; width: 100%; overflow: auto;">
+        Open Patent and Innovation Survey: Shanghai     
+    </el-container>
     <el-container style="margin-top: 10px;margin-right: 5px; width: 100%;">
         <el-tabs style="width: 100%;" v-model="activeName" tab-position="top" class="demo-tabs" @tab-click="handleClick"
             type="card" stretch="true">
-            <el-tab-pane :label="$t('survey.RespondentsIdentification')" name="identify">
-                <identify-vue />
+            <el-tab-pane label="Introduction" name="Introduction">
+                <introduction/>
             </el-tab-pane>
-            <el-tab-pane :label="$t('survey.BusinessActivities')" name="activity">
-                <activity-vue />
+            <el-tab-pane label="A-Respondent Identification" name="A-Respondent Identification">
+                <identification />
             </el-tab-pane>
-            <el-tab-pane :label="$t('survey.PatentedTechnology')" name="technique">
-                <technique-vue />
+            <el-tab-pane label="B-Value of the Patent/Patented Technology" name="B-Value of the Patent/Patented Technology">
+                <value-vue/>
             </el-tab-pane>
-            <el-tab-pane :label="$t('survey.PatentStrategy')" name="strategy">
-                <strategy-vue />
+            <el-tab-pane label="C-Evaluate the IP and Innovation Environment" name="C-Evaluate the IP and Innovation Environment">
+                <evaluate-vue/>
             </el-tab-pane>
         </el-tabs>
     </el-container>
 </template>
 
 <script>
-import IdentifyVue from '../../components/Survey/Identify.vue'
-import activityVue from '../../components/Survey/activity.vue'
-import strategyVue from '../../components/Survey/strategy.vue'
-import techniqueVue from '../../components/Survey/technique.vue'
+import EvaluateVue from '../../components/Survey/Evaluate.vue'
+import Identification from '../../components/Survey/Identification.vue'
+import Introduction from '../../components/Survey/Introduction.vue'
+import ValueVue from '../../components/Survey/Value.vue'
 export default {
     components: {
-        IdentifyVue,
-        activityVue,
-        techniqueVue,
-        strategyVue,
+        Identification,
+        Introduction,
+        ValueVue,
+        EvaluateVue,
     },
     data() {
         return {
-            activeName: "identify",
+            activeName: "Introduction",
         }
     },
     methods: {

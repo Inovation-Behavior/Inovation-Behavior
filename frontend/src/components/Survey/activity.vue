@@ -2,11 +2,25 @@
     <el-card style="border-radius: 15px;width: 100%;">
         <el-form :model="form" size="large" label-position="top">
             <el-form-item style="font-weight: bolder;" :label="$t('survey.P2Q1')">
-                <el-date-picker
+                <!-- <el-date-picker
                     v-model="form.year"
                     type="year"
                     placeholder="Pick a year"
-                />
+                /> -->
+                <el-table ref="table"  height="340"  :data="tableDatas">
+                <!-- :render-header="renderColumn1Header"  定义该列 render-header 方法，该方法返回 增加选择框  -->
+                <el-table-column :render-header="renderColumn1Header" label="Column1" >
+                        <template slot-scope="scope" >
+                            <!--  定义选中事件，以及是否选中，Column1CheckedAll 控制全选，  -->
+                            <el-checkbox  @change="checked => Column1CheckboxChange(checked, scope.row)"
+                                    :checked="Column1CheckedAll != null ? Column1CheckedAll : scope.row.Column1Value != null">
+                            </el-checkbox>
+                            <span> {{ scope.row.Column1Value }}</span>
+                        </template>
+                    </el-table-column>
+                    ... 
+                    <!-- 省略其他列  -->
+                </el-table>
             </el-form-item>
             <el-form-item style="font-weight: bolder;" :label="$t('survey.P2Q2')">
                 
@@ -68,13 +82,36 @@ export default {
                 update:[],
                 Q7: [],
                 Q7_1: [],
+                tableDatas: [1,2,2,2,2,2],
+                Column1CheckedAll: null,
             },
         }
     },
     methods: {
         showQ7_1(){
             return this.form.Q7.length > 0 && !this.form.Q7.includes('No') ;
-        }
+        },
+         renderSO2Header(h, { column }) {
+            return h(
+                'div',
+                [
+                    //加入选择框，同时绑定事件
+                    h('el-checkbox', {
+                        on: {
+                            // event为当前checkbox选中状态值（true/false）
+                            change: ($event, column) => this.selectColumn1($event, column),
+                        }
+                    }),
+                    // 加入label，值为 el-table-column 标签定义的 label="Column1"  及 Column1
+                    h('span', column.label),
+                ],
+            )
+        },
+        selectColumn1(val, column) {
+            //改变 Column1CheckAll 变量值 同时对表格进行 初始化 重新赋值
+            this.Column1CheckAll = val;
+            this.initTableData();
+        },
     }
 }
 </script>
