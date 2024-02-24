@@ -23,7 +23,21 @@
                 </el-radio-group>
             </el-form-item>
 
-            <P>A03</P>
+            <el-form-item style="font-weight: bolder;" :label="$t('survey.P1Q3')">
+                <el-table :data="tableP1Q3" style="width: 100%">
+                    <el-table-column>
+                    <template #default="{ row }">
+                        {{ row.name }}
+                    </template>
+                    </el-table-column>
+                    <el-table-column v-for="(column, colIndex) in colP1Q3" :key="colIndex" :prop="column.prop" :label="column.label">
+                    <template #default="{ row }">
+                        <!-- 在每个单元格内放置一个可选中的组件 -->
+                        <el-checkbox v-model="row.selection[colIndex]" @change="handleP1Q3(row, colIndex)"></el-checkbox>
+                    </template>
+                    </el-table-column>
+                </el-table>
+            </el-form-item>
 
             <el-form-item style="font-weight: bolder;" :label="$t('survey.P1Q4')">
                 <el-select v-model="form.p1q4" multiple filterable allow-create>
@@ -50,7 +64,21 @@
                 </el-select>
             </el-form-item>
 
-            <P v-if="showA06">A06</P>
+            <el-form-item v-if="showA06" style="font-weight: bolder;" :label="$t('survey.P1Q6')">
+                <el-table :data="tableP1Q6" style="width: 100%">
+                    <el-table-column>
+                    <template #default="{ row }">
+                        {{ row.name }}
+                    </template>
+                    </el-table-column>
+                    <el-table-column v-for="(column, colIndex) in colP1Q6" :key="colIndex" :label="column.label">
+                    <template #default="{ row }">
+                        <!-- 在每个单元格内放置一个可选中的组件 -->
+                        <el-checkbox v-model="row.selection[colIndex]" @change="handleP1Q6(row, colIndex)"></el-checkbox>
+                    </template>
+                    </el-table-column>
+                </el-table>
+            </el-form-item>
 
             <el-form-item style="font-weight: bolder;" :label="$t('survey.P1Q7')">
                 <el-checkbox-group v-model="form.p1q7" style="display: flex;flex-wrap: wrap;">
@@ -102,7 +130,21 @@
                 </el-radio-group>
             </el-form-item>
 
-            <p>A11</p>
+            <el-form-item style="font-weight: bolder;" :label="$t('survey.P1Q11')">
+                <el-table :data="tableP1Q11" style="width: 100%">
+                    <el-table-column>
+                    <template #default="{ row }">
+                        {{ row.name }}
+                    </template>
+                    </el-table-column>
+                    <el-table-column v-for="(column, colIndex) in colP1Q11" :key="colIndex" :label="column.label">
+                    <template #default="{ row }">
+                        <!-- 在每个单元格内放置一个可选中的组件 -->
+                        <el-checkbox v-model="row.selection[colIndex]" @change="handleP1Q11(row, colIndex)"></el-checkbox>
+                    </template>
+                    </el-table-column>
+                </el-table>
+            </el-form-item>
 
             <el-form-item style="font-weight: bolder;" :label="$t('survey.P1Q12')">
                 <el-radio-group v-model="form.p1q12">
@@ -112,7 +154,21 @@
                 </el-radio-group>
             </el-form-item>
 
-            <p>A13</p>
+            <el-form-item style="font-weight: bolder;" :label="$t('survey.P1Q13')">
+                <el-table :data="tableP1Q13" style="width: 100%">
+                    <el-table-column>
+                    <template #default="{ row }">
+                        {{ row.name }}
+                    </template>
+                    </el-table-column>
+                    <el-table-column v-for="(column, colIndex) in colP1Q13" :key="colIndex" :label="column.label">
+                    <template #default="{ row }">
+                        <!-- 在每个单元格内放置一个可选中的组件 -->
+                        <el-checkbox v-model="row.selection[colIndex]" @change="handleP1Q13(row, colIndex)"></el-checkbox>
+                    </template>
+                    </el-table-column>
+                </el-table>
+            </el-form-item>
 
             <el-form-item style="font-weight: bolder;" :label="$t('survey.P1Q14')">
                 <el-radio-group v-model="form.p1q14">
@@ -153,7 +209,21 @@
                 </el-checkbox-group>
             </el-form-item>
 
-            <p>A18</p>
+            <el-form-item style="font-weight: bolder;" :label="$t('survey.P1Q18')">
+                <el-table :data="tableP1Q18" style="width: 100%">
+                    <el-table-column>
+                    <template #default="{ row }">
+                        {{ row.name }}
+                    </template>
+                    </el-table-column>
+                    <el-table-column v-for="(column, colIndex) in colP1Q18" :key="colIndex" :label="column.label">
+                    <template #default="{ row }">
+                        <!-- 在每个单元格内放置一个可选中的组件 -->
+                        <el-checkbox v-model="row.selection[colIndex]" @change="handleP1Q18(row, colIndex)"></el-checkbox>
+                    </template>
+                    </el-table-column>
+                </el-table>
+            </el-form-item>
 
             <el-form-item style="font-weight: bolder;" :label="$t('survey.P1Q19')">
                 <el-radio-group v-model="form.p1q19">
@@ -163,40 +233,9 @@
             </el-form-item>
 
 
-        <!-- <el-form-item style="font-weight: bolder;">
-          <el-table :data="tableData" style="width: 100%">
-            <el-table-column label="标识">
-              <template #default="{ columns, columns }">
-                {{ column }}
-              </template>
-            </el-table-column>
-            <el-table-column v-for="(column, colIndex) in columns" :key="colIndex" :prop="column.prop" :label="column.label">
-              <template #default="{ row }">
-                <el-checkbox v-model="row.selected" @change="handleCellSelection(row, colIndex)"></el-checkbox>
-              </template>
-            </el-table-column>
-          </el-table>
-        </el-form-item> -->
-
-
-        <el-form-item style="font-weight: bolder;">
-            <el-table :data="tableData" style="width: 100%">
-              <el-table-column label="标识">
-                <template #default="{ row }">
-                  {{ row.name }}
-                </template>
-              </el-table-column>
-              <el-table-column v-for="(column, colIndex) in columns" :key="colIndex" :prop="column.prop" :label="column.label">
-                <template #default="{ row }">
-                  <!-- 在每个单元格内放置一个可选中的组件 -->
-                  <el-checkbox v-model="row.selected" @change="handleCellSelection(row, colIndex)"></el-checkbox>
-                </template>
-              </el-table-column>
-            </el-table>
-          </el-form-item>
         </el-form>
     </el-card>
-    <el-button type="primary" @click="submit()" style="margin-top: 1vh;margin-left: 2vw;">submit part 2</el-button>
+    <el-button type="primary" @click="submit()" style="margin-top: 1vh;margin-left: 2vw;">submit part A</el-button>
 </template>
 
 <script setup>
@@ -206,22 +245,22 @@ import { ElMessage } from 'element-plus';
 const form = reactive({
     p1q1:"",
     p1q2: "",
-    p1q3: "",
+    p1q3: [],
     p1q4: "",
     p1q5: "",
-    p1q6: "",
+    p1q6: [],
     p1q7: [],
     p1q8: "",
     p1q9: [],
     p1q10: "",
-    p1q11: "",
+    p1q11: [],
     p1q12: "",
-    p1q13: "",
+    p1q13: [],
     p1q14: "",
     p1q15: "",
     p1q16: "",
     p1q17: [],
-    p1q18: "",
+    p1q18: [],
     p1q19: "",
 });
 
@@ -231,47 +270,156 @@ const showA09 = ref(false);
 
 const showA10 = ref(false);
 
-const checktable=ref([[]]);
 
-const tableData = ref([
-    // { name: '张三', age: 30, address: '上海市', selected: false },
-    // { name: '李四', age: 25, address: '北京市', selected: false },
-    // { name: '王五', age: 28, address: '广州市', selected: false }
-    { name: '王五'},
-    { name: '王五'},
-    { name: '王五'},
+import enLocale from '../../locales/en.json';
+
+
+const tableP1Q3 = ref([
+    { name: enLocale.survey.P1Q3Col[0], selection: [false, false, false] },
+    { name: enLocale.survey.P1Q3Col[1], selection: [false, false, false] },
+    { name: enLocale.survey.P1Q3Col[2], selection: [false, false, false] },
+    { name: enLocale.survey.P1Q3Col[3], selection: [false, false, false] },
+    { name: enLocale.survey.P1Q3Col[4], selection: [false, false, false] },
+    { name: enLocale.survey.P1Q3Col[5], selection: [false, false, false] }
 ]);
 
-const columns = [
-    { prop: 'name', label: '姓名' },
-    { prop: 'age', label: '年龄' },
-    { prop: 'address', label: '地址' }
+const colP1Q3 = [
+    { label:  enLocale.survey.P1Q3Row[0] },
+    { label: enLocale.survey.P1Q3Row[1] },
+    { label: enLocale.survey.P1Q3Row[2] },
 ];
 
 // 处理单元格选中状态变化
-const handleCellSelection = (row, colIndex) => {
-    // row.selected = !row.selected;
-    //console.log(`Selected: ${row.name}, Column: ${columns[colIndex].label}`);
-    // 遍历表格数据，将除了当前点击的单元格外，其他单元格的选中状态设置为 false
-    tableData.value.forEach((rowData) => {
-        // 如果不是当前行，将该行对应列的选中状态设置为 false
-        if (rowData !== row) {
-            rowData.selected = false;
-        } else {
-            // 如果是当前行，遍历列，将除了当前点击的列外，其他列的选中状态设置为 false
-            for (let i = 0; i < columns.length; i++) {
-                if (i !== colIndex) {
-                    row[columns[i].prop].selected = false;
-                }
-            }
+const handleP1Q3 = (row, colIndex) => {
+    // 取消当前行其他单元格的选中状态
+    row.selection.forEach((selected, index) => {
+        if (index !== colIndex) {
+            row.selection[index] = false;
         }
     });
-
-    // 设置当前点击的单元格选中状态为 true
-    row[columns[colIndex].prop].selected = !row[columns[colIndex].prop].selected;
+    //row.selected = !row.selected;
+    form.p1q3[colIndex]= row.name
+    console.log(form.p1q3)
+    console.log(`Selected: ${row.name}, Column: ${colP1Q3[colIndex].label}`);
 };
 
-import enLocale from '../../locales/en.json';
+const tableP1Q6 = ref([
+    { name: enLocale.survey.P1Q6Col[0], selection: [false, false] },
+    { name: enLocale.survey.P1Q6Col[1], selection: [false, false] },
+    { name: enLocale.survey.P1Q6Col[2], selection: [false, false] },
+    { name: enLocale.survey.P1Q6Col[3], selection: [false, false] },
+    { name: enLocale.survey.P1Q6Col[4], selection: [false, false] },
+    { name: enLocale.survey.P1Q6Col[5], selection: [false, false] }
+]);
+
+const colP1Q6 = [
+    { label: enLocale.survey.P1Q6Row[0] },
+    { label: enLocale.survey.P1Q6Row[1] },
+];
+
+// 处理单元格选中状态变化
+const handleP1Q6 = (row, colIndex) => {
+    // 取消当前行其他单元格的选中状态
+    row.selection.forEach((selected, index) => {
+        if (index !== colIndex) {
+            row.selection[index] = false;
+        }
+    });
+    //row.selected = !row.selected;
+    form.p1q6[colIndex] = row.name
+    console.log(form.p1q6)
+    console.log(`Selected: ${row.name}, Column: ${colP1Q3[colIndex].label}`);
+};
+
+const tableP1Q11 = ref([
+    { name: enLocale.survey.P1Q11Col[0],index:0, selection: [false, false, false, false, false] },
+    { name: enLocale.survey.P1Q11Col[1], index: 1, selection: [false, false, false, false, false] },
+    { name: enLocale.survey.P1Q11Col[2], index: 2, selection: [false, false, false, false, false] },
+    { name: enLocale.survey.P1Q11Col[3], index: 3, selection: [false, false, false, false, false] },
+    { name: enLocale.survey.P1Q11Col[4], index: 4, selection: [false, false, false, false, false] },
+    { name: enLocale.survey.P1Q11Col[5], index: 5, selection: [false, false, false, false, false] },
+    { name: enLocale.survey.P1Q11Col[6], index: 6, selection: [false, false, false, false, false] },
+]);
+
+const colP1Q11 = [
+    { label: enLocale.survey.P1Q11Row[0] },
+    { label: enLocale.survey.P1Q11Row[1] },
+    { label: enLocale.survey.P1Q11Row[2] },
+    { label: enLocale.survey.P1Q11Row[3] },
+    { label: enLocale.survey.P1Q11Row[4] },
+];
+
+// 处理单元格选中状态变化
+const handleP1Q11 = (row, colIndex) => {
+    // 取消当前行其他单元格的选中状态
+    row.selection.forEach((selected, index) => {
+        if (index !== colIndex) {
+            row.selection[index] = false;
+        }
+    });
+    form.p1q11[row.index] = colP1Q11[colIndex].label
+    console.log(form.p1q11)
+    console.log(`Selected: ${row.name}, Column: ${colP1Q11[colIndex].label}`);
+};
+
+const tableP1Q13 = ref([
+    { name: enLocale.survey.P1Q13Col[0], index: 0, selection: [false, false, false] },
+    { name: enLocale.survey.P1Q13Col[1], index: 1, selection: [false, false, false] },
+    { name: enLocale.survey.P1Q13Col[2], index: 2, selection: [false, false, false] },
+    { name: enLocale.survey.P1Q13Col[3], index: 3, selection: [false, false, false] },
+    { name: enLocale.survey.P1Q13Col[4], index: 4, selection: [false, false, false] },
+]);
+
+const colP1Q13 = [
+    { label: enLocale.survey.P1Q13Row[0] },
+    { label: enLocale.survey.P1Q13Row[1] },
+    { label: enLocale.survey.P1Q13Row[2] },
+];
+
+// 处理单元格选中状态变化
+const handleP1Q13 = (row, colIndex) => {
+    // 取消当前行其他单元格的选中状态
+    row.selection.forEach((selected, index) => {
+        if (index !== colIndex) {
+            row.selection[index] = false;
+        }
+    });
+    form.p1q13[parseInt(row.index)] = colP1Q13[colIndex].label
+    console.log(form.p1q13)
+    console.log(`Selected: ${row.name}, Column: ${colP1Q13[colIndex].label}`);
+};
+
+const tableP1Q18 = ref([
+    { name: enLocale.survey.P1Q18Col[0], index: 0, selection: [false, false, false, false] },
+    { name: enLocale.survey.P1Q18Col[1], index: 1, selection: [false, false, false, false] },
+    { name: enLocale.survey.P1Q18Col[2], index: 2, selection: [false, false, false, false] },
+    { name: enLocale.survey.P1Q18Col[3], index: 3, selection: [false, false, false, false] },
+    { name: enLocale.survey.P1Q18Col[4], index: 4, selection: [false, false, false, false] },
+    { name: enLocale.survey.P1Q18Col[5], index: 5, selection: [false, false, false, false] },
+    { name: enLocale.survey.P1Q18Col[6], index: 6, selection: [false, false, false, false] },
+]);
+
+const colP1Q18 = [
+    { label: enLocale.survey.P1Q18Row[0] },
+    { label: enLocale.survey.P1Q18Row[1] },
+    { label: enLocale.survey.P1Q18Row[2] },
+    { label: enLocale.survey.P1Q18Row[3] },
+];
+
+// 处理单元格选中状态变化
+const handleP1Q18 = (row, colIndex) => {
+    // 取消当前行其他单元格的选中状态
+    row.selection.forEach((selected, index) => {
+        if (index !== colIndex) {
+            row.selection[index] = false;
+        }
+    });
+    form.p1q18[parseInt(row.index)] = colP1Q18[colIndex].label
+    console.log(form.p1q18)
+    console.log(`Selected: ${row.name}, Column: ${colP1Q18[colIndex].label}`);
+};
+
+
 
 const handleP1Q5Change = (value) => {
     // 根据选择的 A05 选项来决定是否显示 A06
@@ -291,64 +439,64 @@ let patent = ref({
     link: "",
 })
 
-const getPatentByNo = async (no) => {
-    if (no == '') {
-        patent.value.no = ''
-        patent.value.name = '';
-        patent.value.summary = '';
-        patent.value.link = '';
-        return;
-    }
-    console.log('api/patents/' + no);
-    let response = await axios.get('api/patents/' + no);
-    patent.value.no = no;
-    console.log(response)
-    if (response.status == 200) {
-        if (response.data.code == 1) {
-            patent.value.name = response.data.data.name;
-            patent.value.summary = response.data.data.summary;
-            patent.value.link = response.data.data.link;
-        } else {
-            patent.value.name = '';
-            patent.value.summary = '';
-            patent.value.link = '';
-        }
-    } else {
-        patent.value.name = '';
-        patent.value.summary = '';
-        patent.value.link = '';
-    }
-}
+// const getPatentByNo = async (no) => {
+//     if (no == '') {
+//         patent.value.no = ''
+//         patent.value.name = '';
+//         patent.value.summary = '';
+//         patent.value.link = '';
+//         return;
+//     }
+//     console.log('api/patents/' + no);
+//     let response = await axios.get('api/patents/' + no);
+//     patent.value.no = no;
+//     console.log(response)
+//     if (response.status == 200) {
+//         if (response.data.code == 1) {
+//             patent.value.name = response.data.data.name;
+//             patent.value.summary = response.data.data.summary;
+//             patent.value.link = response.data.data.link;
+//         } else {
+//             patent.value.name = '';
+//             patent.value.summary = '';
+//             patent.value.link = '';
+//         }
+//     } else {
+//         patent.value.name = '';
+//         patent.value.summary = '';
+//         patent.value.link = '';
+//     }
+// }
 
-const submit = async () => {
-    // 将数组元素整合为以逗号分隔的字符串
-    const identifyString = form.identify.join(",");
-    const experString = form.exper.join(",");
+// const submit = async () => {
+//     // 将数组元素整合为以逗号分隔的字符串
+//     const identifyString = form.identify.join(",");
+//     const experString = form.exper.join(",");
 
-    // 创建新的对象，将字符串赋值给 identify 和 exper 属性
-    const formData = {
-        patentNo: form.patentPublicationNo,
-        gender: form.sex,
-        major: form.major,
-        degree: form.status,
-        income: form.income,
-        role: identifyString,
-        experience: experString
-    };
+//     // 创建新的对象，将字符串赋值给 identify 和 exper 属性
+//     const formData = {
+//         patentNo: form.patentPublicationNo,
+//         gender: form.sex,
+//         major: form.major,
+//         degree: form.status,
+//         income: form.income,
+//         role: identifyString,
+//         experience: experString
+//     };
 
-    console.log(formData);
-    try {
-        let response = await axios.post('api/questionnaire/respondents', formData);
-        console.log(response);
-        // 根据需要处理来自服务器的响应
-        if (response.data.code == 1) {
-            ElMessage.success("successfully submit part 1")
-        }
-    } catch (error) {
-        console.error(error);
-        // 处理请求失败的错误
-    }
-}
+//     console.log(formData);
+//     try {
+//         let response = await axios.post('api/questionnaire/respondents', formData);
+//         console.log(response);
+//         // 根据需要处理来自服务器的响应
+//         if (response.data.code == 1) {
+//             ElMessage.success("successfully submit part 1")
+//         }
+//     } catch (error) {
+//         console.error(error);
+//         // 处理请求失败的错误
+//     }
+// }
 </script>
 
 

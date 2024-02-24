@@ -1,50 +1,161 @@
 <template>
     <el-card style="border-radius: 15px;width: 100%;">
         <el-form :model="form" size="large" label-position="top">
-            <p>C01</p>
-            <p>C02</p>
-            <p>C03</p>
+            <el-form-item style="font-weight: bolder;" :label="$t('survey.P3Q1')">
+                <el-table :data="tableP3Q1" style="width: 100%">
+                    <el-table-column>
+                    <template #default="{ row }">
+                        {{ row.name }}
+                    </template>
+                    </el-table-column>
+                    <el-table-column v-for="(column, colIndex) in colP3Q1" :key="colIndex" :label="column.label">
+                    <template #default="{ row }">
+                        <!-- 在每个单元格内放置一个可选中的组件 -->
+                        <el-checkbox v-model="row.selection[colIndex]" @change="handleP3Q1(row, colIndex)"></el-checkbox>
+                    </template>
+                    </el-table-column>
+                </el-table>
+            </el-form-item>
+
+            <el-form-item style="font-weight: bolder;" :label="$t('survey.P3Q2')">
+                <el-table :data="tableP3Q2" style="width: 100%">
+                    <el-table-column>
+                    <template #default="{ row }">
+                        {{ row.name }}
+                    </template>
+                    </el-table-column>
+                    <el-table-column v-for="(column, colIndex) in colP3Q2" :key="colIndex" :label="column.label">
+                    <template #default="{ row }">
+                        <!-- 在每个单元格内放置一个可选中的组件 -->
+                        <el-checkbox v-model="row.selection[colIndex]" @change="handleP3Q2(row, colIndex)"></el-checkbox>
+                    </template>
+                    </el-table-column>
+                </el-table>
+            </el-form-item>
+
+            <el-form-item style="font-weight: bolder;" :label="$t('survey.P3Q3')">
+                <el-table :data="tableP3Q3" style="width: 100%">
+                    <el-table-column>
+                    <template #default="{ row }">
+                        {{ row.name }}
+                    </template>
+                    </el-table-column>
+                    <el-table-column v-for="(column, colIndex) in colP3Q3" :key="colIndex" :label="column.label">
+                    <template #default="{ row }">
+                        <!-- 在每个单元格内放置一个可选中的组件 -->
+                        <el-checkbox v-model="row.selection[colIndex]" @change="handleP3Q3(row, colIndex)"></el-checkbox>
+                    </template>
+                    </el-table-column>
+                </el-table>
+            </el-form-item>
+                        
         </el-form>
     </el-card>
-    <el-button type="primary" @click="submit()" style="margin-top: 1vh;margin-left: 2vw;">submit part 3</el-button>
+    <el-button type="primary" @click="submit()" style="margin-top: 1vh;margin-left: 2vw;">submit part C</el-button>
 </template>
 
-<script>
-export default {
-    data() {
-        return {
-            form: {
-                
-            },
+<script setup>
+import enLocale from '../../locales/en.json';
+import { ref, reactive } from 'vue';
+const form = reactive({
+    p3q1: [],
+    p3q2: [],
+    p3q3: [],
+});
+//以下处理所有表格
+const tableP3Q1 = ref([
+    { name: enLocale.survey.P3Q1Row[0], index: 0, selection: [false, false, false, false, false] },
+    { name: enLocale.survey.P3Q1Row[1], index: 1, selection: [false, false, false, false, false] },
+    { name: enLocale.survey.P3Q1Row[2], index: 2, selection: [false, false, false, false, false] },
+    { name: enLocale.survey.P3Q1Row[3], index: 3, selection: [false, false, false, false, false] },
+    { name: enLocale.survey.P3Q1Row[4], index: 4, selection: [false, false, false, false, false] },
+    { name: enLocale.survey.P3Q1Row[5], index: 5, selection: [false, false, false, false, false] },
+    { name: enLocale.survey.P3Q1Row[6], index: 6, selection: [false, false, false, false, false] },
+    { name: enLocale.survey.P3Q1Row[7], index: 7, selection: [false, false, false, false, false] },
+    { name: enLocale.survey.P3Q1Row[8], index: 8, selection: [false, false, false, false, false] },
+]);
+
+const colP3Q1 = [
+    { label: enLocale.survey.P3Q1Col[0] },
+    { label: enLocale.survey.P3Q1Col[1] },
+    { label: enLocale.survey.P3Q1Col[2] },
+    { label: enLocale.survey.P3Q1Col[3] },
+    { label: enLocale.survey.P3Q1Col[4] },
+];
+
+// 处理单元格选中状态变化
+const handleP3Q1 = (row, colIndex) => {
+    // 取消当前行其他单元格的选中状态
+    row.selection.forEach((selected, index) => {
+        if (index !== colIndex) {
+            row.selection[index] = false;
         }
-    },
-    methods: {
-        showQ7_1() {
-            return this.form.Q7.length > 0 && !this.form.Q7.includes('No');
-        },
-        renderSO2Header(h, { column }) {
-            return h(
-                'div',
-                [
-                    //加入选择框，同时绑定事件
-                    h('el-checkbox', {
-                        on: {
-                            // event为当前checkbox选中状态值（true/false）
-                            change: ($event, column) => this.selectColumn1($event, column),
-                        }
-                    }),
-                    // 加入label，值为 el-table-column 标签定义的 label="Column1"  及 Column1
-                    h('span', column.label),
-                ],
-            )
-        },
-        selectColumn1(val, column) {
-            //改变 Column1CheckAll 变量值 同时对表格进行 初始化 重新赋值
-            this.Column1CheckAll = val;
-            this.initTableData();
-        },
-    }
-}
+    });
+    form.p3q1[parseInt(row.index)] = colP3Q1[colIndex].label
+    console.log(form.p3q1)
+};
+
+const tableP3Q2 = ref([
+    { name: enLocale.survey.P3Q2Row[0], index: 0, selection: [false, false, false, false, false] },
+    { name: enLocale.survey.P3Q2Row[1], index: 1, selection: [false, false, false, false, false] },
+    { name: enLocale.survey.P3Q2Row[2], index: 2, selection: [false, false, false, false, false] },
+    { name: enLocale.survey.P3Q2Row[3], index: 3, selection: [false, false, false, false, false] },
+    { name: enLocale.survey.P3Q2Row[4], index: 4, selection: [false, false, false, false, false] },
+]);
+
+const colP3Q2 = [
+    { label: enLocale.survey.P3Q2Col[0] },
+    { label: enLocale.survey.P3Q2Col[1] },
+    { label: enLocale.survey.P3Q2Col[2] },
+    { label: enLocale.survey.P3Q2Col[3] },
+    { label: enLocale.survey.P3Q2Col[4] },
+];
+
+// 处理单元格选中状态变化
+const handleP3Q2 = (row, colIndex) => {
+    // 取消当前行其他单元格的选中状态
+    row.selection.forEach((selected, index) => {
+        if (index !== colIndex) {
+            row.selection[index] = false;
+        }
+    });
+    form.p3q2[parseInt(row.index)] = colP3Q2[colIndex].label
+    console.log(form.p3q2)
+};
+
+const tableP3Q3 = ref([
+    { name: enLocale.survey.P3Q3Row[0], index: 0, selection: [false, false, false, false, false] },
+    { name: enLocale.survey.P3Q3Row[1], index: 1, selection: [false, false, false, false, false] },
+    { name: enLocale.survey.P3Q3Row[2], index: 2, selection: [false, false, false, false, false] },
+    { name: enLocale.survey.P3Q3Row[3], index: 3, selection: [false, false, false, false, false] },
+    { name: enLocale.survey.P3Q3Row[4], index: 4, selection: [false, false, false, false, false] },
+    { name: enLocale.survey.P3Q3Row[5], index: 5, selection: [false, false, false, false, false] },
+    { name: enLocale.survey.P3Q3Row[6], index: 6, selection: [false, false, false, false, false] },
+    { name: enLocale.survey.P3Q3Row[7], index: 7, selection: [false, false, false, false, false] },
+    { name: enLocale.survey.P3Q3Row[8], index: 8, selection: [false, false, false, false, false] },
+    { name: enLocale.survey.P3Q3Row[9], index: 9, selection: [false, false, false, false, false] },
+]);
+
+const colP3Q3 = [
+    { label: enLocale.survey.P3Q3Col[0] },
+    { label: enLocale.survey.P3Q3Col[1] },
+    { label: enLocale.survey.P3Q3Col[2] },
+    { label: enLocale.survey.P3Q3Col[3] },
+    { label: enLocale.survey.P3Q3Col[4] },
+];
+
+// 处理单元格选中状态变化
+const handleP3Q3 = (row, colIndex) => {
+    // 取消当前行其他单元格的选中状态
+    row.selection.forEach((selected, index) => {
+        if (index !== colIndex) {
+            row.selection[index] = false;
+        }
+    });
+    form.p3q3[parseInt(row.index)] = colP3Q3[colIndex].label
+    console.log(form.p3q3)
+};
+
 </script>
 
 <style scoped>
