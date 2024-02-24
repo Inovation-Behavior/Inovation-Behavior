@@ -7,10 +7,12 @@
         <el-tabs style="width: 100%;" v-model="activeName" tab-position="top" class="demo-tabs" @tab-click="handleClick"
             type="card" stretch="true">
             <el-tab-pane label="Introduction" name="Introduction">
-                <introduction/>
+                <el-card style="border-radius: 15px;width: 100%;font-size: 1em;">
+                    <introduction/>
+                </el-card>
             </el-tab-pane>
             <el-tab-pane label="A-Respondent Identification" name="A-Respondent Identification">
-                <identification />
+                <identification :patent-no="patentNo"/>
             </el-tab-pane>
             <el-tab-pane label="B-Value of the Patent/Patented Technology" name="B-Value of the Patent/Patented Technology">
                 <value-vue/>
@@ -37,6 +39,7 @@ export default {
     data() {
         return {
             activeName: "Introduction",
+            patentNo:"",
         }
     },
     methods: {

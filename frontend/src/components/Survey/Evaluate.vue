@@ -56,7 +56,36 @@
 
 <script setup>
 import enLocale from '../../locales/en.json';
+import { useGeneralStore } from '../../stores/general';
+import axios from 'axios';
+import { ElMessage } from 'element-plus';
+const store = useGeneralStore();
+const submit = async () => {
+    // 将表单数据转换为对象数组
+    const formDataArray = Object.entries(form).map(([key, value]) => ({ [key]: value }));
+
+    // 将对象数组字符串化
+    const formDataString = JSON.stringify(formDataArray);
+
+    const patentNo = store.patentNo
+
+    console.log(patentNo)
+    console.log(formDataString);
+
+    // 假设需要发送的数据为 patentNo 和 identification
+    const data = {
+        patentNo: patentNo,
+        evaluate: formDataString
+    };
+    let response = await axios.post('/api/survey/evaluate', data);
+    if (response.status == 200) {
+        if (response.data.code == 1) {
+            ElMessage.success("submit successfully")
+        }
+    }
+}
 import { ref, reactive } from 'vue';
+
 const form = reactive({
     p3q1: [],
     p3q2: [],
@@ -155,7 +184,6 @@ const handleP3Q3 = (row, colIndex) => {
     form.p3q3[parseInt(row.index)] = colP3Q3[colIndex].label
     console.log(form.p3q3)
 };
-
 </script>
 
 <style scoped>

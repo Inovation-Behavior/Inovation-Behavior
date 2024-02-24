@@ -41,10 +41,15 @@
         "PatentOpposition" : "Patent Opposition"
     },
     "survey":{
-        "P1Q0": "1.0 Patent (Please fill in the Publicaiton Number of the surveyed patent)",
+        "P1Q0": "Before the questionnaire, please type the Patent Application Number provided by our volunteer",
         "patent name": "Patent Title",
         "summary": "Abstract",
         "NoSuchPatent": "No patent information found, please check the patent number.",
+
+        "P1Q1":"A01.confirm that you (your organization/company) are holding the following invention patent.",
+        "P1Q1A1":"Yes, we are still holding this patent",
+        "P1Q1A2":"Yes, we have got the grant of the patent but will not pay the patent fees",
+        "P1Q1A3":"No, I am not the holder of the patent",
         
         "P1Q2": "A02.Gender ",
         "P1Q2A1": "1) Female",

@@ -219,7 +219,7 @@
                 </el-form-item>
         </el-form>
     </el-card>
-    <el-button type="primary" @click="submit()" style="margin-top: 1vh;margin-left: 2vw;">submit part 1</el-button>
+    <el-button type="primary" @click="submit()" style="margin-top: 1vh;margin-left: 2vw;">submit part B</el-button>
 </template>
 
 <script setup>
@@ -466,7 +466,35 @@ const handleP2Q12 = (row, colIndex) => {
     console.log(form.p2q12)
 };
 
+import { useGeneralStore } from '../../stores/general';
+const store = useGeneralStore()
+import axios from 'axios';
+import { ElMessage } from 'element-plus';
 
+const submit = async () => {
+    // 将表单数据转换为对象数组
+    const formDataArray = Object.entries(form).map(([key, value]) => ({ [key]: value }));
+
+    // 将对象数组字符串化
+    const formDataString = JSON.stringify(formDataArray);
+
+    const patentNo = store.patentNo
+
+    console.log(patentNo)
+    console.log(formDataString);
+
+    // 假设需要发送的数据为 patentNo 和 identification
+    const data = {
+        patentNo: patentNo,
+        value: formDataString
+    };
+    let response = await axios.post('/api/survey/value', data);
+    if (response.status == 200) {
+        if (response.data.code == 1) {
+            ElMessage.success("submit successfully")
+        }
+    }
+}
 </script>
 
 <style scoped>

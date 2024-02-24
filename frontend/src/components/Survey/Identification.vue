@@ -1,10 +1,12 @@
 <template>
     <el-card style="border-radius: 15px;width: 100%;">
         <el-form :model="form" size="large" label-position="top">
+            
             <el-form-item style="font-weight: bolder;" :label="$t('survey.P1Q0')">
-                <el-input v-model="form.patentPublicationNo" placeholder="eg:CN109547407B" style="max-width: 500px;"
-                    @keyup.enter="getPatentByNo(form.patentPublicationNo)"></el-input>
+                <el-input v-model="patentNo" placeholder="eg:CN109547407B" style="max-width: 500px;"
+                    @keyup.enter="getPatentByNo(patentNo)" @input="updatePatentNo(patentNo)"></el-input>
             </el-form-item>
+
             <!-- 显示专利信息或错误提示 -->
             <div v-if="patent.no != ''">
                 <div v-if="patent.name">
@@ -15,6 +17,14 @@
                 <p v-else style="color: red;">{{ $t("survey.NoSuchPatent") }}</p>
             </div>
             <div></div>
+
+            <el-form-item style="font-weight: bolder;" :label="$t('survey.P1Q1')">
+                <el-radio-group v-model="form.p1q1">
+                    <el-radio :label="$t('survey.P1Q1A1')" />
+                    <el-radio :label="$t('survey.P1Q1A2')" />
+                    <el-radio :label="$t('survey.P1Q1A3')" />
+                </el-radio-group>
+            </el-form-item>
 
             <el-form-item style="font-weight: bolder;" :label="$t('survey.P1Q2')">
                 <el-radio-group v-model="form.p1q2">
@@ -232,7 +242,6 @@
                 </el-radio-group>
             </el-form-item>
 
-
         </el-form>
     </el-card>
     <el-button type="primary" @click="submit()" style="margin-top: 1vh;margin-left: 2vw;">submit part A</el-button>
@@ -240,10 +249,22 @@
 
 <script setup>
 import { ref, reactive } from 'vue';
+import { useGeneralStore } from '../../stores/general';
+const store = useGeneralStore()
+// 存储 patentNo 的 ref
+const patentNo = ref("");
+
+// 监听用户输入的 patentNo 并更新 Pinia 存储
+const updatePatentNo = (value) => {
+    patentNo.value = value;
+    store.patentNo = value; // 将 patentNo 存储到 Pinia 中
+};
+
 import axios from 'axios';
 import { ElMessage } from 'element-plus';
+
 const form = reactive({
-    p1q1:"",
+    p1q1: "",
     p1q2: "",
     p1q3: [],
     p1q4: "",
@@ -420,7 +441,6 @@ const handleP1Q18 = (row, colIndex) => {
 };
 
 
-
 const handleP1Q5Change = (value) => {
     // 根据选择的 A05 选项来决定是否显示 A06
     showA06.value = value === 'P1Q4A3' || value === 'P1Q4A4' || value === 'P1Q4A6' || value === 'P1Q4A7' || value === 'P1Q4A8';
@@ -439,64 +459,59 @@ let patent = ref({
     link: "",
 })
 
-// const getPatentByNo = async (no) => {
-//     if (no == '') {
-//         patent.value.no = ''
-//         patent.value.name = '';
-//         patent.value.summary = '';
-//         patent.value.link = '';
-//         return;
-//     }
-//     console.log('api/patents/' + no);
-//     let response = await axios.get('api/patents/' + no);
-//     patent.value.no = no;
-//     console.log(response)
-//     if (response.status == 200) {
-//         if (response.data.code == 1) {
-//             patent.value.name = response.data.data.name;
-//             patent.value.summary = response.data.data.summary;
-//             patent.value.link = response.data.data.link;
-//         } else {
-//             patent.value.name = '';
-//             patent.value.summary = '';
-//             patent.value.link = '';
-//         }
-//     } else {
-//         patent.value.name = '';
-//         patent.value.summary = '';
-//         patent.value.link = '';
-//     }
-// }
+const getPatentByNo = async (no) => {
+    if (no == '') {
+        patent.value.no = ''
+        patent.value.name = '';
+        patent.value.summary = '';
+        patent.value.link = '';
+        return;
+    }
+    console.log('api/patents/' + no);
+    let response = await axios.get('api/patents/' + no);
+    patent.value.no = no;
+    console.log(response)
+    if (response.status == 200) {
+        if (response.data.code == 1) {
+            patent.value.name = response.data.data.name;
+            patent.value.summary = response.data.data.summary;
+            patent.value.link = response.data.data.link;
+        } else {
+            patent.value.name = '';
+            patent.value.summary = '';
+            patent.value.link = '';
+        }
+    } else {
+        patent.value.name = '';
+        patent.value.summary = '';
+        patent.value.link = '';
+    }
+}
 
-// const submit = async () => {
-//     // 将数组元素整合为以逗号分隔的字符串
-//     const identifyString = form.identify.join(",");
-//     const experString = form.exper.join(",");
+const submit = async () => {
+    // 将表单数据转换为对象数组
+    const formDataArray = Object.entries(form).map(([key, value]) => ({ [key]: value }));
 
-//     // 创建新的对象，将字符串赋值给 identify 和 exper 属性
-//     const formData = {
-//         patentNo: form.patentPublicationNo,
-//         gender: form.sex,
-//         major: form.major,
-//         degree: form.status,
-//         income: form.income,
-//         role: identifyString,
-//         experience: experString
-//     };
+    // 将对象数组字符串化
+    const formDataString = JSON.stringify(formDataArray);
 
-//     console.log(formData);
-//     try {
-//         let response = await axios.post('api/questionnaire/respondents', formData);
-//         console.log(response);
-//         // 根据需要处理来自服务器的响应
-//         if (response.data.code == 1) {
-//             ElMessage.success("successfully submit part 1")
-//         }
-//     } catch (error) {
-//         console.error(error);
-//         // 处理请求失败的错误
-//     }
-// }
+    const patentNo = store.patentNo
+
+    console.log(patentNo)
+    console.log(formDataString);
+
+    // 假设需要发送的数据为 patentNo 和 identification
+    const data = {
+        patentNo: patentNo,
+        identification: formDataString
+    };
+    let response = await axios.post('/api/survey/identification', data);
+    if (response.status == 200) {
+        if (response.data.code == 1) {
+            ElMessage.success("submit successfully")
+        }
+    }
+}
 </script>
 
 
