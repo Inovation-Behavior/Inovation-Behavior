@@ -36,41 +36,48 @@
             <el-form-item style="font-weight: bolder;" :label="$t('survey.P1Q3')">
                 <el-table :data="tableP1Q3" style="width: 100%">
                     <el-table-column>
-                    <template #default="{ row }">
+                    <!-- <template #default="{ row }">
                         {{ row.name }}
+                    </template> -->
+                    <template #default="{ row, $index }">
+                        <template v-if="$index !== tableP1Q3.length - 1">
+                            {{ row.name }}
+                        </template>
+                        <template v-else>
+                            <el-input type="textarea" :rows="2" v-model="tableP1Q3[$index].name" style="height: auto;" :placeholder="tableP1Q3[$index].name"></el-input>
+                        </template>
                     </template>
                     </el-table-column>
                     <el-table-column v-for="(column, colIndex) in colP1Q3" :key="colIndex" :prop="column.prop" :label="column.label">
-                    <template #default="{ row }">
-                        <!-- 在每个单元格内放置一个可选中的组件 -->
-                        <el-checkbox v-model="row.selection[colIndex]" @change="handleP1Q3(row, colIndex)"></el-checkbox>
-                    </template>
+                        <template #default="{ row }">
+                            <el-checkbox v-model="row.selection[colIndex]" @change="handleP1Q3(row, colIndex)"></el-checkbox>
+                        </template>
                     </el-table-column>
                 </el-table>
             </el-form-item>
 
             <el-form-item style="font-weight: bolder;" :label="$t('survey.P1Q4')">
                 <el-select v-model="form.p1q4" multiple filterable allow-create>
-                    <el-option :label="$t('survey.P1Q4A1')" value="P1Q4A1" />
-                    <el-option :label="$t('survey.P1Q4A2')" value="P1Q4A2" />
-                    <el-option :label="$t('survey.P1Q4A3')" value="P1Q4A3" />
-                    <el-option :label="$t('survey.P1Q4A4')" value="P1Q4A4" />
-                    <el-option :label="$t('survey.P1Q4A5')" value="P1Q4A5" />
-                    <el-option :label="$t('survey.P1Q4A6')" value="P1Q4A6" />
+                    <el-option :label="$t('survey.P1Q4A1')" :value="$t('survey.P1Q4A1')"/>
+                    <el-option :label="$t('survey.P1Q4A2')" :value="$t('survey.P1Q4A2')"/>
+                    <el-option :label="$t('survey.P1Q4A3')" :value="$t('survey.P1Q4A3')"/>
+                    <el-option :label="$t('survey.P1Q4A4')" :value="$t('survey.P1Q4A4')"/>
+                    <el-option :label="$t('survey.P1Q4A5')" :value="$t('survey.P1Q4A5')"/>
+                    <el-option :label="$t('survey.P1Q4A6')" :value="$t('survey.P1Q4A6')"></el-option>
                 </el-select>
             </el-form-item>
 
             <el-form-item style="font-weight: bolder;" :label="$t('survey.P1Q5')">
                 <el-select v-model="form.p1q5" filterable allow-create @change="handleP1Q5Change">
-                    <el-option :label="$t('survey.P1Q5A1')" value="P1Q4A1" />
-                    <el-option :label="$t('survey.P1Q5A2')" value="P1Q4A2" />
-                    <el-option :label="$t('survey.P1Q5A3')" value="P1Q4A3" />
-                    <el-option :label="$t('survey.P1Q5A4')" value="P1Q4A4" />
-                    <el-option :label="$t('survey.P1Q5A5')" value="P1Q4A5" />
-                    <el-option :label="$t('survey.P1Q5A6')" value="P1Q4A6" />
-                    <el-option :label="$t('survey.P1Q5A7')" value="P1Q4A6" />
-                    <el-option :label="$t('survey.P1Q5A8')" value="P1Q4A6" />
-                    <el-option :label="$t('survey.P1Q5A9')" value="P1Q4A6" />
+                    <el-option :label="$t('survey.P1Q5A1')" :value="$t('survey.P1Q5A1')" />
+                    <el-option :label="$t('survey.P1Q5A2')" :value="$t('survey.P1Q5A2')"/>
+                    <el-option :label="$t('survey.P1Q5A3')" :value="$t('survey.P1Q5A3')"/>
+                    <el-option :label="$t('survey.P1Q5A4')" :value="$t('survey.P1Q5A4')"/>
+                    <el-option :label="$t('survey.P1Q5A5')" :value="$t('survey.P1Q5A5')"/>
+                    <el-option :label="$t('survey.P1Q5A6')" :value="$t('survey.P1Q5A6')"/>
+                    <el-option :label="$t('survey.P1Q5A7')" :value="$t('survey.P1Q5A7')"/>
+                    <el-option :label="$t('survey.P1Q5A8')" :value="$t('survey.P1Q5A8')"/>
+                    <el-option :label="$t('survey.P1Q5A9')" :value="$t('survey.P1Q5A9')"/>
                 </el-select>
             </el-form-item>
 
@@ -92,26 +99,26 @@
 
             <el-form-item style="font-weight: bolder;" :label="$t('survey.P1Q7')">
                 <el-checkbox-group v-model="form.p1q7" style="display: flex;flex-wrap: wrap;">
-                    <el-checkbox :label="$t('survey.P1Q7A1')" name="identify" />
-                    <el-checkbox :label="$t('survey.P1Q7A2')" name="identify" />
-                    <el-checkbox :label="$t('survey.P1Q7A3')" name="identify" />
-                    <el-checkbox :label="$t('survey.P1Q7A4')" name="identify" />
-                    <el-checkbox :label="$t('survey.P1Q7A5')" name="identify" />
-                    <el-checkbox :label="$t('survey.P1Q7A6')" name="identify" />
-                    <el-checkbox :label="$t('survey.P1Q7A7')" name="identify" />
-                    <el-checkbox :label="$t('survey.P1Q7A8')" name="identify" />
-                    <el-checkbox :label="$t('survey.P1Q7A9')" name="identify" />
-                    <el-checkbox :label="$t('survey.P1Q7A10')" name="identify" />
-                    <el-checkbox :label="$t('survey.P1Q7A11')" name="identify" />
-                    <el-checkbox :label="$t('survey.P1Q7A12')" name="identify" />
-                    <el-checkbox :label="$t('survey.P1Q7A13')" name="identify" />
-                    <el-checkbox :label="$t('survey.P1Q7A14')" name="identify" />
-                    <el-checkbox :label="$t('survey.P1Q7A15')" name="identify" />
-                    <el-checkbox :label="$t('survey.P1Q7A16')" name="identify" />
-                    <el-checkbox :label="$t('survey.P1Q7A17')" name="identify" />
-                    <el-checkbox :label="$t('survey.P1Q7A18')" name="identify" />
-                    <el-checkbox :label="$t('survey.P1Q7A19')" name="identify" />
-                    <el-checkbox :label="$t('survey.P1Q7A20')" name="identify" />
+                    <el-checkbox :label="$t('survey.P1Q7A1')" :name="$t('survey.P1Q7A1')" />
+                    <el-checkbox :label="$t('survey.P1Q7A2')" :name="$t('survey.P1Q7A2')"/>
+                    <el-checkbox :label="$t('survey.P1Q7A3')" :name="$t('survey.P1Q7A3')"/>
+                    <el-checkbox :label="$t('survey.P1Q7A4')" :name="$t('survey.P1Q7A4')"/>
+                    <el-checkbox :label="$t('survey.P1Q7A5')" :name="$t('survey.P1Q7A5')"/>
+                    <el-checkbox :label="$t('survey.P1Q7A6')" :name="$t('survey.P1Q7A6')"/>
+                    <el-checkbox :label="$t('survey.P1Q7A7')" :name="$t('survey.P1Q7A7')"/>
+                    <el-checkbox :label="$t('survey.P1Q7A8')" :name="$t('survey.P1Q7A8')"/>
+                    <el-checkbox :label="$t('survey.P1Q7A9')" :name="$t('survey.P1Q7A9')"/>
+                    <el-checkbox :label="$t('survey.P1Q7A10')" :name="$t('survey.P1Q7A10')"/>
+                    <el-checkbox :label="$t('survey.P1Q7A11')" :name="$t('survey.P1Q7A11')"/>
+                    <el-checkbox :label="$t('survey.P1Q7A12')" :name="$t('survey.P1Q7A12')"/>
+                    <el-checkbox :label="$t('survey.P1Q7A13')" :name="$t('survey.P1Q7A13')"/>
+                    <el-checkbox :label="$t('survey.P1Q7A14')" :name="$t('survey.P1Q7A14')"/>
+                    <el-checkbox :label="$t('survey.P1Q7A15')" :name="$t('survey.P1Q7A15')"/>
+                    <el-checkbox :label="$t('survey.P1Q7A16')" :name="$t('survey.P1Q7A16')"/>
+                    <el-checkbox :label="$t('survey.P1Q7A17')" :name="$t('survey.P1Q7A17')"/>
+                    <el-checkbox :label="$t('survey.P1Q7A18')" :name="$t('survey.P1Q7A18')"/>
+                    <el-checkbox :label="$t('survey.P1Q7A19')" :name="$t('survey.P1Q7A19')"/>
+                    <el-checkbox :label="$t('survey.P1Q7A20')" :name="$t('survey.P1Q7A20')"/>
                 </el-checkbox-group>
             </el-form-item>
 
@@ -124,11 +131,11 @@
 
             <el-form-item v-if="showA09" style="font-weight: bolder;" :label="$t('survey.P1Q9')">
                 <el-checkbox-group v-model="form.p1q9" style="display: flex;flex-wrap: wrap;">
-                    <el-checkbox :label="$t('survey.P1Q9A1')" name="identify" />
-                    <el-checkbox :label="$t('survey.P1Q9A2')" name="identify" />
-                    <el-checkbox :label="$t('survey.P1Q9A3')" name="identify" />
-                    <el-checkbox :label="$t('survey.P1Q9A4')" name="identify" />
-                    <el-checkbox :label="$t('survey.P1Q9A5')" name="identify" />
+                    <el-checkbox :label="$t('survey.P1Q9A1')" />
+                    <el-checkbox :label="$t('survey.P1Q9A2')" />
+                    <el-checkbox :label="$t('survey.P1Q9A3')" />
+                    <el-checkbox :label="$t('survey.P1Q9A4')" />
+                    <el-checkbox :label="$t('survey.P1Q9A5')" ><el-input :placeholder="$t('survey.P1Q9A5')"></el-input></el-checkbox>
                 </el-checkbox-group>
             </el-form-item>
 
@@ -203,27 +210,35 @@
             <el-form-item style="font-weight: bolder;" :label="$t('survey.P1Q16')">
                 <el-radio-group v-model="form.p1q16">
                     <el-radio :label="$t('survey.P1Q16A1')" />
-                    <el-radio :label="$t('survey.P1Q16A2')" />
+                    <el-radio :label="$t('survey.P1Q16A2')" ></el-radio>
                 </el-radio-group>
             </el-form-item>
 
             <el-form-item style="font-weight: bolder;" :label="$t('survey.P1Q17')">
                 <el-checkbox-group v-model="form.p1q17" style="display: flex;flex-wrap: wrap;">
-                    <el-checkbox :label="$t('survey.P1Q17A1')" name="identify" />
-                    <el-checkbox :label="$t('survey.P1Q17A2')" name="identify" />
-                    <el-checkbox :label="$t('survey.P1Q17A3')" name="identify" />
-                    <el-checkbox :label="$t('survey.P1Q17A4')" name="identify" />
-                    <el-checkbox :label="$t('survey.P1Q17A5')" name="identify" />
-                    <el-checkbox :label="$t('survey.P1Q17A6')" name="identify" />
-                    <el-checkbox :label="$t('survey.P1Q17A7')" name="identify" />
+                    <el-checkbox :label="$t('survey.P1Q17A1')" />
+                    <el-checkbox :label="$t('survey.P1Q17A2')" />
+                    <el-checkbox :label="$t('survey.P1Q17A3')" />
+                    <el-checkbox :label="$t('survey.P1Q17A4')" />
+                    <el-checkbox :label="$t('survey.P1Q17A5')" />
+                    <el-checkbox :label="$t('survey.P1Q17A6')" />
+                    <el-checkbox :label="$t('survey.P1Q17A7')" ><el-input :placeholder="$t('survey.P1Q17A7')"></el-input></el-checkbox>
                 </el-checkbox-group>
             </el-form-item>
 
             <el-form-item style="font-weight: bolder;" :label="$t('survey.P1Q18')">
                 <el-table :data="tableP1Q18" style="width: 100%">
                     <el-table-column>
-                    <template #default="{ row }">
+                    <!-- <template #default="{ row }">
                         {{ row.name }}
+                    </template> -->
+                    <template #default="{ row, $index }">
+                        <template v-if="$index !== tableP1Q18.length - 1">
+                            {{ row.name }}
+                        </template>
+                        <template v-else>
+                            <el-input type="textarea" :rows="2" v-model="tableP1Q18[$index].name" style="height: auto;" :placeholder="tableP1Q18[$index].name"></el-input>
+                        </template>
                     </template>
                     </el-table-column>
                     <el-table-column v-for="(column, colIndex) in colP1Q18" :key="colIndex" :label="column.label">

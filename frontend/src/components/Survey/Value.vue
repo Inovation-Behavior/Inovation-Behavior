@@ -61,8 +61,16 @@
             <el-form-item v-if="showB07" style="font-weight: bolder;" :label="$t('survey.P2Q7')">
                 <el-table :data="tableP2Q7" style="width: 100%">
                     <el-table-column>
-                    <template #default="{ row }">
+                    <!-- <template #default="{ row }">
                         {{ row.name }}
+                    </template> -->
+                    <template #default="{ row, $index }">
+                        <template v-if="$index !== tableP2Q7.length - 1">
+                            {{ row.name }}
+                        </template>
+                        <template v-else>
+                            <el-input type="textarea" :rows="2" v-model="tableP2Q7[$index].name" style="height: auto;" :placeholder="tableP2Q7[$index].name"></el-input>
+                        </template>
                     </template>
                     </el-table-column>
                     <el-table-column v-for="(column, colIndex) in colP2Q7" :key="colIndex" :label="column.label">
@@ -123,8 +131,16 @@
             <el-form-item style="font-weight: bolder;" :label="$t('survey.P2Q12')">
                 <el-table :data="tableP2Q12" style="width: 100%">
                     <el-table-column>
-                    <template #default="{ row }">
+                    <!-- <template #default="{ row }">
                         {{ row.name }}
+                    </template> -->
+                    <template #default="{ row, $index }">
+                        <template v-if="$index !== tableP2Q12.length - 1">
+                            {{ row.name }}
+                        </template>
+                        <template v-else>
+                            <el-input type="textarea" :rows="2" v-model="tableP2Q12[$index].name" style="height: auto;" :placeholder="tableP2Q12[$index].name"></el-input>
+                        </template>
                     </template>
                     </el-table-column>
                     <el-table-column v-for="(column, colIndex) in colP2Q12" :key="colIndex" :label="column.label">
@@ -189,8 +205,16 @@
             <el-form-item style="font-weight: bolder;" :label="$t('survey.P2Q17')">
                     <el-table :data="tableP2Q17" style="width: 100%">
                         <el-table-column>
-                        <template #default="{ row }">
+                        <!-- <template #default="{ row }">
                             {{ row.name }}
+                        </template> -->
+                        <template #default="{ row, $index }">
+                            <template v-if="$index !== tableP2Q17.length - 1">
+                                {{ row.name }}
+                            </template>
+                            <template v-else>
+                                <el-input type="textarea" :rows="2" v-model="tableP2Q17[$index].name" style="height: auto;" :placeholder="tableP2Q17[$index].name"></el-input>
+                            </template>
                         </template>
                         </el-table-column>
                         <el-table-column v-for="(column, colIndex) in colP2Q17" :key="colIndex" :label="column.label">
