@@ -3,6 +3,7 @@ package com.inovationbehavior.backend.controller;
 import com.inovationbehavior.backend.model.Patent;
 import com.inovationbehavior.backend.model.Result;
 import com.inovationbehavior.backend.service.intf.PatentService;
+import jakarta.websocket.server.PathParam;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,4 +26,16 @@ public class PatentController {
         return Result.error("未找到No：" + No);
     }
 
+    @GetMapping("")
+    public Result getPatentByKey(@PathParam("company") String company,
+                                @PathParam("no") String no) {
+
+        return Result.success( patentService.getPatentByKey(company,no));
+    }
+
+    @GetMapping("/company")
+    public Result getCompanyByKey(@PathParam("key") String key){
+        System.out.println(key);
+        return Result.success(patentService.getCompanyByKey(key));
+    }
 }
