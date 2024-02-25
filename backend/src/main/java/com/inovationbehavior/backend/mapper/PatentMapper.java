@@ -22,7 +22,7 @@ public interface PatentMapper {
     List<String> getCompanyByKey(String Key);
 
     @Select("""
-    SELECT no,name, application FROM patent
+    SELECT DISTINCT no,name, application FROM patent
     WHERE application LIKE CONCAT('%', #{company}, '%')
     AND no LIKE CONCAT('%', #{no}, '%')
 """)
