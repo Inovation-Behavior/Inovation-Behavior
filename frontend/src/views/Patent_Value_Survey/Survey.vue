@@ -7,9 +7,7 @@
         <el-tabs style="width: 100%;" v-model="activeName" tab-position="top" class="demo-tabs" @tab-click="handleClick"
             type="card" stretch="true">
             <el-tab-pane label="Introduction" name="Introduction">
-                <el-card style="border-radius: 15px;width: 100%;font-size: 1em;">
-                    <introduction/>
-                </el-card>
+                <introduction/>
             </el-tab-pane>
             <el-tab-pane label="A-Respondent Identification" name="A-Respondent Identification">
                 <identification :patent-no="patentNo"/>

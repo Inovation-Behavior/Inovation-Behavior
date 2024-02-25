@@ -139,7 +139,8 @@
                             {{ row.name }}
                         </template>
                         <template v-else>
-                            <el-input type="textarea" :rows="2" v-model="tableP2Q12[$index].name" style="height: auto;" :placeholder="tableP2Q12[$index].name"></el-input>
+                            {{ $t('survey.P2Q12Row[6]') }}
+                            <el-input v-model="tableP2Q12[$index].name" style="height: auto;" :placeholder="$t('survey.P2Q12Row[6]')"></el-input>
                         </template>
                     </template>
                     </el-table-column>
@@ -213,7 +214,8 @@
                                 {{ row.name }}
                             </template>
                             <template v-else>
-                                <el-input type="textarea" :rows="2" v-model="tableP2Q17[$index].name" style="height: auto;" :placeholder="tableP2Q17[$index].name"></el-input>
+                                {{ $t('survey.P2Q17Row[4]') }}
+                                <el-input v-model="tableP2Q17[$index].name" style="height: auto;" :placeholder="$t('survey.P2Q17Row[4]')"></el-input>
                             </template>
                         </template>
                         </el-table-column>
@@ -249,6 +251,9 @@
 <script setup>
 import enLocale from '../../locales/en.json';
 import { ref, reactive } from 'vue';
+import { useGeneralStore } from '../../stores/general';
+const store = useGeneralStore()
+
 const form = reactive({
     p2q1:"",
     p2q2: "",
@@ -312,7 +317,7 @@ const handleP2Q7 = (row, colIndex) => {
             row.selection[index] = false;
         }
     });
-    form.p2q7[parseInt(row.index)] = colP2Q7[colIndex].label
+    form.p2q7 = tableP2Q7
     console.log(form.p2q7)
     console.log(`Selected: ${row.name}, Column: ${colP2Q7[colIndex].label}`);
 };
@@ -343,7 +348,7 @@ const handleP2Q8 = (row, colIndex) => {
             row.selection[index] = false;
         }
     });
-    form.p2q8[parseInt(row.index)] = colP2Q8[colIndex].label
+    form.p2q8 = tableP2Q8
     console.log(form.p2q8)
     console.log(`Selected: ${row.name}, Column: ${colP2Q8[colIndex].label}`);
 };
@@ -371,7 +376,7 @@ const handleP2Q15 = (row, colIndex) => {
             row.selection[index] = false;
         }
     });
-    form.p2q15[parseInt(row.index)] = colP2Q15[colIndex].label
+    form.p2q15 = tableP2Q15
     console.log(form.p2q15)
 };
 
@@ -400,7 +405,7 @@ const handleP2Q16 = (row, colIndex) => {
             row.selection[index] = false;
         }
     });
-    form.p2q16[parseInt(row.index)] = colP2Q16[colIndex].label
+    form.p2q16 = tableP2Q16
     console.log(form.p2q16)
 };
 
@@ -409,7 +414,7 @@ const tableP2Q17 = ref([
     { name: enLocale.survey.P2Q17Row[1], index: 1, selection: [false, false, false, false, false] },
     { name: enLocale.survey.P2Q17Row[2], index: 2, selection: [false, false, false, false, false] },
     { name: enLocale.survey.P2Q17Row[3], index: 3, selection: [false, false, false, false, false] },
-    { name: enLocale.survey.P2Q17Row[4], index: 4, selection: [false, false, false, false, false] },
+    { name: "", index: 4, selection: [false, false, false, false, false] },
 ]);
 
 const colP2Q17 = [
@@ -428,7 +433,7 @@ const handleP2Q17 = (row, colIndex) => {
             row.selection[index] = false;
         }
     });
-    form.p2q17[parseInt(row.index)] = colP2Q17[colIndex].label
+    form.p2q17 = tableP2Q17
     console.log(form.p2q17)
 };
 
@@ -456,7 +461,7 @@ const handleP2Q18 = (row, colIndex) => {
             row.selection[index] = false;
         }
     });
-    form.p2q18[parseInt(row.index)] = colP2Q18[colIndex].label
+    form.p2q18 = tableP2Q18
     console.log(form.p2q18)
 };
 
@@ -467,7 +472,7 @@ const tableP2Q12 = ref([
     { name: enLocale.survey.P2Q12Row[3], index: 3, selection: [false, false, false, false, false] },
     { name: enLocale.survey.P2Q12Row[4], index: 4, selection: [false, false, false, false, false] },
     { name: enLocale.survey.P2Q12Row[5], index: 5, selection: [false, false, false, false, false] },
-    { name: enLocale.survey.P2Q12Row[6], index: 6, selection: [false, false, false, false, false] },
+    { name: "", index: 6, selection: [false, false, false, false, false] },
 ]);
 
 const colP2Q12 = [
@@ -486,12 +491,11 @@ const handleP2Q12 = (row, colIndex) => {
             row.selection[index] = false;
         }
     });
-    form.p2q12[parseInt(row.index)] = colP2Q12[colIndex].label
+    form.p2q12 = tableP2Q12
     console.log(form.p2q12)
 };
 
-import { useGeneralStore } from '../../stores/general';
-const store = useGeneralStore()
+
 import axios from 'axios';
 import { ElMessage } from 'element-plus';
 

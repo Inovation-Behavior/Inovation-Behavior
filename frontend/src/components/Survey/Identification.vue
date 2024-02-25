@@ -18,22 +18,37 @@
             </div>
             <div></div>
 
-            <el-form-item style="font-weight: bolder;" :label="$t('survey.P1Q1')">
-                <el-radio-group v-model="form.p1q1">
+            <el-form-item  style="font-weight: bolder;" :label="$t('survey.P1Q1')">
+                <el-radio-group v-model="form.p1q1" @change="handleP1Q1Change">
                     <el-radio :label="$t('survey.P1Q1A1')" />
                     <el-radio :label="$t('survey.P1Q1A2')" />
                     <el-radio :label="$t('survey.P1Q1A3')" />
                 </el-radio-group>
             </el-form-item>
 
-            <el-form-item style="font-weight: bolder;" :label="$t('survey.P1Q2')">
+            <el-form-item v-if="showSearch" style="font-weight: bolder;" :label="$t('survey.search')">
+                <el-input v-model="companyName" @keyup.enter="getPatentNoByCompany(companyName)" style="width: 20vw;" placeholder="place input your company's name"></el-input>
+            </el-form-item>
+
+            <!-- 显示专利信息-->
+            <div v-if="patents != '' && showSearch">
+                <el-table :data="patents" style="width: 100%">
+                    <el-table-column prop="no" label="no" width="180" />
+                    <el-table-column prop="application" label="application" width="200" />
+                    <el-table-column prop="name" label="name"/>
+                </el-table>
+            </div>
+        
+            <div></div>
+
+            <el-form-item v-if="!showSearch" style="font-weight: bolder;" :label="$t('survey.P1Q2')">
                 <el-radio-group v-model="form.p1q2">
                     <el-radio :label="$t('survey.P1Q2A1')" />
                     <el-radio :label="$t('survey.P1Q2A2')" />
                 </el-radio-group>
             </el-form-item>
 
-            <el-form-item style="font-weight: bolder;" :label="$t('survey.P1Q3')">
+            <el-form-item v-if="!showSearch" style="font-weight: bolder;" :label="$t('survey.P1Q3')">
                 <el-table :data="tableP1Q3" style="width: 100%">
                     <el-table-column>
                     <!-- <template #default="{ row }">
@@ -44,7 +59,8 @@
                             {{ row.name }}
                         </template>
                         <template v-else>
-                            <el-input type="textarea" :rows="2" v-model="tableP1Q3[$index].name" style="height: auto;" :placeholder="tableP1Q3[$index].name"></el-input>
+                            {{ $t('survey.P1Q3Col[5]') }}
+                            <el-input v-model="tableP1Q3[$index].name" style="height: auto;" :placeholder="$t('survey.P1Q3Col[5]')"></el-input>
                         </template>
                     </template>
                     </el-table-column>
@@ -56,7 +72,7 @@
                 </el-table>
             </el-form-item>
 
-            <el-form-item style="font-weight: bolder;" :label="$t('survey.P1Q4')">
+            <el-form-item v-if="!showSearch" style="font-weight: bolder;" :label="$t('survey.P1Q4')">
                 <el-select v-model="form.p1q4" multiple filterable allow-create>
                     <el-option :label="$t('survey.P1Q4A1')" :value="$t('survey.P1Q4A1')"/>
                     <el-option :label="$t('survey.P1Q4A2')" :value="$t('survey.P1Q4A2')"/>
@@ -67,7 +83,7 @@
                 </el-select>
             </el-form-item>
 
-            <el-form-item style="font-weight: bolder;" :label="$t('survey.P1Q5')">
+            <el-form-item v-if="!showSearch" style="font-weight: bolder;" :label="$t('survey.P1Q5')">
                 <el-select v-model="form.p1q5" filterable allow-create @change="handleP1Q5Change">
                     <el-option :label="$t('survey.P1Q5A1')" :value="$t('survey.P1Q5A1')" />
                     <el-option :label="$t('survey.P1Q5A2')" :value="$t('survey.P1Q5A2')"/>
@@ -97,7 +113,7 @@
                 </el-table>
             </el-form-item>
 
-            <el-form-item style="font-weight: bolder;" :label="$t('survey.P1Q7')">
+            <el-form-item v-if="!showSearch" style="font-weight: bolder;" :label="$t('survey.P1Q7')">
                 <el-checkbox-group v-model="form.p1q7" style="display: flex;flex-wrap: wrap;">
                     <el-checkbox :label="$t('survey.P1Q7A1')" :name="$t('survey.P1Q7A1')" />
                     <el-checkbox :label="$t('survey.P1Q7A2')" :name="$t('survey.P1Q7A2')"/>
@@ -122,7 +138,7 @@
                 </el-checkbox-group>
             </el-form-item>
 
-            <el-form-item style="font-weight: bolder;" :label="$t('survey.P1Q8')">
+            <el-form-item v-if="!showSearch" style="font-weight: bolder;" :label="$t('survey.P1Q8')">
                 <el-radio-group v-model="form.p1q8" @change="handleP1Q8Change">
                     <el-radio :label="$t('survey.P1Q8A1')" />
                     <el-radio :label="$t('survey.P1Q8A2')" />
@@ -147,7 +163,7 @@
                 </el-radio-group>
             </el-form-item>
 
-            <el-form-item style="font-weight: bolder;" :label="$t('survey.P1Q11')">
+            <el-form-item v-if="!showSearch" style="font-weight: bolder;" :label="$t('survey.P1Q11')">
                 <el-table :data="tableP1Q11" style="width: 100%">
                     <el-table-column>
                     <template #default="{ row }">
@@ -163,7 +179,7 @@
                 </el-table>
             </el-form-item>
 
-            <el-form-item style="font-weight: bolder;" :label="$t('survey.P1Q12')">
+            <el-form-item v-if="!showSearch" style="font-weight: bolder;" :label="$t('survey.P1Q12')">
                 <el-radio-group v-model="form.p1q12">
                     <el-radio :label="$t('survey.P1Q12A1')" />
                     <el-radio :label="$t('survey.P1Q12A2')" />
@@ -171,7 +187,7 @@
                 </el-radio-group>
             </el-form-item>
 
-            <el-form-item style="font-weight: bolder;" :label="$t('survey.P1Q13')">
+            <el-form-item v-if="!showSearch" style="font-weight: bolder;" :label="$t('survey.P1Q13')">
                 <el-table :data="tableP1Q13" style="width: 100%">
                     <el-table-column>
                     <template #default="{ row }">
@@ -187,7 +203,7 @@
                 </el-table>
             </el-form-item>
 
-            <el-form-item style="font-weight: bolder;" :label="$t('survey.P1Q14')">
+            <el-form-item v-if="!showSearch" style="font-weight: bolder;" :label="$t('survey.P1Q14')">
                 <el-radio-group v-model="form.p1q14">
                     <el-radio :label="$t('survey.P1Q14A1')" />
                     <el-radio :label="$t('survey.P1Q14A2')" />
@@ -197,7 +213,7 @@
                 </el-radio-group>
             </el-form-item>
 
-            <el-form-item style="font-weight: bolder;" :label="$t('survey.P1Q15')">
+            <el-form-item v-if="!showSearch" style="font-weight: bolder;" :label="$t('survey.P1Q15')">
                 <el-radio-group v-model="form.p1q15">
                     <el-radio :label="$t('survey.P1Q15A1')" />
                     <el-radio :label="$t('survey.P1Q15A2')" />
@@ -207,14 +223,14 @@
                 </el-radio-group>
             </el-form-item>
 
-            <el-form-item style="font-weight: bolder;" :label="$t('survey.P1Q16')">
+            <el-form-item v-if="!showSearch" style="font-weight: bolder;" :label="$t('survey.P1Q16')">
                 <el-radio-group v-model="form.p1q16">
                     <el-radio :label="$t('survey.P1Q16A1')" />
                     <el-radio :label="$t('survey.P1Q16A2')" ></el-radio>
                 </el-radio-group>
             </el-form-item>
 
-            <el-form-item style="font-weight: bolder;" :label="$t('survey.P1Q17')">
+            <el-form-item v-if="!showSearch" style="font-weight: bolder;" :label="$t('survey.P1Q17')">
                 <el-checkbox-group v-model="form.p1q17" style="display: flex;flex-wrap: wrap;">
                     <el-checkbox :label="$t('survey.P1Q17A1')" />
                     <el-checkbox :label="$t('survey.P1Q17A2')" />
@@ -226,7 +242,7 @@
                 </el-checkbox-group>
             </el-form-item>
 
-            <el-form-item style="font-weight: bolder;" :label="$t('survey.P1Q18')">
+            <el-form-item v-if="!showSearch" style="font-weight: bolder;" :label="$t('survey.P1Q18')">
                 <el-table :data="tableP1Q18" style="width: 100%">
                     <el-table-column>
                     <!-- <template #default="{ row }">
@@ -237,7 +253,8 @@
                             {{ row.name }}
                         </template>
                         <template v-else>
-                            <el-input type="textarea" :rows="2" v-model="tableP1Q18[$index].name" style="height: auto;" :placeholder="tableP1Q18[$index].name"></el-input>
+                            {{ $t('survey.P1Q18Col[6]') }}
+                            <el-input v-model="tableP1Q18[$index].name" style="height: auto;" :placeholder="$t('survey.P1Q18Col[6]')"></el-input>
                         </template>
                     </template>
                     </el-table-column>
@@ -250,7 +267,7 @@
                 </el-table>
             </el-form-item>
 
-            <el-form-item style="font-weight: bolder;" :label="$t('survey.P1Q19')">
+            <el-form-item v-if="!showSearch" style="font-weight: bolder;" :label="$t('survey.P1Q19')">
                 <el-radio-group v-model="form.p1q19">
                     <el-radio :label="$t('survey.P1Q19A1')" />
                     <el-radio :label="$t('survey.P1Q19A2')" />
@@ -265,6 +282,8 @@
 <script setup>
 import { ref, reactive } from 'vue';
 import { useGeneralStore } from '../../stores/general';
+import { identificationStore } from '../../stores/survey';
+const survey = identificationStore()
 const store = useGeneralStore()
 // 存储 patentNo 的 ref
 const patentNo = ref("");
@@ -300,15 +319,38 @@ const form = reactive({
     p1q19: "",
 });
 
+const showSearch = ref(false)
+const companyName = ref("")
+
+import enLocale from '../../locales/en.json';
+
+const handleP1Q1Change = (value) => {
+    // 根据选择的 A05 选项来决定是否显示 A06
+    showSearch.value = value === enLocale.survey.P1Q1A3;
+};
+
+//const form = ref(null);
+
+// 监听表单数据的变化并存储到 Pinia 中
+// watch(form, (newVal, oldVal) => {
+//     survey.identification_form = form;
+// }, { deep: true });
+
+// // 在页面加载时从 Pinia Store 中加载数据
+// onMounted(() => {
+//     // 添加条件判断，确保只在表单数据为空时获取
+//     if (!form.value) {
+//         // 从 Pinia Store 中获取表单数据并应用到表单中
+//         form.value = survey.identification_form;
+//     }
+// });
+
+
 const showA06 = ref(false);
 
 const showA09 = ref(false);
 
 const showA10 = ref(false);
-
-
-import enLocale from '../../locales/en.json';
-
 
 const tableP1Q3 = ref([
     { name: enLocale.survey.P1Q3Col[0], selection: [false, false, false] },
@@ -316,7 +358,7 @@ const tableP1Q3 = ref([
     { name: enLocale.survey.P1Q3Col[2], selection: [false, false, false] },
     { name: enLocale.survey.P1Q3Col[3], selection: [false, false, false] },
     { name: enLocale.survey.P1Q3Col[4], selection: [false, false, false] },
-    { name: enLocale.survey.P1Q3Col[5], selection: [false, false, false] }
+    { name: "", selection: [false, false, false] }
 ]);
 
 const colP1Q3 = [
@@ -334,7 +376,7 @@ const handleP1Q3 = (row, colIndex) => {
         }
     });
     //row.selected = !row.selected;
-    form.p1q3[colIndex]= row.name
+    form.p1q3=tableP1Q3
     console.log(form.p1q3)
     console.log(`Selected: ${row.name}, Column: ${colP1Q3[colIndex].label}`);
 };
@@ -362,7 +404,7 @@ const handleP1Q6 = (row, colIndex) => {
         }
     });
     //row.selected = !row.selected;
-    form.p1q6[colIndex] = row.name
+    form.p1q6 = tableP1Q6
     console.log(form.p1q6)
     console.log(`Selected: ${row.name}, Column: ${colP1Q3[colIndex].label}`);
 };
@@ -393,7 +435,7 @@ const handleP1Q11 = (row, colIndex) => {
             row.selection[index] = false;
         }
     });
-    form.p1q11[row.index] = colP1Q11[colIndex].label
+    form.p1q11 = tableP1Q11
     console.log(form.p1q11)
     console.log(`Selected: ${row.name}, Column: ${colP1Q11[colIndex].label}`);
 };
@@ -420,7 +462,7 @@ const handleP1Q13 = (row, colIndex) => {
             row.selection[index] = false;
         }
     });
-    form.p1q13[parseInt(row.index)] = colP1Q13[colIndex].label
+    form.p1q13 = tableP1Q13
     console.log(form.p1q13)
     console.log(`Selected: ${row.name}, Column: ${colP1Q13[colIndex].label}`);
 };
@@ -432,7 +474,7 @@ const tableP1Q18 = ref([
     { name: enLocale.survey.P1Q18Col[3], index: 3, selection: [false, false, false, false] },
     { name: enLocale.survey.P1Q18Col[4], index: 4, selection: [false, false, false, false] },
     { name: enLocale.survey.P1Q18Col[5], index: 5, selection: [false, false, false, false] },
-    { name: enLocale.survey.P1Q18Col[6], index: 6, selection: [false, false, false, false] },
+    { name: "", index: 6, selection: [false, false, false, false] },
 ]);
 
 const colP1Q18 = [
@@ -450,7 +492,7 @@ const handleP1Q18 = (row, colIndex) => {
             row.selection[index] = false;
         }
     });
-    form.p1q18[parseInt(row.index)] = colP1Q18[colIndex].label
+    form.p1q18 = tableP1Q18
     console.log(form.p1q18)
     console.log(`Selected: ${row.name}, Column: ${colP1Q18[colIndex].label}`);
 };
@@ -458,7 +500,8 @@ const handleP1Q18 = (row, colIndex) => {
 
 const handleP1Q5Change = (value) => {
     // 根据选择的 A05 选项来决定是否显示 A06
-    showA06.value = value === 'P1Q4A3' || value === 'P1Q4A4' || value === 'P1Q4A6' || value === 'P1Q4A7' || value === 'P1Q4A8';
+    showA06.value = value === enLocale.survey.P1Q5A3 || value === enLocale.survey.P1Q5A4 || value === enLocale.survey.P1Q5A6 || value === enLocale.survey.P1Q5A7 || value === enLocale.survey.P1Q5A8;
+    console.log(showA06.value)
 };
 
 const handleP1Q8Change = (value) => {
@@ -473,6 +516,8 @@ let patent = ref({
     summary: "",
     link: "",
 })
+
+let patents = ref([])
 
 const getPatentByNo = async (no) => {
     if (no == '') {
@@ -500,6 +545,26 @@ const getPatentByNo = async (no) => {
         patent.value.name = '';
         patent.value.summary = '';
         patent.value.link = '';
+    }
+}
+
+const getPatentNoByCompany = async (name) => {
+    try {
+        const no = "";
+        const response = await axios.get(`api/patents`,{
+            params:{
+                company: name,
+                no:""
+            }
+        });
+        patents.value = response.data.data.slice(0, 10)
+        console.log(patents)
+        // 处理成功的情况
+        return;
+    } catch (error) {
+        // 处理请求失败的情况
+        console.error('请求失败:', error);
+        throw error; // 可以选择抛出错误以供调用者处理
     }
 }
 

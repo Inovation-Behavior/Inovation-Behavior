@@ -50,6 +50,8 @@
         "P1Q1A1":"Yes, we are still holding this patent",
         "P1Q1A2":"Yes, we have got the grant of the patent but will not pay the patent fees",
         "P1Q1A3":"No, I am not the holder of the patent",
+
+        "search":"Please provide your basic information, we will recommend another patent for the questionnaire",
         
         "P1Q2": "A02.Gender ",
         "P1Q2A1": "1) Female",

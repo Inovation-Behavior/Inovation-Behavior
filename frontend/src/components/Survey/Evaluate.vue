@@ -120,7 +120,7 @@ const handleP3Q1 = (row, colIndex) => {
             row.selection[index] = false;
         }
     });
-    form.p3q1[parseInt(row.index)] = colP3Q1[colIndex].label
+    form.p3q1 = tableP3Q1
     console.log(form.p3q1)
 };
 
@@ -148,7 +148,7 @@ const handleP3Q2 = (row, colIndex) => {
             row.selection[index] = false;
         }
     });
-    form.p3q2[parseInt(row.index)] = colP3Q2[colIndex].label
+    form.p3q2 = tableP3Q2
     console.log(form.p3q2)
 };
 
@@ -181,7 +181,7 @@ const handleP3Q3 = (row, colIndex) => {
             row.selection[index] = false;
         }
     });
-    form.p3q3[parseInt(row.index)] = colP3Q3[colIndex].label
+    form.p3q3 = tableP3Q3
     console.log(form.p3q3)
 };
 </script>
