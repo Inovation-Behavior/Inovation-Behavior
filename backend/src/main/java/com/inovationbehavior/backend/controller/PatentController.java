@@ -1,5 +1,6 @@
 package com.inovationbehavior.backend.controller;
 
+import com.inovationbehavior.backend.annotation.LogAnnotation;
 import com.inovationbehavior.backend.model.Patent;
 import com.inovationbehavior.backend.model.Result;
 import com.inovationbehavior.backend.service.intf.PatentService;
@@ -17,6 +18,7 @@ public class PatentController {
     @Autowired
     PatentService patentService;
 
+    @LogAnnotation("根据No号查询详情")
     @GetMapping("/{No}")
     public Result getPatentByNo(@PathVariable String No) {
         Patent tmp = patentService.getPatentByNo(No);
