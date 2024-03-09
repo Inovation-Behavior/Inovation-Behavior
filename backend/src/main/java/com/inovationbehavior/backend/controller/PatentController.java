@@ -27,14 +27,14 @@ public class PatentController {
         }
         return Result.error("未找到No：" + No);
     }
-
+    @LogAnnotation("根据Company和No范围查询专利号")
     @GetMapping("")
     public Result getPatentByKey(@PathParam("company") String company,
                                 @PathParam("no") String no) {
 
         return Result.success( patentService.getPatentByKey(company,no));
     }
-
+    @LogAnnotation("根据Company范围查询公司名")
     @GetMapping("/company")
     public Result getCompanyByKey(@PathParam("key") String key){
         System.out.println(key);

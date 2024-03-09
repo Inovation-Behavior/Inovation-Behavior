@@ -16,8 +16,8 @@ import deMessages from './locales/de.json';
 import axios from 'axios'
 
 const i18n = createI18n({
-    locale: 'en', // 设置默认语言
-    fallbackLocale: 'en',
+    locale: 'zn', // 设置默认语言
+    fallbackLocale: 'zn',
     messages: {
         en: enMessages, // 导入英语消息
         zn: znMessages, // 导入中文消息
