@@ -268,6 +268,7 @@ body {
     .text-overlay{
         padding-bottom: 0px;
         padding-left: 10px;
+        font-size: smaller;
     }
 }
 </style>

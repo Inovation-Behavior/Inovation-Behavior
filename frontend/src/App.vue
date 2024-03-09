@@ -1,3 +1,4 @@
+
 <template>
   <div style="display: flex; justify-content: center;width: 100%;">
     <div style="padding: 20px;width: 100%; max-width: 1600px;">
