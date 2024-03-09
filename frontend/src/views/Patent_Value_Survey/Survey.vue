@@ -10,7 +10,7 @@
                 <introduction/>
             </el-tab-pane>
             <el-tab-pane label="A-Respondent Identification" name="A-Respondent Identification">
-                <identification :patent-no="patentNo"/>
+                <identification/>
             </el-tab-pane>
             <el-tab-pane label="B-Value of the Patent/Patented Technology" name="B-Value of the Patent/Patented Technology">
                 <value-vue/>

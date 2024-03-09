@@ -115,11 +115,6 @@ const colP3Q1 = [
 // 处理单元格选中状态变化
 const handleP3Q1 = (row, colIndex) => {
     // 取消当前行其他单元格的选中状态
-    row.selection.forEach((selected, index) => {
-        if (index !== colIndex) {
-            row.selection[index] = false;
-        }
-    });
     form.p3q1 = tableP3Q1
     console.log(form.p3q1)
 };
@@ -143,11 +138,6 @@ const colP3Q2 = [
 // 处理单元格选中状态变化
 const handleP3Q2 = (row, colIndex) => {
     // 取消当前行其他单元格的选中状态
-    row.selection.forEach((selected, index) => {
-        if (index !== colIndex) {
-            row.selection[index] = false;
-        }
-    });
     form.p3q2 = tableP3Q2
     console.log(form.p3q2)
 };
@@ -176,11 +166,6 @@ const colP3Q3 = [
 // 处理单元格选中状态变化
 const handleP3Q3 = (row, colIndex) => {
     // 取消当前行其他单元格的选中状态
-    row.selection.forEach((selected, index) => {
-        if (index !== colIndex) {
-            row.selection[index] = false;
-        }
-    });
     form.p3q3 = tableP3Q3
     console.log(form.p3q3)
 };
