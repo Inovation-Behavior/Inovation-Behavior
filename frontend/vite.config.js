@@ -14,8 +14,7 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
       },
-    }
-
+    },
     // client: {
     //   overlay: false   //关闭Uncaught runtime errors
     // }
