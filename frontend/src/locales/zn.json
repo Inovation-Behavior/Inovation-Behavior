@@ -39,5 +39,11 @@
         "IPBox": "专利盒",
         "OpenPatentLicensing" : "专利开放许可",
         "PatentOpposition" : "专利异议"
+    },
+    "survey":{
+        "PAQ1":"A01.您与所选专利的关系是_________",
+        "PAQ1A1":"专利发明人之一",
+        "PAQ1A2":"参与该专利申请",
+        "PAQ1A3":"参与该专利技术的研发，未列发明人"
     }
 }
