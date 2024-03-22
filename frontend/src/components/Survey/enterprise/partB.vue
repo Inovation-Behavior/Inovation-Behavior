@@ -2,19 +2,19 @@
     <el-card style="border-radius: 15px;width: 100%;">
         <el-form :model="form" size="large" label-position="top">
             <el-form-item style="font-weight: bolder;" label="B01.贵司是否属于一个企业集团？">
-                <el-radio-group v-model="form.pAq1">
+                <el-radio-group v-model="form.pBq01">
                     <el-radio label="是的，我们属于一个企业集团" />
                     <el-radio label="不，我们不属于任何企业集团" />
                 </el-radio-group>
             </el-form-item>
             <el-form-item style="font-weight: bolder;" label="B02.贵司成立于哪一年？">
-                <el-input v-model="input" style="width: 240px" placeholder="成立于" />
+                <el-input v-model="form.pBq02" style="width: 240px" placeholder="成立于" />
             </el-form-item>
             <el-form-item style="font-weight: bolder;" label="B03.贵司在上海地区大约有多少全职员工？">
-                <el-input v-model="input" style="width: 240px" placeholder="2018 年" />
+                <el-input v-model="form.pBq0301" style="width: 240px" placeholder="2018 年" />
             </el-form-item>
             <el-form-item style="font-weight: bolder;" label="">
-                <el-input v-model="input" style="width: 240px" placeholder="2023 年" />
+                <el-input v-model="form.pBq0302" style="width: 240px" placeholder="2023 年" />
             </el-form-item>
 
             <el-form-item style="font-weight: bolder;" label="B04. 贵司（含所在集团）是否对内部控制以下业务？">
@@ -26,7 +26,6 @@
                     </el-table-column>
                     <el-table-column v-for="(column, colIndex) in colPBQ4" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
-                            <!-- 在每个单元格内放置一个可选中的组件 -->
                             <el-checkbox v-model="row.selection[colIndex]"
                                 @change="handlePBQ4(row, colIndex)"></el-checkbox>
                         </template>
@@ -35,28 +34,28 @@
             </el-form-item>
 
             <el-form-item style="font-weight: bolder;" label="B05. 过去 5 年，贵司研发费投入金额大约为多少？（单位：人民币）">
-                <el-input v-model="input" style="width: 240px" placeholder="2018 年" />
+                <el-input v-model="form.pBq0501" style="width: 240px" placeholder="2018 年" />
             </el-form-item>
             <el-form-item style="font-weight: bolder;" label="">
-                <el-input v-model="input" style="width: 240px" placeholder="2023 年" />
+                <el-input v-model="form.pBq0502" style="width: 240px" placeholder="2023 年" />
             </el-form-item>
 
             <el-form-item style="font-weight: bolder;" label="B06. 过去 5 年，贵司研发费用占营收收入比例大约是多少？（单位：%）">
-                <el-input v-model="input" style="width: 240px" placeholder="2018 年" />
+                <el-input v-model="form.pBq0601" style="width: 240px" placeholder="2018 年" />
             </el-form-item>
             <el-form-item style="font-weight: bolder;" label="">
-                <el-input v-model="input" style="width: 240px" placeholder="2023 年" />
+                <el-input v-model="form.pBq0602" style="width: 240px" placeholder="2023 年" />
             </el-form-item>
 
             <el-form-item style="font-weight: bolder;" label="B07.贵司是否在高新技术开发区、工业园或产业集聚区内？">
-                <el-radio-group v-model="form.pAq2">
+                <el-radio-group v-model="form.pBq07">
                     <el-radio label="是" />
                     <el-radio label="否" />
                 </el-radio-group>
             </el-form-item>
 
             <el-form-item style="font-weight: bolder;" label="B08.贵司是在哪一级高新技术开发区、工业园区或产业集聚区内？">
-                <el-radio-group v-model="form.pAq2">
+                <el-radio-group v-model="form.pBq08">
                     <el-radio label="国家级" />
                     <el-radio label="上海市" />
                     <el-radio label="所在区级" />
@@ -65,13 +64,13 @@
             </el-form-item>
 
             <el-form-item style="font-weight: bolder;" label="B09.贵司是否设立了专门的知识产权部门？">
-                <el-radio-group v-model="form.pAq2">
+                <el-radio-group v-model="form.pBq09">
                     <el-radio label="是" />
                     <el-radio label="否，暂时没有相关设置" />
                 </el-radio-group>
             </el-form-item>
             <el-form-item style="font-weight: bolder;" label="B0901，如果设立了，请问知识产权部门是如何设置的？">
-                <el-radio-group v-model="form.pAq2">
+                <el-radio-group v-model="form.pBq0901">
                     <el-radio label="完全独立" />
                     <el-radio label="设置在研发部下" />
                     <el-radio label="设置在法务部下" />
@@ -79,7 +78,7 @@
                 </el-radio-group>
             </el-form-item>
             <el-form-item style="font-weight: bolder;" label="B0902, 如果设立了，请问贵司的知识产权部门有多少全职员工？">
-                <el-input v-model="input" style="width: 240px" placeholder="大约____人" />
+                <el-input v-model="form.pBq0902" style="width: 240px" placeholder="大约____人" />
             </el-form-item>
 
             <el-form-item style="font-weight: bolder;" label="B10.贵司在专利管理工作中，是否经常使用以下在线数据库/平台？">
@@ -91,7 +90,6 @@
                     </el-table-column>
                     <el-table-column v-for="(column, colIndex) in colPBQ10" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
-                            <!-- 在每个单元格内放置一个可选中的组件 -->
                             <el-checkbox v-model="row.selection[colIndex]"
                                 @change="handlePBQ10(row, colIndex)"></el-checkbox>
                         </template>
@@ -100,14 +98,14 @@
             </el-form-item>
 
             <el-form-item style="font-weight: bolder;" label="B11.过去五年，贵司是否支付/使用过第三方的专利许可或技术许可？">
-                <el-radio-group v-model="form.pAq2">
+                <el-radio-group v-model="form.pBq11">
                     <el-radio label="是的，多次" />
                     <el-radio label="是的，一次" />
                     <el-radio label="没有" />
                 </el-radio-group>
             </el-form-item>
             <el-form-item style="font-weight: bolder;" label="B1101，如果有，被许可人为哪种类型企业？">
-                <el-checkbox-group v-model="form.p2q5" style="display: flex;flex-wrap: wrap;">
+                <el-checkbox-group v-model="form.pBq1101" style="display: flex;flex-wrap: wrap;">
                     <el-checkbox label="国有企业" />
                     <el-checkbox label="民营企业" />
                     <el-checkbox label="外资企业（含外商独资、中外合资和中外合作）" />
@@ -118,7 +116,7 @@
                 </el-checkbox-group>
             </el-form-item>
             <el-form-item style="font-weight: bolder;" label="B1102，如果有，被许可人为哪种规模企业？">
-                <el-radio-group v-model="form.pAq2">
+                <el-radio-group v-model="form.pBq1102">
                     <el-radio label="大型企业（>1000 人）" />
                     <el-radio label="中型企业（100-1000 人）" />
                     <el-radio label="高校科研院所" />
@@ -127,7 +125,7 @@
             </el-form-item>
 
             <el-form-item style="font-weight: bolder;" label="B12.过去五年，贵司是否有过以下专利商业化经历？">
-                <el-checkbox-group v-model="form.p2q5" style="display: flex;flex-wrap: wrap;">
+                <el-checkbox-group v-model="form.pBq12" style="display: flex;flex-wrap: wrap;">
                     <el-checkbox label="专利转让" />
                     <el-checkbox label="集团内部专利许可" />
                     <el-checkbox label="与第三方专利许可" />
@@ -139,7 +137,7 @@
             </el-form-item>
 
             <el-form-item style="font-weight: bolder;" label="B1201，如果有,交易信息是通过什么渠道获得的？">
-                <el-checkbox-group v-model="form.p2q5" style="display: flex;flex-wrap: wrap;">
+                <el-checkbox-group v-model="form.pBq1201" style="display: flex;flex-wrap: wrap;">
                     <el-checkbox label="有合作的供应商" />
                     <el-checkbox label="有合作的生产商" />
                     <el-checkbox label="朋友介绍" />
@@ -157,7 +155,26 @@
 <script setup>
 import { ref, reactive } from 'vue';
 const form = reactive({
-    pAq1: "",
+    pBq01: "",
+    pBq02: "",
+    pBq0301: "",
+    pBq0302: "",
+    pBq04: [],
+    pBq0501: "",
+    pBq0502: "",
+    pBq0601: "",
+    pBq0502: "",
+    pBq07: "",
+    pBq08: "",
+    pBq09: "",
+    pBq0901: "",
+    pBq0902: "",
+    pBq10: [],
+    pBq11: "",
+    pBq1101: [],
+    pBq1102: [],
+    pBq12: [],
+    pBq1201: [],
 });
 
 //以下实现所有表格
@@ -183,7 +200,7 @@ const colPBQ4 = [
 // 处理单元格选中状态变化
 const handlePBQ4 = (row, colIndex) => {
     // 取消当前行其他单元格的选中状态
-    // form.p3q1 = tablePAQ3
+    form.pBq04 = tablePBQ4
 };
 
 
@@ -207,7 +224,7 @@ const colPBQ10 = [
 // 处理单元格选中状态变化
 const handlePBQ10 = (row, colIndex) => {
     // 取消当前行其他单元格的选中状态
-    // form.p3q1 = tablePAQ3
+    form.pBq10 = tablePBQ10
 };
 </script>
 

@@ -2,14 +2,14 @@
     <el-card style="border-radius: 15px;width: 100%;">
         <el-form :model="form" size="large" label-position="top">
             <el-form-item style="font-weight: bolder;" label="C01.该专利属于哪一类创新？">
-                <el-radio-group v-model="form.pAq1">
+                <el-radio-group v-model="form.pCq01">
                     <el-radio label="产品创新" />
                     <el-radio label="流程创新" />
                     <el-radio label="都相关" />
                 </el-radio-group>
             </el-form-item>
             <el-form-item style="font-weight: bolder;" label="C0101.如果属于产品创新，相关技术产品在哪个市场阶段？">
-                <el-radio-group v-model="form.pAq1">
+                <el-radio-group v-model="form.pCq0101">
                     <el-radio label="已进入市场" />
                     <el-radio label="为引入市场做准备" />
                     <el-radio label="远未进入市场" />
@@ -17,7 +17,7 @@
                 </el-radio-group>
             </el-form-item>
             <el-form-item style="font-weight: bolder;" label="C0102，贵公司是否生产该产品？">
-                <el-radio-group v-model="form.pAq1">
+                <el-radio-group v-model="form.pCq0102">
                     <el-radio label="是" />
                     <el-radio label="否" />
                 </el-radio-group>
@@ -41,7 +41,7 @@
             </el-form-item>
 
             <el-form-item style="font-weight: bolder;" label="C0104.如果形容贵公司的专利产品的市场份额？">
-                <el-radio-group v-model="form.pAq1">
+                <el-radio-group v-model="form.pCq0104">
                     <el-radio label="占同类产品市场销售额 5%以下" />
                     <el-radio label="占同类产品市场销售额 20%-50%" />
                     <el-radio label="占同类产品市场销售额 5%-20%" />
@@ -51,7 +51,7 @@
             </el-form-item>
 
             <el-form-item style="font-weight: bolder;" label="C02.作为流程创新，该专利技术能降低多少生产成本？">
-                <el-radio-group v-model="form.pAq1">
+                <el-radio-group v-model="form.pCq02">
                     <el-radio label="少于 5%" />
                     <el-radio label="20%-50%" />
                     <el-radio label="5%-20%" />
@@ -61,7 +61,7 @@
 
             <el-form-item style="font-weight: bolder;" label="C03.如何形容该专利技术的研发成本？请估计下已经耗费的人工年？（1 人工年指 1 个人
 一年，请将人数和年数相乘填写，例如，2 个人三年：2×3=6 个人工年）">
-                <el-radio-group v-model="form.pAq1">
+                <el-radio-group v-model="form.pCq03">
                     <el-radio label="少于 1 个人工年" />
                     <el-radio label="2-4 个人工年" />
                     <el-radio label="5-10 个人工年" />
@@ -71,7 +71,7 @@
             </el-form-item>
 
             <el-form-item style="font-weight: bolder;" label="C04.该专利技术是否有研发合作？如果有，是与哪类机构/企业进行合作？">
-                <el-checkbox-group v-model="form.p2q5" style="display: flex;flex-wrap: wrap;">
+                <el-checkbox-group v-model="form.pCq04" style="display: flex;flex-wrap: wrap;">
                     <el-checkbox label="没有，完全由本单位研发" />
                     <el-checkbox label="有，同一企业集团的公司之间合作" />
                     <el-checkbox label="有，与来自私营部门的客户合作" />
@@ -84,7 +84,7 @@
             </el-form-item>
 
             <el-form-item style="font-weight: bolder;" label="C05.该专利技术的研发经费来自以下哪些渠道？">
-                <el-checkbox-group v-model="form.p2q5" style="display: flex;flex-wrap: wrap;">
+                <el-checkbox-group v-model="form.pCq05" style="display: flex;flex-wrap: wrap;">
                     <el-checkbox label="企业营收" />
                     <el-checkbox label="银行商业贷款" />
                     <el-checkbox label="风险投资" />
@@ -94,7 +94,7 @@
             </el-form-item>
 
             <el-form-item style="font-weight: bolder;" label="C06.您认为该技术是否解决了行业内的技术瓶颈？">
-                <el-radio-group v-model="form.pAq1">
+                <el-radio-group v-model="form.pCq06">
                     <el-radio label="是" />
                     <el-radio label="不了解" />
                     <el-radio label="不确定" />
@@ -102,7 +102,7 @@
             </el-form-item>
 
             <el-form-item style="font-weight: bolder;" label="C07.该专利技术是否遭受过侵权？">
-                <el-radio-group v-model="form.pAq1">
+                <el-radio-group v-model="form.pCq07">
                     <el-radio label="是，经常" />
                     <el-radio label="是，偶尔" />
                     <el-radio label="没有" />
@@ -128,7 +128,7 @@
             </el-form-item>
 
             <el-form-item style="font-weight: bolder;" label="C09.在未来三年内，贵司是否会继续开发该专利技术？">
-                <el-radio-group v-model="form.pAq1">
+                <el-radio-group v-model="form.pCq09">
                     <el-radio label="是 ，会增加相关投入" />
                     <el-radio label="是，但要减少相关研发投入" />
                     <el-radio label="是，投入不变" />
@@ -154,7 +154,7 @@
             </el-form-item>
 
             <el-form-item style="font-weight: bolder;" label="C11.我们将 ' 专利组合 ' 定义为在价值上或技术上相互依赖的一组专利。该专利是否属于专利组合的一部分？">
-                <el-radio-group v-model="form.pAq1">
+                <el-radio-group v-model="form.pCq11">
                     <el-radio label="是的，包括 2-3 项专利" />
                     <el-radio label="是的，包括 4-6 项专利" />
                     <el-radio label="是的，包括 7-10 项专利" />
@@ -165,7 +165,7 @@
             </el-form-item>
 
             <el-form-item style="font-weight: bolder;" label="C12.假设有第三方购买该专利（专利组合），您预计最低价格是多少？">
-                <el-radio-group v-model="form.pAq1">
+                <el-radio-group v-model="form.pCq12">
                     <el-radio label="<3 万 人民币" />
                     <el-radio label="3 万-10 万 人民币" />
                     <el-radio label="10 万-30 万 人民币" />
@@ -184,7 +184,22 @@
 <script setup>
 import { ref, reactive } from 'vue';
 const form = reactive({
-    pAq1: "",
+    pCq01: "",
+    pCq0101: "",
+    pCq0102: "",
+    pCq0103: [],
+    pCq0104: "",
+    pCq02: "",
+    pCq03: "",
+    pCq04: [],
+    pCq05: [],
+    pCq06: "",
+    pCq07: "",
+    pCq08: [],
+    pCq09: "",
+    pCq10: [],
+    pCq11: "",
+    pCq12: "",
 });
 
 // 以下实现所有表格
@@ -206,7 +221,7 @@ const colPCQ0103 = [
 // 处理单元格选中状态变化
 const handlePCQ0103 = (row, colIndex) => {
     // 取消当前行其他单元格的选中状态
-    // form.p3q1 = tablePAQ3
+    form.pCq0103 = tablePCQ0103
 };
 
 const tablePCQ8 = ref([
@@ -229,7 +244,7 @@ const colPCQ8 = [
 // 处理单元格选中状态变化
 const handlePCQ8 = (row, colIndex) => {
     // 取消当前行其他单元格的选中状态
-    // form.p3q1 = tablePAQ3
+    form.pCq08 = tablePCQ8
 };
 
 const tablePCQ10 = ref([
@@ -250,7 +265,7 @@ const colPCQ10 = [
 // 处理单元格选中状态变化
 const handlePCQ10 = (row, colIndex) => {
     // 取消当前行其他单元格的选中状态
-    // form.p3q1 = tablePAQ3
+    form.pCq10 = tablePCQ10
 };
 </script>
 

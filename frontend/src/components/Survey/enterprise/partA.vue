@@ -1,18 +1,19 @@
 <template>
     <el-card style="border-radius: 15px;width: 100%;">
         <el-form :model="form" size="large" label-position="top">
-            <el-form-item style="font-weight: bolder;" label="A01.您与所选专利的关系是_________">
-                <el-radio-group v-model="form.pAq1">
-                    <el-radio label="专利发明人之一" />
-                    <el-radio label="参与该专利申请" />
-                    <el-radio label="参与该专利技术的研发，未列发明人" />
-                    <el-radio label="参与该专利管理" />
-                    <el-radio label="参与该相关技术的研发，未列发明人" />
-                    <el-radio label="以上均无，请说明_________" />
-                </el-radio-group>
+            <el-form-item style="font-weight: bolder;" label="A01.您与所选专利的关系是">
+                <el-checkbox-group v-model="form.pAq01" style="display: flex;flex-wrap: wrap;">
+                    <el-checkbox label="专利发明人之一" />
+                    <el-checkbox label="参与该专利技术的研发，未列发明人" />
+                    <el-checkbox label="参与该相关技术的研发，未列发明人" />
+                    <el-checkbox label="参与该专利申请" />
+                    <el-checkbox label="参与该专利管理" />
+                    <el-checkbox label="以上均无，请说明" />
+                </el-checkbox-group>
             </el-form-item>
+
             <el-form-item style="font-weight: bolder;" label="A02.您的性别是">
-                <el-radio-group v-model="form.pAq2">
+                <el-radio-group v-model="form.pAq02">
                     <el-radio label="女" />
                     <el-radio label="男" />
                 </el-radio-group>
@@ -87,13 +88,13 @@
             </el-form-item>
 
             <el-form-item style="font-weight: bolder;" label="A07. 您（的岗位）过去五年的年收入如何？(单位：人民币)">
-                <el-input v-model="input" style="width: 240px" placeholder="2018 年税前年收入" />
+                <el-input v-model="form.pAq0701" style="width: 240px" placeholder="2018 年税前年收入" />
             </el-form-item>
             <el-form-item style="font-weight: bolder;" label="">
-                <el-input v-model="input" style="width: 240px" placeholder="2023 年税前年收入" />
+                <el-input v-model="form.pAq0702" style="width: 240px" placeholder="2023 年税前年收入" />
             </el-form-item>
             <el-form-item style="font-weight: bolder;" label="A08. 如果在同一家公司，您觉得未来三年的收入变化如何？">
-                <el-radio-group v-model="form.pAq2">
+                <el-radio-group v-model="form.pAq8">
                     <el-radio label="总体保持不变" />
                     <el-radio label="每年减少 5%左右（幅度仍可接受）" />
                     <el-radio label="每年增长 5%左右（符合个人预期）" />
@@ -102,7 +103,7 @@
                 </el-radio-group>
             </el-form-item>
             <el-form-item style="font-weight: bolder;" label="A09.如果成功实施该专利（例如签订许可合同等），您是否能获得以下奖励？">
-                <el-checkbox-group v-model="form.p2q5" style="display: flex;flex-wrap: wrap;">
+                <el-checkbox-group v-model="form.pAq09" style="display: flex;flex-wrap: wrap;">
                     <el-checkbox label="没有额外奖励，是必须完成的" />
                     <el-checkbox label="考核指标" />
                     <el-checkbox label="更快的职业晋升" />
@@ -113,7 +114,7 @@
                 </el-checkbox-group>
             </el-form-item>
             <el-form-item style="font-weight: bolder;" label="A10.如果有奖励，贵司如何进行计数？">
-                <el-radio-group v-model="form.pAq2">
+                <el-radio-group v-model="form.pAq10">
                     <el-radio label="根据所完成的专利商业化合同数量" />
                     <el-radio label="根据所完成的专利商业化合同金额" />
                     <el-radio label="不做区分" />
@@ -144,7 +145,19 @@
 <script setup>
 import { ref, reactive } from 'vue';
 const form = reactive({
-    pAq1: "",
+    pAq01: [],
+    pAq02: "",
+    pAq02: "",
+    pAq03: [],
+    pAq04: [],
+    pAq05: [],
+    pAq06: [],
+    pAq0701: "",
+    pAq0702: "",
+    pAq08: "",
+    pAq09: [],
+    pAq10: "",
+    pAq11: [],
 });
 
 // 以下处理所有表格
@@ -168,7 +181,7 @@ const colPAQ3 = [
 // 处理单元格选中状态变化
 const handlePAQ3 = (row, colIndex) => {
     // 取消当前行其他单元格的选中状态
-    // form.p3q1 = tablePAQ3
+    form.pAq03 = tablePAQ3
 };
 
 
@@ -191,7 +204,7 @@ const colPAQ4 = [
 // 处理单元格选中状态变化
 const handlePAQ4 = (row, colIndex) => {
     // 取消当前行其他单元格的选中状态
-    // form.p3q1 = tablePAQ3
+    form.pAq04 = tablePAQ4
 };
 
 
@@ -212,7 +225,7 @@ const colPAQ5 = [
 // 处理单元格选中状态变化
 const handlePAQ5 = (row, colIndex) => {
     // 取消当前行其他单元格的选中状态
-    // form.p3q1 = tablePAQ3
+    form.pAq05 = tablePAQ5
 };
 
 
@@ -237,7 +250,7 @@ const colPAQ6 = [
 // 处理单元格选中状态变化
 const handlePAQ6 = (row, colIndex) => {
     // 取消当前行其他单元格的选中状态
-    // form.p3q1 = tablePAQ3
+    form.pAq06 = tablePAQ6
 };
 
 
@@ -262,7 +275,7 @@ const colPAQ11 = [
 // 处理单元格选中状态变化
 const handlePAQ11 = (row, colIndex) => {
     // 取消当前行其他单元格的选中状态
-    // form.p3q1 = tablePAQ3
+    form.pAq11 = tablePAQ11
 };
 </script>
 

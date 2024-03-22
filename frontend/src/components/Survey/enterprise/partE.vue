@@ -88,7 +88,11 @@
 <script setup>
 import { ref, reactive } from 'vue';
 const form = reactive({
-    pAq1: "",
+    pEq01: [],
+    pEq02: [],
+    pEq03: [],
+    pEq04: [],
+    pEq05: [],
 });
 
 //以下实现所有表格
@@ -112,7 +116,7 @@ const colPEQ2 = [
 // 处理单元格选中状态变化
 const handlePEQ2 = (row, colIndex) => {
     // 取消当前行其他单元格的选中状态
-    // form.p3q1 = tablePAQ3
+    form.pEq02 = tablePEQ2
 };
 
 const tablePEQ3 = ref([
@@ -132,7 +136,7 @@ const colPEQ3 = [
 // 处理单元格选中状态变化
 const handlePEQ3 = (row, colIndex) => {
     // 取消当前行其他单元格的选中状态
-    // form.p3q1 = tablePAQ3
+    form.pEq03 = tablePEQ3
 };
 
 const tablePEQ4 = ref([
@@ -153,7 +157,7 @@ const colPEQ4 = [
 // 处理单元格选中状态变化
 const handlePEQ4 = (row, colIndex) => {
     // 取消当前行其他单元格的选中状态
-    // form.p3q1 = tablePAQ3
+    form.pEq04 = tablePEQ4
 };
 
 const tablePEQ5 = ref([
@@ -179,7 +183,7 @@ const colPEQ5 = [
 // 处理单元格选中状态变化
 const handlePEQ5 = (row, colIndex) => {
     // 取消当前行其他单元格的选中状态
-    // form.p3q1 = tablePAQ3
+    form.pEq05 = tablePEQ5
 };
 </script>
 

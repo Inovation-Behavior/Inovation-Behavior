@@ -16,7 +16,7 @@
                 <part-b />
             </el-tab-pane>
             <el-tab-pane label="C. 专利技术价值" name="C. 专利技术价值">
-                <part-c/>
+                <part-c />
             </el-tab-pane>
             <el-tab-pane label="D. 专利的许可运用" name="D. 专利的许可运用">
                 <part-d/>
