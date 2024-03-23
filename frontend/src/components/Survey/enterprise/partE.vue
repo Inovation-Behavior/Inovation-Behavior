@@ -1,6 +1,25 @@
 <template>
     <el-card style="border-radius: 15px;width: 100%;">
         <el-form :model="form" size="large" label-position="top">
+            <el-form-item class="question" style="font-weight: bolder;"
+                label="E01.如果从 0-5 打分，5 分最高，您如何评价过去五年的知识产权营商环境？">
+                <el-table :data="tablePEQ01" class="table-container" style="width: 100%">
+                    <el-table-column class="answer" width="400%">
+                        <template #default="{ row }">
+                            {{ row.name }}
+                        </template>
+                    </el-table-column>
+                    <el-table-column width="250%" class="answer" v-for="(column, colIndex) in colPEQ01" :key="colIndex"
+                        :label="column.label">
+                        <template #default="{ row }">
+                            <!-- 在每个单元格内放置一个可选中的组件 -->
+                            <el-rate class="table-container" v-model="row.rate[colIndex]"
+                                @change="handlePEQ01(row, colIndex)" />
+                        </template>
+                    </el-table-column>
+                </el-table>
+            </el-form-item>
+
             <el-form-item class="question" style="font-weight: bolder;" label="E02.您是否了解以下专利许可机制？">
                 <el-table :data="tablePEQ2" style="width: 100%">
                     <el-table-column class="answer" width="200%">
@@ -101,6 +120,27 @@ const form = reactive({
 });
 
 //以下实现所有表格
+const tablePEQ01 = ref([
+    { name: "专利的审查效率", rate: [0,0] },
+    { name: "专利申请注册过程中的信息系统便利程度", rate: [0, 0] },
+    { name: "专利申请的成本（包含申请费、代理费）", rate: [0, 0] },
+    { name: "专利诉讼成本（包含律师费等）", rate: [0, 0] },
+    { name: "专利保护的力度（如惩罚性赔偿额度等）", rate: [0, 0] },
+    { name: "对待不同创新主体，专利审查决定的公平性", rate: [0, 0] },
+    { name: "对待不同创新主体，专利侵权裁决、行政执法的公平性", rate: [0, 0] },
+]);
+
+const colPEQ01 = [
+    { label: "2018" },
+    { label: "2023" }
+];
+
+// 处理单元格选中状态变化
+const handlePEQ01 = (row, colIndex) => {
+    // 取消当前行其他单元格的选中状态
+    form.pEq01 = tablePEQ01
+};
+
 const tablePEQ2 = ref([
     { name: "特斯拉的专利开放",selection: [false, false, false] },
     { name: "专利许可备案制度",selection: [false, false, false] },
@@ -212,6 +252,15 @@ const handlePEQ5 = (row, colIndex) => {
     font-weight: bold;
     margin-left: 2em;
 }
+
+.table-container {
+    display: flex;
+    justify-content: center;
+    /* 水平居中 */
+    align-items: center;
+    /* 垂直居中 */
+}
+
 .el-table {
     margin-left: 2.5em;
     margin-top: 1vh;

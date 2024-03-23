@@ -24,7 +24,7 @@
                             {{ row.name }}
                         </template>
                     </el-table-column>
-                    <el-table-column width="170%" class="answer" v-for="(column, colIndex) in colPBQ4" :key="colIndex"
+                    <el-table-column width="250%" class="answer" v-for="(column, colIndex) in colPBQ4" :key="colIndex"
                         :label="column.label">
                         <template #default="{ row }">
                             <el-checkbox v-model="row.selection[colIndex]"
@@ -214,12 +214,12 @@ const tablePBQ4 = ref([
 ]);
 
 const colPBQ4 = [
-    { label: "完全自主" },
-    { label: "部分外部采购/ 分包" },
-    { label: "全部外部采购/ 分包" },
-    { label: "完全自主" },
-    { label: "部分外部采购/ 分包" },
-    { label: "全部外部采购/ 分包" },
+    { label: "2018年 完全自主" },
+    { label: "2018年 部分外部采购/ 分包" },
+    { label: "2018年 全部外部采购/ 分包" },
+    { label: "2023年 完全自主" },
+    { label: "2023年 部分外部采购/ 分包" },
+    { label: "2023年 全部外部采购/ 分包" },
 ];
 
 // 处理单元格选中状态变化

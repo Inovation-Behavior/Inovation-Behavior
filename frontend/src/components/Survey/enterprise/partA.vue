@@ -55,7 +55,8 @@
                 </el-table>
             </el-form-item>
 
-            <el-form-item class="question" style="font-weight: bolder;" label="A05.您是否有境外工作/学习经历？（含疫情期间的在线学习时间）">
+            <el-form-item class="question" style="font-weight: bolder;" label="A05.您是否有境外工作/学习经历？">
+                <el-form-item class="question blue-label" style="font-weight: bolder;" label="（含疫情期间的在线学习时间）" />
                 <el-table :data="tablePAQ5" style="width: 100%">
                     <el-table-column class="answer" width="250%">
                         <template #default="{ row }">
@@ -132,12 +133,11 @@
                             {{ row.name }}
                         </template>
                     </el-table-column>
-                    <el-table-column width="150%" class="answer" v-for="(column, colIndex) in colPAQ11" :key="colIndex"
+                    <el-table-column width="250%" class="answer" v-for="(column, colIndex) in colPAQ11" :key="colIndex"
                         :label="column.label">
                         <template #default="{ row }">
                             <!-- 在每个单元格内放置一个可选中的组件 -->
-                            <el-checkbox v-model="row.selection[colIndex]"
-                                @change="handlePAQ11(row, colIndex)"></el-checkbox>
+                            <el-rate v-model="row.rate" :max="4" @change="handlePAQ11(row, colIndex)" />
                         </template>
                     </el-table-column>
                 </el-table>
@@ -260,21 +260,18 @@ const handlePAQ6 = (row, colIndex) => {
 
 
 const tablePAQ11 = ref([
-    { name: "作为必须完成的硬性指标", selection: [false, false, false, false] },
-    { name: "作为晋升的附加项", selection: [false, false, false, false] },
-    { name: "签订合同后的一次性现金奖励", selection: [false, false, false, false] },
-    { name: "基于合同许可费收益的提成", selection: [false, false, false, false] },
-    { name: "股权激励", selection: [false, false, false, false] },
-    { name: "增加人手、扩大部门规模", selection: [false, false, false, false] },
-    { name: "提高部门的受重视程度", selection: [false, false, false, false] },
-    { name: "其他，请说明：", selection: [false, false, false, false] },
+    { name: "作为必须完成的硬性指标", rate: 0 },
+    { name: "作为晋升的附加项", rate: 0 },
+    { name: "签订合同后的一次性现金奖励", rate: 0 },
+    { name: "基于合同许可费收益的提成", rate: 0 },
+    { name: "股权激励", rate: 0 },
+    { name: "增加人手、扩大部门规模", rate: 0 },
+    { name: "提高部门的受重视程度", rate: 0 },
+    { name: "其他，请说明：", rate: 0 },
 ]);
 
 const colPAQ11 = [
-    { label: "不重要" },
-    { label: "较低" },
-    { label: "比较重要" },
-    { label: "重要" },
+    { label: "不重要-较低-比较重要-重要" }
 ];
 
 // 处理单元格选中状态变化
@@ -327,5 +324,9 @@ const handlePAQ11 = (row, colIndex) => {
 ::v-deep .el-table {
     border-collapse: separate;
     border: none !important;
+}
+::v-deep .blue-label .el-form-item__label {
+    color: blue;
+    text-indent: 2em;
 }
 </style>
