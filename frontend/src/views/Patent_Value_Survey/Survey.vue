@@ -1,12 +1,12 @@
 <template>
     <el-container
-        style="display: flex;justify-content: center;align-items: center; font-size: large;font-weight: bolder;margin-top: 2vh; width: 100%; overflow: auto;">
-        Open Patent and Innovation Survey: Shanghai
+        style="font-family:SimHei;font-size: large;font-weight: bolder;display: flex;justify-content: center;align-items: center; margin-top: 2vh; width: 100%; overflow: auto;margin-bottom: 2vh;">
+        开放专利与创新调查：上海2024
     </el-container>
     <el-container style="margin-top: 10px;margin-right: 5px; width: 100%;">
         <el-tabs style="width: 100%;" v-model="activeName" tab-position="top" class="demo-tabs" @tab-click="handleClick"
             type="card" stretch="true">
-            <el-tab-pane label="Introduction" name="Introduction">
+            <el-tab-pane label="项目介绍" name="项目介绍">
                 <introduction />
             </el-tab-pane>
             <el-tab-pane label="A. 个人基本信息" name="A. 个人基本信息">
@@ -19,10 +19,10 @@
                 <part-c />
             </el-tab-pane>
             <el-tab-pane label="D. 专利的许可运用" name="D. 专利的许可运用">
-                <part-d/>
+                <part-d />
             </el-tab-pane>
             <el-tab-pane label="E. 知识产权政策" name="E. 知识产权政策">
-                <part-e/>
+                <part-e />
             </el-tab-pane>
         </el-tabs>
     </el-container>
@@ -34,6 +34,8 @@ import partB from '../../components/Survey/enterprise/partB.vue'
 import partC from '../../components/Survey/enterprise/partC.vue'
 import partD from '../../components/Survey/enterprise/partD.vue'
 import partE from '../../components/Survey/enterprise/partE.vue'
+import introduction from '../../components/Survey/enterprise/Introduction.vue'
+import { Text } from 'vue'
 export default {
     components: {
         partA,
@@ -41,10 +43,11 @@ export default {
         partC,
         partD,
         partE,
+        introduction
     },
     data() {
         return {
-            activeName: "Introduction",
+            activeName: "项目介绍",
             patentNo:"",
         }
     },

@@ -1,14 +1,15 @@
 <template>
     <el-card style="border-radius: 15px;width: 100%;">
         <el-form :model="form" size="large" label-position="top">
-            <el-form-item style="font-weight: bolder;" label="E02.您是否了解以下专利许可机制？">
+            <el-form-item class="question" style="font-weight: bolder;" label="E02.您是否了解以下专利许可机制？">
                 <el-table :data="tablePEQ2" style="width: 100%">
-                    <el-table-column>
+                    <el-table-column class="answer" width="200%">
                         <template #default="{ row }">
                             {{ row.name }}
                         </template>
                     </el-table-column>
-                    <el-table-column v-for="(column, colIndex) in colPEQ2" :key="colIndex" :label="column.label">
+                    <el-table-column width="150%" class="answer" v-for="(column, colIndex) in colPEQ2" :key="colIndex"
+                        :label="column.label">
                         <template #default="{ row }">
                             <!-- 在每个单元格内放置一个可选中的组件 -->
                             <el-checkbox v-model="row.selection[colIndex]"
@@ -17,14 +18,15 @@
                     </el-table-column>
                 </el-table>
             </el-form-item>
-            <el-form-item style="font-weight: bolder;" label="E02.您是否了解以下专利许可机制？">
+            <el-form-item class="question" style="font-weight: bolder;" label="E02.您是否了解以下专利许可机制？">
                 <el-table :data="tablePEQ2" style="width: 100%">
-                    <el-table-column>
+                    <el-table-column class="answer" width="200%">
                         <template #default="{ row }">
                             {{ row.name }}
                         </template>
                     </el-table-column>
-                    <el-table-column v-for="(column, colIndex) in colPEQ2" :key="colIndex" :label="column.label">
+                    <el-table-column width="150%" class="answer" v-for="(column, colIndex) in colPEQ2" :key="colIndex"
+                        :label="column.label">
                         <template #default="{ row }">
                             <!-- 在每个单元格内放置一个可选中的组件 -->
                             <el-checkbox v-model="row.selection[colIndex]"
@@ -33,14 +35,15 @@
                     </el-table-column>
                 </el-table>
             </el-form-item>
-            <el-form-item style="font-weight: bolder;" label="E03.贵司是否参加过以下专利运营相关服务？">
+            <el-form-item class="question" style="font-weight: bolder;" label="E03.贵司是否参加过以下专利运营相关服务？">
                 <el-table :data="tablePEQ3" style="width: 100%">
-                    <el-table-column>
+                    <el-table-column class="answer" width="350%">
                         <template #default="{ row }">
                             {{ row.name }}
                         </template>
                     </el-table-column>
-                    <el-table-column v-for="(column, colIndex) in colPEQ3" :key="colIndex" :label="column.label">
+                    <el-table-column width="150%" class="answer" v-for="(column, colIndex) in colPEQ3" :key="colIndex"
+                        :label="column.label">
                         <template #default="{ row }">
                             <!-- 在每个单元格内放置一个可选中的组件 -->
                             <el-checkbox v-model="row.selection[colIndex]"
@@ -49,14 +52,15 @@
                     </el-table-column>
                 </el-table>
             </el-form-item>
-            <el-form-item style="font-weight: bolder;" label="E04.贵司是否获得过以下专利运营相关的政策资助？">
+            <el-form-item class="question" style="font-weight: bolder;" label="E04.贵司是否获得过以下专利运营相关的政策资助？">
                 <el-table :data="tablePEQ4" style="width: 100%">
-                    <el-table-column>
+                    <el-table-column class="answer" width="250%">
                         <template #default="{ row }">
                             {{ row.name }}
                         </template>
                     </el-table-column>
-                    <el-table-column v-for="(column, colIndex) in colPEQ4" :key="colIndex" :label="column.label">
+                    <el-table-column width="150%" class="answer" v-for="(column, colIndex) in colPEQ4" :key="colIndex"
+                        :label="column.label">
                         <template #default="{ row }">
                             <!-- 在每个单元格内放置一个可选中的组件 -->
                             <el-checkbox v-model="row.selection[colIndex]"
@@ -65,14 +69,15 @@
                     </el-table-column>
                 </el-table>
             </el-form-item>
-            <el-form-item style="font-weight: bolder;" label="E05.您认为政府应当提升以下哪几类公共服务的投入？">
+            <el-form-item class="question" style="font-weight: bolder;" label="E05.您认为政府应当提升以下哪几类公共服务的投入？">
                 <el-table :data="tablePEQ5" style="width: 100%">
-                    <el-table-column>
+                    <el-table-column class="answer" width="400%">
                         <template #default="{ row }">
                             {{ row.name }}
                         </template>
                     </el-table-column>
-                    <el-table-column v-for="(column, colIndex) in colPEQ5" :key="colIndex" :label="column.label">
+                    <el-table-column width="150%" class="answer" v-for="(column, colIndex) in colPEQ5" :key="colIndex"
+                        :label="column.label">
                         <template #default="{ row }">
                             <!-- 在每个单元格内放置一个可选中的组件 -->
                             <el-checkbox v-model="row.selection[colIndex]"
@@ -196,5 +201,39 @@ const handlePEQ5 = (row, colIndex) => {
 :deep(.el-checkbox__label) {
     white-space: normal;
     /* 换行 */
+}
+.question {
+    font-weight: bolder;
+    font-family: SimSun;
+}
+
+.answer {
+    font-family: KaiTi;
+    font-weight: bold;
+    margin-left: 2em;
+}
+.el-table {
+    margin-left: 2.5em;
+    margin-top: 1vh;
+}
+
+::v-deep.el-table th {
+    border: 1px solid rgb(105, 102, 102) !important;
+    border-right: none !important;
+    border-bottom: none !important;
+    border-top: none !important;
+    /* border-left: none !important; */
+}
+
+::v-deep.el-table td {
+    border: 1px solid rgb(105, 102, 102);
+    border-right: none !important;
+    border-bottom: none !important;
+    /* border-left: none !important; */
+}
+
+::v-deep .el-table {
+    border-collapse: separate;
+    border: none !important;
 }
 </style>
