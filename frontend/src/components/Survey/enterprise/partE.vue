@@ -3,7 +3,7 @@
         <el-form :model="form" size="large" label-position="top">
             <el-form-item class="question" style="font-weight: bolder;"
                 label="E01.如果从 0-5 打分，5 分最高，您如何评价过去五年的知识产权营商环境？">
-                <el-table :data="tablePEQ01" class="table-container" style="width: 100%">
+                <el-table :data="tablePEQ01" style="width: 100%">
                     <el-table-column class="answer" width="400%">
                         <template #default="{ row }">
                             {{ row.name }}
@@ -13,7 +13,8 @@
                         v-for="(column, colIndex) in colPEQ01" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
                             <!-- 在每个单元格内放置一个可选中的组件 -->
-                            <el-rate class="table-container" v-model="row.rate[colIndex]"
+                            <el-rate show-score text-color="#ff9900"
+                                class="table-container" v-model="row.rate[colIndex]"
                                 @change="handlePEQ01(row, colIndex)" />
                         </template>
                     </el-table-column>
@@ -31,81 +32,92 @@
                         v-for="(column, colIndex) in colPEQ2" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
                             <!-- 在每个单元格内放置一个可选中的组件 -->
-                            <el-checkbox class="table-container" v-model="row.selection[colIndex]"
-                                @change="handlePEQ2(row, colIndex)"></el-checkbox>
-                        </template>
-                    </el-table-column>
-                </el-table>
-            </el-form-item>
-            <el-form-item class="question" style="font-weight: bolder;" label="E02.您是否了解以下专利许可机制？">
-                <el-table :data="tablePEQ2" style="width: 100%">
-                    <el-table-column class="answer" width="200%">
-                        <template #default="{ row }">
-                            {{ row.name }}
-                        </template>
-                    </el-table-column>
-                    <el-table-column width="150%" class="answer" header-align="center"
-                        v-for="(column, colIndex) in colPEQ2" :key="colIndex" :label="column.label">
-                        <template #default="{ row }">
-                            <!-- 在每个单元格内放置一个可选中的组件 -->
-                            <el-checkbox class="table-container" v-model="row.selection[colIndex]"
+                            <el-checkbox class="table-container1" v-model="row.selection[colIndex]"
                                 @change="handlePEQ2(row, colIndex)"></el-checkbox>
                         </template>
                     </el-table-column>
                 </el-table>
             </el-form-item>
             <el-form-item class="question" style="font-weight: bolder;" label="E03.贵司是否参加过以下专利运营相关服务？">
+                <el-form-item class="question blue-label" style="font-weight: bolder;" label="（请打分，1🌟为没有，5🌟为许多次）" />
                 <el-table :data="tablePEQ3" style="width: 100%">
                     <el-table-column class="answer" width="350%">
                         <template #default="{ row }">
                             {{ row.name }}
                         </template>
                     </el-table-column>
-                    <el-table-column width="150%" class="answer" header-align="center"
+                    <el-table-column width="250%" class="answer" header-align="center"
                         v-for="(column, colIndex) in colPEQ3" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
-                            <!-- 在每个单元格内放置一个可选中的组件 -->
-                            <el-checkbox class="table-container" v-model="row.selection[colIndex]"
-                                @change="handlePEQ3(row, colIndex)"></el-checkbox>
+                            <el-rate text-color="#ff9900" size="large" v-model="row.rate"
+                                :texts="['not', 'so-so', 'relative', 'very', 'super']" show-text class="table-container"
+                                @change="handlePEQ03(row, colIndex)" />
                         </template>
                     </el-table-column>
                 </el-table>
             </el-form-item>
             <el-form-item class="question" style="font-weight: bolder;" label="E04.贵司是否获得过以下专利运营相关的政策资助？">
+                <el-form-item class="question blue-label" style="font-weight: bolder;" label="（请打分，1🌟为没有，5🌟为许多次）" />
                 <el-table :data="tablePEQ4" style="width: 100%">
                     <el-table-column class="answer" width="250%">
                         <template #default="{ row }">
                             {{ row.name }}
                         </template>
                     </el-table-column>
-                    <el-table-column width="150%" class="answer" header-align="center"
+                    <el-table-column width="250%" class="answer" header-align="center"
                         v-for="(column, colIndex) in colPEQ4" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
-                            <!-- 在每个单元格内放置一个可选中的组件 -->
-                            <el-checkbox class="table-container" v-model="row.selection[colIndex]"
-                                @change="handlePEQ4(row, colIndex)"></el-checkbox>
+                            <el-rate text-color="#ff9900" size="large" v-model="row.rate"
+                                :texts="['not', 'so-so', 'relative', 'very', 'super']" show-text class="table-container"
+                                @change="handlePEQ04(row, colIndex)" />
                         </template>
                     </el-table-column>
                 </el-table>
             </el-form-item>
             <el-form-item class="question" style="font-weight: bolder;" label="E05.您认为政府应当提升以下哪几类公共服务的投入？">
+                <el-form-item class="question blue-label" style="font-weight: bolder;"
+                    label="（请打分，1🌟为不用提高，5🌟为大幅提高）" />
                 <el-table :data="tablePEQ5" style="width: 100%">
                     <el-table-column class="answer" width="400%">
                         <template #default="{ row }">
                             {{ row.name }}
                         </template>
                     </el-table-column>
-                    <el-table-column width="150%" class="answer" header-align="center"
+                    <el-table-column width="250%" class="answer" header-align="center"
                         v-for="(column, colIndex) in colPEQ5" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
-                            <!-- 在每个单元格内放置一个可选中的组件 -->
-                            <el-checkbox class="table-container" v-model="row.selection[colIndex]"
-                                @change="handlePEQ5(row, colIndex)"></el-checkbox>
+                            <el-rate text-color="#ff9900" size="large" v-model="row.rate"
+                                :texts="['not', 'so-so', 'relative', 'very', 'super']" show-text class="table-container"
+                                @change="handlePEQ05(row, colIndex)" />
                         </template>
                     </el-table-column>
                 </el-table>
             </el-form-item>
         </el-form>
+        <p class="ps">
+            **抛硬币游戏**
+        </p>
+        <p class="ps" style="text-indent: 2em;">
+            为感谢您的参与，我们为您准备了一份纪念品（或50元人民币酬金）。
+        </p>
+        <p class="ps">
+            此处放置纪念品样图
+        </p>
+        <p class="ps">
+            您可以选择：
+        </p>
+        <p class="ps" style="text-indent: 2em;">
+            （1）直接获得一份纪念品
+        </p>
+        <p class="ps" style="text-indent: 2em;">
+            （2）选择抛硬币游戏：如抛出正面，您将获得两份纪念品（或100元人民币酬金）
+        </p>
+        <p class="ps">
+            请留下您的邮寄方式：<el-input size="small" style="width: 20vw;"></el-input>
+        </p>
+        <p class="ps">
+            或联系志愿者同学
+        </p>
     </el-card>
 </template>
 
@@ -165,68 +177,62 @@ const handlePEQ2 = (row, colIndex) => {
 };
 
 const tablePEQ3 = ref([
-    { name: "参加提升知识产权运营能力的培训/公益讲座",selection: [false, false, false] },
-    { name: "参加知识产权运营政策的政策咨询讲座",selection: [false, false, false] },
-    { name: "参加专利技术的路演推介活动", selection: [false, false, false] },
-    { name: "使用公共部门搭建的专利在线交易平台", selection: [false, false, false] },
-    { name: "获得专利许可交易的定价指导", selection: [false, false, false] },
+    { name: "参加提升知识产权运营能力的培训/公益讲座",rate: 0 },
+    { name: "参加知识产权运营政策的政策咨询讲座", rate: 0 },
+    { name: "参加专利技术的路演推介活动", rate: 0 },
+    { name: "使用公共部门搭建的专利在线交易平台", rate: 0 },
+    { name: "获得专利许可交易的定价指导", rate: 0 },
 ]);
 
 const colPEQ3 = [
-    { label: "没有" },
-    { label: "一次" },
-    { label: "多次" },
+    { label: "没有-->许多次" },
 ];
 
 // 处理单元格选中状态变化
-const handlePEQ3 = (row, colIndex) => {
+const handlePEQ03 = (row, colIndex) => {
     // 取消当前行其他单元格的选中状态
     form.pEq03 = tablePEQ3
 };
 
 const tablePEQ4 = ref([
-    { name: "获得高价值专利的奖励", selection: [false, false, false] },
-    { name: "获得知识产权试点示范项目奖励", selection: [false, false, false] },
-    { name: "获得专利转移成果奖励", selection: [false, false, false] },
-    { name: "获得专利续费的减免或补贴", selection: [false, false, false] },
-    { name: "享受研发费用的加计扣除", selection: [false, false, false] },
-    { name: "获得专利许可收益相关的税收减免", selection: [false, false, false] },
+    { name: "获得高价值专利的奖励", rate: 0 },
+    { name: "获得知识产权试点示范项目奖励", rate: 0 },
+    { name: "获得专利转移成果奖励", rate: 0 },
+    { name: "获得专利续费的减免或补贴", rate: 0 },
+    { name: "享受研发费用的加计扣除", rate: 0 },
+    { name: "获得专利许可收益相关的税收减免", rate: 0 },
 ]);
 
 const colPEQ4 = [
-    { label: "没有" },
-    { label: "一次" },
-    { label: "多次" },
+    { label: "没有-->许多次" },
 ];
 
 // 处理单元格选中状态变化
-const handlePEQ4 = (row, colIndex) => {
+const handlePEQ04 = (row, colIndex) => {
     // 取消当前行其他单元格的选中状态
     form.pEq04 = tablePEQ4
 };
 
 const tablePEQ5 = ref([
-    { name: "举办知识产权运营能力的培训/公益讲座", selection: [false, false, false] },
-    { name: "举办知识产权运营政策的政策咨询讲座", selection: [false, false, false] },
-    { name: "发布诸如《专利开放许可使用费估算指引》等指导手册", selection: [false, false, false] },
-    { name: "举办专利技术的路演推介活动", selection: [false, false, false] },
-    { name: "提供、搭建专利在线交易平台", selection: [false, false, false] },
-    { name: "提供专利许可交易的公益性定价指导", selection: [false, false, false] },
-    { name: "提供给高价值专利的奖励", selection: [false, false, false] },
-    { name: "提供专利转移转化成果奖励", selection: [false, false, false] },
-    { name: "获得专利续费的减免或补贴", selection: [false, false, false] },
-    { name: "享受研发费用的加计扣除", selection: [false, false, false] },
-    { name: "获得专利许可收益相关的税收减免", selection: [false, false, false] },
+    { name: "举办知识产权运营能力的培训/公益讲座", rate: 0 },
+    { name: "举办知识产权运营政策的政策咨询讲座", rate: 0 },
+    { name: "发布诸如《专利开放许可使用费估算指引》等指导手册", rate: 0 },
+    { name: "举办专利技术的路演推介活动", rate: 0 },
+    { name: "提供、搭建专利在线交易平台", rate: 0 },
+    { name: "提供专利许可交易的公益性定价指导", rate: 0 },
+    { name: "提供给高价值专利的奖励", rate: 0 },
+    { name: "提供专利转移转化成果奖励", rate: 0 },
+    { name: "获得专利续费的减免或补贴", rate: 0 },
+    { name: "享受研发费用的加计扣除", rate: 0 },
+    { name: "获得专利许可收益相关的税收减免", rate: 0 },
 ]);
 
 const colPEQ5 = [
-    { label: "没有" },
-    { label: "一次" },
-    { label: "多次" },
+    { label: "不用提高-->大幅提高" },
 ];
 
 // 处理单元格选中状态变化
-const handlePEQ5 = (row, colIndex) => {
+const handlePEQ05 = (row, colIndex) => {
     // 取消当前行其他单元格的选中状态
     form.pEq05 = tablePEQ5
 };
@@ -249,18 +255,20 @@ const handlePEQ5 = (row, colIndex) => {
 
 .answer {
     font-family: KaiTi;
-    font-weight: bold;
     margin-left: 2em;
 }
 
 .table-container {
     display: flex;
-    justify-content: center;
-    /* 水平居中 */
-    align-items: center;
-    /* 垂直居中 */
+    margin-left: 2vw;
 }
+.table-container1 {
+    display: flex;
+    justify-content: center;
 
+    align-items: center;
+
+}
 .el-table {
     margin-left: 2.5em;
     margin-top: 1vh;
@@ -284,5 +292,9 @@ const handlePEQ5 = (row, colIndex) => {
 ::v-deep .el-table {
     border-collapse: separate;
     border: none !important;
+}
+
+.ps{
+    color: rgb(0,112,192);
 }
 </style>

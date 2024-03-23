@@ -1,5 +1,8 @@
 <template>
     <el-card style="border-radius: 15px;width: 100%;">
+        <p style="font-family: STKaiti;color: blue;font-weight: bold;">
+            （在B部分，我们想了解下您所在机构/公司的经营与研发情况，部分信息需要您提供2018年与2023年的历史信息，谢谢支持！）
+        </p>
         <el-form :model="form" size="large" label-position="top">
             <el-form-item class="question" style="font-weight: bolder;" label="B01.贵司是否属于一个企业集团？">
                 <el-radio-group v-model="form.pBq01">
@@ -8,15 +11,28 @@
                 </el-radio-group>
             </el-form-item>
             <el-form-item class="question" style="font-weight: bolder;" label="B02.贵司成立于哪一年？">
-                <el-input size="small" class="answer" v-model="form.pBq02" style="width: 240px" placeholder="成立于" />
+                <el-date-picker style="margin-left: 2vw;" size="small" v-model="form.pBq0201" type="year"
+                    placeholder="Pick a year" />
+                <!-- <el-text class="answer">成立于<el-input style="width: 5vw;" size="small" v-model="form.pBq02" />年</el-text> -->
             </el-form-item>
+            <el-form-item style="font-family: Kaiti;font-weight: 100;text-indent: 2em;" label="如果属于一个企业集团，总部成立于">
+                <el-date-picker style="margin-left: 2vw;" size="small" v-model="form.pBq02" type="year"
+                    placeholder="Pick a year" />
+            </el-form-item>
+            <el-form-item style="font-family: Kaiti;font-weight: 100;text-indent: 2em;" label="如果属于一个企业集团，总部成立于">
+                <el-date-picker style="margin-left: 2vw;" size="small" v-model="form.pBq0203" type="year"
+                    placeholder="Pick a year" />
+            </el-form-item>
+
             <el-form-item class="question" style="font-weight: bolder;" label="B03.贵司在上海地区大约有多少全职员工？">
-                <el-input size="small" class="answer" v-model="form.pBq0301" style="width: 240px"
-                    placeholder="2018 年" />
+                <el-text class="answer" style="font-family: Kaiti;font-weight: 100;text-indent: 2em;">2018年，大约<el-input
+                        size="small" v-model="form.pBq0301" style="width: 5vw;margin-left: 0.5vw"
+                        placeholder="2018 年" /></el-text>
             </el-form-item>
             <el-form-item class="question" style="font-weight: bolder;" label="">
-                <el-input size="small" class="answer" v-model="form.pBq0302" style="width: 240px"
-                    placeholder="2023 年" />
+                <el-text class="answer" style="font-family: Kaiti;font-weight: 100;text-indent: 2em;">2018年，大约<el-input
+                        size="small" v-model="form.pBq0302" style="width: 5vw;margin-left: 0.5vw;"
+                        placeholder="2023 年" /></el-text>
             </el-form-item>
 
             <el-form-item class="question" style="font-weight: bolder;" label="B04. 贵司（含所在集团）是否对内部控制以下业务？">
@@ -26,10 +42,10 @@
                             {{ row.name }}
                         </template>
                     </el-table-column>
-                    <el-table-column width="250%" class="answer" header-align="center"
+                    <el-table-column width="190%" class="answer" header-align="center"
                         v-for="(column, colIndex) in colPBQ4" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
-                            <el-checkbox class="table-container" v-model="row.selection[colIndex]"
+                            <el-checkbox class="table-container1" v-model="row.selection[colIndex]"
                                 @change="handlePBQ4(row, colIndex)"></el-checkbox>
                         </template>
                     </el-table-column>
@@ -37,21 +53,25 @@
             </el-form-item>
 
             <el-form-item class="question" style="font-weight: bolder;" label="B05. 过去 5 年，贵司研发费投入金额大约为多少？（单位：人民币）">
-                <el-input size="small" class="answer" v-model="form.pBq0501" style="width: 240px"
-                    placeholder="2018 年" />
+                <el-text class="answer" style="font-family: Kaiti;font-weight: 100;text-indent: 2em;">2018年,大约<el-input
+                        size="small" v-model="form.pBq0501" style="width: 5vw;margin-left: 0.5vw;"
+                        placeholder="" />万人民币</el-text>
             </el-form-item>
             <el-form-item class="question" style="font-weight: bolder;" label="">
-                <el-input size="small" class="answer" v-model="form.pBq0502" style="width: 240px"
-                    placeholder="2023 年" />
+                <el-text class="answer" style="font-family: Kaiti;font-weight: 100;text-indent: 2em;">2023年,大约<el-input
+                        size="small" v-model="form.pBq0502" style="width: 5vw;margin-left: 0.5vw;"
+                        placeholder="" />万人民币</el-text>
             </el-form-item>
 
             <el-form-item class="question" style="font-weight: bolder;" label="B06. 过去 5 年，贵司研发费用占营收收入比例大约是多少？（单位：%）">
-                <el-input size="small" class="answer" v-model="form.pBq0601" style="width: 240px"
-                    placeholder="2018 年" />
+                <el-text class="answer" style="font-family: Kaiti;font-weight: 100;text-indent: 2em;">2018年，大约<el-input
+                        size="small" v-model="form.pBq0601" style="width: 5vw;margin-left: 0.5vw;"
+                        placeholder="" />%</el-text>
             </el-form-item>
             <el-form-item class="question" style="font-weight: bolder;" label="">
-                <el-input size="small" class="answer" v-model="form.pBq0602" style="width: 240px"
-                    placeholder="2023 年" />
+                <el-text class="answer" style="font-family: Kaiti;font-weight: 100;text-indent: 2em;">2023年，大约<el-input
+                        size="small" v-model="form.pBq0602" style="width: 5vw;margin-left: 0.5vw;"
+                        placeholder="" />%</el-text>
             </el-form-item>
 
             <el-form-item class="question" style="font-weight: bolder;" label="B07.贵司是否在高新技术开发区、工业园或产业集聚区内？">
@@ -94,17 +114,19 @@
             </el-form-item>
 
             <el-form-item class="question" style="font-weight: bolder;" label="B10.贵司在专利管理工作中，是否经常使用以下在线数据库/平台？">
+                <el-form-item class="question blue-label" style="font-weight: bolder;" label="（请打分，1🌟为不使用，5🌟为经常使用）" />
                 <el-table :data="tablePBQ10" style="width: 100%">
                     <el-table-column class="answer" width="300%">
                         <template #default="{ row }">
                             {{ row.name }}
                         </template>
                     </el-table-column>
-                    <el-table-column width="150%" class="answer" header-align="center"
+                    <el-table-column width="250%" class="answer" header-align="center"
                         v-for="(column, colIndex) in colPBQ10" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
-                            <el-checkbox class="table-container" v-model="row.selection[colIndex]"
-                                @change="handlePBQ10(row, colIndex)"></el-checkbox>
+                            <el-rate text-color="#ff9900" size="large" v-model="row.rate"
+                                :texts="['not', 'so-so', 'relative', 'very', 'super']" show-text class="table-container"
+                                @change="handlePBQ10(row, colIndex)" />
                         </template>
                     </el-table-column>
                 </el-table>
@@ -172,7 +194,9 @@
 import { ref, reactive } from 'vue';
 const form = reactive({
     pBq01: "",
-    pBq02: "",
+    pBq0201: "",
+    pBq0202: "",
+    pBq0203: "",
     pBq0301: "",
     pBq0302: "",
     pBq04: [],
@@ -240,20 +264,18 @@ const handlePBQ4 = (row, colIndex) => {
 
 
 const tablePBQ10 = ref([
-    { name: "中国专利信息网", selection: [false, false, false] },
-    { name: "世界知识产权组织专利数据库", selection: [false, false, false] },
-    { name: "USPTO、EPO 等其他域外专利管理机构公开数据平台", selection: [false, false, false] },
-    { name: "商业性专利信息数据库（例如智慧芽、Incopat 等）", selection: [ false, false, false] },
-    { name: "上海市知识产权信息平台", selection: [false, false, false] },
-    { name: "裁判文书网等法律文书公开平台", selection: [false, false, false] },
-    { name: "商业性法律信息数据库（例如 lexis 等）", selection: [false, false, false] },
-    { name: "其他互联网资源、请注明", selection: [false, false, false] },
+    { name: "中国专利信息网", rate:0 },
+    { name: "世界知识产权组织专利数据库", rate: 0 },
+    { name: "USPTO、EPO 等其他域外专利管理机构公开数据平台", rate: 0 },
+    { name: "商业性专利信息数据库（例如智慧芽、Incopat 等）", rate: 0 },
+    { name: "上海市知识产权信息平台", rate: 0 },
+    { name: "裁判文书网等法律文书公开平台", rate: 0 },
+    { name: "商业性法律信息数据库（例如 lexis 等）", rate: 0 },
+    { name: "其他互联网资源、请注明", rate: 0 },
 ]);
 
 const colPBQ10 = [
-    { label: "经常" },
-    { label: "偶尔" },
-    { label: "不使用" },
+    { label: "不使用-->经常使用" },
 ];
 
 // 处理单元格选中状态变化
@@ -280,7 +302,6 @@ const handlePBQ10 = (row, colIndex) => {
 
 .answer {
     font-family: KaiTi;
-    font-weight: bold;
     margin-left: 2em;
 }
 .el-table {
@@ -309,9 +330,13 @@ const handlePBQ10 = (row, colIndex) => {
 }
 .table-container {
     display: flex;
+    margin-left: 2vw;
+}
+.table-container1 {
+    display: flex;
     justify-content: center;
-    /* 水平居中 */
+
     align-items: center;
-    /* 垂直居中 */
+
 }
 </style>

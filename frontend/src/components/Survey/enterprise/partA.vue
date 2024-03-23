@@ -31,7 +31,7 @@
                         v-for="(column, colIndex) in colPAQ3" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
                             <!-- 在每个单元格内放置一个可选中的组件 -->
-                            <el-checkbox class="table-container" v-model="row.selection[colIndex]"
+                            <el-checkbox class="table-container1" v-model="row.selection[colIndex]"
                                 @change="handlePAQ3(row, colIndex)"></el-checkbox>
                         </template>
                     </el-table-column>
@@ -49,7 +49,7 @@
                         v-for="(column, colIndex) in colPAQ4" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
                             <!-- 在每个单元格内放置一个可选中的组件 -->
-                            <el-checkbox class="table-container" v-model="row.selection[colIndex]"
+                            <el-checkbox class="table-container1" v-model="row.selection[colIndex]"
                                 @change="handlePAQ4(row, colIndex)"></el-checkbox>
                         </template>
                     </el-table-column>
@@ -68,7 +68,7 @@
                         v-for="(column, colIndex) in colPAQ5" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
                             <!-- 在每个单元格内放置一个可选中的组件 -->
-                            <el-checkbox class="table-container" v-model="row.selection[colIndex]"
+                            <el-checkbox class="table-container1" v-model="row.selection[colIndex]"
                                 @change="handlePAQ5(row, colIndex)"></el-checkbox>
                         </template>
                     </el-table-column>
@@ -86,7 +86,7 @@
                         v-for="(column, colIndex) in colPAQ6" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
                             <!-- 在每个单元格内放置一个可选中的组件 -->
-                            <el-checkbox class="table-container" v-model="row.selection[colIndex]"
+                            <el-checkbox class="table-container1" v-model="row.selection[colIndex]"
                                 @change="handlePAQ6(row, colIndex)"></el-checkbox>
                         </template>
                     </el-table-column>
@@ -94,12 +94,16 @@
             </el-form-item>
 
             <el-form-item class="question" style="font-weight: bolder;" label="A07. 您（的岗位）过去五年的年收入如何？(单位：人民币)">
-                <el-input class="answer" size="small" v-model="form.pAq0701" style="width: 240px"
-                    placeholder="2018 年税前年收入" />
+                <el-text class="answer"
+                    style="font-family: Kaiti;font-weight: 100;text-indent: 2em;">2018年税前年收入，大约<el-input size="small"
+                        v-model="form.pAq0701" style="width: 5vw;margin-left: 0.5vw;"
+                        placeholder="" />万人民币</el-text>
             </el-form-item>
             <el-form-item class="question" style="font-weight: bolder;" label="">
-                <el-input class="answer" size="small" v-model="form.pAq0702" style="width: 240px"
-                    placeholder="2023 年税前年收入" />
+                    <el-text class="answer"
+                    style="font-family: Kaiti;font-weight: 100;text-indent: 2em;">2023年税前年收入，大约<el-input size="small"
+                        v-model="form.pAq0702" style="width: 5vw;margin-left: 0.5vw;"
+                        placeholder="" />万人民币</el-text>
             </el-form-item>
             <el-form-item class="question" style="font-weight: bolder;" label="A08. 如果在同一家公司，您觉得未来三年的收入变化如何？">
                 <el-radio-group v-model="form.pAq8">
@@ -131,6 +135,7 @@
             </el-form-item>
 
             <el-form-item class="question" style="font-weight: bolder;" label="A11.您认为哪一类考核/奖励有利于激励您实施专利商业化？">
+                <el-form-item class="question blue-label" style="font-weight: bolder;" label="（请打分，1🌟为不重要，5🌟为非常重要）" />
                 <el-table :data="tablePAQ11" style="width: 100%">
                     <el-table-column class="answer" width="250%">
                         <template #default="{ row }">
@@ -141,7 +146,9 @@
                         v-for="(column, colIndex) in colPAQ11" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
                             <!-- 在每个单元格内放置一个可选中的组件 -->
-                            <el-rate class="table-container" v-model="row.rate" @change="handlePAQ11(row, colIndex)" />
+                            <el-rate text-color="#ff9900" size="large" v-model="row.rate"
+                                :texts="['not', 'so-so', 'relative', 'very', 'super']" show-text class="table-container"
+                                @change="handlePAQ11(row, colIndex)" />
                         </template>
                     </el-table-column>
                 </el-table>
@@ -301,7 +308,6 @@ const handlePAQ11 = (row, colIndex) => {
 }
 .answer{
     font-family: KaiTi;
-    font-weight: bold;
     margin-left: 2em;
 }
 
@@ -335,9 +341,17 @@ const handlePAQ11 = (row, colIndex) => {
 }
 .table-container {
     display: flex;
-    justify-content: center;
-    /* 水平居中 */
+    margin-left: 2vw;
+    /* justify-content: center;
+    
     align-items: center;
-    /* 垂直居中 */
+     */
+}
+.table-container1 {
+    display: flex;
+    justify-content: center;
+    
+    align-items: center;
+    
 }
 </style>

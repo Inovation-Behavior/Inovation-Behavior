@@ -1,6 +1,6 @@
 <template>
     <el-container
-        style="font-family:SimHei;font-size: large;font-weight: bolder;display: flex;justify-content: center;align-items: center; margin-top: 2vh; width: 100%; overflow: auto;margin-bottom: 2vh;">
+        style="font-family:SimHei;font-size: 2rem;font-weight: bolder;display: flex;justify-content: center;align-items: center; margin-top: 2vh; width: 100%; overflow: auto;margin-bottom: 2vh;">
         开放专利与创新调查：上海2024
     </el-container>
     <el-container style="margin-top: 10px;margin-right: 5px; width: 100%;">

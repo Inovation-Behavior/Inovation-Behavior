@@ -1,5 +1,8 @@
 <template>
     <el-card style="border-radius: 15px;width: 100%;">
+        <p style="font-family: STKaiti;color: blue;font-weight: bold;">
+            （D部分，我们将根据抽取的样本专利（参见附件文档），请您提供专利的价值判断）
+        </p>
         <el-form :model="form" size="large" label-position="top">
             <el-form-item class="question" style="font-weight: bolder;" label="D01.贵司为什么申请该专利？">
                 <el-checkbox-group v-model="form.pDq01" style="display: flex;flex-wrap: wrap;">
@@ -242,7 +245,6 @@ const handlePDQ05Change = (value) => {
 
 .answer {
     font-family: KaiTi;
-    font-weight: bold;
     margin-left: 2em;
 }
 .el-table {
@@ -269,4 +271,5 @@ const handlePDQ05Change = (value) => {
     border-collapse: separate;
     border: none !important;
 }
+
 </style>

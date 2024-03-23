@@ -1,5 +1,8 @@
 <template>
     <el-card style="border-radius: 15px;width: 100%;">
+        <p style="font-family: STKaiti;color: blue;font-weight: bold;">
+            （C部分，我们将根据抽取的样本专利（参见附件文档），请您提供专利的价值判断）
+        </p>
         <el-form :model="form" size="large" label-position="top">
             <el-form-item class="question" style="font-weight: bolder;" label="C01.该专利属于哪一类创新？">
                 <el-radio-group v-model="form.pCq01" @change="handlePCQ01Change">
@@ -35,7 +38,7 @@
                         v-for="(column, colIndex) in colPCQ0103" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
                             <!-- 在每个单元格内放置一个可选中的组件 -->
-                            <el-checkbox class="table-container" v-model="row.selection[colIndex]"
+                            <el-checkbox class="table-container1" v-model="row.selection[colIndex]"
                                 @change="handlePCQ0103(row, colIndex)"></el-checkbox>
                         </template>
                     </el-table-column>
@@ -116,18 +119,19 @@
             </el-form-item>
 
             <el-form-item class="question" style="font-weight: bolder;" label="C08. 如何评价其他知识产权保护对该专利技术产品的重要性？">
+                <el-form-item class="question blue-label" style="font-weight: bolder;" label="（请打分，1🌟为不重要，5🌟为非常重要）" />
                 <el-table :data="tablePCQ8" style="width: 100%">
                     <el-table-column class="answer" width="250%">
                         <template #default="{ row }">
                             {{ row.name }}
                         </template>
                     </el-table-column>
-                    <el-table-column width="150%" class="answer" header-align="center"
+                    <el-table-column width="250%" class="answer" header-align="center"
                         v-for="(column, colIndex) in colPCQ8" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
-                            <!-- 在每个单元格内放置一个可选中的组件 -->
-                            <el-checkbox class="table-container" v-model="row.selection[colIndex]"
-                                @change="handlePCQ8(row, colIndex)"></el-checkbox>
+                            <el-rate text-color="#ff9900" size="large" v-model="row.rate"
+                                :texts="['not', 'so-so', 'relative', 'very', 'super']" show-text class="table-container"
+                                @change="handlePCQ8(row, colIndex)" />
                         </template>
                     </el-table-column>
                 </el-table>
@@ -143,18 +147,20 @@
             </el-form-item>
 
             <el-form-item class="question" style="font-weight: bolder;" label="C10.如果减少或者不再开发，以下原因的影响有多大？">
+                <el-form-item class="question blue-label" style="font-weight: bolder;" label="（请打分，1🌟为不影响，5🌟为非常影响）" />
                 <el-table :data="tablePCQ10" style="width: 100%">
                     <el-table-column class="answer" width="250%">
                         <template #default="{ row }">
                             {{ row.name }}
                         </template>
                     </el-table-column>
-                    <el-table-column width="150%" class="answer" header-align="center"
+                    <el-table-column width="250%" class="answer" header-align="center"
                         v-for="(column, colIndex) in colPCQ10" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
                             <!-- 在每个单元格内放置一个可选中的组件 -->
-                            <el-checkbox class="table-container" v-model="row.selection[colIndex]"
-                                @change="handlePCQ10(row, colIndex)"></el-checkbox>
+                            <el-rate text-color="#ff9900" size="large" v-model="row.rate"
+                                :texts="['not', 'so-so', 'relative', 'very', 'super']" show-text class="table-container"
+                                @change="handlePCQ10(row, colIndex)" />
                         </template>
                     </el-table-column>
                 </el-table>
@@ -213,7 +219,7 @@ const form = reactive({
 const showPCQ01 = ref(false);
 const handlePCQ01Change = (value) => {
     // 根据选择的 A05 选项来决定是否显示 A06
-    showPCQ01.value = value === "产品创新";
+    showPCQ01.value = value === "产品创新" || value === "都相关";
 };
 
 // 以下实现所有表格
@@ -238,20 +244,18 @@ const handlePCQ0103 = (row, colIndex) => {
 };
 
 const tablePCQ8 = ref([
-    { name: "商业秘密", selection: [false, false, false] },
-    { name: "Know-How", selection: [false, false, false] },
-    { name: "著作权", selection: [false, false, false] },
-    { name: "商标", selection: [false, false, false] },
-    { name: "地理标志", selection: [false, false, false] },
-    { name: "数据保护（反不正当竞争）", selection: [false, false, false] },
-    { name: "集成电路布图设计权", selection: [false, false, false] },
-    { name: "其他，请注明", selection: [false, false, false] },
+    { name: "商业秘密", rate: 0 },
+    { name: "Know-How", rate: 0 },
+    { name: "著作权", rate: 0 },
+    { name: "商标", rate: 0 },
+    { name: "地理标志", rate: 0 },
+    { name: "数据保护（反不正当竞争）", rate: 0 },
+    { name: "集成电路布图设计权", rate: 0 },
+    { name: "其他，请注明", rate: 0 },
 ]);
 
 const colPCQ8 = [
-    { label: "不重要" },
-    { label: "比较重要" },
-    { label: "非常重要" },
+    { label: "不重要-->非常重要" },
 ];
 
 // 处理单元格选中状态变化
@@ -261,18 +265,16 @@ const handlePCQ8 = (row, colIndex) => {
 };
 
 const tablePCQ10 = ref([
-    { name: "生产/材料成本增加", selection: [false, false, false] },
-    { name: "缺乏有技能的员工", selection: [false, false, false] },
-    { name: "现金流出现问题", selection: [false, false, false] },
-    { name: "未来产品市场需求的不确定性", selection: [false, false, false] },
-    { name: "偏离研究所/公司的核心战略", selection: [false, false, false] },
-    { name: "科技、税收、产业政策有变化，不能继续获得相应资助", selection: [false, false, false] },
+    { name: "生产/材料成本增加", rate: 0 },
+    { name: "缺乏有技能的员工", rate: 0 },
+    { name: "现金流出现问题", rate: 0 },
+    { name: "未来产品市场需求的不确定性", rate: 0 },
+    { name: "偏离研究所/公司的核心战略", rate: 0 },
+    { name: "科技、税收、产业政策有变化，不能继续获得相应资助", rate: 0 },
 ]);
 
 const colPCQ10 = [
-    { label: "不太影响" },
-    { label: "比较影响" },
-    { label: "影响" },
+    { label: "不影响-->非常影响" },
 ];
 
 // 处理单元格选中状态变化
@@ -299,7 +301,6 @@ const handlePCQ10 = (row, colIndex) => {
 
 .answer {
     font-family: KaiTi;
-    font-weight: bold;
     margin-left: 2em;
 }
 .el-table {
@@ -332,9 +333,15 @@ const handlePCQ10 = (row, colIndex) => {
 }
 .table-container {
     display: flex;
+    margin-left: 2vw;
+    /* justify-content: center;
+    align-items: center; */
+}
+.table-container1 {
+    display: flex;
     justify-content: center;
-    /* 水平居中 */
+
     align-items: center;
-    /* 垂直居中 */
+
 }
 </style>
