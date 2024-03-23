@@ -9,8 +9,8 @@
                             {{ row.name }}
                         </template>
                     </el-table-column>
-                    <el-table-column width="250%" class="answer" v-for="(column, colIndex) in colPEQ01" :key="colIndex"
-                        :label="column.label">
+                    <el-table-column width="250%" class="answer" header-align="center"
+                        v-for="(column, colIndex) in colPEQ01" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
                             <!-- 在每个单元格内放置一个可选中的组件 -->
                             <el-rate class="table-container" v-model="row.rate[colIndex]"
@@ -27,11 +27,11 @@
                             {{ row.name }}
                         </template>
                     </el-table-column>
-                    <el-table-column width="150%" class="answer" v-for="(column, colIndex) in colPEQ2" :key="colIndex"
-                        :label="column.label">
+                    <el-table-column width="150%" class="answer" header-align="center"
+                        v-for="(column, colIndex) in colPEQ2" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
                             <!-- 在每个单元格内放置一个可选中的组件 -->
-                            <el-checkbox v-model="row.selection[colIndex]"
+                            <el-checkbox class="table-container" v-model="row.selection[colIndex]"
                                 @change="handlePEQ2(row, colIndex)"></el-checkbox>
                         </template>
                     </el-table-column>
@@ -44,11 +44,11 @@
                             {{ row.name }}
                         </template>
                     </el-table-column>
-                    <el-table-column width="150%" class="answer" v-for="(column, colIndex) in colPEQ2" :key="colIndex"
-                        :label="column.label">
+                    <el-table-column width="150%" class="answer" header-align="center"
+                        v-for="(column, colIndex) in colPEQ2" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
                             <!-- 在每个单元格内放置一个可选中的组件 -->
-                            <el-checkbox v-model="row.selection[colIndex]"
+                            <el-checkbox class="table-container" v-model="row.selection[colIndex]"
                                 @change="handlePEQ2(row, colIndex)"></el-checkbox>
                         </template>
                     </el-table-column>
@@ -61,11 +61,11 @@
                             {{ row.name }}
                         </template>
                     </el-table-column>
-                    <el-table-column width="150%" class="answer" v-for="(column, colIndex) in colPEQ3" :key="colIndex"
-                        :label="column.label">
+                    <el-table-column width="150%" class="answer" header-align="center"
+                        v-for="(column, colIndex) in colPEQ3" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
                             <!-- 在每个单元格内放置一个可选中的组件 -->
-                            <el-checkbox v-model="row.selection[colIndex]"
+                            <el-checkbox class="table-container" v-model="row.selection[colIndex]"
                                 @change="handlePEQ3(row, colIndex)"></el-checkbox>
                         </template>
                     </el-table-column>
@@ -78,11 +78,11 @@
                             {{ row.name }}
                         </template>
                     </el-table-column>
-                    <el-table-column width="150%" class="answer" v-for="(column, colIndex) in colPEQ4" :key="colIndex"
-                        :label="column.label">
+                    <el-table-column width="150%" class="answer" header-align="center"
+                        v-for="(column, colIndex) in colPEQ4" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
                             <!-- 在每个单元格内放置一个可选中的组件 -->
-                            <el-checkbox v-model="row.selection[colIndex]"
+                            <el-checkbox class="table-container" v-model="row.selection[colIndex]"
                                 @change="handlePEQ4(row, colIndex)"></el-checkbox>
                         </template>
                     </el-table-column>
@@ -95,11 +95,11 @@
                             {{ row.name }}
                         </template>
                     </el-table-column>
-                    <el-table-column width="150%" class="answer" v-for="(column, colIndex) in colPEQ5" :key="colIndex"
-                        :label="column.label">
+                    <el-table-column width="150%" class="answer" header-align="center"
+                        v-for="(column, colIndex) in colPEQ5" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
                             <!-- 在每个单元格内放置一个可选中的组件 -->
-                            <el-checkbox v-model="row.selection[colIndex]"
+                            <el-checkbox class="table-container" v-model="row.selection[colIndex]"
                                 @change="handlePEQ5(row, colIndex)"></el-checkbox>
                         </template>
                     </el-table-column>

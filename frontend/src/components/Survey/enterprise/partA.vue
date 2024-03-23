@@ -8,7 +8,8 @@
                     <el-checkbox class="answer" label="参与该相关技术的研发，未列发明人" />
                     <el-checkbox class="answer" label="参与该专利申请" />
                     <el-checkbox class="answer" label="参与该专利管理" />
-                    <el-checkbox class="answer" label="以上均无，请说明" />
+                    <el-checkbox class="answer" label="以上均无，请说明"><el-input placeholder="以上均无，请说明"
+                            size="small"></el-input></el-checkbox>
                 </el-checkbox-group>
             </el-form-item>
 
@@ -26,11 +27,11 @@
                             {{ row.name }}
                         </template>
                     </el-table-column>
-                    <el-table-column width="200%" class="answer" v-for="(column, colIndex) in colPAQ3" :key="colIndex"
-                        :label="column.label">
+                    <el-table-column width="200%" class="answer" header-align="center"
+                        v-for="(column, colIndex) in colPAQ3" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
                             <!-- 在每个单元格内放置一个可选中的组件 -->
-                            <el-checkbox v-model="row.selection[colIndex]"
+                            <el-checkbox class="table-container" v-model="row.selection[colIndex]"
                                 @change="handlePAQ3(row, colIndex)"></el-checkbox>
                         </template>
                     </el-table-column>
@@ -44,11 +45,11 @@
                             {{ row.name }}
                         </template>
                     </el-table-column>
-                    <el-table-column width="150%" class="answer" v-for="(column, colIndex) in colPAQ4" :key="colIndex"
-                        :label="column.label">
+                    <el-table-column width="150%" class="answer" header-align="center"
+                        v-for="(column, colIndex) in colPAQ4" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
                             <!-- 在每个单元格内放置一个可选中的组件 -->
-                            <el-checkbox v-model="row.selection[colIndex]"
+                            <el-checkbox class="table-container" v-model="row.selection[colIndex]"
                                 @change="handlePAQ4(row, colIndex)"></el-checkbox>
                         </template>
                     </el-table-column>
@@ -63,11 +64,11 @@
                             {{ row.name }}
                         </template>
                     </el-table-column>
-                    <el-table-column width="250%" class="answer" v-for="(column, colIndex) in colPAQ5" :key="colIndex"
-                        :label="column.label">
+                    <el-table-column width="250%" class="answer" header-align="center"
+                        v-for="(column, colIndex) in colPAQ5" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
                             <!-- 在每个单元格内放置一个可选中的组件 -->
-                            <el-checkbox v-model="row.selection[colIndex]"
+                            <el-checkbox class="table-container" v-model="row.selection[colIndex]"
                                 @change="handlePAQ5(row, colIndex)"></el-checkbox>
                         </template>
                     </el-table-column>
@@ -81,11 +82,11 @@
                             {{ row.name }}
                         </template>
                     </el-table-column>
-                    <el-table-column width="150%" class="answer" v-for="(column, colIndex) in colPAQ6" :key="colIndex"
-                        :label="column.label">
+                    <el-table-column width="150%" class="answer" header-align="center"
+                        v-for="(column, colIndex) in colPAQ6" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
                             <!-- 在每个单元格内放置一个可选中的组件 -->
-                            <el-checkbox v-model="row.selection[colIndex]"
+                            <el-checkbox class="table-container" v-model="row.selection[colIndex]"
                                 @change="handlePAQ6(row, colIndex)"></el-checkbox>
                         </template>
                     </el-table-column>
@@ -93,10 +94,12 @@
             </el-form-item>
 
             <el-form-item class="question" style="font-weight: bolder;" label="A07. 您（的岗位）过去五年的年收入如何？(单位：人民币)">
-                <el-input class="answer" v-model="form.pAq0701" style="width: 240px" placeholder="2018 年税前年收入" />
+                <el-input class="answer" size="small" v-model="form.pAq0701" style="width: 240px"
+                    placeholder="2018 年税前年收入" />
             </el-form-item>
             <el-form-item class="question" style="font-weight: bolder;" label="">
-                <el-input class="answer" v-model="form.pAq0702" style="width: 240px" placeholder="2023 年税前年收入" />
+                <el-input class="answer" size="small" v-model="form.pAq0702" style="width: 240px"
+                    placeholder="2023 年税前年收入" />
             </el-form-item>
             <el-form-item class="question" style="font-weight: bolder;" label="A08. 如果在同一家公司，您觉得未来三年的收入变化如何？">
                 <el-radio-group v-model="form.pAq8">
@@ -115,7 +118,8 @@
                     <el-checkbox class="answer" label="获得一次性现金奖励" />
                     <el-checkbox class="answer" label="获得许可费收益的提成" />
                     <el-checkbox class="answer" label="获得股权激励" />
-                    <el-checkbox class="answer" label="其他（请注明:__________" />
+                    <el-checkbox class="answer" label="其他（请注明:__________"><el-input placeholder="其他，请注明"
+                            size="small"></el-input></el-checkbox>
                 </el-checkbox-group>
             </el-form-item>
             <el-form-item class="question" style="font-weight: bolder;" label="A10.如果有奖励，贵司如何进行计数？">
@@ -133,11 +137,11 @@
                             {{ row.name }}
                         </template>
                     </el-table-column>
-                    <el-table-column width="250%" class="answer" v-for="(column, colIndex) in colPAQ11" :key="colIndex"
-                        :label="column.label">
+                    <el-table-column width="250%" class="answer" header-align="center"
+                        v-for="(column, colIndex) in colPAQ11" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
                             <!-- 在每个单元格内放置一个可选中的组件 -->
-                            <el-rate v-model="row.rate" :max="4" @change="handlePAQ11(row, colIndex)" />
+                            <el-rate class="table-container" v-model="row.rate" @change="handlePAQ11(row, colIndex)" />
                         </template>
                     </el-table-column>
                 </el-table>
@@ -271,7 +275,7 @@ const tablePAQ11 = ref([
 ]);
 
 const colPAQ11 = [
-    { label: "不重要-较低-比较重要-重要" }
+    { label: "不重要-->重要" }
 ];
 
 // 处理单元格选中状态变化
@@ -328,5 +332,12 @@ const handlePAQ11 = (row, colIndex) => {
 ::v-deep .blue-label .el-form-item__label {
     color: blue;
     text-indent: 2em;
+}
+.table-container {
+    display: flex;
+    justify-content: center;
+    /* 水平居中 */
+    align-items: center;
+    /* 垂直居中 */
 }
 </style>
