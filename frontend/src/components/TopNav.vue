@@ -2,8 +2,8 @@
     <div id="whole-box">
         <div class="nav-container">
             <div class="nav-logo">
-                <!-- <img id="logo-img" src="../public/img/logo.png"> -->
-                <p>Innovation&Behavior</p>
+                <img id="logo-img" src="../public/img/蓝色-前.png">
+                <!-- <p>Innovation&Behavior</p> -->
                 <!-- <p>占个logo位</p> -->
             </div>
             <div class="nav-box">
@@ -161,7 +161,7 @@ const redirectToTeam = () => {
 }
 
 #logo-img {
-    width: 250px;
+    width: 350px;
 }
 
 .nav-container {
