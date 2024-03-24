@@ -271,5 +271,8 @@ const handlePDQ05Change = (value) => {
     border-collapse: separate;
     border: none !important;
 }
+::v-deep .el-form-item__label {
+    font-size: 17px;
 
+}
 </style>

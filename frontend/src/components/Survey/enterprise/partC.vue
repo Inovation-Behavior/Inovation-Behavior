@@ -28,7 +28,8 @@
             </el-form-item>
 
             <el-form-item class="question" v-if="showPCQ01" style="font-weight: bolder;" label="C0103，如何评价该产品市场的竞争程度？">
-                <el-table :data="tablePCQ0103" style="width: 100%">
+                <el-table :data="tablePCQ0103" style="width: 100%" :row-style="{ height: '10px' }"
+                    :cell-style="{ padding: '0px' }">
                     <el-table-column class="answer" width="200%">
                         <template #default="{ row }">
                             {{ row.name }}
@@ -120,7 +121,8 @@
 
             <el-form-item class="question" style="font-weight: bolder;" label="C08. 如何评价其他知识产权保护对该专利技术产品的重要性？">
                 <el-form-item class="question blue-label" style="font-weight: bolder;" label="（请打分，1🌟为不重要，5🌟为非常重要）" />
-                <el-table :data="tablePCQ8" style="width: 100%">
+                <el-table :data="tablePCQ8" style="width: 100%" :row-style="{ height: '10px' }"
+                    :cell-style="{ padding: '0px' }">
                     <el-table-column class="answer" width="250%">
                         <template #default="{ row }">
                             {{ row.name }}
@@ -148,7 +150,8 @@
 
             <el-form-item class="question" style="font-weight: bolder;" label="C10.如果减少或者不再开发，以下原因的影响有多大？">
                 <el-form-item class="question blue-label" style="font-weight: bolder;" label="（请打分，1🌟为不影响，5🌟为非常影响）" />
-                <el-table :data="tablePCQ10" style="width: 100%">
+                <el-table :data="tablePCQ10" style="width: 100%" :row-style="{ height: '10px' }"
+                    :cell-style="{ padding: '0px' }">
                     <el-table-column class="answer" width="250%">
                         <template #default="{ row }">
                             {{ row.name }}
@@ -321,6 +324,10 @@ const handlePCQ10 = (row, colIndex) => {
     border-right: none !important;
     border-bottom: none !important;
     /* border-left: none !important; */
+}
+::v-deep .el-form-item__label {
+    font-size: 17px;
+
 }
 
 ::v-deep .el-table {

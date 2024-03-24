@@ -3,7 +3,8 @@
         <el-form :model="form" size="large" label-position="top">
             <el-form-item class="question" style="font-weight: bolder;"
                 label="E01.如果从 0-5 打分，5 分最高，您如何评价过去五年的知识产权营商环境？">
-                <el-table :data="tablePEQ01" style="width: 100%">
+                <el-table :data="tablePEQ01" style="width: 100%" :row-style="{ height: '10px' }"
+                    :cell-style="{ padding: '0px' }">
                     <el-table-column class="answer" width="400%">
                         <template #default="{ row }">
                             {{ row.name }}
@@ -13,16 +14,16 @@
                         v-for="(column, colIndex) in colPEQ01" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
                             <!-- 在每个单元格内放置一个可选中的组件 -->
-                            <el-rate show-score text-color="#ff9900"
-                                class="table-container" v-model="row.rate[colIndex]"
-                                @change="handlePEQ01(row, colIndex)" />
+                            <el-rate show-score text-color="#ff9900" class="table-container"
+                                v-model="row.rate[colIndex]" @change="handlePEQ01(row, colIndex)" />
                         </template>
                     </el-table-column>
                 </el-table>
             </el-form-item>
 
             <el-form-item class="question" style="font-weight: bolder;" label="E02.您是否了解以下专利许可机制？">
-                <el-table :data="tablePEQ2" style="width: 100%">
+                <el-table :data="tablePEQ2" style="width: 100%" :row-style="{ height: '10px' }"
+                    :cell-style="{ padding: '0px' }">
                     <el-table-column class="answer" width="200%">
                         <template #default="{ row }">
                             {{ row.name }}
@@ -40,7 +41,8 @@
             </el-form-item>
             <el-form-item class="question" style="font-weight: bolder;" label="E03.贵司是否参加过以下专利运营相关服务？">
                 <el-form-item class="question blue-label" style="font-weight: bolder;" label="（请打分，1🌟为没有，5🌟为许多次）" />
-                <el-table :data="tablePEQ3" style="width: 100%">
+                <el-table :data="tablePEQ3" style="width: 100%" :row-style="{ height: '10px' }"
+                    :cell-style="{ padding: '0px' }">
                     <el-table-column class="answer" width="350%">
                         <template #default="{ row }">
                             {{ row.name }}
@@ -58,7 +60,8 @@
             </el-form-item>
             <el-form-item class="question" style="font-weight: bolder;" label="E04.贵司是否获得过以下专利运营相关的政策资助？">
                 <el-form-item class="question blue-label" style="font-weight: bolder;" label="（请打分，1🌟为没有，5🌟为许多次）" />
-                <el-table :data="tablePEQ4" style="width: 100%">
+                <el-table :data="tablePEQ4" style="width: 100%" :row-style="{ height: '10px' }"
+                    :cell-style="{ padding: '0px' }">
                     <el-table-column class="answer" width="250%">
                         <template #default="{ row }">
                             {{ row.name }}
@@ -77,7 +80,8 @@
             <el-form-item class="question" style="font-weight: bolder;" label="E05.您认为政府应当提升以下哪几类公共服务的投入？">
                 <el-form-item class="question blue-label" style="font-weight: bolder;"
                     label="（请打分，1🌟为不用提高，5🌟为大幅提高）" />
-                <el-table :data="tablePEQ5" style="width: 100%">
+                <el-table :data="tablePEQ5" style="width: 100%" :row-style="{ height: '10px' }"
+                    :cell-style="{ padding: '0px' }">
                     <el-table-column class="answer" width="400%">
                         <template #default="{ row }">
                             {{ row.name }}
@@ -296,5 +300,9 @@ const handlePEQ05 = (row, colIndex) => {
 
 .ps{
     color: rgb(0,112,192);
+}
+::v-deep .el-form-item__label {
+    font-size: 17px;
+
 }
 </style>

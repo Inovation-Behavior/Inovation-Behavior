@@ -21,13 +21,14 @@
             </el-form-item>
 
             <el-form-item class="question" style="font-weight: bolder;" label="A03.您的学历背景是？">
-                <el-table :data="tablePAQ3" style="width: 100%">
+                <el-table :data="tablePAQ3" style="width: 100%" :row-style="{ height: '10px' }"
+                    :cell-style="{ padding: '0px' }">
                     <el-table-column class="answer" width="350%">
                         <template #default="{ row }">
                             {{ row.name }}
                         </template>
                     </el-table-column>
-                    <el-table-column width="200%" class="answer" header-align="center"
+                    <el-table-column width="170%" class="answer" header-align="center"
                         v-for="(column, colIndex) in colPAQ3" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
                             <!-- 在每个单元格内放置一个可选中的组件 -->
@@ -39,13 +40,14 @@
             </el-form-item>
 
             <el-form-item class="question" style="font-weight: bolder;" label="A04.您的以下语言能力如何？">
-                <el-table :data="tablePAQ4" style="width: 100%">
+                <el-table :data="tablePAQ4" style="width: 100%" :row-style="{ height: '10px' }"
+                    :cell-style="{ padding: '0px' }">
                     <el-table-column class="answer" width="200%">
                         <template #default="{ row }">
                             {{ row.name }}
                         </template>
                     </el-table-column>
-                    <el-table-column width="150%" class="answer" header-align="center"
+                    <el-table-column width="140%" class="answer" header-align="center"
                         v-for="(column, colIndex) in colPAQ4" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
                             <!-- 在每个单元格内放置一个可选中的组件 -->
@@ -58,7 +60,8 @@
 
             <el-form-item class="question" style="font-weight: bolder;" label="A05.您是否有境外工作/学习经历？">
                 <el-form-item class="question blue-label" style="font-weight: bolder;" label="（含疫情期间的在线学习时间）" />
-                <el-table :data="tablePAQ5" style="width: 100%">
+                <el-table :data="tablePAQ5" style="width: 100%" :row-style="{ height: '10px' }"
+                    :cell-style="{ padding: '0px' }">
                     <el-table-column class="answer" width="250%">
                         <template #default="{ row }">
                             {{ row.name }}
@@ -76,8 +79,9 @@
             </el-form-item>
 
             <el-form-item class="question" style="font-weight: bolder;" label="A06.能否提供下您的工作履历？">
-                <el-table :data="tablePAQ6" style="width: 100%">
-                    <el-table-column class="answer" width="200%">
+                <el-table :data="tablePAQ6" style="width: 100%" :row-style="{ height: '10px' } "
+                    :cell-style="{ padding: '0px' }">
+                    <el-table-column class=" answer" width="200%">
                         <template #default="{ row }">
                             {{ row.name }}
                         </template>
@@ -96,14 +100,12 @@
             <el-form-item class="question" style="font-weight: bolder;" label="A07. 您（的岗位）过去五年的年收入如何？(单位：人民币)">
                 <el-text class="answer"
                     style="font-family: Kaiti;font-weight: 100;text-indent: 2em;">2018年税前年收入，大约<el-input size="small"
-                        v-model="form.pAq0701" style="width: 5vw;margin-left: 0.5vw;"
-                        placeholder="" />万人民币</el-text>
+                        v-model="form.pAq0701" style="width: 5vw;margin-left: 0.5vw;" placeholder="" />万人民币</el-text>
             </el-form-item>
             <el-form-item class="question" style="font-weight: bolder;" label="">
-                    <el-text class="answer"
+                <el-text class="answer"
                     style="font-family: Kaiti;font-weight: 100;text-indent: 2em;">2023年税前年收入，大约<el-input size="small"
-                        v-model="form.pAq0702" style="width: 5vw;margin-left: 0.5vw;"
-                        placeholder="" />万人民币</el-text>
+                        v-model="form.pAq0702" style="width: 5vw;margin-left: 0.5vw;" placeholder="" />万人民币</el-text>
             </el-form-item>
             <el-form-item class="question" style="font-weight: bolder;" label="A08. 如果在同一家公司，您觉得未来三年的收入变化如何？">
                 <el-radio-group v-model="form.pAq8">
@@ -136,7 +138,8 @@
 
             <el-form-item class="question" style="font-weight: bolder;" label="A11.您认为哪一类考核/奖励有利于激励您实施专利商业化？">
                 <el-form-item class="question blue-label" style="font-weight: bolder;" label="（请打分，1🌟为不重要，5🌟为非常重要）" />
-                <el-table :data="tablePAQ11" style="width: 100%">
+                <el-table :data="tablePAQ11" style="width: 100%;" :row-style="{ height: '10px' }"
+                    :cell-style="{ padding: '0px' }">
                     <el-table-column class="answer" width="250%">
                         <template #default="{ row }">
                             {{ row.name }}
@@ -302,8 +305,12 @@ const handlePAQ11 = (row, colIndex) => {
     white-space: normal;
     /* 换行 */
 }
+::v-deep .el-form-item__label {
+    font-size: 17px;
+}
 .question{
     font-weight: bolder;
+    /* font-size: 30px; */
     font-family: SimSun;
 }
 .answer{

@@ -36,7 +36,8 @@
             </el-form-item>
 
             <el-form-item class="question" style="font-weight: bolder;" label="B04. 贵司（含所在集团）是否对内部控制以下业务？">
-                <el-table :data="tablePBQ4" style="width: 100%">
+                <el-table :data="tablePBQ4" style="width: 100%" :row-style="{ height: '10px' }"
+                    :cell-style="{ padding: '0px' }">
                     <el-table-column class="answer" width="200%">
                         <template #default="{ row }">
                             {{ row.name }}
@@ -115,7 +116,8 @@
 
             <el-form-item class="question" style="font-weight: bolder;" label="B10.贵司在专利管理工作中，是否经常使用以下在线数据库/平台？">
                 <el-form-item class="question blue-label" style="font-weight: bolder;" label="（请打分，1🌟为不使用，5🌟为经常使用）" />
-                <el-table :data="tablePBQ10" style="width: 100%">
+                <el-table :data="tablePBQ10" style="width: 100%" :row-style="{ height: '10px' }"
+                    :cell-style="{ padding: '0px' }">
                     <el-table-column class="answer" width="300%">
                         <template #default="{ row }">
                             {{ row.name }}
@@ -307,6 +309,10 @@ const handlePBQ10 = (row, colIndex) => {
 .el-table {
     margin-left: 2.5em;
     margin-top: 1vh;
+}
+::v-deep .el-form-item__label {
+    font-size: 17px;
+
 }
 
 ::v-deep.el-table th {
