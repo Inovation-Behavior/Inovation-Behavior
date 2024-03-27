@@ -28,9 +28,9 @@
             </p>
             <p style="text-indent: 2em;">
                 （专利申请号为：
-                <el-input size="small" style="width: 5vw;"></el-input>
+                <el-input size="small" style="width: 5vw;" v-model="form.patentNo"></el-input>
                 ）。如果与该专利无关，请提供您所在单位的名称：
-                <el-input size="small" style="width: 5vw;"></el-input>
+                <el-input size="small" style="width: 5vw;" v-model="form.companyName"></el-input>
                 ，我们将为您推荐其他专利。
             </p>
         </el-card>
@@ -50,7 +50,11 @@
 </template>
 
 <script setup>
-
+import { ref, reactive } from 'vue';
+const form = reactive({
+    patentNo:"",
+    companyName:""
+});
 </script>
 
 

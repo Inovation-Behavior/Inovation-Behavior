@@ -8,8 +8,8 @@
                     <el-checkbox class="answer" label="参与该相关技术的研发，未列发明人" />
                     <el-checkbox class="answer" label="参与该专利申请" />
                     <el-checkbox class="answer" label="参与该专利管理" />
-                    <el-checkbox class="answer" label="以上均无，请说明"><el-input placeholder="以上均无，请说明"
-                            size="small"></el-input></el-checkbox>
+                    <el-checkbox class="answer" label="以上均无，请说明"><el-input placeholder="以上均无，请说明" size="small"
+                            v-model="extraInput1"></el-input></el-checkbox>
                 </el-checkbox-group>
             </el-form-item>
 
@@ -43,8 +43,15 @@
                 <el-table :data="tablePAQ4" style="width: 100%" :row-style="{ height: '10px' }"
                     :cell-style="{ padding: '0px' }">
                     <el-table-column class="answer" width="200%">
-                        <template #default="{ row }">
-                            {{ row.name }}
+                        <template #default="{ row, $index }">
+                            <template v-if="$index !== tablePAQ4.length - 1">
+                                {{ row.name }}
+                            </template>
+                            <template v-else>
+                                德语，日语等第二外语
+                                <el-input v-model="tablePAQ4[$index].name" style="height: 2vh;"
+                                    placeholder="请注明"></el-input>
+                            </template>
                         </template>
                     </el-table-column>
                     <el-table-column width="140%" class="answer" header-align="center"
@@ -82,8 +89,14 @@
                 <el-table :data="tablePAQ6" style="width: 100%" :row-style="{ height: '10px' } "
                     :cell-style="{ padding: '0px' }">
                     <el-table-column class=" answer" width="200%">
-                        <template #default="{ row }">
-                            {{ row.name }}
+                        <template #default="{ row, $index }">
+                            <template v-if="$index !== tablePAQ6.length - 1">
+                                {{ row.name }}
+                            </template>
+                            <template v-else>
+                                <el-input v-model="tablePAQ6[$index].name" style="height: 3vh;"
+                                    placeholder="其他，请说明"></el-input>
+                            </template>
                         </template>
                     </el-table-column>
                     <el-table-column width="150%" class="answer" header-align="center"
@@ -124,8 +137,8 @@
                     <el-checkbox class="answer" label="获得一次性现金奖励" />
                     <el-checkbox class="answer" label="获得许可费收益的提成" />
                     <el-checkbox class="answer" label="获得股权激励" />
-                    <el-checkbox class="answer" label="其他（请注明:__________"><el-input placeholder="其他，请注明"
-                            size="small"></el-input></el-checkbox>
+                    <el-checkbox class="answer" label="其他（请注明:__________"><el-input placeholder="其他，请注明" size="small"
+                            v-model="extraInput2"></el-input></el-checkbox>
                 </el-checkbox-group>
             </el-form-item>
             <el-form-item class="question" style="font-weight: bolder;" label="A10.如果有奖励，贵司如何进行计数？">
@@ -141,8 +154,14 @@
                 <el-table :data="tablePAQ11" style="width: 100%;" :row-style="{ height: '10px' }"
                     :cell-style="{ padding: '0px' }">
                     <el-table-column class="answer" width="250%">
-                        <template #default="{ row }">
-                            {{ row.name }}
+                        <template #default="{ row, $index }">
+                            <template v-if="$index !== tablePAQ11.length - 1">
+                                {{ row.name }}
+                            </template>
+                            <template v-else>
+                                <el-input v-model="tablePAQ11[$index].name" style="height: 3vh;"
+                                    placeholder="其他，请说明"></el-input>
+                            </template>
                         </template>
                     </el-table-column>
                     <el-table-column width="250%" class="answer" header-align="center"
@@ -179,6 +198,9 @@ const form = reactive({
     pAq11: [],
 });
 
+const extraInput1 = ref("")
+const extraInput2 = ref("")
+
 // 以下处理所有表格
 const tablePAQ3 = ref([
     { name: "法学", selection: [false, false, false] },
@@ -209,7 +231,7 @@ const tablePAQ4 = ref([
     { name: "上海话",  selection: [false, false, false, false, false] },
     { name: "粤语",  selection: [false, false, false, false, false] },
     { name: "英文",  selection: [false, false, false, false, false] },
-    { name: "德语、日语等第二外语", selection: [false, false, false, false, false] },
+    { name: "", selection: [false, false, false, false, false] },
 ]);
 
 const colPAQ4 = [
@@ -256,7 +278,7 @@ const tablePAQ6 = ref([
     { name: "其他企业，研发岗", selection: [false, false, false, false] },
     { name: "专利审查员", selection: [false, false, false, false] },
     { name: "医护人员", selection: [false, false, false, false] },
-    { name: "其他，请说明：", selection: [false, false, false, false] },
+    { name: "", selection: [false, false, false, false] },
 ]);
 
 const colPAQ6 = [
@@ -281,7 +303,7 @@ const tablePAQ11 = ref([
     { name: "股权激励", rate: 0 },
     { name: "增加人手、扩大部门规模", rate: 0 },
     { name: "提高部门的受重视程度", rate: 0 },
-    { name: "其他，请说明：", rate: 0 },
+    { name: "", rate: 0 },
 ]);
 
 const colPAQ11 = [

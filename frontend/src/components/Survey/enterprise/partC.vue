@@ -50,8 +50,8 @@
                 label="C0104.如果形容贵公司的专利产品的市场份额？">
                 <el-radio-group v-model="form.pCq0104">
                     <el-radio class="answer" label="占同类产品市场销售额 5%以下" />
-                    <el-radio class="answer" label="占同类产品市场销售额 20%-50%" />
                     <el-radio class="answer" label="占同类产品市场销售额 5%-20%" />
+                    <el-radio class="answer" label="占同类产品市场销售额 20%-50%" />
                     <el-radio class="answer" label="占同类产品市场销售额 50%以上" />
                     <el-radio class="answer" label="不清楚" />
                 </el-radio-group>
@@ -60,8 +60,8 @@
             <el-form-item class="question" style="font-weight: bolder;" label="C02.作为流程创新，该专利技术能降低多少生产成本？">
                 <el-radio-group v-model="form.pCq02">
                     <el-radio class="answer" label="少于 5%" />
-                    <el-radio class="answer" label="20%-50%" />
                     <el-radio class="answer" label="5%-20%" />
+                    <el-radio class="answer" label="20%-50%" />
                     <el-radio class="answer" label="超过 50%" />
                 </el-radio-group>
             </el-form-item>
@@ -97,8 +97,8 @@
                     <el-checkbox class="answer" label="银行商业贷款" />
                     <el-checkbox class="answer" label="风险投资" />
                     <el-checkbox class="answer" label="政府资助" />
-                    <el-checkbox class="answer" label="其他，请注明"><el-input size="small"
-                            placeholder="其他，请注明"></el-input></el-checkbox>
+                    <el-checkbox class="answer" label="其他，请注明"><el-input size="small" placeholder="其他，请注明"
+                            v-model="extraInput1"></el-input></el-checkbox>
                 </el-checkbox-group>
             </el-form-item>
 
@@ -124,8 +124,14 @@
                 <el-table :data="tablePCQ8" style="width: 100%" :row-style="{ height: '10px' }"
                     :cell-style="{ padding: '0px' }">
                     <el-table-column class="answer" width="250%">
-                        <template #default="{ row }">
-                            {{ row.name }}
+                        <template #default="{ row, $index }">
+                            <template v-if="$index !== tablePCQ8.length - 1">
+                                {{ row.name }}
+                            </template>
+                            <template v-else>
+                                <el-input v-model="tablePCQ8[$index].name" style="height: 3vh;"
+                                    placeholder="其他，请说明"></el-input>
+                            </template>
                         </template>
                     </el-table-column>
                     <el-table-column width="250%" class="answer" header-align="center"
@@ -170,7 +176,7 @@
             </el-form-item>
 
             <el-form-item class="question" style="font-weight: bolder;"
-                label="C11.我们将 ' 专利组合 ' 定义为在价值上或技术上相互依赖的一组专利。该专利是否属于专利组合的一部分？">
+                label='C11.我们将 " 专利组合 " 定义为在价值上或技术上相互依赖的一组专利。该专利是否属于专利组合的一部分？'>
                 <el-radio-group v-model="form.pCq11">
                     <el-radio class="answer" label="是的，包括 2-3 项专利" />
                     <el-radio class="answer" label="是的，包括 4-6 项专利" />
@@ -219,6 +225,8 @@ const form = reactive({
     pCq12: "",
 });
 
+const extraInput1 = ref('')
+
 const showPCQ01 = ref(false);
 const handlePCQ01Change = (value) => {
     // 根据选择的 A05 选项来决定是否显示 A06
@@ -254,7 +262,7 @@ const tablePCQ8 = ref([
     { name: "地理标志", rate: 0 },
     { name: "数据保护（反不正当竞争）", rate: 0 },
     { name: "集成电路布图设计权", rate: 0 },
-    { name: "其他，请注明", rate: 0 },
+    { name: "", rate: 0 },
 ]);
 
 const colPCQ8 = [

@@ -12,7 +12,8 @@
                     <el-checkbox class="answer" label="希望有专利许可转让收入" />
                     <el-checkbox class="answer" label="构建技术标准" />
                     <el-checkbox class="answer" label="更好获得融资" />
-                    <el-checkbox class="answer" label="其他，请注明" />
+                    <el-checkbox class="answer" label="其他，请注明"><el-input size="small" placeholder="其他，请注明"
+                            v-model="extraInput4"></el-input></el-checkbox>
                 </el-checkbox-group>
             </el-form-item>
 
@@ -40,7 +41,7 @@
 
             <el-form-item class="question" v-if="showPDQ03" style="font-weight: bolder;"
                 label="D0301 如果已经达成许可交易，该交易发生在哪一年？">
-                <el-input size="small" class="answer" v-model="pDq0301" style="width: 240px" placeholder="年份" />
+                <el-input size="small" class="answer" v-model="form.pDq0301" style="width: 240px" placeholder="年份" />
             </el-form-item>
 
             <el-form-item class="question" v-if="showPDQ03" style="font-weight: bolder;" label="D0302.贵司对外许可该专利的目的是什么？">
@@ -53,8 +54,8 @@
                     <el-checkbox class="answer" label="解决侵权纠纷" />
                     <el-checkbox class="answer" label="获得市场地位" />
                     <el-checkbox class="answer" label="提高企业形象、商业宣传" />
-                    <el-checkbox class="answer" label="其他，请注明"><el-input size="small"
-                            placeholder="其他，请注明"></el-input></el-checkbox>
+                    <el-checkbox class="answer" label="其他，请注明"><el-input size="small" placeholder="其他，请注明"
+                            v-model="extraInput1"></el-input></el-checkbox>
                 </el-checkbox-group>
             </el-form-item>
 
@@ -130,8 +131,8 @@
                     <el-checkbox class="answer" label="授权生产" />
                     <el-checkbox class="answer" label="解决侵权纠纷" />
                     <el-checkbox class="answer" label="提高企业形象，商业宣传" />
-                    <el-checkbox class="answer" label="其他（请注明______）"><el-input size="small"
-                            placeholder="其他，请注明"></el-input></el-checkbox>
+                    <el-checkbox class="answer" label="其他（请注明______）"><el-input size="small" placeholder="其他，请注明"
+                            v-model="extraInput2"></el-input></el-checkbox>
                 </el-checkbox-group>
             </el-form-item>
 
@@ -185,8 +186,8 @@
                     <el-checkbox class="answer" label="交叉许可、专利联盟" />
                     <el-checkbox class="answer" label="专利融资（包括质押、信托、作价入股等）" />
                     <el-checkbox class="answer" label="以专利为基础的技术合作" />
-                    <el-checkbox class="answer" label="其他，请注明"><el-input size="small"
-                            placeholder="其他，请注明"></el-input></el-checkbox>
+                    <el-checkbox class="answer" label="其他，请注明"><el-input size="small" placeholder="其他，请注明"
+                            v-model="extraInput3"></el-input></el-checkbox>
                 </el-checkbox-group>
             </el-form-item>
         </el-form>
@@ -214,6 +215,11 @@ const form = reactive({
     pDq0505: [],
     pDq06: [],
 });
+
+const extraInput1 = ref('')
+const extraInput2 = ref('')
+const extraInput3 = ref('')
+const extraInput4 = ref('')
 
 const showPDQ03 = ref(false);
 const handlePDQ03Change = (value) => {
