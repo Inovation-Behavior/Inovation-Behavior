@@ -7,7 +7,11 @@ public interface SurveyService {
 
     void postIdentification(String patentNo, String identification);
 
-    void postEvaluate(String patentNo, String evaluate);
+    void postEnterprise(String patentNo, String enterprise);
 
     void postValue(String patentNo, String value);
+
+    void postUsage(String patentNo, String usage);
+
+    void postPolicy(String patentNo, String policy);
 }

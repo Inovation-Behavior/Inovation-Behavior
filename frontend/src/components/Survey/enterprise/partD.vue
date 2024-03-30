@@ -191,11 +191,16 @@
                 </el-checkbox-group>
             </el-form-item>
         </el-form>
+        <el-button type="primary" @click="submit()" style="margin-top: 1vh;margin-left: 2vw;">submit part D</el-button>
     </el-card>
 </template>
 
 <script setup>
 import { ref, reactive } from 'vue';
+import { surveyStore } from '../../../stores/survey';
+import axios from 'axios';
+import { ElMessage } from 'element-plus';
+const surveyInfo = surveyStore().surveyInfo
 const form = reactive({
     pDq01: [],
     pDq02: [],
@@ -232,6 +237,31 @@ const handlePDQ05Change = (value) => {
     // 根据选择的 A05 选项来决定是否显示 A06
     showPDQ05.value = value === "是的，我们希望能对外许可";
 };
+
+const submit = async () => {
+    // 将表单数据转换为对象数组
+    const formDataArray = Object.entries(form).map(([key, value]) => ({ [key]: value }));
+
+    // 将对象数组字符串化
+    const formDataString = JSON.stringify(formDataArray);
+
+    const patentNo = surveyInfo.patentNo
+
+    console.log(patentNo)
+    console.log(formDataString);
+
+    // 假设需要发送的数据为 patentNo 和 identification
+    const data = {
+        patentNo: patentNo,
+        usage: formDataString
+    };
+    let response = await axios.post('/api/survey/usage', data);
+    if (response.status == 200) {
+        if (response.data.code == 1) {
+            ElMessage.success("submit successfully")
+        }
+    }
+}
 </script>
 
 <style scoped>

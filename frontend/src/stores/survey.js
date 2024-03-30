@@ -1,5 +1,30 @@
 import { defineStore } from 'pinia';
 
+export const surveyStore = defineStore('survey', {
+  state: () => ({
+    surveyInfo:{
+      patentNo:'',
+      companyName:''
+    },
+    formA:{
+      pAq01: [],
+      pAq02: "",
+      pAq02: "",
+      pAq03: [],
+      pAq04: [],
+      pAq05: [],
+      pAq06: [],
+      pAq0701: "",
+      pAq0702: "",
+      pAq08: "",
+      pAq09: [],
+      pAq10: "",
+      pAq11: [],
+    },
+
+  }),
+})
+
 export const identificationStore = defineStore('form', {
   state: () => ({
     identification_form : {

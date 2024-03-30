@@ -121,7 +121,7 @@
                         v-model="form.pAq0702" style="width: 5vw;margin-left: 0.5vw;" placeholder="" />万人民币</el-text>
             </el-form-item>
             <el-form-item class="question" style="font-weight: bolder;" label="A08. 如果在同一家公司，您觉得未来三年的收入变化如何？">
-                <el-radio-group v-model="form.pAq8">
+                <el-radio-group v-model="form.pAq08">
                     <el-radio class="answer" label="总体保持不变" />
                     <el-radio class="answer" label="每年减少 5%左右（幅度仍可接受）" />
                     <el-radio class="answer" label="每年增长 5%左右（符合个人预期）" />
@@ -177,11 +177,18 @@
             </el-form-item>
 
         </el-form>
+        <el-button type="primary" @click="submit()" style="margin-top: 1vh;margin-left: 2vw;">submit part A</el-button>
     </el-card>
 </template>
 
 <script setup>
 import { ref, reactive } from 'vue';
+import { surveyStore } from '../../../stores/survey';
+import axios from 'axios';
+import { ElMessage } from 'element-plus';
+
+const surveyInfo = surveyStore().surveyInfo
+
 const form = reactive({
     pAq01: [],
     pAq02: "",
@@ -315,6 +322,31 @@ const handlePAQ11 = (row, colIndex) => {
     // 取消当前行其他单元格的选中状态
     form.pAq11 = tablePAQ11
 };
+
+const submit = async () => {
+    // 将表单数据转换为对象数组
+    const formDataArray = Object.entries(form).map(([key, value]) => ({ [key]: value }));
+
+    // 将对象数组字符串化
+    const formDataString = JSON.stringify(formDataArray);
+
+    const patentNo = surveyInfo.patentNo
+
+    console.log(patentNo)
+    console.log(formDataString);
+
+    // 假设需要发送的数据为 patentNo 和 identification
+    const data = {
+        patentNo: patentNo,
+        identification: formDataString
+    };
+    let response = await axios.post('/api/survey/identification', data);
+    if (response.status == 200) {
+        if (response.data.code == 1) {
+            ElMessage.success("submit successfully")
+        }
+    }
+}
 </script>
 
 <style scoped>
