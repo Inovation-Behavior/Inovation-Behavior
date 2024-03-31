@@ -9,7 +9,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +28,10 @@ public class PatentServiceImpl implements PatentService {
 
     @Autowired
     private RedisTemplate<String, String> redisTemplate;
+
+    @Autowired
+    private RestTemplate restTemplate;
+
 
     @Override
     public Patent getPatentByNo(String no){
@@ -49,7 +55,9 @@ public class PatentServiceImpl implements PatentService {
                 List<String> pdfsWithPrefix = new ArrayList<>();
                 for(String pdf : pdfs) {
                     String formattedPdf = PdfUrl + pdf.replace("\r", "") + ".pdf"; // 删除"/r"，并添加".pdf"后缀
-                    pdfsWithPrefix.add(formattedPdf);
+                    if (canDownloadPDF(formattedPdf)) {
+                        pdfsWithPrefix.add(formattedPdf);
+                    }
                 }
                 patent.setPdfs(pdfsWithPrefix);
                 // 数据库中查询到了记录，序列化后存储到Redis中
@@ -63,6 +71,22 @@ public class PatentServiceImpl implements PatentService {
         }
 
         return patent;
+    }
+
+    private boolean canDownloadPDF(String url) {
+        try {
+            HttpHeaders headers = new HttpHeaders();
+            headers.set("Accept", "application/pdf");
+            HttpEntity<String> entity = new HttpEntity<>(headers);
+            ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.HEAD, entity, String.class);
+
+            return response.getStatusCode() == HttpStatus.OK
+                    && response.getHeaders().getContentType() != null
+                    && response.getHeaders().getContentType().includes(MediaType.APPLICATION_PDF);
+        } catch (Exception e) {
+            log.error("Error checking PDF URL: " + url, e);
+            return false;
+        }
     }
 
     @Override
