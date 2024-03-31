@@ -324,6 +324,8 @@ const handlePAQ11 = (row, colIndex) => {
 };
 
 const submit = async () => {
+    form.pAq01.push(extraInput1);
+    form.pAq09.push(extraInput2)
     // 将表单数据转换为对象数组
     const formDataArray = Object.entries(form).map(([key, value]) => ({ [key]: value }));
 
