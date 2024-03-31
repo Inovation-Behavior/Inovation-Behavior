@@ -14,13 +14,24 @@ public interface SurveyMapper {
             "ON DUPLICATE KEY UPDATE identification = VALUES(identification);")
     void postIdentification(String patentNo, String identification);
 
-    @Insert("INSERT INTO survey (patent_no, evaluate) \n" +
-            "VALUES (#{patentNo}, #{evaluate}) \n" +
-            "ON DUPLICATE KEY UPDATE evaluate = VALUES(evaluate);")
-    void postEvaluate(String patentNo, String evaluate);
+    @Insert("INSERT INTO survey (patent_no, enterprise) \n" +
+            "VALUES (#{patentNo}, #{enterprise}) \n" +
+            "ON DUPLICATE KEY UPDATE enterprise = VALUES(enterprise);")
+    void postEnterprise(String patentNo, String enterprise);
 
     @Insert("INSERT INTO survey (patent_no, value) \n" +
             "VALUES (#{patentNo}, #{value}) \n" +
             "ON DUPLICATE KEY UPDATE value = VALUES(value);")
     void postValue(String patentNo, String value);
+
+    @Insert("INSERT INTO survey (patent_no, `use`) \n" +
+            "VALUES (#{patentNo}, #{use}) \n" +
+            "ON DUPLICATE KEY UPDATE `use` = VALUES(`use`);")
+    void postUsage(String patentNo, String use);
+
+
+    @Insert("INSERT INTO survey (patent_no, policy) \n" +
+            "VALUES (#{patentNo}, #{policy}) \n" +
+            "ON DUPLICATE KEY UPDATE policy = VALUES(policy);")
+    void postPolicy(String patentNo, String policy);
 }

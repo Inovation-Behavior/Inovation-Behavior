@@ -98,6 +98,7 @@
                 </el-table>
             </el-form-item>
         </el-form>
+        <el-button type="primary" @click="submit()" style="margin-top: 1vh;margin-left: 2vw;">submit part D</el-button>
         <p class="ps">
             **抛硬币游戏**
         </p>
@@ -127,6 +128,10 @@
 
 <script setup>
 import { ref, reactive } from 'vue';
+import { surveyStore } from '../../../stores/survey';
+import axios from 'axios';
+import { ElMessage } from 'element-plus';
+const surveyInfo = surveyStore().surveyInfo
 const form = reactive({
     pEq01: [],
     pEq02: [],
@@ -240,6 +245,31 @@ const handlePEQ05 = (row, colIndex) => {
     // 取消当前行其他单元格的选中状态
     form.pEq05 = tablePEQ5
 };
+
+const submit = async () => {
+    // 将表单数据转换为对象数组
+    const formDataArray = Object.entries(form).map(([key, value]) => ({ [key]: value }));
+
+    // 将对象数组字符串化
+    const formDataString = JSON.stringify(formDataArray);
+
+    const patentNo = surveyInfo.patentNo
+
+    console.log(patentNo)
+    console.log(formDataString);
+
+    // 假设需要发送的数据为 patentNo 和 identification
+    const data = {
+        patentNo: patentNo,
+        policy: formDataString
+    };
+    let response = await axios.post('/api/survey/policy', data);
+    if (response.status == 200) {
+        if (response.data.code == 1) {
+            ElMessage.success("submit successfully")
+        }
+    }
+}
 </script>
 
 <style scoped>

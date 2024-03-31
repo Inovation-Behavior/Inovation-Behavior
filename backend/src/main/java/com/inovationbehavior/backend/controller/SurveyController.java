@@ -32,11 +32,11 @@ public class SurveyController {
         return Result.success();
     }
 
-    @PostMapping("/evaluate")
-    public Result postEvaluate(@RequestBody Map<String, String> requestData){
+    @PostMapping("/enterprise")
+    public Result postEnterprise(@RequestBody Map<String, String> requestData){
         String patentNo = requestData.get("patentNo");
-        String evaluate = requestData.get("evaluate");
-        surveyService.postEvaluate(patentNo,evaluate);
+        String enterprise = requestData.get("enterprise");
+        surveyService.postEnterprise(patentNo,enterprise);
         return Result.success();
     }
 
@@ -45,6 +45,22 @@ public class SurveyController {
         String patentNo = requestData.get("patentNo");
         String value = requestData.get("value");
         surveyService.postValue(patentNo,value);
+        return Result.success();
+    }
+
+    @PostMapping("/usage")
+    public Result postUsage(@RequestBody Map<String, String> requestData){
+        String patentNo = requestData.get("patentNo");
+        String usage = requestData.get("usage");
+        surveyService.postUsage(patentNo,usage);
+        return Result.success();
+    }
+
+    @PostMapping("/policy")
+    public Result postPolicy(@RequestBody Map<String, String> requestData){
+        String patentNo = requestData.get("patentNo");
+        String policy = requestData.get("policy");
+        surveyService.postPolicy(patentNo,policy);
         return Result.success();
     }
 }

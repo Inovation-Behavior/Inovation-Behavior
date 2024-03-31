@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 public class Survey {
     private String patentNo;
     private String identification;
-    private String evaluate;
+    private String enterprise;
     private String value;
+    private String usage;
+    private String policy;
 }

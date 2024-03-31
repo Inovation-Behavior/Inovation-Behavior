@@ -28,9 +28,9 @@
             </p>
             <p style="text-indent: 2em;">
                 （专利申请号为：
-                <el-input size="small" style="width: 5vw;" v-model="form.patentNo"></el-input>
+                <el-input size="small" style="width: 5vw;" v-model="form.patentNo" @input="updatePatentNo"></el-input>
                 ）。如果与该专利无关，请提供您所在单位的名称：
-                <el-input size="small" style="width: 5vw;" v-model="form.companyName"></el-input>
+                <el-input size="small" style="width: 5vw;" v-model="form.companyName" @input="updateCompanyName"></el-input>
                 ，我们将为您推荐其他专利。
             </p>
         </el-card>
@@ -51,6 +51,14 @@
 
 <script setup>
 import { ref, reactive } from 'vue';
+import { surveyStore } from '../../../stores/survey';
+const surveyInfo = surveyStore().surveyInfo
+const updatePatentNo = (value) => {
+    surveyInfo.patentNo = value;
+};
+const updateCompanyName = (value) => {
+    surveyInfo.companyName = value;
+};
 const form = reactive({
     patentNo:"",
     companyName:""
