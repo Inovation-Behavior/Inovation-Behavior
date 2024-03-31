@@ -17,6 +17,12 @@ public interface PatentMapper {
     Patent getPatentByNo(String No);
 
     @Select("""
+        SELECT publn_nr FROM patent_publn
+        WHERE appln_id = #{No}
+    """)
+    List<String> getPatentPdfs(String No);
+
+    @Select("""
     SELECT DISTINCT appln_application application FROM patent 
     WHERE appln_application LIKE CONCAT('%',#{key},'%')
     """)
