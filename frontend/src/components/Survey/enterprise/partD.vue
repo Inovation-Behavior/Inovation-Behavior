@@ -239,10 +239,10 @@ const handlePDQ05Change = (value) => {
 };
 
 const submit = async () => {
-    form.pDq0302.push(extraInput1)
-    form.pDq0501.push(extraInput2)
-    form.pDq06.push(extraInput3)
-    form.pDq01.push(extraInput4)
+    form.pDq0302.push(extraInput1.value)
+    form.pDq0501.push(extraInput2.value)
+    form.pDq06.push(extraInput3.value)
+    form.pDq01.push(extraInput4.value)
     // 将表单数据转换为对象数组
     const formDataArray = Object.entries(form).map(([key, value]) => ({ [key]: value }));
 
