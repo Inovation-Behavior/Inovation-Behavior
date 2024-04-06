@@ -4,7 +4,6 @@
             <!-- <vue-office-docx :src="url" style="max-width: 100%;overflow:auto;margin-top: 5vh;margin-left: 15%;"
                 @rendered="renderedHandler" @error="errorHandler" /> -->
             <pdf :src="url" style="max-width: 1400px;overflow:auto;margin-top: 5vh;margin-left: 15%;width: 70%;"></pdf>
-            <a style="width: 100%; max-width: 1200px;margin-left: 15%;" :href="url">{{ title }}</a>
         </div>
     </div>
     <!-- <pdf :src="url" style="max-width: 1400px;overflow:auto;margin-top: 5vh;margin-left: 15%;width: 70%;"></pdf>

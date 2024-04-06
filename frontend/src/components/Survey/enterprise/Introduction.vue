@@ -7,20 +7,21 @@
         </p>
 
         <p style="text-indent: 2em;">我们共向上海地区超过 7000 名持有近 2 万个高价值专利的管理者（包括发明人、企业 IP 管理者、专利代理人）等发放调查问卷。问卷会耗时 15-20
-            分钟。您可以填写纸质版问卷，也可登录<a href="www.opi-shanghai.com"> www.opi-shanghai.com</a> 填写在线问卷。我们后续也将在网站上公布调查研究成果。
+            分钟。您可以填写纸质版问卷，也可登录<a href="http://49.235.179.94:8192/#/survey"> www.opi-shanghai.com</a>
+            填写在线问卷。我们后续也将在网站上公布调查研究成果。
         </p>
 
         <p style="text-indent: 2em;">您的意见对知识产权研究非常重要！我们不会以任何方式直接披露您的问卷填写信息。衷心感谢您的支持与协助！
-            </p>
-            <el-container style="width: 100%;display: flex; justify-content: center; align-items: center;">
-                <img src="../../../public/img/survey_logo.png" style="height: 20vh;margin-right: 10vw;" />
-            </el-container>
-            <p style="text-align: right;margin-right: 5vw;">
-                同济大学上海国际知识产权学院
-            </p>
-            <p style="text-align: right;margin-right: 5vw;">
-                2024 年 3 月 15 日
-            </p>
+        </p>
+        <el-container style="width: 100%;display: flex; justify-content: center; align-items: center;">
+            <img src="../../../public/img/survey_logo.png" style="height: 20vh;margin-right: 10vw;" />
+        </el-container>
+        <p style="text-align: right;margin-right: 5vw;">
+            同济大学上海国际知识产权学院
+        </p>
+        <p style="text-align: right;margin-right: 5vw;">
+            2024 年 3 月 15 日
+        </p>
         <!-- <p style="text-align: right;margin-right: 5vw;">
                
         </p> -->
