@@ -12,19 +12,25 @@ import java.util.List;
 @Mapper
 public interface IbNewsMapper {
 
-    @Select("SELECT id, url_zn, cover, time FROM news WHERE id = #{id}")
+    @Select("SELECT id,title_zn,title_en, url_zn,url_en, cover, time FROM ib_news WHERE id = #{id}")
     @Results({
             @Result(property = "id", column = "id"),
+            @Result(property = "titleZn", column = "title_zn"),
+            @Result(property = "titleEn", column = "title_en"),
             @Result(property = "urlZn", column = "url_zn"),
+            @Result(property = "urlEn", column = "url_en"),
             @Result(property = "cover", column = "cover"),
             @Result(property = "time", column = "time")
     })
-    News getNewsById(Integer id);
+    IbNews getNewsById(Integer id);
 
-    @Select("SELECT id, url_zn, cover , time FROM news")
+    @Select("SELECT id,title_zn,title_en, url_zn,url_en, cover , time FROM ib_news")
     @Results({
             @Result(property = "id", column = "id"),
+            @Result(property = "titleZn", column = "title_zn"),
+            @Result(property = "titleEn", column = "title_en"),
             @Result(property = "urlZn", column = "url_zn"),
+            @Result(property = "urlEn", column = "url_en"),
             @Result(property = "cover", column = "cover"),
             @Result(property = "time", column = "time")
     })

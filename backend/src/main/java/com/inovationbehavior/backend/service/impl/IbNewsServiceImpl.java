@@ -14,7 +14,7 @@ public class IbNewsServiceImpl implements IbNewsService {
     @Autowired
     private IbNewsMapper ibNewsMapper;
     @Override
-    public News getNewsById(Integer id) {
+    public IbNews getNewsById(Integer id) {
         return ibNewsMapper.getNewsById(id);
     }
 

@@ -11,7 +11,10 @@ import java.sql.Date;
 @NoArgsConstructor
 public class IbNews {
     private Integer id;
+    private String titleZn;
+    private String titleEn;
     private String cover;
     private String urlZn;
+    private String urlEn;
     private Date time;
 }

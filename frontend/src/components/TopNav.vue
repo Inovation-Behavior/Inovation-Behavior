@@ -10,7 +10,7 @@
 
                 <div class="nav-menu-horizontal">
                     <el-menu mode="horizontal" default-active="0" :ellipsis="false">
-                        <el-menu-item index="1" @click="redirectToHome" :class="{ 'blue-text': menutextcolor === 1 }">{{
+                        <el-menu-item index="0" @click="redirectToHome" :class="{ 'blue-text': menutextcolor === 0 }">{{
                             $t('topnav.Home') }}</el-menu-item>
                         <el-menu-item index="5" @click="redirectToSurvey" :class="{ 'blue-text': menutextcolor === 5 }">{{
                             $t('topnav.Patent_Value_Survey') }}</el-menu-item>
