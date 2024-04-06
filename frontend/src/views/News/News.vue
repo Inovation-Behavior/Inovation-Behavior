@@ -1,29 +1,31 @@
 <template>
-    <div class="set-vertical">
-        <el-container>
-            <el-carousel style="width: 95vw;margin-top: 5vh;" indicator-position="outside">
-                <el-carousel-item class="set-vertical" style="cursor: pointer;" v-for="item in news" :key="item">
-                    <el-container style="height: 20vh;background-color: #99a9bf;" @click="getNewsDetail(item.id)">
+    <div class="whole-box">
+        <div class="set-vertical" style="max-width: 1400px;">
+            <el-container>
+                <el-carousel style="width: 95vw;margin-top: 5vh;" indicator-position="outside">
+                    <el-carousel-item class="set-vertical" style="cursor: pointer;" v-for="item in news" :key="item">
+                        <el-container style="height: 20vh;background-color: #99a9bf;" @click="getNewsDetail(item.id)">
+                            <img :src="item.cover" style="width: 100%; height: 100%; object-fit: cover;">
+                        </el-container>
+                        <el-card style="margin-top: 0;margin-bottom: 1vh;" @click="getNewsDetail(item.id)">
+                            <h5 style="font-family: arial;">{{ item.title }}</h5>
+                        </el-card>
+                    </el-carousel-item>
+                </el-carousel>
+            </el-container>
+            <el-container style="max-width: 1400px; width: 84vw;margin-top: 5vh;" class="set-vertical">
+                <div v-for="item in news" :key="item.id" class="news-item set-horizonal"
+                    style="max-width: 1400px;border-radius: 20px;cursor: pointer;width: 84vw;" @click="getNewsDetail(item.id)">
+                    <el-container style="width: 30%;background-color:#99a9bf; ;">
                         <img :src="item.cover" style="width: 100%; height: 100%; object-fit: cover;">
                     </el-container>
-                    <el-card style="margin-top: 0;margin-bottom: 1vh;" @click="getNewsDetail(item.id)">
-                        <h5 style="font-family: arial;">{{item.title}}</h5>
+                    <el-card style="width: 70%;">
+                        <h5 style="font-family: arial;">{{ item.title }}</h5>
+                        <p>{{ item.time }}</p>
                     </el-card>
-                </el-carousel-item>
-            </el-carousel>
-        </el-container>
-        <el-container style="width: 84vw;margin-top: 5vh;" class="set-vertical">
-            <div v-for="item in news" :key="item.id" class="news-item set-horizonal"
-                style="border-radius: 20px;cursor: pointer;width: 84vw;" @click="getNewsDetail(item.id)">
-                <el-container style="width: 30%;background-color:#99a9bf; ;">
-                    <img :src="item.cover" style="width: 100%; height: 100%; object-fit: cover;">
-                </el-container>
-                <el-card style="width: 70%;">
-                    <h5 style="font-family: arial;">{{ item.title }}</h5>
-                    <p>{{ item.time }}</p>
-                </el-card>
-            </div>
-        </el-container>
+                </div>
+            </el-container>
+        </div>
     </div>
 </template>
 
@@ -82,28 +84,39 @@ watch(() => store.changeLanguage, () => {
 </script>
 
 <style lang="scss" scoped>
-.set-vertical{
+.whole-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    padding: 20px;
+}
+.set-vertical {
     display: flex;
     flex-direction: column;
 }
-.set-horizonal{
+
+.set-horizonal {
     display: flex;
     flex-direction: row;
 }
+
 .el-carousel__item h3 {
-  display: flex;
-  opacity: 0.75;
-  margin: 0;
+    display: flex;
+    opacity: 0.75;
+    margin: 0;
 }
 
 .news-item {
-  width: 95vw;
-  box-sizing: border-box;
-  border: 1px solid #ddd;
-  margin-top: 2vh;
-  height: 25vh;
+    width: 95vw;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    margin-top: 2vh;
+    height: 25vh;
 }
+
 .news-item:hover {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 悬浮时的阴影效果 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* 悬浮时的阴影效果 */
 }
 </style>

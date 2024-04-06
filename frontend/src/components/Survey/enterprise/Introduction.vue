@@ -11,15 +11,16 @@
         </p>
 
         <p style="text-indent: 2em;">您的意见对知识产权研究非常重要！我们不会以任何方式直接披露您的问卷填写信息。衷心感谢您的支持与协助！
-        </p>
-        <el-container style="width: 100%;display: flex; justify-content: flex-end; align-items: center;">
-            <img src="../../../public/img/survey_logo.png" style="height: 20vh;margin-right: 10vw;" />
+            </p>
+            <el-container style="width: 100%;display: flex; justify-content: center; align-items: center;">
+                <img src="../../../public/img/survey_logo.png" style="height: 20vh;margin-right: 10vw;" />
+            </el-container>
             <p style="text-align: right;margin-right: 5vw;">
                 同济大学上海国际知识产权学院
-                <br>
+            </p>
+            <p style="text-align: right;margin-right: 5vw;">
                 2024 年 3 月 15 日
             </p>
-        </el-container>
         <!-- <p style="text-align: right;margin-right: 5vw;">
                
         </p> -->
