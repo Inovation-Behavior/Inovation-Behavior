@@ -1,7 +1,9 @@
 <template>
     <el-card>
-        <h3 style="font-family: arial;">{{ title }}</h3>
-        <el-container style="font-family: arial;"><div v-html="contains"></div></el-container>
+        <!-- <h3 style="font-family: arial;">{{ url }}</h3>
+        <el-container style="font-family: arial;"><div v-html="contains"></div></el-container> -->
+        <vue-office-docx :src="news.url" style="height: 85vh; max-width: 1200px;overflow:auto" @rendered="renderedHandler"
+            @error="errorHandler" />
         <h4>{{ news.time }}</h4>
     </el-card>
 </template>
@@ -16,14 +18,13 @@ export default {
     setup() {
         const store = useGeneralStore();
         let news = ref({});
-        let title = ref("");
-        let contains = ref("");
+        let url = ref("");
         const route = useRoute()
         let { ctx } = getCurrentInstance()
 
         const getDetail = async () => {
             try {
-                const response = await axios.get('api/news/singleNews/' + route.params.id);
+                const response = await axios.get('api/ibnews/singleNews/' + route.params.id);
                 if (response.status === 200) {
                     news.value = response.data.data;
                     updateLanguageValues();
@@ -35,14 +36,11 @@ export default {
 
         const updateLanguageValues = () => {
             if (ctx.$i18n.locale == 'zn') {
-                title.value = news.value.titleZn;
-                contains.value = news.value.containsZn;
+                url.value = news.value.urlZn;
             } else if (ctx.$i18n.locale == 'en') {
-                title.value = news.value.titleEn;
-                contains.value = news.value.containsEn;
+                url.value = news.value.urlEn;
             } else if (ctx.$i18n.locale == 'de') {
-                title.value = news.value.titleDn;
-                contains.value = news.value.containsDn;
+                url.value = news.value.urlDn;
             }
         };
 
@@ -57,7 +55,7 @@ export default {
 
         return {
             news,
-            title,
+            url,
             contains,
         };
     },

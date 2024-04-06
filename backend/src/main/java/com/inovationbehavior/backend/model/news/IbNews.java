@@ -1,0 +1,17 @@
+package com.inovationbehavior.backend.model.news;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.sql.Date;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class IbNews {
+    private Integer id;
+    private String cover;
+    private String urlZn;
+    private Date time;
+}
