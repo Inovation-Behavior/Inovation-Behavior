@@ -41,7 +41,7 @@ let { ctx } = getCurrentInstance()
 
 const getNews = async () => {
     try {
-        response = await axios.get('api/news');
+        response = await axios.get('api/ibnews');
         if (response.status === 200) {
             news.value = response.data.data;
             updateLanguageValues();
@@ -61,11 +61,11 @@ const getNewsDetail = (id) => {
 const updateLanguageValues = () => {
     news.value.forEach(item => {
         if (ctx.$i18n.locale == 'zn') {
-            item.title = item.titleZn;
+            item.url = item.urlZn;
         } else if (ctx.$i18n.locale == 'en') {
-            item.title = item.titleEn;
+            item.url = item.urlEn;
         } else if (ctx.$i18n.locale == 'de') {
-            item.title = item.titleDn;
+            item.url = item.urlDn;
         }
     });
 };
