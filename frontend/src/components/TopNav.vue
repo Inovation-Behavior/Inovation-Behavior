@@ -9,8 +9,8 @@
             <div class="nav-box">
 
                 <div class="nav-menu-horizontal">
-                    <el-menu mode="horizontal" default-active="5" :ellipsis="false">
-                        <el-menu-item index="0" @click="redirectToHome" :class="{ 'blue-text': menutextcolor === 0 }">{{
+                    <el-menu mode="horizontal" default-active="0" :ellipsis="false">
+                        <el-menu-item index="1" @click="redirectToHome" :class="{ 'blue-text': menutextcolor === 1 }">{{
                             $t('topnav.Home') }}</el-menu-item>
                         <el-menu-item index="5" @click="redirectToSurvey" :class="{ 'blue-text': menutextcolor === 5 }">{{
                             $t('topnav.Patent_Value_Survey') }}</el-menu-item>
@@ -59,9 +59,15 @@
                         </span>
                         <template #dropdown>
                             <el-dropdown-menu slot="dropdown">
-                                <el-dropdown-item index="1" @click="redirectToPlatform"
+                                <el-dropdown-item index="1" @click="redirectToSurvey"
                                     :class="{ 'blue-text': menutextcolor === 1 }">{{
-                                        $t('topnav.OpenLicensingPlatform') }}</el-dropdown-item>
+                                        $t('topnav.Home') }}</el-dropdown-item>
+                                <el-dropdown-item index="5" @click="redirectToSurvey"
+                                    :class="{ 'blue-text': menutextcolor === 5 }">{{
+                                        $t('topnav.Patent_Value_Survey') }}</el-dropdown-item>
+                                <!-- <el-dropdown-item index="1" @click="redirectToPlatform"
+                                    :class="{ 'blue-text': menutextcolor === 1 }">{{
+                                        $t('topnav.OpenLicensingPlatform') }}</el-dropdown-item> -->
                                 <el-dropdown-item index="2" @click="redirectToNews"
                                     :class="{ 'blue-text': menutextcolor === 2 }">{{
                                         $t('topnav.News') }}</el-dropdown-item>
@@ -71,9 +77,7 @@
                                 <el-dropdown-item index="4" @click="redirectToIntelligence"
                                     :class="{ 'blue-text': menutextcolor === 4 }">{{
                                         $t('topnav.IP_Intelligence') }}</el-dropdown-item>
-                                <el-dropdown-item index="5" @click="redirectToSurvey"
-                                    :class="{ 'blue-text': menutextcolor === 5 }">{{
-                                        $t('topnav.Patent_Value_Survey') }}</el-dropdown-item>
+
                                 <el-dropdown-item index="6" @click="redirectToTeam"
                                     :class="{ 'blue-text': menutextcolor === 6 }">{{
                                         $t('topnav.Team') }}</el-dropdown-item>
