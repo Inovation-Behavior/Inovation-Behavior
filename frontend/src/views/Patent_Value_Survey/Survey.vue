@@ -5,7 +5,7 @@
                 style="font-family:SimHei;font-size: 2rem;font-weight: bolder;display: flex;justify-content: center;align-items: center; margin-top: 2vh; width: 100%; overflow: auto;margin-bottom: 2vh;">
                 开放专利与创新调查：上海2024
             </el-container>
-            <el-dialog center :show-close="false" :close-on-click-modal="false"
+            <el-dialog :modal="false" center  :close-on-click-modal="false"
                 :close-on-press-escape="false"
                 style="font-family: SimSun;width: 40vw;align-items: center;justify-content: center;"
                 title="欢迎参加问卷调研，请输入邀请码" v-model="dialogVisible" :before-close="handleClose">
@@ -25,21 +25,22 @@
                 <el-tabs style="width: 100%;" v-model="activeName" tab-position="top" class="demo-tabs"
                     @tab-click="handleClick" type="card" stretch="true">
                     <el-tab-pane label="专利信息确认" name="专利信息确认">
+                        <el-button type="primary" @click="showInput" style="margin-bottom: 1vh;">输入邀请码后确认填写资格</el-button>
                         <introduction />
                     </el-tab-pane>
-                    <el-tab-pane label="A. 个人基本信息" name="A. 个人基本信息">
+                    <el-tab-pane label="A. 个人基本信息" name="A. 个人基本信息" :disabled="disableInput">
                         <part-a />
                     </el-tab-pane>
-                    <el-tab-pane label="B. 企业研发与知识产权管理" name="B. 企业研发与知识产权管理">
+                    <el-tab-pane label="B. 企业研发与知识产权管理" name="B. 企业研发与知识产权管理" :disabled="disableInput">
                         <part-b />
                     </el-tab-pane>
-                    <el-tab-pane label="C. 专利技术价值" name="C. 专利技术价值">
+                    <el-tab-pane label="C. 专利技术价值" name="C. 专利技术价值" :disabled="disableInput">
                         <part-c />
                     </el-tab-pane>
-                    <el-tab-pane label="D. 专利的许可运用" name="D. 专利的许可运用">
+                    <el-tab-pane label="D. 专利的许可运用" name="D. 专利的许可运用" :disabled="disableInput">
                         <part-d />
                     </el-tab-pane>
-                    <el-tab-pane label="E. 知识产权政策" name="E. 知识产权政策">
+                    <el-tab-pane label="E. 知识产权政策" name="E. 知识产权政策" :disabled="disableInput">
                         <part-e />
                     </el-tab-pane>
                 </el-tabs>
@@ -71,10 +72,11 @@ export default {
             patentNo: "",
             dialogVisible: false, // 控制对话框显示的属性
             invitationCode: '', // 存储输入的邀请码
+            disableInput:true
         }
     },
     mounted() {
-        this.dialogVisible = true;
+        
     },
     methods: {
         handleClose(done) {
@@ -85,10 +87,14 @@ export default {
             // 这里实现邀请码的检查逻辑
             if (this.invitationCode === '043398') {
                 this.dialogVisible = false; // 如果邀请码正确，关闭对话框
+                this.disableInput=false;
             } else {
                 // 如果邀请码错误，给出提示，不关闭对话框
                 this.$message.error('邀请码错误，请重试');
             }
+        },
+        showInput(){
+            this.dialogVisible=true
         }
     }
 }
