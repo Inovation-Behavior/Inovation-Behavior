@@ -11,7 +11,10 @@
         "IP_Intelligence": "知识产权数智",
         "Patent_Value_Survey": "开放专利与创新调查",
         "Home":"首页",
-        "menu":"菜单"
+        "menu":"菜单",
+        "Survey_Method": "调查方法",
+        "Survey_Fill": "问卷填写",
+        "Survey_Results": "调查结果"
     },
     "team": {
         "LiuXia2": "Liu Xia",
@@ -42,9 +45,6 @@
         "PatentOpposition" : "专利异议"
     },
     "survey":{
-        "PAQ1":"A01.您与所选专利的关系是_________",
-        "PAQ1A1":"专利发明人之一",
-        "PAQ1A2":"参与该专利申请",
-        "PAQ1A3":"参与该专利技术的研发，未列发明人"
+
     }
 }
