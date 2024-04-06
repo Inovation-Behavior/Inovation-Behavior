@@ -2,6 +2,12 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 
 const routes = [
   {
+    // Home
+    path: '/',
+    name: 'home',
+    component: () => import('../views/Home/home.vue')
+  },
+  {
     // OpenLicensingPlatform
     path: '/platform',
     name: 'OpenLicensingPlatform',
@@ -63,7 +69,7 @@ const routes = [
   },
   {
     // Patent_Value_Survey
-    path: '/',
+    path: '/survey',
     name: 'survey',
     component: () => import('../views/Patent_Value_Survey/Survey.vue')
   },

@@ -1,14 +1,11 @@
 <template>
     <body>
-        <!-- <div class="title-box"> -->
-            <!-- <h1>Inovation&Behavior</h1>
-            <p>Brief Introduction Brief Introduction Brief Introduction Brief Introduction Brief Introduction Brief
-                Introduction</p> -->
-            <!-- <h2 style="margin-top: 20px;">Our Team</h2>
-        <p>Team Introduction Team Introduction Team Introduction Team Introduction Team Introduction</p> -->
-        <!-- </div> -->
-        <div class="worker-box">
-            <!-- <h2>Research Worker</h2> -->
+        <div class="update-notice">
+            <div class="content">
+                内容即将更新，敬请期待
+            </div>
+        </div>
+        <!-- <div class="worker-box">
             <div class="team-row">
                 <div class="profile-box">
                     <div class="profile-card">
@@ -75,8 +72,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="assistants-box">
+        </div> -->
+        <!-- <div class="assistants-box">
             <h2>Student Assistant</h2>
             <div class="team-row">
                 <div class="assistant-box">
@@ -122,7 +119,7 @@
                         AssistantStudent AssistantStudent Assistant</p>
                 </div>
             </div>
-        </div>
+        </div> -->
     </body>
 </template>
 
@@ -301,7 +298,27 @@ small {
         width: 100%;
         // padding: 15px;
     }
-    .profile-card{
+
+    .profile-card {
         flex-direction: column;
     }
-}</style>
+}
+
+.update-notice {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh; /* 确保占据足够的屏幕高度 */
+}
+
+.content {
+  padding: 20px 40px;
+  background-color: #ffffff; /* 突出显示的背景颜色 */
+//   border-radius: 10px; /* 圆角边框 */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 轻微的阴影效果 */
+  font-size: 1.5rem; /* 较大的字体尺寸 */
+  color: #333; /* 深色字体 */
+  text-align: center; /* 文本居中 */
+  max-width: 80%; /* 限制最大宽度，确保在大屏幕上也能看起来很好 */
+}
+</style>

@@ -5,11 +5,12 @@
         "Chinese": "Chinese",
         "German": "German",
         "OpenLicensingPlatform": "专利许可交易平台",
-        "Team": "团队",
+        "Team": "团队介绍",
         "News": "新闻",
         "IP_Economics": "知识产权经济",
         "IP_Intelligence": "知识产权数智",
-        "Patent_Value_Survey": "专利价值调研",
+        "Patent_Value_Survey": "开放专利与创新调查",
+        "Home":"首页",
         "menu":"菜单"
     },
     "team": {
