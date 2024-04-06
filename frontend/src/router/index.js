@@ -69,10 +69,22 @@ const routes = [
   },
   {
     // Patent_Value_Survey
+    path: '/survey-method',
+    name: 'survey-method',
+    component: () => import('../views/Patent_Value_Survey/Survey-method.vue')
+  },
+  {
+    // Patent_Value_Survey
     path: '/survey',
     name: 'survey',
     component: () => import('../views/Patent_Value_Survey/Survey.vue')
   },
+  {
+    // Patent_Value_Survey
+    path: '/survey-results',
+    name: 'survey-results',
+    component: () => import('../views/Patent_Value_Survey/Survey-results.vue')
+  }
 ]
 
 const router = createRouter({

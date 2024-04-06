@@ -7,25 +7,37 @@
                 <!-- <p>占个logo位</p> -->
             </div>
             <div class="nav-box">
-
                 <div class="nav-menu-horizontal">
                     <el-menu mode="horizontal" default-active="0" :ellipsis="false">
                         <el-menu-item index="0" @click="redirectToHome" :class="{ 'blue-text': menutextcolor === 0 }">{{
-                            $t('topnav.Home') }}</el-menu-item>
-                        <el-menu-item index="5" @click="redirectToSurvey" :class="{ 'blue-text': menutextcolor === 5 }">{{
-                            $t('topnav.Patent_Value_Survey') }}</el-menu-item>
+                        $t('topnav.Home') }}</el-menu-item>
+                        <el-sub-menu index="5" :class="{ 'blue-text': menutextcolor === 5 }">
+                            <template #title>
+                                {{ $t('topnav.Patent_Value_Survey') }}
+                            </template>
+                            <el-menu-item-group>
+                                <el-menu-item index="5-1" @click="redirectToSurveyMethod">{{ $t('topnav.Survey_Method')
+                                    }}</el-menu-item>
+                                <el-menu-item index="5-2" @click="redirectToSurvey">{{ $t('topnav.Survey_Fill')
+                                    }}</el-menu-item>
+                                <el-menu-item index="5-3" @click="redirectToSurveyResults">{{
+                        $t('topnav.Survey_Results')
+                    }}
+                                </el-menu-item>
+                            </el-menu-item-group>
+                        </el-sub-menu>
                         <el-menu-item index="2" @click="redirectToNews" :class="{ 'blue-text': menutextcolor === 2 }">{{
-                            $t('topnav.News') }}</el-menu-item>
+                        $t('topnav.News') }}</el-menu-item>
                         <el-menu-item index="3" @click="redirectToEconomics"
                             :class="{ 'blue-text': menutextcolor === 3 }">{{
-                                $t('topnav.IP_Economics') }}</el-menu-item>
+                        $t('topnav.IP_Economics') }}</el-menu-item>
                         <el-menu-item index="4" @click="redirectToIntelligence"
                             :class="{ 'blue-text': menutextcolor === 4 }">{{
-                                $t('topnav.IP_Intelligence') }}</el-menu-item>
+                        $t('topnav.IP_Intelligence') }}</el-menu-item>
                         <!-- <el-menu-item index="1" @click="redirectToPlatform" :class="{ 'blue-text': menutextcolor === 1 }">{{
                             $t('topnav.OpenLicensingPlatform') }}</el-menu-item> -->
                         <el-menu-item index="6" @click="redirectToTeam" :class="{ 'blue-text': menutextcolor === 6 }">{{
-                            $t('topnav.Team') }}</el-menu-item>
+                        $t('topnav.Team') }}</el-menu-item>
                     </el-menu>
                 </div>
                 <div class="nav-search">
@@ -53,34 +65,46 @@
                     <el-dropdown trgger="hover" style="border: none;box-shadow: none;">
                         <span class="el-dropdown-link">
                             {{ $t('topnav.menu') }}
-                            <!-- <el-icon style="width: 72px;">
-                                <More />
-                            </el-icon> -->
                         </span>
                         <template #dropdown>
                             <el-dropdown-menu slot="dropdown">
-                                <el-dropdown-item index="1" @click="redirectToSurvey"
+                                <el-dropdown-item index="1" @click="redirectToHome"
                                     :class="{ 'blue-text': menutextcolor === 1 }">{{
-                                        $t('topnav.Home') }}</el-dropdown-item>
-                                <el-dropdown-item index="5" @click="redirectToSurvey"
-                                    :class="{ 'blue-text': menutextcolor === 5 }">{{
-                                        $t('topnav.Patent_Value_Survey') }}</el-dropdown-item>
+                        $t('topnav.Home') }}</el-dropdown-item>
+                                <el-dropdown trgger="hover" style="border: none;box-shadow: none;">
+                                    <span class="el-dropdown-link">
+                                        {{ $t('topnav.Patent_Value_Survey') }}
+                                    </span>
+                                    <template #dropdown>
+                                        <el-dropdown-menu slot="dropdown">
+                                            <el-dropdown-item index="5" @click="redirectToSurveyMethod"
+                                                :class="{ 'blue-text': menutextcolor === 5 }">{{
+                        $t('topnav.Survey_Method') }}</el-dropdown-item>
+                                            <el-dropdown-item index="7" @click="redirectToSurvey"
+                                                :class="{ 'blue-text': menutextcolor === 7 }">{{
+                        $t('topnav.Survey_Fill') }}</el-dropdown-item>
+                                            <el-dropdown-item index="8" @click="redirectToSurveyResults"
+                                                :class="{ 'blue-text': menutextcolor === 8 }">{{
+                        $t('topnav.Survey_Results') }}</el-dropdown-item>
+                                        </el-dropdown-menu>
+                                    </template>
+                                </el-dropdown>
                                 <!-- <el-dropdown-item index="1" @click="redirectToPlatform"
                                     :class="{ 'blue-text': menutextcolor === 1 }">{{
                                         $t('topnav.OpenLicensingPlatform') }}</el-dropdown-item> -->
                                 <el-dropdown-item index="2" @click="redirectToNews"
                                     :class="{ 'blue-text': menutextcolor === 2 }">{{
-                                        $t('topnav.News') }}</el-dropdown-item>
+                        $t('topnav.News') }}</el-dropdown-item>
                                 <el-dropdown-item index="3" @click="redirectToEconomics"
                                     :class="{ 'blue-text': menutextcolor === 3 }">{{
-                                        $t('topnav.IP_Economics') }}</el-dropdown-item>
+                        $t('topnav.IP_Economics') }}</el-dropdown-item>
                                 <el-dropdown-item index="4" @click="redirectToIntelligence"
                                     :class="{ 'blue-text': menutextcolor === 4 }">{{
-                                        $t('topnav.IP_Intelligence') }}</el-dropdown-item>
+                        $t('topnav.IP_Intelligence') }}</el-dropdown-item>
 
                                 <el-dropdown-item index="6" @click="redirectToTeam"
                                     :class="{ 'blue-text': menutextcolor === 6 }">{{
-                                        $t('topnav.Team') }}</el-dropdown-item>
+                                    $t('topnav.Team') }}</el-dropdown-item>
                                 <el-dropdown trgger="hover" @command="handleLanguageChange"
                                     style="border: none;box-shadow: none;">
                                     <span class="el-dropdown-link">
@@ -102,8 +126,8 @@
         </div>
     </div>
 </template>
-    
-  
+
+
 <script setup>
 import { ref, computed, getCurrentInstance } from 'vue'
 import { useRouter } from 'vue-router'
@@ -147,6 +171,13 @@ const redirectToSurvey = () => {
 const redirectToTeam = () => {
     router.push('/team');
 }
+const redirectToSurveyMethod = () => {
+    router.push('/survey-method');
+};
+
+const redirectToSurveyResults = () => {
+    router.push('/survey-results');
+};
 
 </script>
 
@@ -171,6 +202,7 @@ const redirectToTeam = () => {
 }
 
 #logo-img {
+    padding-left: 30px;
     width: 300px;
 }
 
@@ -185,9 +217,11 @@ const redirectToTeam = () => {
     width: 100%;
     background-color: #fff;
 }
-.el-menu-item{
+
+.el-menu-item {
     font-size: large;
 }
+
 .nav-box {
     width: 100%;
     display: flex;
@@ -302,9 +336,11 @@ const redirectToTeam = () => {
     #language-dropdonw {
         display: none;
     }
-    .nav-container{
+
+    .nav-container {
         justify-content: space-between;
     }
+
     .nav-box {
         flex-direction: row;
         justify-content: flex-end;
@@ -319,5 +355,5 @@ const redirectToTeam = () => {
         height: 80px;
         margin-top: -20px;
     }
-}</style>
-    
+}
+</style>
