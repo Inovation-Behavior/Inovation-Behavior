@@ -10,18 +10,20 @@
 
                 <div class="nav-menu-horizontal">
                     <el-menu mode="horizontal" default-active="5" :ellipsis="false">
+                        <el-menu-item index="0" @click="redirectToHome" :class="{ 'blue-text': menutextcolor === 0 }">{{
+                            $t('topnav.Home') }}</el-menu-item>
                         <el-menu-item index="5" @click="redirectToSurvey" :class="{ 'blue-text': menutextcolor === 5 }">{{
                             $t('topnav.Patent_Value_Survey') }}</el-menu-item>
+                        <el-menu-item index="2" @click="redirectToNews" :class="{ 'blue-text': menutextcolor === 2 }">{{
+                            $t('topnav.News') }}</el-menu-item>
                         <el-menu-item index="3" @click="redirectToEconomics"
                             :class="{ 'blue-text': menutextcolor === 3 }">{{
                                 $t('topnav.IP_Economics') }}</el-menu-item>
                         <el-menu-item index="4" @click="redirectToIntelligence"
                             :class="{ 'blue-text': menutextcolor === 4 }">{{
                                 $t('topnav.IP_Intelligence') }}</el-menu-item>
-                        <el-menu-item index="1" @click="redirectToPlatform" :class="{ 'blue-text': menutextcolor === 1 }">{{
-                            $t('topnav.OpenLicensingPlatform') }}</el-menu-item>
-                        <el-menu-item index="2" @click="redirectToNews" :class="{ 'blue-text': menutextcolor === 2 }">{{
-                            $t('topnav.News') }}</el-menu-item>
+                        <!-- <el-menu-item index="1" @click="redirectToPlatform" :class="{ 'blue-text': menutextcolor === 1 }">{{
+                            $t('topnav.OpenLicensingPlatform') }}</el-menu-item> -->
                         <el-menu-item index="6" @click="redirectToTeam" :class="{ 'blue-text': menutextcolor === 6 }">{{
                             $t('topnav.Team') }}</el-menu-item>
                     </el-menu>
@@ -119,6 +121,10 @@ const handleSearch = () => {
     console.log('Searching for:', store.searchQuery)
 }
 
+const redirectToHome = () => {
+    router.push('/');
+}
+
 const redirectToPlatform = () => {
     router.push('/platform');
 }
@@ -132,7 +138,7 @@ const redirectToIntelligence = () => {
     router.push('/intelligence');
 }
 const redirectToSurvey = () => {
-    router.push('/');
+    router.push('/survey');
 }
 const redirectToTeam = () => {
     router.push('/team');
@@ -161,7 +167,7 @@ const redirectToTeam = () => {
 }
 
 #logo-img {
-    width: 350px;
+    width: 300px;
 }
 
 .nav-container {
