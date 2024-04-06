@@ -1,9 +1,12 @@
 <template>
-    <div>
-        <!-- <h3 style="font-family: arial;">{{ url }}</h3>
+    <div class="whole-box">
+        <div>
+            <!-- <h3 style="font-family: arial;">{{ url }}</h3>
         <el-container style="font-family: arial;"><div v-html="contains"></div></el-container> -->
-        <vue-office-docx :src="url" style="max-width: 70%;overflow:auto;margin-top: 5vh;margin-left: 15%;" @rendered="renderedHandler" @error="errorHandler" />
-        <a style="width: 100%; max-width: 1200px;" :href="url">{{ title }}</a>
+            <vue-office-docx :src="url" style="max-width: 100%;overflow:auto;margin-top: 5vh;margin-left: 15%;"
+                @rendered="renderedHandler" @error="errorHandler" />
+            <a style="width: 100%; max-width: 1200px;margin-left: 15%;" :href="url">{{ title }}</a>
+        </div>
     </div>
 </template>
 
@@ -60,6 +63,16 @@ watch(() => store.changeLanguage, () => {
 </script>
 
 <style lang="scss" scoped>
+.whole-box {
+    width: 100%;
+    display: flex;
+    max-width: 1400px;
+    // justify-content: center;
+    // box-shadow: 0 4px 8px $shadow-color;
+    background-color: white;
+    padding: 20px;
+    // border-radius: 8px;
+}
 .set-vertical {
     display: flex;
     flex-direction: column;
@@ -88,6 +101,7 @@ watch(() => store.changeLanguage, () => {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     /* 悬浮时的阴影效果 */
 }
+
 :deep(.docx-wrapper) {
     background-color: #fff;
     padding: 0;

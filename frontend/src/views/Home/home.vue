@@ -1,5 +1,5 @@
 <template>
-    <el-card style="border-radius: 15px;width: 100%;font-size: 1rem;font-family: SimSun;">
+    <el-card style="margin-top: 20px; border-radius: 15px;width: 100%;font-size: 1rem;font-family: SimSun;">
         <p>尊敬的专家：</p>
 
         <p style="text-indent: 2em;">
