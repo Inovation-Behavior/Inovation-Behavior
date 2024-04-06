@@ -206,7 +206,7 @@ const handlePEQ03 = (row, colIndex) => {
 const tablePEQ4 = ref([
     { name: "获得高价值专利的奖励", rate: 0 },
     { name: "获得知识产权试点示范项目奖励", rate: 0 },
-    { name: "获得专利转移成果奖励", rate: 0 },
+    { name: "获得专利转化成果奖励", rate: 0 },
     { name: "获得专利续费的减免或补贴", rate: 0 },
     { name: "享受研发费用的加计扣除", rate: 0 },
     { name: "获得专利许可收益相关的税收减免", rate: 0 },

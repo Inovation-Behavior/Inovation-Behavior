@@ -16,11 +16,13 @@
             <img src="../../../public/img/survey_logo.png" style="height: 20vh;margin-right: 10vw;" />
             <p style="text-align: right;margin-right: 5vw;">
                 同济大学上海国际知识产权学院
+                <br>
+                2024 年 3 月 15 日
             </p>
         </el-container>
-        <p style="text-align: right;margin-right: 5vw;">
-            2024 年 3 月 15 日
-        </p>
+        <!-- <p style="text-align: right;margin-right: 5vw;">
+               
+        </p> -->
 
         <el-card style="border: 1px solid black;">
             <p style="margin-top: 2vh;">

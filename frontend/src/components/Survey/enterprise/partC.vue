@@ -3,6 +3,7 @@
         <p style="font-family: STKaiti;color: blue;font-weight: bold;">
             （C部分，我们将根据抽取的样本专利（参见附件文档），请您提供专利的价值判断）
         </p>
+
         <el-form :model="form" size="large" label-position="top">
             <el-form-item class="question" style="font-weight: bolder;" label="C01.该专利属于哪一类创新？">
                 <el-radio-group v-model="form.pCq01" @change="handlePCQ01Change">
@@ -11,6 +12,7 @@
                     <el-radio class="answer" label="都相关" />
                 </el-radio-group>
             </el-form-item>
+
             <el-form-item class="question" v-if="showPCQ01" style="font-weight: bolder;"
                 label="C0101.如果属于产品创新，相关技术产品在哪个市场阶段？">
                 <el-radio-group v-model="form.pCq0101">
@@ -20,14 +22,15 @@
                     <el-radio class="answer" label="已退出市场" />
                 </el-radio-group>
             </el-form-item>
-            <el-form-item class="question" v-if="showPCQ01" style="font-weight: bolder;" label="C0102，贵公司是否生产该产品？">
+
+            <el-form-item class="question" v-if="showPCQ01" style="font-weight: bolder;" label="C0102.贵公司是否生产该产品？">
                 <el-radio-group v-model="form.pCq0102">
                     <el-radio class="answer" label="是" />
                     <el-radio class="answer" label="否" />
                 </el-radio-group>
             </el-form-item>
 
-            <el-form-item class="question" v-if="showPCQ01" style="font-weight: bolder;" label="C0103，如何评价该产品市场的竞争程度？">
+            <el-form-item class="question" v-if="showPCQ01" style="font-weight: bolder;" label="C0103.如何评价该产品市场的竞争程度？">
                 <el-table :data="tablePCQ0103" style="width: 100%" :row-style="{ height: '10px' }"
                     :cell-style="{ padding: '0px' }">
                     <el-table-column class="answer" width="200%">
@@ -38,7 +41,6 @@
                     <el-table-column width="150%" class="answer" header-align="center"
                         v-for="(column, colIndex) in colPCQ0103" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
-                            <!-- 在每个单元格内放置一个可选中的组件 -->
                             <el-checkbox class="table-container1" v-model="row.selection[colIndex]"
                                 @change="handlePCQ0103(row, colIndex)"></el-checkbox>
                         </template>
@@ -46,9 +48,15 @@
                 </el-table>
             </el-form-item>
 
+            <el-form-item class="question" style="font-weight: bolder;" label="C0104.有多少家厂商正在生产该专利产品？">
+                <el-text class="answer" style="font-family: Kaiti;font-weight: 100;text-indent: 2em;">大约<el-input
+                        size="small" v-model="form.pCq0104" style="width: 5vw;margin-left: 0.5vw"
+                        placeholder="" />家。</el-text>
+            </el-form-item>
+            
             <el-form-item class="question" v-if="showPCQ01" style="font-weight: bolder;"
-                label="C0104.如果形容贵公司的专利产品的市场份额？">
-                <el-radio-group v-model="form.pCq0104">
+                label="C0105.如果形容贵公司的专利产品的市场份额？">
+                <el-radio-group v-model="form.pCq0105">
                     <el-radio class="answer" label="占同类产品市场销售额 5%以下" />
                     <el-radio class="answer" label="占同类产品市场销售额 5%-20%" />
                     <el-radio class="answer" label="占同类产品市场销售额 20%-50%" />
@@ -57,7 +65,7 @@
                 </el-radio-group>
             </el-form-item>
 
-            <el-form-item class="question" style="font-weight: bolder;" label="C02.作为流程创新，该专利技术能降低多少生产成本？">
+            <el-form-item class="question" v-if="showPCQ02" style="font-weight: bolder;" label="C02.作为流程创新，该专利技术能降低多少生产成本？">
                 <el-radio-group v-model="form.pCq02">
                     <el-radio class="answer" label="少于 5%" />
                     <el-radio class="answer" label="5%-20%" />
@@ -119,7 +127,7 @@
                 </el-radio-group>
             </el-form-item>
 
-            <el-form-item class="question" style="font-weight: bolder;" label="C08. 如何评价其他知识产权保护对该专利技术产品的重要性？">
+            <el-form-item class="question" style="font-weight: bolder;" label="C08.如何评价其他知识产权保护对该专利技术产品的重要性？">
                 <el-form-item class="question blue-label" style="font-weight: bolder;" label="（请打分，1🌟为不重要，5🌟为非常重要）" />
                 <el-table :data="tablePCQ8" style="width: 100%" :row-style="{ height: '10px' }"
                     :cell-style="{ padding: '0px' }">
@@ -166,7 +174,6 @@
                     <el-table-column width="250%" class="answer" header-align="center"
                         v-for="(column, colIndex) in colPCQ10" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
-                            <!-- 在每个单元格内放置一个可选中的组件 -->
                             <el-rate text-color="#ff9900" size="large" v-model="row.rate"
                                 :texts="['not', 'so-so', 'relative', 'very', 'super']" show-text class="table-container"
                                 @change="handlePCQ10(row, colIndex)" />
@@ -176,7 +183,7 @@
             </el-form-item>
 
             <el-form-item class="question" style="font-weight: bolder;"
-                label='C11.我们将 " 专利组合 " 定义为在价值上或技术上相互依赖的一组专利。该专利是否属于专利组合的一部分？'>
+                label='C11.该专利是否属于专利组合的一部分？'>
                 <el-radio-group v-model="form.pCq11">
                     <el-radio class="answer" label="是的，包括 2-3 项专利" />
                     <el-radio class="answer" label="是的，包括 4-6 项专利" />
@@ -217,6 +224,7 @@ const form = reactive({
     pCq0102: "",
     pCq0103: [],
     pCq0104: "",
+    pCq0105: "",
     pCq02: "",
     pCq03: "",
     pCq04: [],
@@ -233,14 +241,15 @@ const form = reactive({
 const extraInput1 = ref('')
 
 const showPCQ01 = ref(false);
+const showPCQ02 = ref(false);
 const handlePCQ01Change = (value) => {
-    // 根据选择的 A05 选项来决定是否显示 A06
     showPCQ01.value = value === "产品创新" || value === "都相关";
+    showPCQ02.value = value === "流程创新" || value === "都相关";
 };
 
 // 以下实现所有表格
 const tablePCQ0103 = ref([
-    { name: "已经有 2-3 家垄断企业", selection: [false, false] },
+    { name: "已经有2-3家龙头企业", selection: [false, false] },
     { name: "产品价格稳定", selection: [false, false] },
     { name: "不断有新企业进入", selection: [false, false] },
     { name: "产品更新换代较快", selection: [false, false] },
@@ -261,7 +270,6 @@ const handlePCQ0103 = (row, colIndex) => {
 
 const tablePCQ8 = ref([
     { name: "商业秘密", rate: 0 },
-    { name: "Know-How", rate: 0 },
     { name: "著作权", rate: 0 },
     { name: "商标", rate: 0 },
     { name: "地理标志", rate: 0 },

@@ -85,7 +85,7 @@
                 </el-table>
             </el-form-item>
 
-            <el-form-item class="question" style="font-weight: bolder;" label="A06.能否提供下您的工作履历？">
+            <el-form-item class="question" style="font-weight: bolder;" label="A06.您在以下年份所处的岗位是？">
                 <el-table :data="tablePAQ6" style="width: 100%" :row-style="{ height: '10px' } "
                     :cell-style="{ padding: '0px' }">
                     <el-table-column class=" answer" width="200%">
@@ -102,12 +102,16 @@
                     <el-table-column width="150%" class="answer" header-align="center"
                         v-for="(column, colIndex) in colPAQ6" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
-                            <!-- 在每个单元格内放置一个可选中的组件 -->
                             <el-checkbox class="table-container1" v-model="row.selection[colIndex]"
                                 @change="handlePAQ6(row, colIndex)"></el-checkbox>
                         </template>
                     </el-table-column>
                 </el-table>
+            </el-form-item>
+
+            <el-form-item class="question" style="font-weight: bolder;" label="A0601. 您在当前单位工作了几年?">
+                <el-text class="answer" style="font-family: Kaiti;font-weight: 100;text-indent: 2em;"><el-input size="small"
+                        v-model="form.pAq0601" style="width: 5vw;margin-left: 0.5vw;" placeholder="" />年</el-text>
             </el-form-item>
 
             <el-form-item class="question" style="font-weight: bolder;" label="A07. 您（的岗位）过去五年的年收入如何？(单位：人民币)">
@@ -130,7 +134,8 @@
                 </el-radio-group>
             </el-form-item>
             <el-form-item class="question" style="font-weight: bolder;" label="A09.如果成功实施该专利（例如签订许可合同等），您是否能获得以下奖励？">
-                <el-checkbox-group v-model="form.pAq09" style="display: flex;flex-wrap: wrap;">
+                <el-checkbox-group v-model="form.pAq09" style="display: flex;flex-wrap: wrap;"
+                @change="handlePAQ10Change">
                     <el-checkbox class="answer" label="没有额外奖励，是必须完成的" />
                     <el-checkbox class="answer" label="考核指标" />
                     <el-checkbox class="answer" label="更快的职业晋升" />
@@ -141,7 +146,8 @@
                             v-model="extraInput2"></el-input></el-checkbox>
                 </el-checkbox-group>
             </el-form-item>
-            <el-form-item class="question" style="font-weight: bolder;" label="A10.如果有奖励，贵司如何进行计数？">
+            
+            <el-form-item class="question" v-if="showPAQ10" style="font-weight: bolder;" label="A10.如果有奖励，贵司如何进行计数？">
                 <el-radio-group v-model="form.pAq10">
                     <el-radio class="answer" label="根据所完成的专利商业化合同数量" />
                     <el-radio class="answer" label="根据所完成的专利商业化合同金额" />
@@ -197,6 +203,7 @@ const form = reactive({
     pAq04: [],
     pAq05: [],
     pAq06: [],
+    pAq0601: "",
     pAq0701: "",
     pAq0702: "",
     pAq08: "",
@@ -207,6 +214,12 @@ const form = reactive({
 
 const extraInput1 = ref("")
 const extraInput2 = ref("")
+
+const showPAQ10 = ref(false);
+const handlePAQ10Change = (value) => {
+    // 根据选择的 A9 选项来决定是否显示 A10
+    showPAQ10.value = value != "没有额外奖励，是必须完成的";
+};
 
 // 以下处理所有表格
 const tablePAQ3 = ref([
@@ -266,8 +279,9 @@ const tablePAQ5 = ref([
 
 const colPAQ5 = [
     { label: "港澳台" },
-    { label: "日本、韩国等其他亚洲国家" },
-    { label: "欧美等其他国家" },
+    { label: "日本、韩国或其他亚洲国家" },
+    { label: "欧洲、北美洲和大洋洲" },
+    { label: "其他国家和地区" },
 ];
 
 // 处理单元格选中状态变化
@@ -279,10 +293,9 @@ const handlePAQ5 = (row, colIndex) => {
 
 const tablePAQ6 = ref([
     { name: "在读学生", selection: [false, false, false, false] },
-    { name: "同一家企业，相近岗位", selection: [false, false, false, false] },
-    { name: "同一家企业，研发岗", selection: [false, false, false, false] },
-    { name: "其他企业，相近岗位", selection: [false, false, false, false] },
-    { name: "其他企业，研发岗", selection: [false, false, false, false] },
+    { name: "法务", selection: [false, false, false, false] },
+    { name: "研发人员", selection: [false, false, false, false] },
+    { name: "知识产权管理人员", selection: [false, false, false, false] },
     { name: "专利审查员", selection: [false, false, false, false] },
     { name: "医护人员", selection: [false, false, false, false] },
     { name: "", selection: [false, false, false, false] },
@@ -300,7 +313,6 @@ const handlePAQ6 = (row, colIndex) => {
     // 取消当前行其他单元格的选中状态
     form.pAq06 = tablePAQ6
 };
-
 
 const tablePAQ11 = ref([
     { name: "作为必须完成的硬性指标", rate: 0 },
