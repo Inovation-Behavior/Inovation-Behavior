@@ -16,10 +16,6 @@
 
             <p style="text-indent: 2em;">您的意见对知识产权研究非常重要！我们不会以任何方式直接披露您的问卷填写信息。衷心感谢您的支持与协助！
             </p>
-            
-            <p style="text-align: right;margin-right: 5vw;">
-                同济大学上海国际知识产权学院
-            </p>
         </el-card>
     </div>
 </template>
