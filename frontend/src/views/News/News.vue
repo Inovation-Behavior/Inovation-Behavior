@@ -112,7 +112,6 @@ watch(() => store.changeLanguage, () => {
     box-sizing: border-box;
     border: 1px solid #ddd;
     margin-top: 2vh;
-    height: 25vh;
 }
 
 .news-item:hover {
