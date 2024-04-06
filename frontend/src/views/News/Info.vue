@@ -1,14 +1,15 @@
 <template>
-    <div class="whole-box">
+    <!-- <div class="whole-box">
         <div>
-            <!-- <h3 style="font-family: arial;">{{ url }}</h3>
-        <el-container style="font-family: arial;"><div v-html="contains"></div></el-container> -->
             <vue-office-docx :src="url" style="max-width: 100%;overflow:auto;margin-top: 5vh;margin-left: 15%;"
                 @rendered="renderedHandler" @error="errorHandler" />
             <a style="width: 100%; max-width: 1200px;margin-left: 15%;" :href="url">{{ title }}</a>
         </div>
-    </div>
+    </div> -->
+    <pdf :src="url" style="max-width: 1400px;overflow:auto;margin-top: 5vh;margin-left: 15%;width: 70%;"></pdf>\
+    <a style="width: 100%; max-width: 1200px;margin-left: 15%;" :href="url">{{ title }}</a>
 </template>
+
 
 <script setup>
 import { useRouter, useRoute } from 'vue-router';
@@ -19,6 +20,8 @@ import { useGeneralStore } from '../../stores/general';
 import VueOfficeDocx from '@vue-office/docx'
 //引入相关样式
 import '@vue-office/docx/lib/index.css'
+// import pdf from 'vue-pdf'
+import pdf from 'pdf-vue3';
 
 const store = useGeneralStore();
 let news = ref({});
