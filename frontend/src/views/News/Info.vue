@@ -1,65 +1,62 @@
 <template>
-    <el-card>
+    <div>
         <!-- <h3 style="font-family: arial;">{{ url }}</h3>
         <el-container style="font-family: arial;"><div v-html="contains"></div></el-container> -->
-        <vue-office-docx :src="news.url" style="height: 85vh; max-width: 1200px;overflow:auto" @rendered="renderedHandler"
-            @error="errorHandler" />
-        <h4>{{ news.time }}</h4>
-    </el-card>
+        <vue-office-docx :src="url" style="max-width: 70%;overflow:auto;margin-top: 5vh;margin-left: 15%;" @rendered="renderedHandler" @error="errorHandler" />
+        <a style="width: 100%; max-width: 1200px;" :href="url">{{ title }}</a>
+    </div>
 </template>
 
-<script>
+<script setup>
 import { useRouter, useRoute } from 'vue-router';
 import { ref, onMounted, getCurrentInstance, watch } from 'vue'
 import axios from 'axios';
 import { useGeneralStore } from '../../stores/general';
+//引入VueOfficeDocx组件
+import VueOfficeDocx from '@vue-office/docx'
+//引入相关样式
+import '@vue-office/docx/lib/index.css'
 
-export default {
-    setup() {
-        const store = useGeneralStore();
-        let news = ref({});
-        let url = ref("");
-        const route = useRoute()
-        let { ctx } = getCurrentInstance()
+const store = useGeneralStore();
+let news = ref({});
+let url = ref("");
+let title = ref("")
+const route = useRoute()
+let { ctx } = getCurrentInstance()
 
-        const getDetail = async () => {
-            try {
-                const response = await axios.get('api/ibnews/singleNews/' + route.params.id);
-                if (response.status === 200) {
-                    news.value = response.data.data;
-                    updateLanguageValues();
-                }
-            } catch (error) {
-                console.error('Error fetching news details:', error);
-            }
-        };
-
-        const updateLanguageValues = () => {
-            if (ctx.$i18n.locale == 'zn') {
-                url.value = news.value.urlZn;
-            } else if (ctx.$i18n.locale == 'en') {
-                url.value = news.value.urlEn;
-            } else if (ctx.$i18n.locale == 'de') {
-                url.value = news.value.urlDn;
-            }
-        };
-
-        onMounted(() => {
-            getDetail();
-        });
-
-        watch(() => store.changeLanguage, () => {
-            console.log("Language changed");
+const getDetail = async () => {
+    try {
+        const response = await axios.get('api/ibnews/singleNews/' + route.params.id);
+        if (response.status === 200) {
+            news.value = response.data.data;
             updateLanguageValues();
-        });
-
-        return {
-            news,
-            url,
-            contains,
-        };
-    },
+        }
+    } catch (error) {
+        console.error('Error fetching news details:', error);
+    }
 };
+
+const updateLanguageValues = () => {
+    if (ctx.$i18n.locale == 'zn') {
+        url.value = news.value.urlZn;
+        title.value = news.value.titleZn;
+    } else if (ctx.$i18n.locale == 'en') {
+        url.value = news.value.urlEn;
+        title.value = news.value.titleEn;
+    } else if (ctx.$i18n.locale == 'de') {
+        url.value = news.value.urlDn;
+        title.value = news.value.titleDn;
+    }
+};
+
+onMounted(() => {
+    getDetail();
+});
+
+watch(() => store.changeLanguage, () => {
+    console.log("Language changed");
+    updateLanguageValues();
+});
 </script>
 
 <style lang="scss" scoped>
@@ -90,4 +87,17 @@ export default {
 .news-item:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     /* 悬浮时的阴影效果 */
-}</style>
+}
+:deep(.docx-wrapper) {
+    background-color: #fff;
+    padding: 0;
+}
+
+:deep(.docx-wrapper > section.docx) {
+    width: 100% !important;
+    padding: 0px !important;
+    min-height: auto !important;
+    box-shadow: none;
+    margin-bottom: 0px;
+}
+</style>

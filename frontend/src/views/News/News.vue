@@ -1,10 +1,10 @@
 <template>
     <div class="set-vertical">
         <el-container>
-            <el-carousel style="width: 95vw;" indicator-position="outside">
+            <el-carousel style="width: 95vw;margin-top: 5vh;" indicator-position="outside">
                 <el-carousel-item class="set-vertical" style="cursor: pointer;" v-for="item in news" :key="item">
                     <el-container style="height: 20vh;background-color: #99a9bf;" @click="getNewsDetail(item.id)">
-                        <img src="../../public/img/newsImg.jpg" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img :src="item.cover" style="width: 100%; height: 100%; object-fit: cover;">
                     </el-container>
                     <el-card style="margin-top: 0;margin-bottom: 1vh;" @click="getNewsDetail(item.id)">
                         <h5 style="font-family: arial;">{{item.title}}</h5>
@@ -12,15 +12,16 @@
                 </el-carousel-item>
             </el-carousel>
         </el-container>
-        <el-container style="margin-top: 5vh;" class="set-vertical">
-            <div v-for="item in news" :key="item.id" class="news-item set-horizonal" style="border-radius: 20px;cursor: pointer;" @click="getNewsDetail(item.id)">
-                <el-container style="width: 30vw;background-color:#99a9bf; ;">
-                    <img src="../../public/img/newsImg.jpg" style="width: 100%; height: 100%; object-fit: cover;">
+        <el-container style="width: 84vw;margin-top: 5vh;" class="set-vertical">
+            <div v-for="item in news" :key="item.id" class="news-item set-horizonal"
+                style="border-radius: 20px;cursor: pointer;width: 84vw;" @click="getNewsDetail(item.id)">
+                <el-container style="width: 30%;background-color:#99a9bf; ;">
+                    <img :src="item.cover" style="width: 100%; height: 100%; object-fit: cover;">
                 </el-container>
-                <el-card style="width: 70vw;">
+                <el-card style="width: 70%;">
                     <h5 style="font-family: arial;">{{ item.title }}</h5>
                     <p>{{ item.time }}</p>
-                </el-card>    
+                </el-card>
             </div>
         </el-container>
     </div>
@@ -61,11 +62,11 @@ const getNewsDetail = (id) => {
 const updateLanguageValues = () => {
     news.value.forEach(item => {
         if (ctx.$i18n.locale == 'zn') {
-            item.url = item.urlZn;
+            item.title = item.titleZn;
         } else if (ctx.$i18n.locale == 'en') {
-            item.url = item.urlEn;
+            item.title = item.titleEn;
         } else if (ctx.$i18n.locale == 'de') {
-            item.url = item.urlDn;
+            item.title = item.titleDn;
         }
     });
 };

@@ -1,7 +1,7 @@
 package com.inovationbehavior.backend.controller;
 
 import com.inovationbehavior.backend.model.Result;
-import com.inovationbehavior.backend.service.intf.NewsService;
+import com.inovationbehavior.backend.service.intf.IbNewsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/ibnews")
 public class IbNewsController {
     @Autowired
-    private NewsService IbNewsService;
+    private IbNewsService IbNewsService;
 
     @GetMapping("")
     public Result getNewsList(){
