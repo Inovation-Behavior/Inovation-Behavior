@@ -1,13 +1,14 @@
 <template>
-    <!-- <div class="whole-box">
-        <div>
-            <vue-office-docx :src="url" style="max-width: 100%;overflow:auto;margin-top: 5vh;margin-left: 15%;"
-                @rendered="renderedHandler" @error="errorHandler" />
+    <div class="whole-box">
+        <div class="content-box">
+            <!-- <vue-office-docx :src="url" style="max-width: 100%;overflow:auto;margin-top: 5vh;margin-left: 15%;"
+                @rendered="renderedHandler" @error="errorHandler" /> -->
+            <pdf :src="url" style="max-width: 1400px;overflow:auto;margin-top: 5vh;margin-left: 15%;width: 70%;"></pdf>
             <a style="width: 100%; max-width: 1200px;margin-left: 15%;" :href="url">{{ title }}</a>
         </div>
-    </div> -->
-    <pdf :src="url" style="max-width: 1400px;overflow:auto;margin-top: 5vh;margin-left: 15%;width: 70%;"></pdf>\
-    <a style="width: 100%; max-width: 1200px;margin-left: 15%;" :href="url">{{ title }}</a>
+    </div>
+    <!-- <pdf :src="url" style="max-width: 1400px;overflow:auto;margin-top: 5vh;margin-left: 15%;width: 70%;"></pdf>
+    <a style="width: 100%; max-width: 1200px;margin-left: 15%;" :href="url">{{ title }}</a> -->
 </template>
 
 
@@ -76,6 +77,14 @@ watch(() => store.changeLanguage, () => {
     padding: 20px;
     // border-radius: 8px;
 }
+.content-box {
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    flex-direction: column;
+    padding-left: 30px;
+}
+
 .set-vertical {
     display: flex;
     flex-direction: column;
