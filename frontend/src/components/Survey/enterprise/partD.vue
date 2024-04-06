@@ -3,6 +3,7 @@
         <p style="font-family: STKaiti;color: blue;font-weight: bold;">
             （D部分，我们将根据抽取的样本专利（参见附件文档），请您提供专利的价值判断）
         </p>
+
         <el-form :model="form" size="large" label-position="top">
             <el-form-item class="question" style="font-weight: bolder;" label="D01.贵司为什么申请该专利？">
                 <el-checkbox-group v-model="form.pDq01" style="display: flex;flex-wrap: wrap;">
@@ -40,7 +41,7 @@
             </el-form-item>
 
             <el-form-item class="question" v-if="showPDQ03" style="font-weight: bolder;"
-                label="D0301 如果已经达成许可交易，该交易发生在哪一年？">
+                label="D0301.如果已经达成许可交易，该交易发生在哪一年？">
                 <el-input size="small" class="answer" v-model="form.pDq0301" style="width: 240px" placeholder="年份" />
             </el-form-item>
 
@@ -59,7 +60,7 @@
                 </el-checkbox-group>
             </el-form-item>
 
-            <el-form-item class="question" v-if="showPDQ03" style="font-weight: bolder;" label="D0303，贵司对外许可的企业类型是？">
+            <el-form-item class="question" v-if="showPDQ03" style="font-weight: bolder;" label="D0303.贵司对外许可的企业类型是？">
                 <el-checkbox-group v-model="form.pDq0303" style="display: flex;flex-wrap: wrap;">
                     <el-checkbox class="answer" label="国有企业" />
                     <el-checkbox class="answer" label="民营企业" />
@@ -70,7 +71,7 @@
                 </el-checkbox-group>
             </el-form-item>
 
-            <el-form-item class="question" v-if="showPDQ03" style="font-weight: bolder;" label="D0304，贵司对外许可的企业规模是？">
+            <el-form-item class="question" v-if="showPDQ03" style="font-weight: bolder;" label="D0304.贵司对外许可的企业规模是？">
                 <el-checkbox-group v-model="form.pDq0304" style="display: flex;flex-wrap: wrap;">
                     <el-checkbox class="answer" label="大型企业（>1000 人）" />
                     <el-checkbox class="answer" label="中型企业（100-1000 人）" />
@@ -79,7 +80,7 @@
                 </el-checkbox-group>
             </el-form-item>
 
-            <el-form-item class="question" v-if="showPDQ03" style="font-weight: bolder;" label="D0305. 该交易的许可类型是？">
+            <el-form-item class="question" v-if="showPDQ03" style="font-weight: bolder;" label="D0305.该交易的许可类型是？">
                 <el-checkbox-group v-model="form.pDq0305" style="display: flex;flex-wrap: wrap;">
                     <el-checkbox class="answer" label="独占许可" />
                     <el-checkbox class="answer" label="排他许可" />
@@ -90,7 +91,7 @@
                 </el-checkbox-group>
             </el-form-item>
 
-            <el-form-item class="question" v-if="showPDQ03" style="font-weight: bolder;" label="D0306. 该交易的许可定价是？">
+            <el-form-item class="question" v-if="showPDQ03" style="font-weight: bolder;" label="D0306.该交易的许可定价是？">
                 <el-checkbox-group v-model="form.pDq0306" style="display: flex;flex-wrap: wrap;">
                     <el-checkbox class="answer" label="完全免费" />
                     <el-checkbox class="answer" label="一次性总付" />
@@ -121,7 +122,7 @@
                 </el-radio-group>
             </el-form-item>
 
-            <el-form-item class="question" v-if="showPDQ05" style="font-weight: bolder;" label="D0501. 如果有计划许可，目的是什么？">
+            <el-form-item class="question" v-if="showPDQ05" style="font-weight: bolder;" label="D0501.如果有计划许可，目的是什么？">
                 <el-checkbox-group v-model="form.pDq0501" style="display: flex;flex-wrap: wrap;">
                     <el-checkbox class="answer" label="高新技术企业的专利商业化" />
                     <el-checkbox class="answer" label="考核要求" />
@@ -137,7 +138,7 @@
             </el-form-item>
 
             <el-form-item class="question" v-if="showPDQ05" style="font-weight: bolder;"
-                label="D0502，如果有计划许可，对外许可的可能企业类型是？">
+                label="D0502.如果有计划许可，对外许可的可能企业类型是？">
                 <el-checkbox-group v-model="form.pDq0502" style="display: flex;flex-wrap: wrap;">
                     <el-checkbox class="answer" label="国有企业" />
                     <el-checkbox class="answer" label="民营企业" />
@@ -149,7 +150,7 @@
             </el-form-item>
 
             <el-form-item class="question" v-if="showPDQ05" style="font-weight: bolder;"
-                label="D0503，如果有计划许可，对外许可的可能企业类型是？">
+                label="D0503.如果有计划许可，对外许可的可能企业类型是？">
                 <el-checkbox-group v-model="form.pDq0503" style="display: flex;flex-wrap: wrap;">
                     <el-checkbox class="answer" label="大型企业（>1000 人）" />
                     <el-checkbox class="answer" label="中型企业（100-1000 人）" />
@@ -178,6 +179,19 @@
                 </el-checkbox-group>
             </el-form-item>
 
+            <el-form-item class="question" v-if="showPDQ0506" style="font-weight: bolder;" label="D0506.不对外许可的理由是？">
+                <el-checkbox-group v-model="form.pDq0506" style="display: flex;flex-wrap: wrap;">
+                    <el-checkbox class="answer" label="专利技术仍在开发中，没办法许可" />
+                    <el-checkbox class="answer" label="没有发现市场需求" />
+                    <el-checkbox class="answer" label="有市场需求，但是没有渠道联系到被许可人" />
+                    <el-checkbox class="answer" label="有潜在许可对象，但是许可价格谈不拢" />
+                    <el-checkbox class="answer" label="不相信许可对象的合同履行能力" />
+                    <el-checkbox class="answer" label="担心技术泄露" />
+                    <el-checkbox class="answer" label="担心市场占有率收到损失" />
+                    <el-checkbox class="answer" label="不愿意许可" />
+                </el-checkbox-group>
+            </el-form-item>
+
             <el-form-item class="question" style="font-weight: bolder;" label="D06.未来三年，贵司对该专利是否有其他商业化计划？">
                 <el-checkbox-group v-model="form.pDq06" style="display: flex;flex-wrap: wrap;">
                     <el-checkbox class="answer" label="专利转让" />
@@ -186,6 +200,7 @@
                     <el-checkbox class="answer" label="交叉许可、专利联盟" />
                     <el-checkbox class="answer" label="专利融资（包括质押、信托、作价入股等）" />
                     <el-checkbox class="answer" label="以专利为基础的技术合作" />
+                    <el-checkbox class="answer" label="未来无其他商业化计划" />
                     <el-checkbox class="answer" label="其他，请注明"><el-input size="small" placeholder="其他，请注明"
                             v-model="extraInput3"></el-input></el-checkbox>
                 </el-checkbox-group>
@@ -228,14 +243,14 @@ const extraInput4 = ref('')
 
 const showPDQ03 = ref(false);
 const handlePDQ03Change = (value) => {
-    // 根据选择的 A05 选项来决定是否显示 A06
     showPDQ03.value = value === "是的，已达成多个许可交易。" || "是的，已达成一个许可交易。";
 };
 
 const showPDQ05 = ref(false);
+const showPDQ0506 = ref(false);
 const handlePDQ05Change = (value) => {
-    // 根据选择的 A05 选项来决定是否显示 A06
     showPDQ05.value = value === "是的，我们希望能对外许可";
+    showPDQ0506.value = value === "否";
 };
 
 const submit = async () => {
