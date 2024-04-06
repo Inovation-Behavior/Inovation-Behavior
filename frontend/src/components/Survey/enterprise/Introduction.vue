@@ -13,18 +13,9 @@
 
         <p style="text-indent: 2em;">您的意见对知识产权研究非常重要！我们不会以任何方式直接披露您的问卷填写信息。衷心感谢您的支持与协助！
         </p>
-        <el-container style="width: 100%;display: flex; justify-content: center; align-items: center;">
-            <img src="../../../public/img/survey_logo.png" style="height: 20vh;margin-right: 10vw;" />
-        </el-container>
         <p style="text-align: right;margin-right: 5vw;">
             同济大学上海国际知识产权学院
         </p>
-        <p style="text-align: right;margin-right: 5vw;">
-            2024 年 3 月 15 日
-        </p>
-        <!-- <p style="text-align: right;margin-right: 5vw;">
-               
-        </p> -->
 
         <el-card style="border: 1px solid black;">
             <p style="margin-top: 2vh;">
@@ -55,7 +46,7 @@
                 </el-table>
             </template>
         </el-card>
-        <p style="color: rgb(0,112,192)">
+        <!-- <p style="color: rgb(0,112,192)">
             填写形式：
         </p>
         <p style="color: rgb(0,112,192);text-indent: 2em;">
@@ -66,7 +57,7 @@
         </p>
         <p style="color: rgb(0,112,192);text-indent: 2em;">
             如果您已回答过一份问卷，A.个人基本信息与B.企业信息部分可直接跳过
-        </p>
+        </p> -->
     </el-card>
 </template>
 
@@ -127,6 +118,11 @@ const getPatentNoByCompany = async (name) => {
 
 
 <style scoped>
+p {
+    margin-bottom: 20px;
+    /* 设置段落下方的外边距 */
+    line-height: 40px
+}
 :deep(.el-radio__label) {
     white-space: normal;
     /* 换行 */

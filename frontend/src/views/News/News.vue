@@ -20,7 +20,7 @@
                         <img :src="item.cover" style="width: 100%; height: 100%; object-fit: cover;">
                     </el-container>
                     <el-card style="width: 70%;">
-                        <h5 style="font-family: arial;">{{ item.title }}</h5>
+                        <h5 style="font-family: arial;font-size: 1.5em;">{{ item.title }}</h5>
                         <p>{{ item.time }}</p>
                     </el-card>
                 </div>

@@ -5,7 +5,8 @@
                 style="font-family:SimHei;font-size: 2rem;font-weight: bolder;display: flex;justify-content: center;align-items: center; margin-top: 2vh; width: 100%; overflow: auto;margin-bottom: 2vh;">
                 开放专利与创新调查：上海2024
             </el-container>
-            <el-dialog center :close-on-click-modal="false" :close-on-press-escape="false"
+            <el-dialog center :show-close="false" :close-on-click-modal="false"
+                :close-on-press-escape="false"
                 style="font-family: SimSun;width: 40vw;align-items: center;justify-content: center;"
                 title="欢迎参加问卷调研，请输入邀请码" v-model="dialogVisible" :before-close="handleClose">
                 <el-card style="gap: 6px;border: none;align-items: center;justify-content: center;display: flex;"
@@ -23,7 +24,7 @@
             <el-container style="margin-top: 10px;margin-right: 5px; width: 100%;">
                 <el-tabs style="width: 100%;" v-model="activeName" tab-position="top" class="demo-tabs"
                     @tab-click="handleClick" type="card" stretch="true">
-                    <el-tab-pane label="项目介绍" name="项目介绍">
+                    <el-tab-pane label="专利信息确认" name="专利信息确认">
                         <introduction />
                     </el-tab-pane>
                     <el-tab-pane label="A. 个人基本信息" name="A. 个人基本信息">
@@ -66,10 +67,10 @@ export default {
     },
     data() {
         return {
-            activeName: "项目介绍",
+            activeName: "专利信息确认",
             patentNo: "",
             dialogVisible: false, // 控制对话框显示的属性
-            invitationCode: '' // 存储输入的邀请码
+            invitationCode: '', // 存储输入的邀请码
         }
     },
     mounted() {
