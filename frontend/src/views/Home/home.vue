@@ -1,7 +1,7 @@
 <template>
     <div class="whole-box">
         <el-card
-            style="max-width: 1400px; margin-top: 20px; border-radius: 15px;width: 70%;font-size: 1rem;font-family: SimSun;display: flex;flex-direction: column;">
+            style="max-width: 1400px; margin-top: 20px; border-radius: 15px;width: 70%;font-size: 1.3rem;font-family: SimSun;display: flex;flex-direction: column;">
             <p>尊敬的专家：</p>
 
             <p style="text-indent: 2em;">
@@ -30,8 +30,9 @@
 p {
     margin-bottom: 20px;
     /* 设置段落下方的外边距 */
-    line-height: 60px
+    line-height: 50px
 }
+
 .whole-box {
     width: 100%;
     display: flex;
@@ -39,6 +40,7 @@ p {
     background-color: white;
     padding: 20px;
 }
+
 :deep(.el-radio__label) {
     white-space: normal;
     /* 换行 */
