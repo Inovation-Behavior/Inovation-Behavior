@@ -1,6 +1,7 @@
 package com.inovationbehavior.backend.controller;
 
 import com.inovationbehavior.backend.model.Result;
+import com.inovationbehavior.backend.model.survey.AwardInfo;
 import com.inovationbehavior.backend.model.survey.Survey;
 import com.inovationbehavior.backend.service.intf.SurveyService;
 import lombok.RequiredArgsConstructor;
@@ -62,5 +63,16 @@ public class SurveyController {
         String policy = requestData.get("policy");
         surveyService.postPolicy(patentNo,policy);
         return Result.success();
+    }
+
+    @PostMapping("/award")
+    public Result postAwardInfo(@RequestBody AwardInfo requestData){
+        int res = surveyService.postAwardInfo(requestData);
+        if(res==1){
+            return Result.success();
+        }else{
+            return Result.error("请勿重复领奖");
+        }
+
     }
 }

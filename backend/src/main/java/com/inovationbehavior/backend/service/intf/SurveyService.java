@@ -1,5 +1,6 @@
 package com.inovationbehavior.backend.service.intf;
 
+import com.inovationbehavior.backend.model.survey.AwardInfo;
 import com.inovationbehavior.backend.model.survey.Survey;
 
 public interface SurveyService {
@@ -14,4 +15,6 @@ public interface SurveyService {
     void postUsage(String patentNo, String usage);
 
     void postPolicy(String patentNo, String policy);
+
+    int postAwardInfo(AwardInfo requestData);
 }

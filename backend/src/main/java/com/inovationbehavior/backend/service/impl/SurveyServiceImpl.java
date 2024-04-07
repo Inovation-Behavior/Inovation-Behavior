@@ -1,6 +1,7 @@
 package com.inovationbehavior.backend.service.impl;
 
 import com.inovationbehavior.backend.mapper.SurveyMapper;
+import com.inovationbehavior.backend.model.survey.AwardInfo;
 import com.inovationbehavior.backend.model.survey.Survey;
 import com.inovationbehavior.backend.service.intf.SurveyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,5 +39,15 @@ public class SurveyServiceImpl implements SurveyService {
     @Override
     public void postPolicy(String patentNo, String policy) {
         surveyMapper.postPolicy(patentNo, policy);
+    }
+
+    @Override
+    public int postAwardInfo(AwardInfo requestData) {
+        System.out.println(surveyMapper.checkAward(requestData.getPatentNo()));
+        if(surveyMapper.checkAward(requestData.getPatentNo())==0){
+            surveyMapper.postAwardInfo(requestData.getPatentNo(), requestData.getAward(),requestData.getAddress());
+            return 1;
+        }
+        return 0;
     }
 }
