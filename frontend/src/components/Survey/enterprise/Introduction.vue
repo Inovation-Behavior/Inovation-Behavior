@@ -2,15 +2,16 @@
     <el-card style="border-radius: 15px;width: 100%;font-size: 1rem;font-family: SimSun;">
 
         <!-- <el-card style="border: 1px solid black;"> -->
-            <p style="margin-top: 2vh;">
+            <!-- 初步调整，可以确认一下 -->
+            <p style="margin-top: 2vh;padding-left: 2em;">
                 在回答问卷前，请确认您所在单位持有附件发明专利
-            </p>
-            <p style="text-indent: 2em;">
-                （专利申请号为：
-                <el-input size="small" style="width: 7vw;" v-model="form.patentNo" @input="updatePatentNo"
+                <br>
+                专利申请号为：
+                <el-input size="small" style="width: 10vw;" v-model="form.patentNo" @input="updatePatentNo"
                     @keyup.enter="getPatentByNo(form.patentNo)"></el-input>
-                ）。如果与该专利无关，请提供您所在单位的名称：
-                <el-input size="small" style="width: 7vw;" v-model="form.companyName" @input="updateCompanyName"
+                <br>
+                如果与该专利无关，请提供您所在单位的名称：
+                <el-input size="small" style="width: 10vw;" v-model="form.companyName" @input="updateCompanyName"
                     @keyup.enter="getPatentNoByCompany(form.companyName)"></el-input>
                 ，我们将为您推荐其他专利。
             </p>

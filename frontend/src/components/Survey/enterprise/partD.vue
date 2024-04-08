@@ -14,12 +14,12 @@
                     <el-checkbox class="answer" label="构建技术标准" />
                     <el-checkbox class="answer" label="更好获得融资" />
                     <el-checkbox class="answer" label="其他，请注明"><el-input size="small" placeholder="其他，请注明"
-                            v-model="extraInput4"></el-input></el-checkbox>
+                            v-model="extraInput1"></el-input></el-checkbox>
                 </el-checkbox-group>
             </el-form-item>
 
             <el-form-item class="question" style="font-weight: bolder;" label="D02.过去三年，贵司是否为该专利技术进行过以下宣传推广？">
-                <el-checkbox-group v-model="form.pDq02" style="display: flex;flex-wrap: wrap;">
+                <el-checkbox-group v-model="form.pDq02" style="display: flex;flex-wrap: wrap;" @change="handlePDQ02Change">
                     <el-checkbox class="answer" label="报纸、杂志等广告宣传" />
                     <el-checkbox class="answer" label="线下展会、技术交易中心" />
                     <el-checkbox class="answer" label="企业官方网站" />
@@ -27,8 +27,9 @@
                     <el-checkbox class="answer" label="国家、地区网站相关推荐页面" />
                     <el-checkbox class="answer" label="官方（含相关协会）在线交易平台/许可平台" />
                     <el-checkbox class="answer" label="商业性在线交易平台/许可平台" />
-                    <el-checkbox class="answer" label="其他，请注明" />
-                    <el-checkbox class="answer" label="没有" />
+                    <el-checkbox class="answer" label="没有进行过宣传推广" />
+                    <el-checkbox class="answer" label="其他，请注明"><el-input size="small" placeholder="其他，请注明"
+                            v-model="extraInput2"></el-input></el-checkbox>
                 </el-checkbox-group>
             </el-form-item>
 
@@ -56,7 +57,7 @@
                     <el-checkbox class="answer" label="获得市场地位" />
                     <el-checkbox class="answer" label="提高企业形象、商业宣传" />
                     <el-checkbox class="answer" label="其他，请注明"><el-input size="small" placeholder="其他，请注明"
-                            v-model="extraInput1"></el-input></el-checkbox>
+                            v-model="extraInput3"></el-input></el-checkbox>
                 </el-checkbox-group>
             </el-form-item>
 
@@ -102,7 +103,7 @@
                 </el-checkbox-group>
             </el-form-item>
 
-            <el-form-item class="question" style="font-weight: bolder;" label="D04.如果尚未达成许可交易，阻碍是什么？">
+            <el-form-item class="question" v-if="showPDQ04" style="font-weight: bolder;" label="D04.如果尚未达成许可交易，阻碍是什么？">
                 <el-checkbox-group v-model="form.pDq04" style="display: flex;flex-wrap: wrap;">
                     <el-checkbox class="answer" label="专利技术仍在开发中，没办法许可" />
                     <el-checkbox class="answer" label="没有发现市场需求" />
@@ -124,8 +125,7 @@
 
             <el-form-item class="question" v-if="showPDQ05" style="font-weight: bolder;" label="D0501.如果有计划许可，目的是什么？">
                 <el-checkbox-group v-model="form.pDq0501" style="display: flex;flex-wrap: wrap;">
-                    <el-checkbox class="answer" label="高新技术企业的专利商业化" />
-                    <el-checkbox class="answer" label="考核要求" />
+                    <el-checkbox class="answer" label="高新技术企业的专利商业化考核要求" />
                     <el-checkbox class="answer" label="获得许可收入" />
                     <el-checkbox class="answer" label="扩大产品市场" />
                     <el-checkbox class="answer" label="合作创新" />
@@ -133,7 +133,7 @@
                     <el-checkbox class="answer" label="解决侵权纠纷" />
                     <el-checkbox class="answer" label="提高企业形象，商业宣传" />
                     <el-checkbox class="answer" label="其他（请注明______）"><el-input size="small" placeholder="其他，请注明"
-                            v-model="extraInput2"></el-input></el-checkbox>
+                            v-model="extraInput4"></el-input></el-checkbox>
                 </el-checkbox-group>
             </el-form-item>
 
@@ -193,20 +193,20 @@
             </el-form-item>
 
             <el-form-item class="question" style="font-weight: bolder;" label="D06.未来三年，贵司对该专利是否有其他商业化计划？">
-                <el-checkbox-group v-model="form.pDq06" style="display: flex;flex-wrap: wrap;">
+                <el-checkbox-group v-model="form.pDq06" style="display: flex;flex-wrap: wrap;" @change="handlePDQ06Change">
                     <el-checkbox class="answer" label="专利转让" />
                     <el-checkbox class="answer" label="集团内部专利许可" />
                     <el-checkbox class="answer" label="与第三方专利许可" />
                     <el-checkbox class="answer" label="交叉许可、专利联盟" />
                     <el-checkbox class="answer" label="专利融资（包括质押、信托、作价入股等）" />
-                    <el-checkbox class="answer" label="以专利为基础的技术合作" />
+                    <el-checkbox class="answer" label="以专利为基础的技术合同" />
                     <el-checkbox class="answer" label="未来无其他商业化计划" />
                     <el-checkbox class="answer" label="其他，请注明"><el-input size="small" placeholder="其他，请注明"
-                            v-model="extraInput3"></el-input></el-checkbox>
+                            v-model="extraInput5"></el-input></el-checkbox>
                 </el-checkbox-group>
             </el-form-item>
         </el-form>
-        <el-button type="primary" @click="submit()" style="margin-top: 1vh;margin-left: 2vw;">submit part D</el-button>
+        <el-button type="primary" @click="submit()" style="margin-top: 1vh;margin-left: 2vw;">提交问卷（D部分）</el-button>
     </el-card>
 </template>
 
@@ -240,10 +240,14 @@ const extraInput1 = ref('')
 const extraInput2 = ref('')
 const extraInput3 = ref('')
 const extraInput4 = ref('')
+const extraInput5 = ref('')
 
+//跳转与互斥
 const showPDQ03 = ref(false);
+const showPDQ04 = ref(false);
 const handlePDQ03Change = (value) => {
-    showPDQ03.value = value === "是的，已达成多个许可交易。" || "是的，已达成一个许可交易。";
+    showPDQ03.value = (value === "是的，已达成多个许可交易。") || (value === "是的，已达成一个许可交易。");
+    showPDQ04.value = value === "还没有";
 };
 
 const showPDQ05 = ref(false);
@@ -253,11 +257,27 @@ const handlePDQ05Change = (value) => {
     showPDQ0506.value = value === "否";
 };
 
+const handlePDQ02Change = (value) => {
+    if (value.includes('没有进行过宣传推广')) {  
+        form.pDq02 = ['没有进行过宣传推广']; 
+        extraInput2.value = '';
+    }
+};
+
+const handlePDQ06Change = (value) => {
+    if (value.includes('未来无其他商业化计划')) {  
+        form.pDq06 = ['未来无其他商业化计划']; 
+        extraInput2.value = '';
+    }
+};
+
 const submit = async () => {
-    form.pDq0302.push(extraInput1.value)
-    form.pDq0501.push(extraInput2.value)
-    form.pDq06.push(extraInput3.value)
-    form.pDq01.push(extraInput4.value)
+    form.pDq01.push(extraInput1.value)
+    form.pDq02.push(extraInput2.value)
+    form.pDq0302.push(extraInput3.value)
+    form.pDq0501.push(extraInput4.value)
+    form.pDq06.push(extraInput5.value)
+
     // 将表单数据转换为对象数组
     const formDataArray = Object.entries(form).map(([key, value]) => ({ [key]: value }));
 

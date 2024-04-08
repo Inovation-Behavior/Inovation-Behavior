@@ -48,7 +48,7 @@
                 </el-table>
             </el-form-item>
 
-            <el-form-item class="question" style="font-weight: bolder;" label="C0104.有多少家厂商正在生产该专利产品？">
+            <el-form-item class="question" v-if="showPCQ01" style="font-weight: bolder;" label="C0104.有多少家厂商正在生产该专利产品？">
                 <el-text class="answer" style="font-family: Kaiti;font-weight: 100;text-indent: 2em;">大约<el-input
                         size="small" v-model="form.pCq0104" style="width: 5vw;margin-left: 0.5vw"
                         placeholder="" />家。</el-text>
@@ -87,7 +87,7 @@
             </el-form-item>
 
             <el-form-item class="question" style="font-weight: bolder;" label="C04.该专利技术是否有研发合作？如果有，是与哪类机构/企业进行合作？">
-                <el-checkbox-group v-model="form.pCq04" style="display: flex;flex-wrap: wrap;">
+                <el-checkbox-group v-model="form.pCq04" style="display: flex;flex-wrap: wrap;" @change="handlePCQ04Change">
                     <el-checkbox class="answer" label="没有，完全由本单位研发" />
                     <el-checkbox class="answer" label="有，同一企业集团的公司之间合作" />
                     <el-checkbox class="answer" label="有，与来自私营部门的客户合作" />
@@ -208,7 +208,7 @@
                 </el-radio-group>
             </el-form-item>
         </el-form>
-        <el-button type="primary" @click="submit()" style="margin-top: 1vh;margin-left: 2vw;">submit part C</el-button>
+        <el-button type="primary" @click="submit()" style="margin-top: 1vh;margin-left: 2vw;">提交问卷（C部分）</el-button>
     </el-card>
 </template>
 
@@ -240,12 +240,20 @@ const form = reactive({
 
 const extraInput1 = ref('')
 
+//跳转与互斥
 const showPCQ01 = ref(false);
 const showPCQ02 = ref(false);
 const handlePCQ01Change = (value) => {
     showPCQ01.value = value === "产品创新" || value === "都相关";
     showPCQ02.value = value === "流程创新" || value === "都相关";
 };
+
+const handlePCQ04Change = (value) => {
+    if (value.includes('没有，完全由本单位研发')) {  
+        form.pCq04 = ['没有额外奖励，是必须完成的考核指标']; 
+    }
+};
+
 
 // 以下实现所有表格
 const tablePCQ0103 = ref([
