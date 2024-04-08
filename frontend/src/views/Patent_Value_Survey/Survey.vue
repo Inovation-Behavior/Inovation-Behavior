@@ -123,6 +123,8 @@ export default {
     justify-content: center;
     background-color: white;
     margin-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 /* Style for portrait mode */

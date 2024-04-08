@@ -10,7 +10,9 @@
                     <h3>项目联系人</h3>
                 </div>
                 <div class="profile-box">
+                    <div style="width: 130px">
                     <img class="profile-pic" src="../../public/teamimg/worker/刘夏.png">
+                    </div>
                     <div class="profile-name">
                         <p>{{ $t('team.LiuXia1') }}</p>
                         <p>同济大学上海国际知识产权学院副教授</p>
@@ -22,7 +24,9 @@
                     <h3>学术指导</h3>
                 </div>
                 <div class="profile-box">
+                    <div style="width: 130px">
                     <img class="profile-pic" src="../../public/teamimg/worker/DietmarHarhoff.png">
+                    </div>
                     <div class="profile-name">
                         <p>Dietmar Harhoff</p>
                         <p>Director/Professor</p>
@@ -31,7 +35,9 @@
                 </div>
 
                 <div class="profile-box">
+                    <div style="width: 130px">
                     <img class="profile-pic" src="../../public/teamimg/worker/王晓璐.png">
+                    </div>
                     <div class="profile-name">
                         <p>Lucy Xiaolu Wang,</p>
                         <p>Assistant Professor</p>
@@ -43,7 +49,9 @@ Faculty Research Fellow，MPIIC
                 </div>
 
                 <div class="profile-box">
+                    <div style="width: 130px">
                     <img class="profile-pic" src="../../public/teamimg/worker/王洁.png">
+                    </div>
                     <div class="profile-name">
                         <p>王洁</p>
                         <p>同济大学软件学院助理教授</p>
@@ -54,18 +62,18 @@ Faculty Research Fellow，MPIIC
                         <h3>研究助理</h3>
                     </div>
                     <h4>
-                        · 文字编辑
+                        ● 文字编辑
                     </h4>
                     <div> 国知院：陈雪妮、段明赫、周泽鑫</div>
                     <h4>
-                        · 网站/数据库
+                        ● 网站/数据库
                         </h4>
                     <div> 软件学院：李天昊、谢嘉麒</div>
                     <div> 经济与管理学院：谭紫萱、余同洲</div>
                     <div> 建筑与城市规划学院：苏惠</div>
                     <div> 国知院：朱啸宇、李浩宇</div>
                     <h4>
-                        · 调研组织
+                        ● 调研组织
                     </h4>
                     <div> 国知院：叶知秋、刘佳欣、张玉涵</div>
                 </div>
@@ -104,9 +112,7 @@ Faculty Research Fellow，MPIIC
 .profile-box {
     display: flex;
     gap: 50px;
-
     .profile-pic {
-        width: 128px;
         height: 160px;
         border: 3px solid #eee;
     }
