@@ -23,12 +23,12 @@
             <el-form-item class="question" style="font-weight: bolder;" label="A03.您的学历背景是？">
                 <el-table :data="tablePAQ3" style="width: 100%" :row-style="{ height: '10px' }"
                 :cell-style="{ padding: '0px' }">
-                    <el-table-column class="answer" width="350%">
+                    <el-table-column class="answer" width="180%">
                         <template #default="{ row }">
                             {{ row.name }}
                         </template>
                     </el-table-column>
-                    <el-table-column width="170%" class="answer" header-align="center"
+                    <el-table-column width="160%" class="answer" header-align="center"
                         v-for="(column, colIndex) in colPAQ3" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
                             <!-- 在每个单元格内放置一个可选中的组件 -->
@@ -41,7 +41,7 @@
             <el-form-item class="question" style="font-weight: bolder;" label="A04.您的以下语言能力如何？">
                 <el-table :data="tablePAQ4" style="width: 100%" :row-style="{ height: '10px' }"
                     :cell-style="{ padding: '0px' }">
-                    <el-table-column class="answer" width="200%">
+                    <el-table-column class="answer" width="100%">
                         <template #default="{ row, $index }">
                             <template v-if="$index !== tablePAQ4.length - 1">
                                 {{ row.name }}
@@ -53,7 +53,7 @@
                             </template>
                         </template>
                     </el-table-column>
-                    <el-table-column width="140%" class="answer" header-align="center"
+                    <el-table-column width="110%" class="answer" header-align="center"
                         v-for="(column, colIndex) in colPAQ4" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
                             <el-checkbox class="table-container1" v-model="row.selection[colIndex]"
@@ -67,12 +67,12 @@
                 <el-form-item class="question blue-label" style="font-weight: bolder;" label="（含疫情期间的在线学习时间）" />
                 <el-table :data="tablePAQ5" style="width: 100%" :row-style="{ height: '10px' }"
                     :cell-style="{ padding: '0px' }">
-                    <el-table-column class="answer" width="200%">
+                    <el-table-column class="answer" width="150%">
                         <template #default="{ row }">
                             {{ row.name }}
                         </template>
                     </el-table-column>
-                    <el-table-column width="170%" class="answer" header-align="center"
+                    <el-table-column width="132%" class="answer" header-align="center"
                         v-for="(column, colIndex) in colPAQ5" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
                             <el-checkbox class="table-container1" v-model="row.selection[colIndex]"
@@ -86,7 +86,7 @@
             <el-form-item class="question" style="font-weight: bolder;" label="A06.您在以下年份所处的岗位是？">
                 <el-table :data="tablePAQ6" style="width: 100%" :row-style="{ height: '10px' } "
                     :cell-style="{ padding: '0px' }">
-                    <el-table-column class=" answer" width="200%">
+                    <el-table-column class=" answer" width="150%">
                         <template #default="{ row, $index }">
                             <template v-if="$index !== tablePAQ6.length - 1">
                                 {{ row.name }}
@@ -97,7 +97,7 @@
                             </template>
                         </template>
                     </el-table-column>
-                    <el-table-column width="150%" class="answer" header-align="center"
+                    <el-table-column width="120%" class="answer" header-align="center"
                         v-for="(column, colIndex) in colPAQ6" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
                             <el-checkbox class="table-container1" v-model="row.selection[colIndex]"

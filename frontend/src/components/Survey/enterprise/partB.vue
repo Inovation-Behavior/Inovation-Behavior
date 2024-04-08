@@ -39,12 +39,12 @@
             <el-form-item class="question" style="font-weight: bolder;" label="B04.贵司（含所在集团）在2018年和2023年是否外包以下业务？">
                 <el-table :data="tablePBQ4" style="width: 100%" :row-style="{ height: '10px' }"
                     :cell-style="{ padding: '0px' }">
-                    <el-table-column class="answer" width="200%">
+                    <el-table-column class="answer" width="135%">
                         <template #default="{ row }">
                             {{ row.name }}
                         </template>
                     </el-table-column>
-                    <el-table-column width="190%" class="answer" header-align="center"
+                    <el-table-column width="90%" class="answer" header-align="center"
                         v-for="(column, colIndex) in colPBQ4" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
                             <el-checkbox class="table-container1" v-model="row.selection[colIndex]"
@@ -257,12 +257,12 @@ const tablePBQ4 = ref([
 ]);
 
 const colPBQ4 = [
-    { label: "2018年 没有外包" },
-    { label: "2018年 部分外包" },
-    { label: "2018年 全部外包" },
-    { label: "2023年 没有外包" },
-    { label: "2023年 部分外包" },
-    { label: "2023年 全部外包" },
+    { label: "2018年没有外包" },
+    { label: "2018年部分外包" },
+    { label: "2018年全部外包" },
+    { label: "2023年没有外包" },
+    { label: "2023年部分外包" },
+    { label: "2023年全部外包" },
 ];
 
 // 处理单元格选中状态变化

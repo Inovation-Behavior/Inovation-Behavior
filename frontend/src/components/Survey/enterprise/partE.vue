@@ -6,12 +6,12 @@
                     label="（请打分，1🌟为非常差，5🌟为非常好）" />
                 <el-table :data="tablePEQ01" style="width: 100%" :row-style="{ height: '10px' }"
                     :cell-style="{ padding: '0px' }">
-                    <el-table-column class="answer" width="400%">
+                    <el-table-column class="answer" width="300%">
                         <template #default="{ row }">
                             {{ row.name }}
                         </template>
                     </el-table-column>
-                    <el-table-column width="250%" class="answer" header-align="center"
+                    <el-table-column width="200%" class="answer" header-align="center"
                         v-for="(column, colIndex) in colPEQ01" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
                             <el-rate text-color="#ff9900" size="large" v-model="row.rate"
