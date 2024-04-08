@@ -240,7 +240,7 @@ const handlePAQ09Change = (value) => {
 const tablePAQ3 = ref([
     { name: "法学", selection: [false, false, false] },
     { name: "经济学、管理学", selection: [false, false, false] },
-    { name: "其他人文社会科学（文学、历史学或教育学等）", index: 2, selection: [false, false, false] },
+    { name: "其他人文社会科学（文学、历史学或教育学等）", selection: [false, false, false] },
     { name: "工学", selection: [false, false, false] },
     { name: "理学", selection: [false, false, false] },
     { name: "医学",  selection: [false, false, false] },
@@ -351,8 +351,10 @@ const handlePAQ11 = (row, colIndex) => {
 };
 
 const submit = async () => {
-    form.pAq01.push(extraInput1.value);
-    form.pAq09.push(extraInput2.value);
+    form.pAq01.pop()
+    form.pAq09.pop()
+    form.pAq01.push(extraInput1.value)
+    form.pAq09.push(extraInput2.value)
     // 将表单数据转换为对象数组
     const formDataArray = Object.entries(form).map(([key, value]) => ({ [key]: value }));
 

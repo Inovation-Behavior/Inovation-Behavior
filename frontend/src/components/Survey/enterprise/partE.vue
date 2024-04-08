@@ -101,31 +101,33 @@
             </el-form-item>
 
         </el-form>
-        <el-button type="primary" @click="submit()" style="margin-top: 1vh;margin-left: 2vw;">提交问卷（E部分）</el-button>
-        <p class="ps">
-            **抛硬币游戏**
-        </p>
-        <p class="ps" style="text-indent: 2em;">
-            为感谢您的参与，我们为您准备了一份纪念品（或50元人民币酬金）。
-        </p>
-        <p class="ps">
-            此处放置纪念品样图
-        </p>
-        <p class="ps">
-            您可以选择：
-        </p>
-        <p class="ps" style="text-indent: 2em;">
-            （1）直接获得一份纪念品
-        </p>
-        <p class="ps" style="text-indent: 2em;">
-            （2）选择抛硬币游戏：如抛出正面，您将获得两份纪念品（或100元人民币酬金）
-        </p>
-        <p class="ps">
-            请留下您的邮寄方式：<el-input size="small" style="width: 20vw;"></el-input>
-        </p>
-        <p class="ps">
-            或联系志愿者同学
-        </p>
+        <el-button type="primary" @click="submit()" style="margin-top: 1vh;margin-left: 2vw;">submit part D</el-button>
+
+        <el-dialog style="font-family: SimSun;width: 40vw;align-items: center;justify-content: center;" title="纪念品领取"
+            v-model="dialogVisible" :before-close="handleClose">
+            <el-card style="gap: 6px;border: none;align-items: center;justify-content: center;display: flex;"
+                shadow="never">
+                <el-container style="font-family: KaiTi">为感谢您的参与，我们为您准备了一份纪念品。</el-container>
+                <el-container>
+                    <el-form>
+                        <el-form-item style="font-weight: bolder;font-family: KaiTi" label="您可以选择：">
+                            <el-radio-group v-model="awardForm.award">
+                                <el-radio class="answer" label="直接获得一份纪念品"/>
+                                <el-radio class="answer" label="选择抛硬币游戏：如果抛出正面，获得两份纪念品。"/>
+                            </el-radio-group>
+                        </el-form-item>
+                    </el-form>
+                </el-container>
+            </el-card>
+            <template #footer>
+                <div class="dialog-footer">
+                    <el-button @click="dialogVisible.valueOf = false">取消</el-button>
+                    <el-button type="primary" @click="submitAward">
+                        确认
+                    </el-button>
+                </div>
+            </template>
+        </el-dialog>
     </el-card>
 </template>
 
@@ -142,6 +144,14 @@ const form = reactive({
     pEq04: [],
     pEq05: [],
 });
+
+const awardForm = reactive({
+    patentNo: surveyInfo.patentNo,
+    award:"",
+    address:""
+})
+
+const dialogVisible = ref(false)
 
 //以下实现所有表格
 const tablePEQ01 = ref([
@@ -271,6 +281,19 @@ const submit = async () => {
     if (response.status == 200) {
         if (response.data.code == 1) {
             ElMessage.success("submit successfully")
+            dialogVisible.value = true
+        }
+    }
+}
+const submitAward = async () => {
+    dialogVisible.value = false
+    console.log(awardForm)
+    let response = await axios.post('/api/survey/policy', awardForm);
+    if (response.status == 200) {
+        if (response.data.code == 1) {
+            ElMessage.success("成功提交奖励")
+        } else{
+            ElMessage.error("您已选择奖励")
         }
     }
 }

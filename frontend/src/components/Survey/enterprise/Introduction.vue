@@ -25,9 +25,9 @@
             </template>
             <template v-if="searchPatents.length!=0">
                 <el-table :data="searchPatents" style="width: 100%">
-                    <el-table-column prop="no" label="no" width="180" />
-                    <el-table-column prop="application" label="application" width="200" />
-                    <el-table-column prop="name" label="name" />
+                    <el-table-column prop="no" label="专利申请号" width="180" />
+                    <el-table-column prop="application" label="单位名称" width="200" />
+                    <el-table-column prop="name" label="专利标题" />
                 </el-table>
             </template>
         <!-- </el-card> -->

@@ -316,6 +316,7 @@ const handlePCQ10 = (row, colIndex) => {
 };
 
 const submit = async () => {
+    form.pCq05.pop()
     form.pCq05.push(extraInput1.value)
     // 将表单数据转换为对象数组
     const formDataArray = Object.entries(form).map(([key, value]) => ({ [key]: value }));

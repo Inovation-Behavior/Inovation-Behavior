@@ -272,12 +272,14 @@ const handlePDQ06Change = (value) => {
 };
 
 const submit = async () => {
-    form.pDq01.push(extraInput1.value)
-    form.pDq02.push(extraInput2.value)
-    form.pDq0302.push(extraInput3.value)
-    form.pDq0501.push(extraInput4.value)
-    form.pDq06.push(extraInput5.value)
-
+    form.pDq0302.pop()
+    form.pDq0501.pop()
+    form.pDq06.pop()
+    form.pDq01.pop()
+    form.pDq0302.push(extraInput1.value)
+    form.pDq0501.push(extraInput2.value)
+    form.pDq06.push(extraInput3.value)
+    form.pDq01.push(extraInput4.value)
     // 将表单数据转换为对象数组
     const formDataArray = Object.entries(form).map(([key, value]) => ({ [key]: value }));
 
