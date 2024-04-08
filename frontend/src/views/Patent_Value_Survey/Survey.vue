@@ -2,7 +2,7 @@
     <div class="whole-box">
         <div style="max-width: 1400px;">
             <el-container
-                style="font-family:SimHei;font-size: 2rem;font-weight: bolder;display: flex;justify-content: center;align-items: center; margin-top: 2vh; width: 100%; overflow: auto;margin-bottom: 2vh;">
+                style="font-family:SimHei;font-size: 2rem;font-weight: bolder;display: flex;justify-content: center;align-items: center; width: 100%; overflow: auto;margin-bottom: 2vh;">
                 开放专利与创新调查：上海2024
             </el-container>
             <el-dialog :modal="false" center :close-on-click-modal="false" :close-on-press-escape="false"
@@ -115,7 +115,6 @@ export default {
     color: #6b778c;
     font-size: 32px;
     font-weight: 600;
-
 }
 
 .whole-box {
@@ -123,7 +122,7 @@ export default {
     display: flex;
     justify-content: center;
     background-color: white;
-    padding: 20px;
+    margin-top: 20px;
 }
 
 /* Style for portrait mode */

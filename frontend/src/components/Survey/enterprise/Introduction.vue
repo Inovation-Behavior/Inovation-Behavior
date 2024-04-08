@@ -7,7 +7,7 @@
                 在回答问卷前，请确认您所在单位持有附件发明专利
                 <br>
                 专利申请号为：
-                <el-input size="small" style="width: 10vw;" v-model="form.patentNo" @input="updatePatentNo"
+                <el-input size="small" style="width: 250px;" v-model="form.patentNo" @input="updatePatentNo"
                     @keyup.enter="getPatentByNo(form.patentNo)"></el-input>
                 <br>
                 如果与该专利无关，请提供您所在单位的名称：
