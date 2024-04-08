@@ -6,7 +6,7 @@
                 开放专利与创新调查：上海2024
             </el-container>
             <el-dialog title="提示" v-model="showRecommendationDialog"
-                style="font-family: SimSun;width: 400px;align-items: center;justify-content: center;position: absolute; left: 20px;"
+                style="font-family: SimSun;width: 300px;align-items: center;justify-content: center;position: absolute; left: 20px;"
                 :before-close="handleRecommendationDialogClose">
                 <p style=" margin-top: -10px">建议在平板或pc端填写调查问卷</p>
             </el-dialog>
