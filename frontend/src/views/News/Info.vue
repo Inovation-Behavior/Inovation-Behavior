@@ -3,7 +3,7 @@
         <div class="content-box">
             <!-- <vue-office-docx :src="url" style="max-width: 100%;overflow:auto;margin-top: 5vh;margin-left: 15%;"
                 @rendered="renderedHandler" @error="errorHandler" /> -->
-            <pdf :src="url" style="max-width: 1400px;overflow:auto;margin-top: 5vh;margin-left: 15%;width: 70%;"></pdf>
+            <pdf :src="url" style="max-width: 1400px;overflow:auto;margin-top: 5vh;width: 100%;"></pdf>
         </div>
     </div>
     <!-- <pdf :src="url" style="max-width: 1400px;overflow:auto;margin-top: 5vh;margin-left: 15%;width: 70%;"></pdf>
@@ -69,19 +69,20 @@ watch(() => store.changeLanguage, () => {
 .whole-box {
     width: 100%;
     display: flex;
-    max-width: 1400px;
-    // justify-content: center;
+    justify-content: center;
+    align-items: center;
     // box-shadow: 0 4px 8px $shadow-color;
     background-color: white;
-    padding: 20px;
-    // border-radius: 8px;
+    // border: 1px solid #000;
 }
 .content-box {
     width: 100%;
     max-width: 1400px;
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
-    padding-left: 30px;
+    // border: 1px solid #000;
 }
 
 .set-vertical {
