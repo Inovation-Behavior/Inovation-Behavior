@@ -44,12 +44,23 @@
                             {{ row.name }}
                         </template>
                     </el-table-column>
-                    <el-table-column width="90%" class="answer" header-align="center"
-                        v-for="(column, colIndex) in colPBQ4" :key="colIndex" :label="column.label">
-                        <template #default="{ row }">
-                            <el-checkbox class="table-container1" v-model="row.selection[colIndex]"
-                                @change="handlePBQ4(row, colIndex)"></el-checkbox>
-                        </template>
+                    <el-table-column label="2018年">
+                        <el-table-column width="90%" class="answer" header-align="center"
+                            v-for="(column, colIndex) in colPBQ4.slice(0, 3)" :key="colIndex" :label="column.label">
+                            <template #default="{ row }">
+                                <el-checkbox class="table-container1" v-model="row.selection[colIndex]"
+                                    @change="handlePBQ4(row, colIndex)"></el-checkbox>
+                            </template>
+                        </el-table-column>
+                    </el-table-column>
+                    <el-table-column label="2023年">
+                        <el-table-column width="90%" class="answer" header-align="center"
+                            v-for="(column, colIndex) in colPBQ4.slice(3, 6)" :key="colIndex" :label="column.label">
+                            <template #default="{ row }">
+                                <el-checkbox class="table-container1" v-model="row.selection[colIndex]"
+                                    @change="handlePBQ4(row, colIndex)"></el-checkbox>
+                            </template>
+                        </el-table-column>
                     </el-table-column>
                 </el-table>
             </el-form-item>
@@ -78,13 +89,12 @@
 
             <el-form-item class="question" style="font-weight: bolder;" label="B07.贵司是否设立了专门的知识产权部门/团队？">
                 <el-radio-group v-model="form.pBq07" @change="handlePBQ07Change">
-                    <el-radio class="answer" label="是"/>
+                    <el-radio class="answer" label="是" />
                     <el-radio class="answer" label="否，暂时没有相关设置" />
                 </el-radio-group>
             </el-form-item>
 
-            <el-form-item class="question" v-if="showPBQ07" style="font-weight: bolder;"
-                label="B0701.如果设立了，请问设立的年份是？">
+            <el-form-item class="question" v-if="showPBQ07" style="font-weight: bolder;" label="B0701.如果设立了，请问设立的年份是？">
                 <el-date-picker style="margin-left: 2vw;" size="small" v-model="form.pBq0701" type="year"
                     placeholder="选择年份" />
             </el-form-item>
@@ -100,9 +110,11 @@
                 </el-radio-group>
             </el-form-item>
 
-            <el-form-item class="question" v-if="showPBQ07" style="font-weight: bolder;" label="B0703.如果设立了，请问贵司的知识产权部门有多少全职员工？">
+            <el-form-item class="question" v-if="showPBQ07" style="font-weight: bolder;"
+                label="B0703.如果设立了，请问贵司的知识产权部门有多少全职员工？">
                 <el-text class="answer" style="font-family: Kaiti;font-weight: 100;text-indent: 2em;">大约<el-input
-                        size="small" v-model="form.pBq0301" style="width: 5vw;margin-left: 0.5vw" placeholder="" />人</el-text>
+                        size="small" v-model="form.pBq0301" style="width: 5vw;margin-left: 0.5vw"
+                        placeholder="" />人</el-text>
             </el-form-item>
 
             <el-form-item class="question" style="font-weight: bolder;" label="B8.贵司在专利管理工作中，是否经常使用以下在线数据库/平台？">
@@ -160,7 +172,8 @@
             </el-form-item>
 
             <el-form-item class="question" style="font-weight: bolder;" label="B10.过去五年，贵司是否有过以下专利商业化经历？">
-                <el-checkbox-group v-model="form.pBq10" style="display: flex;flex-wrap: wrap;" @change="handlePBQ10Change">
+                <el-checkbox-group v-model="form.pBq10" style="display: flex;flex-wrap: wrap;"
+                    @change="handlePBQ10Change">
                     <el-checkbox class="answer" label="专利转让" />
                     <el-checkbox class="answer" label="集团内部专利许可" />
                     <el-checkbox class="answer" label="与第三方专利许可" />
@@ -257,12 +270,12 @@ const tablePBQ4 = ref([
 ]);
 
 const colPBQ4 = [
-    { label: "2018年没有外包" },
-    { label: "2018年部分外包" },
-    { label: "2018年全部外包" },
-    { label: "2023年没有外包" },
-    { label: "2023年部分外包" },
-    { label: "2023年全部外包" },
+    { label: "没有外包" },
+    { label: "部分外包" },
+    { label: "全部外包" },
+    { label: "没有外包" },
+    { label: "部分外包" },
+    { label: "全部外包" },
 ];
 
 // 处理单元格选中状态变化
