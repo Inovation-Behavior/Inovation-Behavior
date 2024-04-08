@@ -5,8 +5,7 @@
                 style="font-family:SimHei;font-size: 2rem;font-weight: bolder;display: flex;justify-content: center;align-items: center; margin-top: 2vh; width: 100%; overflow: auto;margin-bottom: 2vh;">
                 开放专利与创新调查：上海2024
             </el-container>
-            <el-dialog :modal="false" center  :close-on-click-modal="false"
-                :close-on-press-escape="false"
+            <el-dialog :modal="false" center :close-on-click-modal="false" :close-on-press-escape="false"
                 style="font-family: SimSun;width: 40vw;align-items: center;justify-content: center;"
                 title="欢迎参加问卷调研，请输入邀请码" v-model="dialogVisible" :before-close="handleClose">
                 <el-card style="gap: 6px;border: none;align-items: center;justify-content: center;display: flex;"
@@ -25,23 +24,24 @@
                 <el-tabs style="width: 100%;" v-model="activeName" tab-position="top" class="demo-tabs"
                     @tab-click="handleClick" type="card" stretch="true">
                     <el-tab-pane label="专利信息确认" name="专利信息确认">
-                        <el-button type="primary" @click="showInput" style="margin-bottom: 1vh;">输入邀请码后确认填写资格</el-button>
+                        <el-button type="primary" @click="showInput"
+                            style="margin-bottom: 1vh;">输入邀请码后确认填写资格</el-button>
                         <introduction />
                     </el-tab-pane>
-                    <el-tab-pane label="A. 个人基本信息" name="A. 个人基本信息" :disabled="disableInput">
-                        <part-a />
+                    <el-tab-pane label="A. 个人基本信息" name="A" :disabled="disableInput">
+                        <part-a @switch-tab="switchTab" />
                     </el-tab-pane>
-                    <el-tab-pane label="B. 企业研发与知识产权管理" name="B. 企业研发与知识产权管理" :disabled="disableInput">
-                        <part-b />
+                    <el-tab-pane label="B. 企业研发与知识产权管理" name="B" :disabled="disableInput">
+                        <part-b @switch-tab="switchTab" />
                     </el-tab-pane>
-                    <el-tab-pane label="C. 专利技术价值" name="C. 专利技术价值" :disabled="disableInput">
-                        <part-c />
+                    <el-tab-pane label="C. 专利技术价值" name="C" :disabled="disableInput">
+                        <part-c @switch-tab="switchTab" />
                     </el-tab-pane>
-                    <el-tab-pane label="D. 专利的许可运用" name="D. 专利的许可运用" :disabled="disableInput">
-                        <part-d />
+                    <el-tab-pane label="D. 专利的许可运用" name="D" :disabled="disableInput">
+                        <part-d @switch-tab="switchTab" />
                     </el-tab-pane>
-                    <el-tab-pane label="E. 知识产权政策" name="E. 知识产权政策" :disabled="disableInput">
-                        <part-e />
+                    <el-tab-pane label="E. 知识产权政策" name="E" :disabled="disableInput">
+                        <part-e @switch-tab="switchTab" />
                     </el-tab-pane>
                 </el-tabs>
             </el-container>
@@ -95,7 +95,16 @@ export default {
         },
         showInput(){
             this.dialogVisible=true
-        }
+        },
+        switchTab(tabName) {
+            // 更新 activeName 属性来切换标签页
+            console.log(tabName)
+            this.activeName = tabName;
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth" // 使用平滑滚动
+            });
+        },
     }
 }
 </script>

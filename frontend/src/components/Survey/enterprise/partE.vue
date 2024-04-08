@@ -2,8 +2,7 @@
     <el-card style="border-radius: 15px;width: 100%;">
         <el-form :model="form" size="large" label-position="top">
             <el-form-item class="question" style="font-weight: bolder;" label="E01.您如何评价过去五年的知识产权营商环境？">
-                <el-form-item class="question blue-label" style="font-weight: bolder;"
-                    label="（请打分，1🌟为非常差，5🌟为非常好）" />
+                <el-form-item class="question blue-label" style="font-weight: bolder;" label="（请打分，1🌟为非常差，5🌟为非常好）" />
                 <el-table :data="tablePEQ01" style="width: 100%" :row-style="{ height: '10px' }"
                     :cell-style="{ padding: '0px' }">
                     <el-table-column class="answer" width="300%">
@@ -21,7 +20,7 @@
                     </el-table-column>
                 </el-table>
             </el-form-item>
-            
+
             <el-form-item class="question" style="font-weight: bolder;" label="E02.您是否了解以下专利许可机制？">
                 <el-table :data="tablePEQ2" style="width: 100%" :row-style="{ height: '10px' }"
                     :cell-style="{ padding: '0px' }">
@@ -101,23 +100,23 @@
             </el-form-item>
 
         </el-form>
-        <el-button type="primary" @click="submit()" style="margin-top: 1vh;margin-left: 2vw;">submit part D</el-button>
+        <el-button type="primary" @click="submit()" style="margin-top: 1vh;margin-left: 2vw;">提交问卷（E部分）</el-button>
 
         <el-dialog style="font-family: SimSun;width: 40vw;align-items: center;justify-content: center;" title="纪念品领取"
             v-model="dialogVisible" :before-close="handleClose">
             <el-card style="gap: 6px;border: none;align-items: center;justify-content: center;display: flex;"
                 shadow="never">
-                <el-container style="font-family: KaiTi">为感谢您的参与，我们为您准备了一份纪念品。</el-container>
+                <el-container style="margin-bottom: 2vh;">为感谢您的参与，我们为您准备了一份纪念品。</el-container>
                 <el-container>
-                    <el-form>
-                        <el-form-item style="font-weight: bolder;font-family: KaiTi" label="您可以选择：">
-                            <el-radio-group v-model="awardForm.award">
-                                <el-radio class="answer" label="直接获得一份纪念品"/>
-                                <el-radio class="answer" label="选择抛硬币游戏：如果抛出正面，获得两份纪念品。"/>
-                            </el-radio-group>
-                        </el-form-item>
-                    </el-form>
+                    <el-image :src="award"></el-image>
                 </el-container>
+                <el-container style="margin-top: 2vh">
+                    您可以选择:
+                </el-container>
+                <el-radio-group v-model="awardForm.award">
+                    <el-radio class="answer" label="直接获得一份纪念品" />
+                    <el-radio class="answer" label="选择抛硬币游戏：如果抛出正面，获得两份纪念品。" />
+                </el-radio-group>
             </el-card>
             <template #footer>
                 <div class="dialog-footer">
@@ -136,6 +135,7 @@ import { ref, reactive } from 'vue';
 import { surveyStore,tableColChange } from '../../../stores/survey';
 import axios from 'axios';
 import { ElMessage } from 'element-plus';
+import award from '../../../public/img/award.png'
 const surveyInfo = surveyStore().surveyInfo
 const form = reactive({
     pEq01: [],
@@ -146,7 +146,7 @@ const form = reactive({
 });
 
 const awardForm = reactive({
-    patentNo: surveyInfo.patentNo,
+    patentNo: "",
     award:"",
     address:""
 })
@@ -286,9 +286,10 @@ const submit = async () => {
     }
 }
 const submitAward = async () => {
+    awardForm.patentNo = surveyInfo.patentNo
     dialogVisible.value = false
     console.log(awardForm)
-    let response = await axios.post('/api/survey/policy', awardForm);
+    let response = await axios.post('/api/survey/award', awardForm);
     if (response.status == 200) {
         if (response.data.code == 1) {
             ElMessage.success("成功提交奖励")
