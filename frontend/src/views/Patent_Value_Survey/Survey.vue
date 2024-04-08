@@ -23,24 +23,24 @@
             <el-container style="margin-top: 10px;margin-right: 5px; width: 100%;">
                 <el-tabs style="width: 100%;" v-model="activeName" tab-position="top" class="demo-tabs"
                     @tab-click="handleClick" type="card" stretch="true">
-                    <el-tab-pane label="专利信息确认" name="专利信息确认">
+                    <el-tab-pane label="专利确认" name="专利信息确认">
                         <el-button type="primary" @click="showInput"
                             style="margin-bottom: 1vh;">输入邀请码后确认填写资格</el-button>
                         <introduction />
                     </el-tab-pane>
-                    <el-tab-pane label="A. 个人基本信息" name="A" :disabled="disableInput">
+                    <el-tab-pane label="个人信息" name="A" :disabled="disableInput">
                         <part-a @switch-tab="switchTab" />
                     </el-tab-pane>
-                    <el-tab-pane label="B. 企业研发与知识产权管理" name="B" :disabled="disableInput">
+                    <el-tab-pane label="企业研发与知识产权管理" name="B" :disabled="disableInput">
                         <part-b @switch-tab="switchTab" />
                     </el-tab-pane>
-                    <el-tab-pane label="C. 专利技术价值" name="C" :disabled="disableInput">
+                    <el-tab-pane label="专利技术价值" name="C" :disabled="disableInput">
                         <part-c @switch-tab="switchTab" />
                     </el-tab-pane>
-                    <el-tab-pane label="D. 专利的许可运用" name="D" :disabled="disableInput">
+                    <el-tab-pane label="专利许可运用" name="D" :disabled="disableInput">
                         <part-d @switch-tab="switchTab" />
                     </el-tab-pane>
-                    <el-tab-pane label="E. 知识产权政策" name="E" :disabled="disableInput">
+                    <el-tab-pane label="知识产权政策" name="E" :disabled="disableInput">
                         <part-e @switch-tab="switchTab" />
                     </el-tab-pane>
                 </el-tabs>

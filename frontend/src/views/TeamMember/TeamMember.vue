@@ -89,7 +89,7 @@ Faculty Research Fellow，MPIIC
     justify-content: center;
     align-items: center;
     background-color: white;
-    padding: 20px;
+    // padding: 20px;
 }
 
 .content-box {
@@ -98,7 +98,7 @@ Faculty Research Fellow，MPIIC
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding-left: 30px;
+    // padding-left: 30px;
 }
 
 .profile-box {
