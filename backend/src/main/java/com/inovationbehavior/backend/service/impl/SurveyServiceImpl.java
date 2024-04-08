@@ -7,6 +7,8 @@ import com.inovationbehavior.backend.service.intf.SurveyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 public class SurveyServiceImpl implements SurveyService {
     @Autowired
@@ -18,27 +20,32 @@ public class SurveyServiceImpl implements SurveyService {
 
     @Override
     public void postIdentification(String patentNo, String identification) {
-        surveyMapper.postIdentification(patentNo,identification);
+        LocalDateTime time = LocalDateTime.now();
+        surveyMapper.postIdentification(patentNo,identification, time);
     }
 
     @Override
     public void postEnterprise(String patentNo, String enterprise) {
-        surveyMapper.postEnterprise(patentNo,enterprise);
+        LocalDateTime time = LocalDateTime.now();
+        surveyMapper.postEnterprise(patentNo,enterprise, time);
     }
 
     @Override
     public void postValue(String patentNo, String value) {
-        surveyMapper.postValue(patentNo,value);
+        LocalDateTime time = LocalDateTime.now();
+        surveyMapper.postValue(patentNo,value, time);
     }
 
     @Override
     public void postUsage(String patentNo, String usage) {
-        surveyMapper.postUsage(patentNo, usage);
+        LocalDateTime time = LocalDateTime.now();
+        surveyMapper.postUsage(patentNo, usage, time);
     }
 
     @Override
     public void postPolicy(String patentNo, String policy) {
-        surveyMapper.postPolicy(patentNo, policy);
+        LocalDateTime time = LocalDateTime.now();
+        surveyMapper.postPolicy(patentNo, policy, time);
     }
 
     @Override

@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AwardInfo {
     private String patentNo;
-    private Integer award;
+    private String award;
     private String address;
 }

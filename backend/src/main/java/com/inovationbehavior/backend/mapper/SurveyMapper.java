@@ -7,41 +7,43 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 
+import java.time.LocalDateTime;
+
 @Mapper
 public interface SurveyMapper {
     @Insert("insert into survey (patent_no, identification, evaluate, value) values (#{patentNo},#{identification},#{evaluate},#{value})")
     void postSurvey(Survey survey);
 
-    @Insert("INSERT INTO survey (patent_no, identification) \n" +
-            "VALUES (#{patentNo}, #{identification}) \n" +
-            "ON DUPLICATE KEY UPDATE identification = VALUES(identification);")
-    void postIdentification(String patentNo, String identification);
+    @Insert("INSERT INTO survey (patent_no, identification, time) \n" +
+            "VALUES (#{patentNo}, #{identification}, #{time}) \n" +
+            "ON DUPLICATE KEY UPDATE identification = VALUES(identification), time = VALUES(time);")
+    void postIdentification(String patentNo, String identification, LocalDateTime time);
 
-    @Insert("INSERT INTO survey (patent_no, enterprise) \n" +
-            "VALUES (#{patentNo}, #{enterprise}) \n" +
-            "ON DUPLICATE KEY UPDATE enterprise = VALUES(enterprise);")
-    void postEnterprise(String patentNo, String enterprise);
+    @Insert("INSERT INTO survey (patent_no, enterprise, time) \n" +
+            "VALUES (#{patentNo}, #{enterprise}, #{time}) \n" +
+            "ON DUPLICATE KEY UPDATE enterprise = VALUES(enterprise), time = VALUES(time);")
+    void postEnterprise(String patentNo, String enterprise, LocalDateTime time);
 
-    @Insert("INSERT INTO survey (patent_no, value) \n" +
-            "VALUES (#{patentNo}, #{value}) \n" +
-            "ON DUPLICATE KEY UPDATE value = VALUES(value);")
-    void postValue(String patentNo, String value);
+    @Insert("INSERT INTO survey (patent_no, value, time) \n" +
+            "VALUES (#{patentNo}, #{value}, #{time}) \n" +
+            "ON DUPLICATE KEY UPDATE value = VALUES(value), time = VALUES(time);")
+    void postValue(String patentNo, String value, LocalDateTime time);
 
-    @Insert("INSERT INTO survey (patent_no, `use`) \n" +
-            "VALUES (#{patentNo}, #{use}) \n" +
-            "ON DUPLICATE KEY UPDATE `use` = VALUES(`use`);")
-    void postUsage(String patentNo, String use);
+    @Insert("INSERT INTO survey (patent_no, `use`, time) \n" +
+            "VALUES (#{patentNo}, #{use}, #{time}) \n" +
+            "ON DUPLICATE KEY UPDATE `use` = VALUES(`use`), time = VALUES(time);")
+    void postUsage(String patentNo, String use, LocalDateTime time);
 
 
-    @Insert("INSERT INTO survey (patent_no, policy) \n" +
-            "VALUES (#{patentNo}, #{policy}) \n" +
-            "ON DUPLICATE KEY UPDATE policy = VALUES(policy);")
-    void postPolicy(String patentNo, String policy);
+    @Insert("INSERT INTO survey (patent_no, policy, time) \n" +
+            "VALUES (#{patentNo}, #{policy}, #{time}) \n" +
+            "ON DUPLICATE KEY UPDATE policy = VALUES(policy), time = VALUES(time);")
+    void postPolicy(String patentNo, String policy, LocalDateTime time);
 
     @Insert("INSERT INTO survey (patent_no, award, address) " +
             "VALUES (#{patentNo}, #{award}, #{address}) " +
             "ON DUPLICATE KEY UPDATE award = IFNULL(award, VALUES(award)), address = VALUES(address);")
-    int postAwardInfo(String patentNo, Integer award, String address);
+    int postAwardInfo(String patentNo, String award, String address);
 
     @Select("SELECT COUNT(*) FROM survey WHERE patent_no = #{patentNo} AND award IS NOT NULL")
     int checkAward(String patentNo);
