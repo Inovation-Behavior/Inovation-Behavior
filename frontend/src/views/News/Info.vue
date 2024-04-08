@@ -3,7 +3,7 @@
         <div class="content-box">
             <!-- <vue-office-docx :src="url" style="max-width: 100%;overflow:auto;margin-top: 5vh;margin-left: 15%;"
                 @rendered="renderedHandler" @error="errorHandler" /> -->
-            <pdf :src="url" style="max-width: 1400px;overflow:auto;margin-top: 5vh;width: 100%;"></pdf>
+            <pdf :src="url" style="max-width: 1400px;overflow:auto;width: 100%;"></pdf>
         </div>
     </div>
     <!-- <pdf :src="url" style="max-width: 1400px;overflow:auto;margin-top: 5vh;margin-left: 15%;width: 70%;"></pdf>
@@ -73,6 +73,7 @@ watch(() => store.changeLanguage, () => {
     align-items: center;
     // box-shadow: 0 4px 8px $shadow-color;
     background-color: white;
+    margin-top:30px
     // border: 1px solid #000;
 }
 .content-box {

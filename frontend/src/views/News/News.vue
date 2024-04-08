@@ -2,9 +2,9 @@
     <div class="whole-box">
         <div class="set-vertical" style="max-width: 1400px;">
             <el-container>
-                <el-carousel style="width: 95vw;margin-top: 5vh;" indicator-position="outside">
+                <el-carousel style="width: 100%;margin-top: 5vh;" indicator-position="outside">
                     <el-carousel-item class="set-vertical" style="cursor: pointer;" v-for="item in news" :key="item">
-                        <el-container style="height: 20vh;background-color: #99a9bf;" @click="getNewsDetail(item.id)">
+                        <el-container style="height: 200px;background-color: #99a9bf;" @click="getNewsDetail(item.id)">
                             <img :src="item.cover" style="width: 100%; height: 100%; object-fit: cover;">
                         </el-container>
                         <el-card style="margin-top: 0;margin-bottom: 1vh;" @click="getNewsDetail(item.id)">
@@ -13,9 +13,9 @@
                     </el-carousel-item>
                 </el-carousel>
             </el-container>
-            <el-container style="max-width: 1400px; width: 84vw;margin-top: 5vh;" class="set-vertical">
+            <el-container style="max-width: 1400px; width: 100%;margin-top: 20px;padding: 20px;" class="set-vertical">
                 <div v-for="item in news" :key="item.id" class="news-item set-horizonal"
-                    style="max-width: 1400px;border-radius: 20px;cursor: pointer;width: 84vw;" @click="getNewsDetail(item.id)">
+                    style="max-width: 1400px;border-radius: 20px;cursor: pointer;width: 100%;" @click="getNewsDetail(item.id)">
                     <el-container style="width: 30%;background-color:#99a9bf; ;">
                         <img :src="item.cover" style="width: 100%; height: 100%; object-fit: cover;">
                     </el-container>
@@ -108,7 +108,7 @@ watch(() => store.changeLanguage, () => {
 }
 
 .news-item {
-    width: 95vw;
+    // width: 95vw;
     box-sizing: border-box;
     border: 1px solid #ddd;
     margin-top: 2vh;

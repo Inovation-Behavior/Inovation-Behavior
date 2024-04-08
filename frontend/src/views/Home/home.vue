@@ -1,7 +1,7 @@
 <template>
     <div class="whole-box">
         <el-card
-            style="max-width: 1400px; margin-top: 20px; border-radius: 15px;width: 70%;font-size: 1.3rem;font-family: SimSun;display: flex;flex-direction: column;">
+            style="max-width: 1400px; margin-top: 20px; border-radius: 15px;width: 100%;font-size: 1.3rem;font-family: SimSun;display: flex;flex-direction: column;">
             <p>尊敬的专家：</p>
 
             <p style="text-indent: 2em;">
@@ -14,7 +14,9 @@
                 填写在线问卷。我们后续也将在网站上公布调查研究成果。
             </p>
 
-            <p style="text-indent: 2em;">您的意见对知识产权研究非常重要！我们不会以任何方式直接披露您的问卷填写信息。衷心感谢您的支持与协助！
+            <p style="text-indent: 2em;">您的意见对知识产权研究非常重要！我们不会以任何方式直接披露您的问卷填写信息。
+            </p>
+            <p style="text-indent: 2em;">衷心感谢您的支持与协助！
             </p>
         </el-card>
     </div>
@@ -38,8 +40,9 @@ p {
     display: flex;
     justify-content: center;
     background-color: white;
-    padding: 20px;
+    margin-top: 20px;
 }
+
 
 :deep(.el-radio__label) {
     white-space: normal;

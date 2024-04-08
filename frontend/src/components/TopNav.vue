@@ -195,14 +195,14 @@ const redirectToSurveyResults = () => {
     justify-content: center;
     align-items: center;
     margin-bottom: 10px;
-    padding-left: 20px;
+    /* padding-left: 20px; */
     font-size: xx-large;
     font-weight: bolder;
     /* border: 1px solid black; */
 }
 
 #logo-img {
-    padding-left: 30px;
+    /* padding-left: 30px; */
     width: 300px;
 }
 
