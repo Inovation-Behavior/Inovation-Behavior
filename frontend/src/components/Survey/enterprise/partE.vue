@@ -120,7 +120,7 @@
             </el-card>
             <template #footer>
                 <div class="dialog-footer">
-                    <el-button @click="dialogVisible.valueOf = false">取消</el-button>
+                    <el-button @click="dialogVisible = false">取消</el-button>
                     <el-button type="primary" @click="submitAward">
                         确认
                     </el-button>
@@ -271,7 +271,7 @@ const changeTable = (table, col) => {
     return results
 }
 const submit = async () => {
-    form.pEq02=changeTable(form.pEq02,colPEQ2)
+    //form.pEq02=changeTable(form.pEq02,colPEQ2)
     // 将表单数据转换为对象数组
     const formDataArray = Object.entries(form).map(([key, value]) => ({ [key]: value }));
 

@@ -336,7 +336,7 @@ const changeTable = (table, col) => {
 const submit = async () => {
     form.pCq05.pop()
     form.pCq05.push(extraInput1.value)
-    form.pCq0103=changeTable(form.pCq0103,colPCQ0103)
+    //form.pCq0103=changeTable(form.pCq0103,colPCQ0103)
     // 将表单数据转换为对象数组
     const formDataArray = Object.entries(form).map(([key, value]) => ({ [key]: value }));
 

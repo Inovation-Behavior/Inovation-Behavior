@@ -374,10 +374,10 @@ const submit = async () => {
     form.pAq01.push(extraInput1.value)
     form.pAq09.push(extraInput2.value)
 
-    form.pAq03=changeTable(form.pAq03,colPAQ3)
-    form.pAq04 = changeTable(form.pAq04,colPAQ4)
-    form.pAq05 = changeTable(form.pAq05,colPAQ5)
-    form.pAq06 = changeTable(form.pAq06,colPAQ6)
+    // form.pAq03=changeTable(form.pAq03,colPAQ3)
+    // form.pAq04 = changeTable(form.pAq04,colPAQ4)
+    // form.pAq05 = changeTable(form.pAq05,colPAQ5)
+    // form.pAq06 = changeTable(form.pAq06,colPAQ6)
 
     // 将表单数据转换为对象数组
     const formDataArray = Object.entries(form).map(([key, value]) => ({ [key]: value }));
