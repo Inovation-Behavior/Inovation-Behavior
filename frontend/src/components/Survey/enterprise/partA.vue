@@ -280,7 +280,7 @@ const colPAQ4 = [
 // 处理单元格选中状态变化
 const handlePAQ4 = (row, colIndex) => {
     const rowIndex = tablePAQ4.value.indexOf(row);
-    tableColChange(tablePAQ4.value,rowIndexow,colIndex)
+    tableColChange(tablePAQ4.value,rowIndex,colIndex)
     form.pAq04 = tablePAQ4
 };
 
@@ -356,11 +356,29 @@ const switchToPart = (tabName) => {
     emits('switch-tab',  tabName);
 }
 
+const changeTable = (table, col) => {
+    let results = [];
+    for (let i = 0; i < table.length; i++) {
+        for (let j = 0; j < table[i].selection.length; j++) {
+            if (table[i].selection[j]) {
+                results.push({ row: table[i].name, col: col[j].label });
+            }
+        }
+    }
+    return results
+}
+
 const submit = async () => {
     form.pAq01.pop()
     form.pAq09.pop()
     form.pAq01.push(extraInput1.value)
     form.pAq09.push(extraInput2.value)
+
+    // form.pAq03=changeTable(form.pAq03,colPAQ3)
+    // form.pAq04 = changeTable(form.pAq04,colPAQ4)
+    // form.pAq05 = changeTable(form.pAq05,colPAQ5)
+    // form.pAq06 = changeTable(form.pAq06,colPAQ6)
+
     // 将表单数据转换为对象数组
     const formDataArray = Object.entries(form).map(([key, value]) => ({ [key]: value }));
 

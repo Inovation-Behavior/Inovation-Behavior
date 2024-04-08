@@ -57,8 +57,8 @@
                         <el-table-column width="90%" class="answer" header-align="center"
                             v-for="(column, colIndex) in colPBQ4.slice(3, 6)" :key="colIndex" :label="column.label">
                             <template #default="{ row }">
-                                <el-checkbox class="table-container1" v-model="row.selection[colIndex]"
-                                    @change="handlePBQ4(row, colIndex)"></el-checkbox>
+                                <el-checkbox class="table-container1" v-model="row.selection[colIndex+3]"
+                                    @change="handlePBQ4(row, colIndex+3)"></el-checkbox>
                             </template>
                         </el-table-column>
                     </el-table-column>
@@ -312,6 +312,18 @@ const switchToPart = (tabName) => {
     emits('switch-tab', tabName);
 }
 
+const changeTable = (table, col) => {
+    let results = [];
+    for (let i = 0; i < table.length; i++) {
+        for (let j = 0; j < table[i].selection.length; j++) {
+            if (table[i].selection[j]) {
+                results.push({ row: table[i].name, col: col[j].label });
+            }
+        }
+    }
+    return results
+}
+
 const submit = async () => {
     form.pBq08.pop()
     form.pBq10.pop()
@@ -319,6 +331,8 @@ const submit = async () => {
     form.pBq08.push(extraInput1.value)
     form.pBq10.push(extraInput2.value)
     form.pBq1001.push(extraInput3.value)
+
+    //form.pBq04 = changeTable(form.pBq04,colPBQ4)
 
     // 将表单数据转换为对象数组
     const formDataArray = Object.entries(form).map(([key, value]) => ({ [key]: value }));
