@@ -259,8 +259,19 @@ const handlePEQ05 = (row, colIndex) => {
     // 取消当前行其他单元格的选中状态
     form.pEq05 = tablePEQ5
 };
-
+const changeTable = (table, col) => {
+    let results = [];
+    for (let i = 0; i < table.length; i++) {
+        for (let j = 0; j < table[i].selection.length; j++) {
+            if (table[i].selection[j]) {
+                results.push({ row: table[i].name, col: col[j].label });
+            }
+        }
+    }
+    return results
+}
 const submit = async () => {
+    form.pEq02=changeTable(form.pEq02,colPEQ2)
     // 将表单数据转换为对象数组
     const formDataArray = Object.entries(form).map(([key, value]) => ({ [key]: value }));
 

@@ -321,9 +321,22 @@ const switchToPart = (tabName) => {
     emits('switch-tab', tabName);
 }
 
+const changeTable = (table, col) => {
+    let results = [];
+    for (let i = 0; i < table.length; i++) {
+        for (let j = 0; j < table[i].selection.length; j++) {
+            if (table[i].selection[j]) {
+                results.push({ row: table[i].name, col: col[j].label });
+            }
+        }
+    }
+    return results
+}
+
 const submit = async () => {
     form.pCq05.pop()
     form.pCq05.push(extraInput1.value)
+    form.pCq0103=changeTable(form.pCq0103,colPCQ0103)
     // 将表单数据转换为对象数组
     const formDataArray = Object.entries(form).map(([key, value]) => ({ [key]: value }));
 
