@@ -2,7 +2,7 @@
     <el-card style="border-radius: 15px;width: 100%;">
         <el-form :model="form" size="large" label-position="top">
             <el-form-item class="question" label="A01.您与所选专利的关系是">
-                <el-checkbox-group v-model="form.pAq01" style="display: flex;flex-wrap: wrap;">
+                <el-checkbox-group v-model="form.pAq01" style="display: flex;flex-wrap: wrap;" @change="handlePAQ01Change">
                     <el-checkbox class="answer" label="专利发明人之一" />
                     <el-checkbox class="answer" label="参与该专利技术的研发，未列发明人" />
                     <el-checkbox class="answer" label="参与该相关技术的研发，未列发明人" />
@@ -22,7 +22,7 @@
 
             <el-form-item class="question" style="font-weight: bolder;" label="A03.您的学历背景是？">
                 <el-table :data="tablePAQ3" style="width: 100%" :row-style="{ height: '10px' }"
-                    :cell-style="{ padding: '0px' }">
+                :cell-style="{ padding: '0px' }">
                     <el-table-column class="answer" width="350%">
                         <template #default="{ row }">
                             {{ row.name }}
@@ -32,8 +32,7 @@
                         v-for="(column, colIndex) in colPAQ3" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
                             <!-- 在每个单元格内放置一个可选中的组件 -->
-                            <el-checkbox class="table-container1" v-model="row.selection[colIndex]"
-                                @change="handlePAQ3(row, colIndex)"></el-checkbox>
+                            <el-checkbox class="table-container1" v-model="row.selection[colIndex]"  @change="handlePAQ3(row, colIndex)"></el-checkbox>
                         </template>
                     </el-table-column>
                 </el-table>
@@ -57,7 +56,6 @@
                     <el-table-column width="140%" class="answer" header-align="center"
                         v-for="(column, colIndex) in colPAQ4" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
-                            <!-- 在每个单元格内放置一个可选中的组件 -->
                             <el-checkbox class="table-container1" v-model="row.selection[colIndex]"
                                 @change="handlePAQ4(row, colIndex)"></el-checkbox>
                         </template>
@@ -69,21 +67,21 @@
                 <el-form-item class="question blue-label" style="font-weight: bolder;" label="（含疫情期间的在线学习时间）" />
                 <el-table :data="tablePAQ5" style="width: 100%" :row-style="{ height: '10px' }"
                     :cell-style="{ padding: '0px' }">
-                    <el-table-column class="answer" width="250%">
+                    <el-table-column class="answer" width="200%">
                         <template #default="{ row }">
                             {{ row.name }}
                         </template>
                     </el-table-column>
-                    <el-table-column width="250%" class="answer" header-align="center"
+                    <el-table-column width="170%" class="answer" header-align="center"
                         v-for="(column, colIndex) in colPAQ5" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
-                            <!-- 在每个单元格内放置一个可选中的组件 -->
                             <el-checkbox class="table-container1" v-model="row.selection[colIndex]"
                                 @change="handlePAQ5(row, colIndex)"></el-checkbox>
                         </template>
                     </el-table-column>
                 </el-table>
             </el-form-item>
+
 
             <el-form-item class="question" style="font-weight: bolder;" label="A06.您在以下年份所处的岗位是？">
                 <el-table :data="tablePAQ6" style="width: 100%" :row-style="{ height: '10px' } "
@@ -93,7 +91,7 @@
                             <template v-if="$index !== tablePAQ6.length - 1">
                                 {{ row.name }}
                             </template>
-                            <template v-else>
+                               <template v-else>
                                 <el-input v-model="tablePAQ6[$index].name" style="height: 3vh;"
                                     placeholder="其他，请说明"></el-input>
                             </template>
@@ -124,20 +122,21 @@
                     style="font-family: Kaiti;font-weight: 100;text-indent: 2em;">2023年税前年收入，大约<el-input size="small"
                         v-model="form.pAq0702" style="width: 5vw;margin-left: 0.5vw;" placeholder="" />万人民币</el-text>
             </el-form-item>
-            <el-form-item class="question" style="font-weight: bolder;" label="A08. 如果在同一家公司，您觉得未来三年的收入变化如何？">
+
+            <el-form-item class="question" style="font-weight: bolder;" label="A08.如果在同一家公司，您觉得未来三年的收入变化如何？">
                 <el-radio-group v-model="form.pAq08">
                     <el-radio class="answer" label="总体保持不变" />
                     <el-radio class="answer" label="每年减少 5%左右（幅度仍可接受）" />
-                    <el-radio class="answer" label="每年增长 5%左右（符合个人预期）" />
                     <el-radio class="answer" label="每年减少 10%以上 （幅度难以接受）" />
+                    <el-radio class="answer" label="每年增长 5%左右（符合个人预期）" />
                     <el-radio class="answer" label="每年增长 10% 以上（超过个人预期）" />
                 </el-radio-group>
             </el-form-item>
+
             <el-form-item class="question" style="font-weight: bolder;" label="A09.如果成功实施该专利（例如签订许可合同等），您是否能获得以下奖励？">
                 <el-checkbox-group v-model="form.pAq09" style="display: flex;flex-wrap: wrap;"
-                @change="handlePAQ10Change">
-                    <el-checkbox class="answer" label="没有额外奖励，是必须完成的" />
-                    <el-checkbox class="answer" label="考核指标" />
+                @change="handlePAQ09Change">
+                    <el-checkbox class="answer" label="没有额外奖励，是必须完成的考核指标" />
                     <el-checkbox class="answer" label="更快的职业晋升" />
                     <el-checkbox class="answer" label="获得一次性现金奖励" />
                     <el-checkbox class="answer" label="获得许可费收益的提成" />
@@ -183,13 +182,13 @@
             </el-form-item>
 
         </el-form>
-        <el-button type="primary" @click="submit()" style="margin-top: 1vh;margin-left: 2vw;">submit part A</el-button>
+        <el-button type="primary" @click="submit()" style="margin-top: 1vh;margin-left: 2vw;">提交问卷（A部分）</el-button>
     </el-card>
 </template>
 
 <script setup>
 import { ref, reactive } from 'vue';
-import { surveyStore } from '../../../stores/survey';
+import { surveyStore,tableRowChange,tableColChange} from '../../../stores/survey';
 import axios from 'axios';
 import { ElMessage } from 'element-plus';
 
@@ -215,11 +214,27 @@ const form = reactive({
 const extraInput1 = ref("")
 const extraInput2 = ref("")
 
-const showPAQ10 = ref(false);
-const handlePAQ10Change = (value) => {
-    // 根据选择的 A9 选项来决定是否显示 A10
-    showPAQ10.value = value != "没有额外奖励，是必须完成的";
+// 跳转逻辑以及多选题互斥逻辑
+const handlePAQ01Change = (value) => {
+    if (value.includes('专利发明人之一')) {  
+        form.pAq01=value.filter(item => item !== '参与该专利技术的研发，未列发明人' && item !== '参与该相关技术的研发，未列发明人');  
+    } 
+    if(value.includes('以上均无，请说明')){
+        form.pAq01=value.filter(item => item !== '专利发明人之一' && item !== '参与该专利技术的研发，未列发明人' 
+        && item !== '参与该相关技术的研发，未列发明人'&& item !== '参与该专利申请'&& item !== '参与该专利管理');  
+    }
 };
+
+const showPAQ10 = ref(false);
+const handlePAQ09Change = (value) => {
+    if (value.includes('没有额外奖励，是必须完成的考核指标')) {  
+        form.pAq09 = ['没有额外奖励，是必须完成的考核指标']; 
+        value='没有额外奖励，是必须完成的考核指标'
+        extraInput2.value = '';
+    }
+    showPAQ10.value = (value != "没有额外奖励，是必须完成的考核指标" && value!='');
+};
+
 
 // 以下处理所有表格
 const tablePAQ3 = ref([
@@ -239,9 +254,9 @@ const colPAQ3 = [
     { label: "博士或同等学历学位" },
 ];
 
-// 处理单元格选中状态变化
+// 单元格选中状态变化
 const handlePAQ3 = (row, colIndex) => {
-    // 取消当前行其他单元格的选中状态
+    tableRowChange(tablePAQ3.value,colIndex,row)
     form.pAq03 = tablePAQ3
 };
 
@@ -264,7 +279,8 @@ const colPAQ4 = [
 
 // 处理单元格选中状态变化
 const handlePAQ4 = (row, colIndex) => {
-    // 取消当前行其他单元格的选中状态
+    const rowIndex = tablePAQ4.value.indexOf(row);
+    tableColChange(tablePAQ4.value,rowIndexow,colIndex)
     form.pAq04 = tablePAQ4
 };
 
@@ -286,7 +302,7 @@ const colPAQ5 = [
 
 // 处理单元格选中状态变化
 const handlePAQ5 = (row, colIndex) => {
-    // 取消当前行其他单元格的选中状态
+    tableRowChange(tablePAQ5.value,colIndex,row)
     form.pAq05 = tablePAQ5
 };
 
@@ -310,7 +326,7 @@ const colPAQ6 = [
 
 // 处理单元格选中状态变化
 const handlePAQ6 = (row, colIndex) => {
-    // 取消当前行其他单元格的选中状态
+    tableRowChange(tablePAQ6.value,colIndex,row)
     form.pAq06 = tablePAQ6
 };
 
@@ -331,13 +347,12 @@ const colPAQ11 = [
 
 // 处理单元格选中状态变化
 const handlePAQ11 = (row, colIndex) => {
-    // 取消当前行其他单元格的选中状态
     form.pAq11 = tablePAQ11
 };
 
 const submit = async () => {
     form.pAq01.push(extraInput1.value);
-    form.pAq09.push(extraInput2.value)
+    form.pAq09.push(extraInput2.value);
     // 将表单数据转换为对象数组
     const formDataArray = Object.entries(form).map(([key, value]) => ({ [key]: value }));
 

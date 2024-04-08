@@ -1,8 +1,9 @@
 <template>
     <el-card style="border-radius: 15px;width: 100%;">
         <el-form :model="form" size="large" label-position="top">
-            <el-form-item class="question" style="font-weight: bolder;"
-                label="E01.如果从 0-5 打分，5 分最高，您如何评价过去五年的知识产权营商环境？">
+            <el-form-item class="question" style="font-weight: bolder;" label="E01.您如何评价过去五年的知识产权营商环境？">
+                <el-form-item class="question blue-label" style="font-weight: bolder;"
+                    label="（请打分，1🌟为非常差，5🌟为非常好）" />
                 <el-table :data="tablePEQ01" style="width: 100%" :row-style="{ height: '10px' }"
                     :cell-style="{ padding: '0px' }">
                     <el-table-column class="answer" width="400%">
@@ -13,14 +14,14 @@
                     <el-table-column width="250%" class="answer" header-align="center"
                         v-for="(column, colIndex) in colPEQ01" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
-                            <!-- 在每个单元格内放置一个可选中的组件 -->
-                            <el-rate show-score text-color="#ff9900" class="table-container"
-                                v-model="row.rate[colIndex]" @change="handlePEQ01(row, colIndex)" />
+                            <el-rate text-color="#ff9900" size="large" v-model="row.rate"
+                                :texts="['not', 'so-so', 'relative', 'very', 'super']" show-text class="table-container"
+                                @change="handlePEQ01(row, colIndex)" />
                         </template>
                     </el-table-column>
                 </el-table>
             </el-form-item>
-
+            
             <el-form-item class="question" style="font-weight: bolder;" label="E02.您是否了解以下专利许可机制？">
                 <el-table :data="tablePEQ2" style="width: 100%" :row-style="{ height: '10px' }"
                     :cell-style="{ padding: '0px' }">
@@ -77,6 +78,7 @@
                     </el-table-column>
                 </el-table>
             </el-form-item>
+
             <el-form-item class="question" style="font-weight: bolder;" label="E05.您认为政府应当提升以下哪几类公共服务的投入？">
                 <el-form-item class="question blue-label" style="font-weight: bolder;"
                     label="（请打分，1🌟为不用提高，5🌟为大幅提高）" />
@@ -97,8 +99,9 @@
                     </el-table-column>
                 </el-table>
             </el-form-item>
+
         </el-form>
-        <el-button type="primary" @click="submit()" style="margin-top: 1vh;margin-left: 2vw;">submit part D</el-button>
+        <el-button type="primary" @click="submit()" style="margin-top: 1vh;margin-left: 2vw;">提交问卷（E部分）</el-button>
         <p class="ps">
             **抛硬币游戏**
         </p>
@@ -128,7 +131,7 @@
 
 <script setup>
 import { ref, reactive } from 'vue';
-import { surveyStore } from '../../../stores/survey';
+import { surveyStore,tableColChange } from '../../../stores/survey';
 import axios from 'axios';
 import { ElMessage } from 'element-plus';
 const surveyInfo = surveyStore().surveyInfo
@@ -181,7 +184,8 @@ const colPEQ2 = [
 
 // 处理单元格选中状态变化
 const handlePEQ2 = (row, colIndex) => {
-    // 取消当前行其他单元格的选中状态
+    const rowIndex = tablePEQ2.value.indexOf(row);
+    tableColChange(tablePEQ2.value,rowIndex,colIndex)    
     form.pEq02 = tablePEQ2
 };
 

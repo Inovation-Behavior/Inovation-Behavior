@@ -60,3 +60,25 @@ export const identificationStore = defineStore('form', {
     }
   }
 });
+
+export function tableRowChange (tableData, colIndex, currentRow) {  
+  // 当前列中其他行取消选中  
+  tableData.forEach(otherRow => {  
+    if (otherRow !== currentRow) {  
+      otherRow.selection[colIndex] = false;  
+    }  
+  });  
+  // 选中列补一个选中状态  
+  currentRow.selection[colIndex] = true;  
+}
+
+export function tableColChange(tableData, rowIndex, currentCol) {  
+  const row = tableData[rowIndex];  
+  // 遍历当前行的所有列，取消选中除了目标列以外的所有列  
+  row.selection.forEach((isSelected, colIndex) => {  
+    if (colIndex !== currentCol) {  
+      row.selection[colIndex] = false;  
+    }  
+  }); 
+  row.selection[currentCol] = true;
+}
