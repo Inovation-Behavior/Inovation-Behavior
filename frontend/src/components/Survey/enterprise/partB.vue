@@ -194,7 +194,7 @@
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue';
+import { ref, reactive, defineProps, defineEmits } from 'vue';
 import { surveyStore,tableRowChange } from '../../../stores/survey';
 import axios from 'axios';
 import { ElMessage } from 'element-plus';
@@ -293,6 +293,12 @@ const handlePBQ8 = (row, colIndex) => {
     form.pBq08 = tablePBQ8
 };
 
+const emits = defineEmits(['switch-tab']);
+
+const switchToPart = (tabName) => {
+    emits('switch-tab', tabName);
+}
+
 const submit = async () => {
     form.pBq08.pop()
     form.pBq10.pop()
@@ -321,6 +327,7 @@ const submit = async () => {
     if (response.status == 200) {
         if (response.data.code == 1) {
             ElMessage.success("submit successfully")
+            switchToPart("C")
         }
     }
 }
