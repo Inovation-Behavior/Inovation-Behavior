@@ -6,15 +6,15 @@
                 开放专利与创新调查：上海2024
             </el-container>
             <el-dialog :modal="false" center :close-on-click-modal="false" :close-on-press-escape="false"
-                style="font-family: SimSun;width: 40vw;align-items: center;justify-content: center;"
+                style="font-family: SimSun;width: 400px;align-items: center;justify-content: center;"
                 title="欢迎参加问卷调研，请输入邀请码" v-model="dialogVisible" :before-close="handleClose">
                 <el-card style="gap: 6px;border: none;align-items: center;justify-content: center;display: flex;"
                     shadow="never">
                     <el-container style="font-family: KaiTi">请填入预先告知您的邀请码，或询问工作人员</el-container>
-                    <el-input v-model="invitationCode" style="width: 15vw;margin-top: 2vh;"
+                    <el-input v-model="invitationCode" style="width: 250px;margin-top: 30px;"
                         placeholder="请输入邀请码"></el-input>
                     <el-container>
-                        <span slot="footer" style="margin-top: 2vh;">
+                        <span slot="footer" style="margin-top: 30px;">
                             <el-button type="primary" @click="checkInvitationCode">确认</el-button>
                         </span>
                     </el-container>
@@ -25,7 +25,7 @@
                     @tab-click="handleClick" type="card" stretch="true">
                     <el-tab-pane label="专利确认" name="专利信息确认">
                         <el-button type="primary" @click="showInput"
-                            style="margin-bottom: 1vh;">输入邀请码后确认填写资格</el-button>
+                            style="margin-bottom: 20px;">输入邀请码后确认填写资格</el-button>
                         <introduction />
                     </el-tab-pane>
                     <el-tab-pane label="个人信息" name="A" :disabled="disableInput">
