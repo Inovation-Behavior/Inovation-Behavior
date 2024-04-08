@@ -3,7 +3,7 @@
   <div style="display: flex; justify-content: center;width: 100%;">
     <div style="padding: 20px;width: 100%; max-width: 1600px;">
       <TopNav style="width: 100%;"></TopNav>
-      <div style="width: 100%;min-height: 30vh;">
+      <div style="width: 100%;min-height: calc(100vh - 450px);">
         <router-view></router-view>
       </div>
       <img style="width: 100%;" src="./public/img/后.png"/>

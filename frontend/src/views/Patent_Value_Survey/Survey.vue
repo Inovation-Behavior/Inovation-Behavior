@@ -5,6 +5,11 @@
                 style="font-family:SimHei;font-size: 2rem;font-weight: bolder;display: flex;justify-content: center;align-items: center; width: 100%; overflow: auto;margin-bottom: 2vh;">
                 开放专利与创新调查：上海2024
             </el-container>
+            <el-dialog title="提示" v-model="showRecommendationDialog"
+                style="font-family: SimSun;width: 300px;align-items: center;justify-content: center;position: absolute; left: 20px;"
+                :before-close="handleRecommendationDialogClose">
+                <p style=" margin-top: -10px">建议在平板或pc端填写调查问卷</p>
+            </el-dialog>
             <el-dialog :modal="false" center :close-on-click-modal="false" :close-on-press-escape="false"
                 style="font-family: SimSun;width: 400px;align-items: center;justify-content: center;"
                 title="欢迎参加问卷调研，请输入邀请码" v-model="dialogVisible" :before-close="handleClose">
@@ -72,11 +77,14 @@ export default {
             patentNo: "",
             dialogVisible: false, // 控制对话框显示的属性
             invitationCode: '', // 存储输入的邀请码
-            disableInput:true
+            disableInput: true,
+            showRecommendationDialog: false,//用于控制建议弹窗的显示
         }
     },
     mounted() {
-        
+        this.checkScreenWidth();
+
+        window.addEventListener('resize', this.checkScreenWidth);
     },
     methods: {
         handleClose(done) {
@@ -87,14 +95,14 @@ export default {
             // 这里实现邀请码的检查逻辑
             if (this.invitationCode === '043398') {
                 this.dialogVisible = false; // 如果邀请码正确，关闭对话框
-                this.disableInput=false;
+                this.disableInput = false;
             } else {
                 // 如果邀请码错误，给出提示，不关闭对话框
                 this.$message.error('邀请码错误，请重试');
             }
         },
-        showInput(){
-            this.dialogVisible=true
+        showInput() {
+            this.dialogVisible = true
         },
         switchTab(tabName) {
             // 更新 activeName 属性来切换标签页
@@ -105,7 +113,22 @@ export default {
                 behavior: "smooth" // 使用平滑滚动
             });
         },
+        checkScreenWidth() {
+            if (window.innerWidth < 500) {
+                this.showRecommendationDialog = true;
+            } else {
+                this.showRecommendationDialog = false;
+            }
+        },
+        handleRecommendationDialogClose(done) {
+            this.showRecommendationDialog = false;
+            done();
+        },
+    },
+    beforeUnmount() {
+        window.removeEventListener('resize', this.checkScreenWidth);
     }
+
 }
 </script>
 
@@ -123,6 +146,8 @@ export default {
     justify-content: center;
     background-color: white;
     margin-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 /* Style for portrait mode */

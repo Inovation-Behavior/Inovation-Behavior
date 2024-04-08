@@ -13,7 +13,7 @@
                     </el-carousel-item>
                 </el-carousel>
             </el-container>
-            <el-container style="max-width: 1400px; width: 100%;margin-top: 20px;padding: 20px;" class="set-vertical">
+            <el-container style="max-width: 1400px; width: 100%;margin-top: 20px;" class="set-vertical">
                 <div v-for="item in news" :key="item.id" class="news-item set-horizonal"
                     style="max-width: 1400px;border-radius: 20px;cursor: pointer;width: 100%;" @click="getNewsDetail(item.id)">
                     <el-container style="width: 30%;background-color:#99a9bf; ;">
@@ -89,7 +89,7 @@ watch(() => store.changeLanguage, () => {
     display: flex;
     justify-content: center;
     background-color: white;
-    padding: 20px;
+    margin-top: 20px;
 }
 .set-vertical {
     display: flex;
