@@ -70,7 +70,7 @@ Faculty Research Fellow，MPIIC
                         </h4>
                     <div> 软件学院：李天昊、谢嘉麒</div>
                     <div> 经济与管理学院：谭紫萱、余同洲</div>
-                    <div> 建筑与城市规划学院：苏惠</div>
+                    <div> 电子信息与工程学院：苏惠</div>
                     <div> 国知院：朱啸宇、李浩宇</div>
                     <h4>
                         ● 调研组织
