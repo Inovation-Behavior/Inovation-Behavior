@@ -317,7 +317,12 @@ const changeTable = (table, col) => {
     for (let i = 0; i < table.length; i++) {
         for (let j = 0; j < table[i].selection.length; j++) {
             if (table[i].selection[j]) {
-                results.push({ row: table[i].name, col: col[j].label });
+                if(j<3){
+                    results.push({ row: table[i].name, col: "2018" + col[j].label });
+                }else{
+                    results.push({ row: table[i].name, col: "2023" + col[j].label });
+                }
+                
             }
         }
     }
@@ -332,10 +337,12 @@ const submit = async () => {
     form.pBq10.push(extraInput2.value)
     form.pBq1001.push(extraInput3.value)
 
-    //form.pBq04 = changeTable(form.pBq04,colPBQ4)
+    // 深拷贝
+    let formData = JSON.parse(JSON.stringify(form));
+    formData.pBq04 = changeTable(formData.pBq04, colPBQ4)
 
     // 将表单数据转换为对象数组
-    const formDataArray = Object.entries(form).map(([key, value]) => ({ [key]: value }));
+    const formDataArray = Object.entries(formData).map(([key, value]) => ({ [key]: value }));
 
     // 将对象数组字符串化
     const formDataString = JSON.stringify(formDataArray);

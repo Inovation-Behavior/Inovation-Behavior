@@ -336,9 +336,12 @@ const changeTable = (table, col) => {
 const submit = async () => {
     form.pCq05.pop()
     form.pCq05.push(extraInput1.value)
-    //form.pCq0103=changeTable(form.pCq0103,colPCQ0103)
+    // 深拷贝
+    let formData = JSON.parse(JSON.stringify(form));
+    formData.pCq0103 = changeTable(formData.pCq0103, colPCQ0103)
+    
     // 将表单数据转换为对象数组
-    const formDataArray = Object.entries(form).map(([key, value]) => ({ [key]: value }));
+    const formDataArray = Object.entries(formData).map(([key, value]) => ({ [key]: value }));
 
     // 将对象数组字符串化
     const formDataString = JSON.stringify(formDataArray);
