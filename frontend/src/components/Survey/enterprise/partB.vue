@@ -11,17 +11,17 @@
                 </el-radio-group>
             </el-form-item>
             <el-form-item class="question" style="font-weight: bolder;" label="B02.贵司成立于哪一年？">
-                <el-date-picker style="margin-left: 2vw;" size="small" v-model="form.pBq0201" type="year"
-                    placeholder="选择年份" />
+                <el-date-picker style="margin-left: 2vw;" size="small" v-model="form.pBq0201" type="year" format="YYYY"
+                    value-format="YYYY" placeholder="选择年份" />
                 <!-- <el-text class="answer">成立于<el-input style="width: 5vw;" size="small" v-model="form.pBq02" />年</el-text> -->
             </el-form-item>
             <el-form-item style="font-family: Kaiti;font-weight: 100;text-indent: 2em;" label="如果属于一个企业集团，总部成立于">
-                <el-date-picker style="margin-left: 2vw;" size="small" v-model="form.pBq02" type="year"
-                    placeholder="选择年份" />
+                <el-date-picker style="margin-left: 2vw;" size="small" v-model="form.pBq0202" type="year" format="YYYY"
+                    value-format="YYYY" placeholder="选择年份" />
             </el-form-item>
             <el-form-item style="font-family: Kaiti;font-weight: 100;text-indent: 2em;" label="上海地区子公司/分公司成立于">
-                <el-date-picker style="margin-left: 2vw;" size="small" v-model="form.pBq0203" type="year"
-                    placeholder="选择年份" />
+                <el-date-picker style="margin-left: 2vw;" size="small" v-model="form.pBq0203" type="year" format="YYYY"
+                    value-format="YYYY" placeholder="选择年份" />
             </el-form-item>
 
             <el-form-item class="question" style="font-weight: bolder;" label="B03.贵司在上海地区大约有多少全职员工？">
