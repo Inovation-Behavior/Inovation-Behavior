@@ -13,7 +13,7 @@
                     <el-table-column width="200%" class="answer" header-align="center"
                         v-for="(column, colIndex) in colPEQ01" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
-                            <el-rate text-color="#ff9900" size="large" v-model="row.rate"
+                            <el-rate text-color="#ff9900" size="large" v-model="row.rate[colIndex]"
                                 :texts="['not', 'so-so', 'relative', 'very', 'super']" show-text class="table-container"
                                 @change="handlePEQ01(row, colIndex)" />
                         </template>

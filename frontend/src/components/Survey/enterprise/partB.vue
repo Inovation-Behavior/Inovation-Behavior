@@ -208,7 +208,7 @@
 
 <script setup>
 import { ref, reactive, defineProps, defineEmits } from 'vue';
-import { surveyStore,tableRowChange } from '../../../stores/survey';
+import { surveyStore,tableColChange } from '../../../stores/survey';
 import axios from 'axios';
 import { ElMessage } from 'element-plus';
 const surveyInfo = surveyStore().surveyInfo
@@ -279,8 +279,8 @@ const colPBQ4 = [
 ];
 
 // 处理单元格选中状态变化
-const handlePBQ4 = (row, colIndex) => {
-    tableRowChange(tablePBQ4.value,colIndex,row)
+const handlePBQ4 = (rowIndex, col) => {
+    //tableColChange(tablePBQ4.value,rowIndex,col)
     form.pBq04 = tablePBQ4
 };
  

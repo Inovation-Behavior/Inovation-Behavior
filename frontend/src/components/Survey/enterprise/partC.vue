@@ -89,7 +89,7 @@
             <el-form-item class="question" style="font-weight: bolder;" label="C04.该专利技术是否有研发合作？如果有，是与哪类机构/企业进行合作？">
                 <el-checkbox-group v-model="form.pCq04" style="display: flex;flex-wrap: wrap;" @change="handlePCQ04Change">
                     <el-checkbox class="answer" label="没有，完全由本单位研发" />
-                    <el-checkbox class="answer" label="有，同一企业集团的公司之间合作" />
+                    <el-checkbox class="answer" label="有，同一企业集团的公司之间合作" />0
                     <el-checkbox class="answer" label="有，与来自私营部门的客户合作" />
                     <el-checkbox class="answer" label="有，与来自公共机构（医院等）的客户合作" />
                     <el-checkbox class="answer" label="有，与大学科研院所合作" />
