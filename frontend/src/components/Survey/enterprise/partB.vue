@@ -151,7 +151,7 @@
                     <el-radio class="answer" label="没有" />
                 </el-radio-group>
             </el-form-item>
-            <el-form-item class="question" v-if="showPBQ09" style="font-weight: bolder;" label="B0901，如果有，被许可人为哪种类型企业？">
+            <el-form-item class="question" v-if="showPBQ09" style="font-weight: bolder;" label="B0901，如果有，许可人为哪种类型企业？">
                 <el-checkbox-group v-model="form.pBq0901" style="display: flex;flex-wrap: wrap;">
                     <el-checkbox class="answer" label="国有企业" />
                     <el-checkbox class="answer" label="民营企业" />
