@@ -271,9 +271,11 @@ const changeTable = (table, col) => {
     return results
 }
 const submit = async () => {
-    //form.pEq02=changeTable(form.pEq02,colPEQ2)
+    // 深拷贝
+    let formData = JSON.parse(JSON.stringify(form));
+    formData.pEq02=changeTable(formData.pEq02,colPEQ2)
     // 将表单数据转换为对象数组
-    const formDataArray = Object.entries(form).map(([key, value]) => ({ [key]: value }));
+    const formDataArray = Object.entries(formData).map(([key, value]) => ({ [key]: value }));
 
     // 将对象数组字符串化
     const formDataString = JSON.stringify(formDataArray);

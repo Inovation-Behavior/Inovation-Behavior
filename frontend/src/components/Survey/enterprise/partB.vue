@@ -11,17 +11,17 @@
                 </el-radio-group>
             </el-form-item>
             <el-form-item class="question" style="font-weight: bolder;" label="B02.贵司成立于哪一年？">
-                <el-date-picker style="margin-left: 2vw;" size="small" v-model="form.pBq0201" type="year"
-                    placeholder="选择年份" />
+                <el-date-picker style="margin-left: 2vw;" size="small" v-model="form.pBq0201" type="year" format="YYYY"
+                    value-format="YYYY" placeholder="选择年份" />
                 <!-- <el-text class="answer">成立于<el-input style="width: 5vw;" size="small" v-model="form.pBq02" />年</el-text> -->
             </el-form-item>
             <el-form-item style="font-family: Kaiti;font-weight: 100;text-indent: 2em;" label="如果属于一个企业集团，总部成立于">
-                <el-date-picker style="margin-left: 2vw;" size="small" v-model="form.pBq02" type="year"
-                    placeholder="选择年份" />
+                <el-date-picker style="margin-left: 2vw;" size="small" v-model="form.pBq0202" type="year" format="YYYY"
+                    value-format="YYYY" placeholder="选择年份" />
             </el-form-item>
             <el-form-item style="font-family: Kaiti;font-weight: 100;text-indent: 2em;" label="上海地区子公司/分公司成立于">
-                <el-date-picker style="margin-left: 2vw;" size="small" v-model="form.pBq0203" type="year"
-                    placeholder="选择年份" />
+                <el-date-picker style="margin-left: 2vw;" size="small" v-model="form.pBq0203" type="year" format="YYYY"
+                    value-format="YYYY" placeholder="选择年份" />
             </el-form-item>
 
             <el-form-item class="question" style="font-weight: bolder;" label="B03.贵司在上海地区大约有多少全职员工？">
@@ -317,7 +317,12 @@ const changeTable = (table, col) => {
     for (let i = 0; i < table.length; i++) {
         for (let j = 0; j < table[i].selection.length; j++) {
             if (table[i].selection[j]) {
-                results.push({ row: table[i].name, col: col[j].label });
+                if(j<3){
+                    results.push({ row: table[i].name, col: "2018" + col[j].label });
+                }else{
+                    results.push({ row: table[i].name, col: "2023" + col[j].label });
+                }
+                
             }
         }
     }
@@ -332,10 +337,12 @@ const submit = async () => {
     form.pBq10.push(extraInput2.value)
     form.pBq1001.push(extraInput3.value)
 
-    //form.pBq04 = changeTable(form.pBq04,colPBQ4)
+    // 深拷贝
+    let formData = JSON.parse(JSON.stringify(form));
+    formData.pBq04 = changeTable(formData.pBq04, colPBQ4)
 
     // 将表单数据转换为对象数组
-    const formDataArray = Object.entries(form).map(([key, value]) => ({ [key]: value }));
+    const formDataArray = Object.entries(formData).map(([key, value]) => ({ [key]: value }));
 
     // 将对象数组字符串化
     const formDataString = JSON.stringify(formDataArray);

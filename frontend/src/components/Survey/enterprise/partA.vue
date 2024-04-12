@@ -374,21 +374,20 @@ const submit = async () => {
     form.pAq01.push(extraInput1.value)
     form.pAq09.push(extraInput2.value)
 
-    // form.pAq03=changeTable(form.pAq03,colPAQ3)
-    // form.pAq04 = changeTable(form.pAq04,colPAQ4)
-    // form.pAq05 = changeTable(form.pAq05,colPAQ5)
-    // form.pAq06 = changeTable(form.pAq06,colPAQ6)
+    // 深拷贝
+    let formData = JSON.parse(JSON.stringify(form));
+    formData.pAq03 = changeTable(formData.pAq03,colPAQ3)
+    formData.pAq04 = changeTable(formData.pAq04,colPAQ4)
+    formData.pAq05 = changeTable(formData.pAq05,colPAQ5)
+    formData.pAq06 = changeTable(formData.pAq06,colPAQ6)
 
     // 将表单数据转换为对象数组
-    const formDataArray = Object.entries(form).map(([key, value]) => ({ [key]: value }));
+    const formDataArray = Object.entries(formData).map(([key, value]) => ({ [key]: value }));
 
     // 将对象数组字符串化
     const formDataString = JSON.stringify(formDataArray);
 
     const patentNo = surveyInfo.patentNo
-
-    console.log(patentNo)
-    console.log(formDataString);
 
     // 假设需要发送的数据为 patentNo 和 identification
     const data = {
