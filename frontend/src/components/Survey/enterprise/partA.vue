@@ -7,7 +7,7 @@
                     <el-checkbox class="answer" label="参与该专利技术的研发，未列发明人" />
                     <el-checkbox class="answer" label="参与该相关技术的研发，未列发明人" />
                     <el-checkbox class="answer" label="参与该专利申请" />
-                    <el-checkbox class="answer" label="参与该专利管理" />
+                    <el-checkbox class="answer" label="专利运营和其他相关事务的人员" />
                     <el-checkbox class="answer" label="以上均无，请说明"><el-input placeholder="以上均无，请说明" size="small"
                             v-model="extraInput1"></el-input></el-checkbox>
                 </el-checkbox-group>
@@ -221,7 +221,7 @@ const handlePAQ01Change = (value) => {
     } 
     if(value.includes('以上均无，请说明')){
         form.pAq01=value.filter(item => item !== '专利发明人之一' && item !== '参与该专利技术的研发，未列发明人' 
-        && item !== '参与该相关技术的研发，未列发明人'&& item !== '参与该专利申请'&& item !== '参与该专利管理');  
+        && item !== '参与该相关技术的研发，未列发明人'&& item !== '参与该专利申请'&& item !== '专利运营和其他相关事务的人员');  
     }
 };
 

@@ -250,7 +250,7 @@ const handlePCQ01Change = (value) => {
 
 const handlePCQ04Change = (value) => {
     if (value.includes('没有，完全由本单位研发')) {  
-        form.pCq04 = ['没有额外奖励，是必须完成的考核指标']; 
+        form.pCq04 = ['没有，完全由本单位研发']; 
     }
 };
 
