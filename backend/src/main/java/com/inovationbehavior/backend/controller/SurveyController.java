@@ -29,7 +29,8 @@ public class SurveyController {
     public Result postIdentification(@RequestBody Map<String, String> requestData){
         String patentNo = requestData.get("patentNo");
         String identification = requestData.get("identification");
-        surveyService.postIdentification(patentNo,identification);
+        String invitationCode = requestData.get("invitationCode");
+        surveyService.postIdentification(patentNo,identification,invitationCode);
         return Result.success();
     }
 
@@ -37,7 +38,8 @@ public class SurveyController {
     public Result postEnterprise(@RequestBody Map<String, String> requestData){
         String patentNo = requestData.get("patentNo");
         String enterprise = requestData.get("enterprise");
-        surveyService.postEnterprise(patentNo,enterprise);
+        String invitationCode = requestData.get("invitationCode");
+        surveyService.postEnterprise(patentNo,enterprise,invitationCode);
         return Result.success();
     }
 
@@ -45,7 +47,8 @@ public class SurveyController {
     public Result postValue(@RequestBody Map<String, String> requestData){
         String patentNo = requestData.get("patentNo");
         String value = requestData.get("value");
-        surveyService.postValue(patentNo,value);
+        String invitationCode = requestData.get("invitationCode");
+        surveyService.postValue(patentNo,value,invitationCode);
         return Result.success();
     }
 
@@ -53,7 +56,8 @@ public class SurveyController {
     public Result postUsage(@RequestBody Map<String, String> requestData){
         String patentNo = requestData.get("patentNo");
         String usage = requestData.get("usage");
-        surveyService.postUsage(patentNo,usage);
+        String invitationCode = requestData.get("invitationCode");
+        surveyService.postUsage(patentNo,usage,invitationCode);
         return Result.success();
     }
 
@@ -61,7 +65,8 @@ public class SurveyController {
     public Result postPolicy(@RequestBody Map<String, String> requestData){
         String patentNo = requestData.get("patentNo");
         String policy = requestData.get("policy");
-        surveyService.postPolicy(patentNo,policy);
+        String invitationCode = requestData.get("invitationCode");
+        surveyService.postPolicy(patentNo,policy,invitationCode);
         return Result.success();
     }
 

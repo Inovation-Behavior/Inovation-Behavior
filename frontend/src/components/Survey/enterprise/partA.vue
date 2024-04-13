@@ -369,6 +369,7 @@ const changeTable = (table, col) => {
 }
 
 const submit = async () => {
+
     form.pAq01.pop()
     form.pAq09.pop()
     form.pAq01.push(extraInput1.value)
@@ -389,8 +390,10 @@ const submit = async () => {
 
     const patentNo = surveyInfo.patentNo
 
-    // 假设需要发送的数据为 patentNo 和 identification
+    const invitationCode = surveyInfo.invitationCode
+
     const data = {
+        invitationCode: invitationCode,
         patentNo: patentNo,
         identification: formDataString
     };

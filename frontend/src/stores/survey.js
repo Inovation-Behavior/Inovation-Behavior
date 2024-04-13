@@ -4,7 +4,8 @@ export const surveyStore = defineStore('survey', {
   state: () => ({
     surveyInfo:{
       patentNo:'',
-      companyName:''
+      companyName:'',
+      invitationCode:'0413test'
     },
     formA:{
       pAq01: [],

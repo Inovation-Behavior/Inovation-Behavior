@@ -8,7 +8,7 @@
             <el-dialog title="提示" v-model="showRecommendationDialog"
                 style="font-family: SimSun;width: 300px;align-items: center;justify-content: center;position: absolute; left: 20px;"
                 :before-close="handleRecommendationDialogClose">
-                <p style=" margin-top: -10px">建议在平板或pc端填写调查问卷</p>
+                <p style=" margin-top: -10px">建议手机横屏或在PC端填写调查问卷</p>
             </el-dialog>
             <el-dialog :modal="false" center :close-on-click-modal="false" :close-on-press-escape="false"
                 style="font-family: SimSun;width: 400px;align-items: center;justify-content: center;"
@@ -61,6 +61,7 @@ import partC from '../../components/Survey/enterprise/partC.vue'
 import partD from '../../components/Survey/enterprise/partD.vue'
 import partE from '../../components/Survey/enterprise/partE.vue'
 import introduction from '../../components/Survey/enterprise/Introduction.vue'
+import { surveyStore } from '../../stores/survey';
 import { Text } from 'vue'
 export default {
     components: {
@@ -92,8 +93,9 @@ export default {
             done(); // 这会实际关闭对话框
         },
         checkInvitationCode() {
+            const survey = surveyStore();
             // 这里实现邀请码的检查逻辑
-            if (this.invitationCode === '043398') {
+            if (this.invitationCode === survey.surveyInfo.invitationCode) {
                 this.dialogVisible = false; // 如果邀请码正确，关闭对话框
                 this.disableInput = false;
             } else {

@@ -297,8 +297,11 @@ const submit = async () => {
     console.log(patentNo)
     console.log(formDataString);
 
-    // 假设需要发送的数据为 patentNo 和 identification
+
+    const invitationCode = surveyInfo.invitationCode
+
     const data = {
+        invitationCode: invitationCode,
         patentNo: patentNo,
         usage: formDataString
     };

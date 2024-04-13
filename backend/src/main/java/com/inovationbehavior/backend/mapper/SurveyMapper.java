@@ -11,34 +11,34 @@ import java.time.LocalDateTime;
 
 @Mapper
 public interface SurveyMapper {
-    @Insert("insert into survey (patent_no, identification, evaluate, value) values (#{patentNo},#{identification},#{evaluate},#{value})")
+    @Insert("insert into survey (patent_no, identification, enterprise, value) values (#{patentNo},#{identification},#{evaluate},#{value})")
     void postSurvey(Survey survey);
 
-    @Insert("INSERT INTO survey (patent_no, identification, time) \n" +
-            "VALUES (#{patentNo}, #{identification}, #{time}) \n" +
+    @Insert("INSERT INTO survey (patent_no, identification,invitationCode ,time) \n" +
+            "VALUES (#{patentNo}, #{identification},#{invitationCode}, #{time} ) \n" +
             "ON DUPLICATE KEY UPDATE identification = VALUES(identification), time = VALUES(time);")
-    void postIdentification(String patentNo, String identification, LocalDateTime time);
+    void postIdentification(String patentNo, String identification,String invitationCode, LocalDateTime time);
 
-    @Insert("INSERT INTO survey (patent_no, enterprise, time) \n" +
-            "VALUES (#{patentNo}, #{enterprise}, #{time}) \n" +
+    @Insert("INSERT INTO survey (patent_no, enterprise,invitationCode ,time) \n" +
+            "VALUES (#{patentNo}, #{enterprise},#{invitationCode}, #{time}) \n" +
             "ON DUPLICATE KEY UPDATE enterprise = VALUES(enterprise), time = VALUES(time);")
-    void postEnterprise(String patentNo, String enterprise, LocalDateTime time);
+    void postEnterprise(String patentNo, String enterprise,String invitationCode, LocalDateTime time);
 
-    @Insert("INSERT INTO survey (patent_no, value, time) \n" +
-            "VALUES (#{patentNo}, #{value}, #{time}) \n" +
+    @Insert("INSERT INTO survey (patent_no, value,invitationCode, time) \n" +
+            "VALUES (#{patentNo}, #{value},#{invitationCode}, #{time}) \n" +
             "ON DUPLICATE KEY UPDATE value = VALUES(value), time = VALUES(time);")
-    void postValue(String patentNo, String value, LocalDateTime time);
+    void postValue(String patentNo, String value,String invitationCode, LocalDateTime time);
 
-    @Insert("INSERT INTO survey (patent_no, `use`, time) \n" +
-            "VALUES (#{patentNo}, #{use}, #{time}) \n" +
+    @Insert("INSERT INTO survey (patent_no, `use`,invitationCode, time) \n" +
+            "VALUES (#{patentNo}, #{use},#{invitationCode}, #{time}) \n" +
             "ON DUPLICATE KEY UPDATE `use` = VALUES(`use`), time = VALUES(time);")
-    void postUsage(String patentNo, String use, LocalDateTime time);
+    void postUsage(String patentNo, String use,String invitationCode, LocalDateTime time);
 
 
-    @Insert("INSERT INTO survey (patent_no, policy, time) \n" +
-            "VALUES (#{patentNo}, #{policy}, #{time}) \n" +
+    @Insert("INSERT INTO survey (patent_no, policy,invitationCode, time) \n" +
+            "VALUES (#{patentNo}, #{policy},#{invitationCode}, #{time}) \n" +
             "ON DUPLICATE KEY UPDATE policy = VALUES(policy), time = VALUES(time);")
-    void postPolicy(String patentNo, String policy, LocalDateTime time);
+    void postPolicy(String patentNo, String policy,String invitationCode, LocalDateTime time);
 
     @Insert("INSERT INTO survey (patent_no, award, address) " +
             "VALUES (#{patentNo}, #{award}, #{address}) " +
