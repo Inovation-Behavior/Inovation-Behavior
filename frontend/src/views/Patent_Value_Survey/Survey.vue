@@ -16,7 +16,7 @@
                 <el-card style="gap: 6px;border: none;align-items: center;justify-content: center;display: flex;"
                     shadow="never">
                     <el-container style="font-family: KaiTi">请填入预先告知您的邀请码，或询问工作人员</el-container>
-                    <el-input v-model="invitationCode" style="width: 250px;margin-top: 30px;"
+                    <el-input v-model="surveyInfo.curInvitationCode" style="width: 250px;margin-top: 30px;"
                         placeholder="请输入邀请码"></el-input>
                     <el-container>
                         <span slot="footer" style="margin-top: 30px;">
@@ -73,7 +73,10 @@ export default {
         introduction
     },
     data() {
+        const surveyInfo = surveyStore().surveyInfo
+
         return {
+            surveyInfo,
             activeName: "专利信息确认",
             patentNo: "",
             dialogVisible: false, // 控制对话框显示的属性
@@ -95,7 +98,8 @@ export default {
         checkInvitationCode() {
             const survey = surveyStore();
             // 这里实现邀请码的检查逻辑
-            if (this.invitationCode === survey.surveyInfo.invitationCode) {
+            if (this.surveyInfo.curInvitationCode === survey.surveyInfo.invitationCode 
+                || this.surveyInfo.curInvitationCode === survey.surveyInfo.testInvitationCode) {
                 this.dialogVisible = false; // 如果邀请码正确，关闭对话框
                 this.disableInput = false;
             } else {

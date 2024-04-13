@@ -5,7 +5,9 @@ export const surveyStore = defineStore('survey', {
     surveyInfo:{
       patentNo:'',
       companyName:'',
-      invitationCode:'0413test'
+      curInvitationCode:"",
+      invitationCode:'043398',
+      testInvitationCode: "0413test"
     },
     formA:{
       pAq01: [],

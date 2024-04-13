@@ -390,7 +390,7 @@ const submit = async () => {
 
     const patentNo = surveyInfo.patentNo
 
-    const invitationCode = surveyInfo.invitationCode
+    const invitationCode = surveyInfo.curInvitationCode
 
     const data = {
         invitationCode: invitationCode,

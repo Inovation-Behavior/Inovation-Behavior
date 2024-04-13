@@ -298,7 +298,7 @@ const submit = async () => {
     console.log(formDataString);
 
 
-    const invitationCode = surveyInfo.invitationCode
+    const invitationCode = surveyInfo.curInvitationCode
 
     const data = {
         invitationCode: invitationCode,
