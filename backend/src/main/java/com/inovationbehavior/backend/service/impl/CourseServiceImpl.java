@@ -41,7 +41,7 @@ public class CourseServiceImpl implements CourseService {
         TreeMap<String, Object> credentials = credentialsProvider.getTemporaryCredentials();
 
         // 实例化文件上传类
-        PutFile putFile = new PutFile();
+        PutFile putFile = new PutFile("course");
         // 遍历并上传每个文件
         MultipartFile[] files = new MultipartFile[3];
         files[0] = file_en;files[1] = file_zn;files[2] = file_de;

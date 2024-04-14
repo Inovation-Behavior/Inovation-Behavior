@@ -15,6 +15,12 @@ public class PutFile {
     String tmpSecretKey = "";  // 替换为 STS 接口返回给您的临时 SecretKey
     String sessionToken = "";  // 替换为 STS 接口返回给您的临时 Token
 
+    public PutFile(String path) {
+        this.path = path;
+    }
+
+    String path = "";
+
     public void PutFileToCOS(TreeMap<String, Object> credentials, File file,String filename){
         tmpSecretId = (String) credentials.get("tmpSecretId");
         tmpSecretKey = (String) credentials.get("tmpSecretKey");
@@ -25,7 +31,7 @@ public class PutFile {
         ClientConfig clientConfig = new ClientConfig(region);
         COSClient cosClient = new COSClient(cred, clientConfig);
 
-        String key = "course/"+filename;
+        String key = path + "/"+filename;
         String bucketName = "inovation-behavior-1324093188";
 
         PutObjectRequest putObjectRequest = new PutObjectRequest(bucketName, key, file);
