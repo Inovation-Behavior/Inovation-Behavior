@@ -6,15 +6,15 @@ import com.inovationbehavior.backend.model.survey.Survey;
 public interface SurveyService {
     void postSurvey(Survey survey);
 
-    void postIdentification(String patentNo, String identification);
+    void postIdentification(String patentNo, String identification,String invitationCode);
 
-    void postEnterprise(String patentNo, String enterprise);
+    void postEnterprise(String patentNo, String enterprise,String invitationCode);
 
-    void postValue(String patentNo, String value);
+    void postValue(String patentNo, String value,String invitationCode);
 
-    void postUsage(String patentNo, String usage);
+    void postUsage(String patentNo, String usage,String invitationCode);
 
-    void postPolicy(String patentNo, String policy);
+    void postPolicy(String patentNo, String policy,String invitationCode);
 
     int postAwardInfo(AwardInfo requestData);
 }

@@ -19,33 +19,33 @@ public class SurveyServiceImpl implements SurveyService {
     }
 
     @Override
-    public void postIdentification(String patentNo, String identification) {
+    public void postIdentification(String patentNo, String identification,String invitationCode) {
         LocalDateTime time = LocalDateTime.now();
-        surveyMapper.postIdentification(patentNo,identification, time);
+        surveyMapper.postIdentification(patentNo,identification,invitationCode, time);
     }
 
     @Override
-    public void postEnterprise(String patentNo, String enterprise) {
+    public void postEnterprise(String patentNo, String enterprise,String invitationCode) {
         LocalDateTime time = LocalDateTime.now();
-        surveyMapper.postEnterprise(patentNo,enterprise, time);
+        surveyMapper.postEnterprise(patentNo,enterprise,invitationCode, time);
     }
 
     @Override
-    public void postValue(String patentNo, String value) {
+    public void postValue(String patentNo, String value,String invitationCode) {
         LocalDateTime time = LocalDateTime.now();
-        surveyMapper.postValue(patentNo,value, time);
+        surveyMapper.postValue(patentNo,value,invitationCode, time);
     }
 
     @Override
-    public void postUsage(String patentNo, String usage) {
+    public void postUsage(String patentNo, String usage,String invitationCode) {
         LocalDateTime time = LocalDateTime.now();
-        surveyMapper.postUsage(patentNo, usage, time);
+        surveyMapper.postUsage(patentNo, usage,invitationCode, time);
     }
 
     @Override
-    public void postPolicy(String patentNo, String policy) {
+    public void postPolicy(String patentNo, String policy,String invitationCode) {
         LocalDateTime time = LocalDateTime.now();
-        surveyMapper.postPolicy(patentNo, policy, time);
+        surveyMapper.postPolicy(patentNo, policy, invitationCode,time);
     }
 
     @Override

@@ -14,4 +14,5 @@ public class Survey {
     private String value;
     private String usage;
     private String policy;
+    private String invitationCode;
 }
