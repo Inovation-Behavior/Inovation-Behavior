@@ -233,6 +233,7 @@ const form = reactive({
     pDq0503: [],
     pDq0504: [],
     pDq0505: [],
+    pDq0506: [],
     pDq06: [],
 });
 

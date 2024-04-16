@@ -1,35 +1,35 @@
 <template>
-    <el-card style="border-radius: 15px;width: 100%;font-size: 1rem;font-family: SimSun;">
+    <el-card style="border-radius: 15px;width: 100%;font-size: 1rem;font-family: SimSun;width:70vw">
 
         <!-- <el-card style="border: 1px solid black;"> -->
-            <!-- 初步调整，可以确认一下 -->
-            <p style="margin-top: 2vh;padding-left: 2em;">
-                在回答问卷前，请确认您所在单位持有附件发明专利
-                <br>
-                专利申请号为：
-                <el-input size="small" style="width: 250px;" v-model="form.patentNo" @input="updatePatentNo"
-                    @keyup.enter="getPatentByNo(form.patentNo)"></el-input>
-                <br>
-                如果与该专利无关，请提供您所在单位的名称：
-                <el-input size="small" style="width: 10vw;" v-model="form.companyName" @input="updateCompanyName"
-                    @keyup.enter="getPatentNoByCompany(form.companyName)"></el-input>
-                ，我们将为您推荐其他专利。
-            </p>
-            <template v-if="patentDetail.no!=''">
-                <div v-if="patentDetail.name">
-                    <p><strong>专利名称:</strong> {{ patentDetail.name }}</p>
-                    <p><strong>专利概述:</strong> {{ patentDetail.summary }}</p>
-                    <p><strong>专利链接:</strong> <a :href="patentDetail.pdfs[0]" target="blank">{{ patentDetail.pdfs[0]
-                            }}</a></p>
-                </div>
-            </template>
-            <template v-if="searchPatents.length!=0">
-                <el-table :data="searchPatents" style="width: 100%">
-                    <el-table-column prop="no" label="专利申请号" width="180" />
-                    <el-table-column prop="application" label="单位名称" width="200" />
-                    <el-table-column prop="name" label="专利标题" />
-                </el-table>
-            </template>
+        <!-- 初步调整，可以确认一下 -->
+        <p style="margin-top: 2vh;padding-left: 2em;">
+            在回答问卷前，请确认您所在单位持有附件发明专利
+            <br>
+            专利申请号为：
+            <el-input size="small" style="width: 250px;" v-model="form.patentNo" @input="updatePatentNo"
+                @keyup.enter="getPatentByNo(form.patentNo)"></el-input>
+            <br>
+            如果与该专利无关，请提供您所在单位的名称：
+            <el-input size="small" style="width: 10vw;" v-model="form.companyName" @input="updateCompanyName"
+                @keyup.enter="getPatentNoByCompany(form.companyName)"></el-input>
+            ，我们将为您推荐其他专利。
+        </p>
+        <template v-if="patentDetail.no != ''">
+            <div v-if="patentDetail.name">
+                <p><strong>专利名称:</strong> {{ patentDetail.name }}</p>
+                <p><strong>专利概述:</strong> {{ patentDetail.summary }}</p>
+                <p><strong>专利链接:</strong> <a :href="patentDetail.pdfs[0]" target="blank">{{ patentDetail.pdfs[0]
+                        }}</a></p>
+            </div>
+        </template>
+        <template v-if="searchPatents.length != 0">
+            <el-table :data="searchPatents">
+                <el-table-column prop="no" label="专利申请号" width="180" />
+                <el-table-column prop="application" label="单位名称" width="200" />
+                <el-table-column prop="name" label="专利标题" />
+            </el-table>
+        </template>
         <!-- </el-card> -->
         <!-- <p style="color: rgb(0,112,192)">
             填写形式：
@@ -59,8 +59,8 @@ const updateCompanyName = (value) => {
     surveyInfo.companyName = value;
 };
 const form = reactive({
-    patentNo:"",
-    companyName:""
+    patentNo: "",
+    companyName: ""
 });
 
 const patentDetail = ref({});
@@ -69,9 +69,9 @@ const getPatentByNo = async (no) => {
         return;
     }
     let response = await axios.get('api/patents/' + no);
-    if(response.data.code == 0){
+    if (response.data.code == 0) {
         ElMessage.error("抱歉，专利号有误或专利不存在")
-    }else if(response.data.code ==1){
+    } else if (response.data.code == 1) {
         patentDetail.value = response.data.data
     }
 }
@@ -108,6 +108,7 @@ p {
     /* 设置段落下方的外边距 */
     line-height: 40px
 }
+
 :deep(.el-radio__label) {
     white-space: normal;
     /* 换行 */

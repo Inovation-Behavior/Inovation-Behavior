@@ -388,7 +388,7 @@ const submit = async () => {
     const formDataString = JSON.stringify(formDataArray);
 
     const patentNo = surveyInfo.patentNo
-
+    console.log(formData)
     // 假设需要发送的数据为 patentNo 和 identification
     const data = {
         patentNo: patentNo,
