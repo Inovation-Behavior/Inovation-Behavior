@@ -6,7 +6,7 @@
         <p style="margin-top: 2vh;padding-left: 2em;">
             在回答问卷前，请确认您所在单位持有附件发明专利
             <br>
-            专利申请号为：
+            专利申请号为：CN
             <el-input size="small" style="width: 250px;" v-model="form.patentNo" @input="updatePatentNo"
                 @keyup.enter="getPatentByNo(form.patentNo)"></el-input>
             <br>
@@ -67,6 +67,9 @@ const patentDetail = ref({});
 const getPatentByNo = async (no) => {
     if (no == '') {
         return;
+    }
+    if (!no.startsWith("CN")) {
+      no = "CN"+no;  
     }
     let response = await axios.get('api/patents/' + no);
     if (response.data.code == 0) {

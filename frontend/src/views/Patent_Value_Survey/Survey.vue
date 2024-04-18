@@ -29,7 +29,7 @@
                 <el-tabs style="width: 100%;" v-model="activeName" tab-position="top" class="demo-tabs"
                     @tab-click="handleClick" type="card" stretch="true">
                     <el-tab-pane label="专利确认" name="专利信息确认">
-                        <el-button type="primary" @click="showInput"
+                        <el-button type="primary" @click="showInput" v-show="false"
                             style="margin-bottom: 20px;">输入邀请码后确认填写资格</el-button>
                         <introduction />
                     </el-tab-pane>
@@ -81,7 +81,7 @@ export default {
             patentNo: "",
             dialogVisible: false, // 控制对话框显示的属性
             invitationCode: '', // 存储输入的邀请码
-            disableInput: true,
+            disableInput: false,
             showRecommendationDialog: false,//用于控制建议弹窗的显示
         }
     },
