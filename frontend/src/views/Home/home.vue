@@ -1,6 +1,7 @@
 <template>
     <div class="whole-box">
-        <el-card
+        <iframe src="https://mp.weixin.qq.com/s/hOan90_fjPNMv2LQ3S-0sA" width="600"></iframe>
+        <!-- <el-card
             style="max-width: 1400px; margin-top: 20px; border-radius: 15px;width: 100%;font-size: 1.3rem;font-family: SimSun;display: flex;flex-direction: column;">
             <p>尊敬的专家：</p>
 
@@ -18,7 +19,7 @@
             </p>
             <p style="text-indent: 2em;">衷心感谢您的支持与协助！
             </p>
-        </el-card>
+        </el-card> -->
     </div>
 </template>
 
