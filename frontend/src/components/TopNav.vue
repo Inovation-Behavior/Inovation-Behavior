@@ -16,14 +16,14 @@
                                 {{ $t('topnav.Patent_Value_Survey') }}
                             </template>
                             <el-menu-item-group>
-                                <el-menu-item index="5-1" @click="redirectToSurveyMethod">{{ $t('topnav.Survey_Method')
-                                    }}</el-menu-item>
-                                <el-menu-item index="5-2" @click="redirectToSurvey">{{ $t('topnav.Survey_Fill')
-                                    }}</el-menu-item>
-                                <el-menu-item index="5-3" @click="redirectToSurveyResults">{{
-                        $t('topnav.Survey_Results')
-                    }}
-                                </el-menu-item>
+                                <el-menu-item index="5-1" @click="redirectToSurveyMethod">{{
+                        $t('topnav.Survey_Method') }}</el-menu-item>
+                                <el-menu-item index="5-2" @click="redirectToSurvey">{{
+                        $t('topnav.Survey_Fill') }}</el-menu-item>
+                                <el-menu-item index="5-3"
+                                    @click="redirectToSurveyResults">{{ $t('topnav.Survey_Results') }} </el-menu-item>
+                                <el-menu-item index="5-4" @click="redirectToData">{{
+                        $t('topnav.DataUsageInstructions') }}</el-menu-item>
                             </el-menu-item-group>
                         </el-sub-menu>
                         <el-menu-item index="2" @click="redirectToNews" :class="{ 'blue-text': menutextcolor === 2 }">{{
@@ -86,6 +86,9 @@
                                             <el-dropdown-item index="8" @click="redirectToSurveyResults"
                                                 :class="{ 'blue-text': menutextcolor === 8 }">{{
                         $t('topnav.Survey_Results') }}</el-dropdown-item>
+                                            <el-dropdown-item index="9" @click="redirectToData"
+                                                :class="{ 'blue-text': menutextcolor === 9 }">{{
+                        $t('topnav.DataUsageInstructions') }}</el-dropdown-item>
                                         </el-dropdown-menu>
                                     </template>
                                 </el-dropdown>
@@ -177,6 +180,10 @@ const redirectToSurveyMethod = () => {
 
 const redirectToSurveyResults = () => {
     router.push('/survey-results');
+};
+
+const redirectToData = () => {
+    router.push('/data-usage-instructions');
 };
 
 </script>

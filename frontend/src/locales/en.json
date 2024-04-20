@@ -11,7 +11,11 @@
         "IP_Intelligence": "IP Intelligence",
         "Patent_Value_Survey": "Patent Value Survey",
         "Home":"Home",
-        "menu":"menu"
+        "menu":"menu",
+        "Survey_Method": "Survey Method",
+        "Survey_Fill": "Survey Fill",
+        "Survey_Results": "Survey Results",
+        "DataUsageInstructions": "Data Usage Instructions"
     },
     "team": {
         "LiuXia1": "Liu Xia",

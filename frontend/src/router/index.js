@@ -84,6 +84,12 @@ const routes = [
     path: '/survey-results',
     name: 'survey-results',
     component: () => import('../views/Patent_Value_Survey/Survey-results.vue')
+  },
+  {
+    // DataUsageInstructions
+    path: '/data-usage-instructions',
+    name: 'data-usage-instructions',
+    component: () => import('../views/Patent_Value_Survey/DataUsageInstructions.vue')
   }
 ]
 
