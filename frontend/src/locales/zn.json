@@ -14,7 +14,8 @@
         "menu":"菜单",
         "Survey_Method": "调查方法",
         "Survey_Fill": "问卷填写",
-        "Survey_Results": "调查结果"
+        "Survey_Results": "调查结果",
+        "DataUsageInstructions": "数据使用说明"
     },
     "team": {
         "LiuXia2": "Liu Xia",
