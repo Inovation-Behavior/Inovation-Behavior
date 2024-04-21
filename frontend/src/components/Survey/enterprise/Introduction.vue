@@ -9,6 +9,7 @@
             专利申请号为：CN
             <el-input size="small" style="width: 250px;" v-model="form.patentNo" @input="updatePatentNo"
                 @keyup.enter="getPatentByNo(form.patentNo)"></el-input>
+            <el-button v-if="patentDetail.name" type="primary" @click="allowInput()" style="margin-left: 1vw;">确认</el-button>
             <br>
             如果与该专利无关，请提供您所在单位的名称：
             <el-input size="small" style="width: 10vw;" v-model="form.companyName" @input="updateCompanyName"
@@ -47,7 +48,7 @@
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue';
+import { ref, reactive, defineEmits } from 'vue';
 import { surveyStore } from '../../../stores/survey';
 import axios from 'axios';
 import { ElMessage } from 'element-plus';
@@ -77,6 +78,12 @@ const getPatentByNo = async (no) => {
     } else if (response.data.code == 1) {
         patentDetail.value = response.data.data
     }
+}
+
+const emits = defineEmits(['allow-input']);
+
+const allowInput = () => {
+    emits('allow-input', false);
 }
 
 const searchPatents = ref([]);

@@ -31,7 +31,7 @@
                     <el-tab-pane label="专利确认" name="专利信息确认">
                         <el-button type="primary" @click="showInput" v-show="false"
                             style="margin-bottom: 20px;">输入邀请码后确认填写资格</el-button>
-                        <introduction />
+                        <introduction @allow-input="allowInput"/>
                     </el-tab-pane>
                     <el-tab-pane label="个人信息" name="A" :disabled="disableInput">
                         <part-a @switch-tab="switchTab" />
@@ -62,6 +62,7 @@ import partD from '../../components/Survey/enterprise/partD.vue'
 import partE from '../../components/Survey/enterprise/partE.vue'
 import introduction from '../../components/Survey/enterprise/Introduction.vue'
 import { surveyStore } from '../../stores/survey';
+import { ElMessage } from 'element-plus';
 import { Text } from 'vue'
 export default {
     components: {
@@ -81,7 +82,7 @@ export default {
             patentNo: "",
             dialogVisible: false, // 控制对话框显示的属性
             invitationCode: '', // 存储输入的邀请码
-            disableInput: false,
+            disableInput: true,
             showRecommendationDialog: false,//用于控制建议弹窗的显示
         }
     },
@@ -118,6 +119,10 @@ export default {
                 top: 0,
                 behavior: "smooth" // 使用平滑滚动
             });
+        },
+        allowInput(value){
+            this.disableInput=false;
+            ElMessage.success("请开始填写问卷")
         },
         checkScreenWidth() {
             if (window.innerWidth < 500) {
