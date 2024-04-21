@@ -9,7 +9,8 @@
             专利申请号为：CN
             <el-input size="small" style="width: 250px;" v-model="form.patentNo" @input="updatePatentNo"
                 @keyup.enter="getPatentByNo(form.patentNo)"></el-input>
-            <el-button v-if="patentDetail.name" type="primary" @click="allowInput()" style="margin-left: 1vw;">确认</el-button>
+            <el-button v-if="form.patentNo&&!patentDetail.name" type="primary" @click="getPatentByNo(form.patentNo)" style="margin-left: 1vw;">确认</el-button>
+            <el-button v-if="patentDetail.name&&form.patentNo" type="primary" @click="allowInput()" style="margin-left: 1vw;">专利正确，继续问卷</el-button>
             <br>
             如果与该专利无关，请提供您所在单位的名称：
             <el-input size="small" style="width: 10vw;" v-model="form.companyName" @input="updateCompanyName"
