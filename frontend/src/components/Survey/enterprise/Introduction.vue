@@ -55,7 +55,11 @@ import axios from 'axios';
 import { ElMessage } from 'element-plus';
 const surveyInfo = surveyStore().surveyInfo
 const updatePatentNo = (value) => {
+    if (!value.startsWith("CN")) {
+        value = "CN" + value;
+    }
     surveyInfo.patentNo = value;
+    patentDetail.value = {}
 };
 const updateCompanyName = (value) => {
     surveyInfo.companyName = value;

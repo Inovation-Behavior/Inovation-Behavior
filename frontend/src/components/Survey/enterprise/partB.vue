@@ -113,7 +113,7 @@
             <el-form-item class="question" v-if="showPBQ07" style="font-weight: bolder;"
                 label="B0703.如果设立了，请问贵司的知识产权部门有多少全职员工？">
                 <el-text class="answer" style="font-family: Kaiti;font-weight: 100;text-indent: 2em;">大约<el-input
-                        size="small" v-model="form.pBq0301" style="width: 5vw;margin-left: 0.5vw"
+                        size="small" v-model="form.pBq0703" style="width: 5vw;margin-left: 0.5vw"
                         placeholder="" />人</el-text>
             </el-form-item>
 
@@ -223,7 +223,7 @@ const form = reactive({
     pBq0501: "",
     pBq0502: "",
     pBq0601: "",
-    pBq0502: "",
+    pBq0602: "",
     pBq07: "",
     pBq0701: "",
     pBq0702: "",

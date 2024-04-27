@@ -197,7 +197,6 @@ const surveyInfo = surveyStore().surveyInfo
 const form = reactive({
     pAq01: [],
     pAq02: "",
-    pAq02: "",
     pAq03: [],
     pAq04: [],
     pAq05: [],
