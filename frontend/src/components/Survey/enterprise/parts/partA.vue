@@ -188,7 +188,7 @@
 
 <script setup>
 import { ref, reactive, defineProps, defineEmits } from 'vue';
-import { surveyStore,tableRowChange,tableColChange} from '../../../stores/survey';
+import { surveyStore,tableRowChange,tableColChange} from '../../../../stores/survey';
 import axios from 'axios';
 import { ElMessage } from 'element-plus';
 

@@ -214,7 +214,7 @@
 
 <script setup>
 import { ref, reactive, defineProps, defineEmits } from 'vue';
-import { surveyStore } from '../../../stores/survey';
+import { surveyStore } from '../../../../stores/survey';
 import axios from 'axios';
 import { ElMessage } from 'element-plus';
 const surveyInfo = surveyStore().surveyInfo

@@ -37,8 +37,8 @@ def read_csv_columns(file):
         return None
 
 
-file_path = 'survey-0415.csv'
+file_path = 'survey-0427.csv'
 csv_data = read_csv_columns(file_path)
 
-output_file_path = 'survey_output.csv'
+output_file_path = 'survey-decode-0427.csv'
 csv_data.to_csv(output_file_path, index=False, encoding='utf-8-sig')

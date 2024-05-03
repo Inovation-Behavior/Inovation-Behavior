@@ -132,10 +132,10 @@
 
 <script setup>
 import { ref, reactive } from 'vue';
-import { surveyStore,tableColChange } from '../../../stores/survey';
+import { surveyStore,tableColChange } from '../../../../stores/survey';
 import axios from 'axios';
 import { ElMessage } from 'element-plus';
-import award from '../../../public/img/award.png'
+import award from '../../../../public/img/award.png'
 const surveyInfo = surveyStore().surveyInfo
 const form = reactive({
     pEq01: [],
