@@ -1,5 +1,6 @@
 package com.inovationbehavior.backend.service.impl;
 
+import com.inovationbehavior.backend.mapper.PatentMapper;
 import com.inovationbehavior.backend.mapper.SurveyMapper;
 import com.inovationbehavior.backend.model.survey.AwardInfo;
 import com.inovationbehavior.backend.model.survey.Survey;
@@ -13,6 +14,8 @@ import java.time.LocalDateTime;
 public class SurveyServiceImpl implements SurveyService {
     @Autowired
     private SurveyMapper surveyMapper;
+    @Autowired
+    private PatentMapper patentMapper;
     @Override
     public void postSurvey(Survey survey) {
         surveyMapper.postSurvey(survey);
@@ -46,6 +49,7 @@ public class SurveyServiceImpl implements SurveyService {
     public void postPolicy(String patentNo, String policy,String invitationCode) {
         LocalDateTime time = LocalDateTime.now();
         surveyMapper.postPolicy(patentNo, policy, invitationCode,time);
+        patentMapper.updateStatus(patentNo);
     }
 
     @Override
