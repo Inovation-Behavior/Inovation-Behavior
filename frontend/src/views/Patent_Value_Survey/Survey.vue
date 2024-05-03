@@ -36,7 +36,7 @@
                     <el-tab-pane label="企业版问卷" name="enterprise">
                         <enterprise />
                     </el-tab-pane>
-                    <el-tab-pane label="大学版问卷" name="campus">
+                    <el-tab-pane label="高校版问卷" name="campus">
                         <campus />
                     </el-tab-pane>
                     <el-tab-pane label="个人版问卷" name="person">
