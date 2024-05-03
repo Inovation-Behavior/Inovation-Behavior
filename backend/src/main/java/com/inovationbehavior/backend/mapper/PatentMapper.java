@@ -3,6 +3,7 @@ package com.inovationbehavior.backend.mapper;
 import com.inovationbehavior.backend.model.Patent;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.Map;
 @Mapper
 public interface PatentMapper {
     @Select("""
-    SELECT appln_ID no, title_zn name,abstract_zn summary, link,update_time FROM patent
+    SELECT appln_ID no, title_zn name,abstract_zn summary, link,update_time,type,status FROM patent
     WHERE appln_ID = #{No}
     """)
     Patent getPatentByNo(String No);
@@ -35,4 +36,12 @@ public interface PatentMapper {
 """)
     List<Map<String, String>> getPatentByKey(String company, String no);
 
+    @Update(
+            """
+    UPDATE patent
+    SET patent.status = 1
+    where patent.appln_ID = #{patentNo}
+"""
+    )
+    void updateStatus(String patentNo);
 }

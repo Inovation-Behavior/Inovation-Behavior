@@ -18,4 +18,6 @@ public class Patent {
     String link;
     Timestamp update_time;
     List<String> pdfs;
+    String type;
+    Integer status;
 }
