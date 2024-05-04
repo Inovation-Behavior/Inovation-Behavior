@@ -30,7 +30,8 @@ public class SurveyController {
         String patentNo = requestData.get("patentNo");
         String identification = requestData.get("identification");
         String invitationCode = requestData.get("invitationCode");
-        surveyService.postIdentification(patentNo,identification,invitationCode);
+        String type = requestData.get("type");
+        surveyService.postIdentification(patentNo,identification,invitationCode, type);
         return Result.success();
     }
 
@@ -39,7 +40,8 @@ public class SurveyController {
         String patentNo = requestData.get("patentNo");
         String enterprise = requestData.get("enterprise");
         String invitationCode = requestData.get("invitationCode");
-        surveyService.postEnterprise(patentNo,enterprise,invitationCode);
+        String type = requestData.get("type");
+        surveyService.postEnterprise(patentNo,enterprise,invitationCode, type);
         return Result.success();
     }
 
@@ -48,7 +50,8 @@ public class SurveyController {
         String patentNo = requestData.get("patentNo");
         String value = requestData.get("value");
         String invitationCode = requestData.get("invitationCode");
-        surveyService.postValue(patentNo,value,invitationCode);
+        String type = requestData.get("type");
+        surveyService.postValue(patentNo,value,invitationCode, type);
         return Result.success();
     }
 
@@ -57,7 +60,8 @@ public class SurveyController {
         String patentNo = requestData.get("patentNo");
         String usage = requestData.get("usage");
         String invitationCode = requestData.get("invitationCode");
-        surveyService.postUsage(patentNo,usage,invitationCode);
+        String type = requestData.get("type");
+        surveyService.postUsage(patentNo,usage,invitationCode, type);
         return Result.success();
     }
 
@@ -66,7 +70,8 @@ public class SurveyController {
         String patentNo = requestData.get("patentNo");
         String policy = requestData.get("policy");
         String invitationCode = requestData.get("invitationCode");
-        surveyService.postPolicy(patentNo,policy,invitationCode);
+        String type = requestData.get("type");
+        surveyService.postPolicy(patentNo,policy,invitationCode, type);
         return Result.success();
     }
 

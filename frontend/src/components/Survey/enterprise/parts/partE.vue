@@ -291,6 +291,7 @@ const submit = async () => {
     const data = {
         invitationCode: invitationCode,
         patentNo: patentNo,
+        type: "企业",
         policy: formDataString
     };
     let response = await axios.post('/api/survey/policy', data);

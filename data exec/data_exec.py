@@ -9,7 +9,7 @@ def read_csv_columns(file):
         keys = []
         df = pd.DataFrame()
         # 使用 read_csv 逐行读取文件
-        for count, chunk in enumerate(pd.read_csv(file, encoding='GBK', chunksize=1, header=None)):
+        for count, chunk in enumerate(pd.read_csv(file, encoding='GBK', chunksize=1, header=None, nrows=4)):
             row = chunk.iloc[0].tolist()
             if count == 0:
                 keys.append('patentNo')
@@ -18,15 +18,17 @@ def read_csv_columns(file):
                 keys += [list(item.keys())[0] for item in ast.literal_eval(row[3])]
                 keys += [list(item.keys())[0] for item in ast.literal_eval(row[4])]
                 keys += [list(item.keys())[0] for item in ast.literal_eval(row[5])]
-                keys += ['award', 'addr', 'time', 'psw']
+                keys += ['award', 'addr', 'time', 'psw', 'type']
             values = [row[0]]
 
             for i in range(1, 6):  # 处理5个JSON列
                 json_keys = [list(item.keys())[0] for item in ast.literal_eval(row[i])]
                 values += [item[key] for item, key in zip(ast.literal_eval(row[i]), json_keys)]
 
-            values += row[6:10]
+            values += row[6:11]
 
+            # type在79列
+            # print(values[79])
             # 将当前行添加到DataFrame中
             temp_df = pd.DataFrame([values], columns=keys)
             df = pd.concat([df, temp_df], ignore_index=True)
