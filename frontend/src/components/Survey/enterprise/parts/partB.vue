@@ -251,10 +251,14 @@ const handlePBQ09Change = (value) => {
     showPBQ09.value = value === "是的，多次" || value === "是的，一次";
 };
 
+const showPBQ10 = ref(false)
 const handlePBQ10Change = (value) => {
     if (value.includes('无专利商业化经历')) {  
         form.pBq10 = ['无专利商业化经历']; 
         extraInput2.value = '';
+        showPBQ10.value = false
+    }else{
+        showPBQ10.value = form.pBq10.length > 0
     }
 };
 
