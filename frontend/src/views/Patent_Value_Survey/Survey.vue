@@ -33,13 +33,13 @@
                             style="margin-bottom: 20px;">输入邀请码后确认填写资格</el-button>
                         <introduction @allow-input="allowInput" />
                     </el-tab-pane>
-                    <el-tab-pane label="企业版问卷" name="enterprise">
+                    <el-tab-pane label="企业版问卷" name="enterprise" :disabled="disableEnterpriseInput">
                         <enterprise />
                     </el-tab-pane>
-                    <el-tab-pane label="高校版问卷" name="campus">
+                    <el-tab-pane label="高校版问卷" name="campus" :disabled="disableCampusInput">
                         <campus />
                     </el-tab-pane>
-                    <el-tab-pane label="个人版问卷" name="person">
+                    <el-tab-pane label="个人版问卷" name="person" :disabled="disablePersonInput">
                         <person />
                     </el-tab-pane>
                 </el-tabs>
@@ -72,7 +72,9 @@ export default {
             patentNo: "",
             dialogVisible: false, // 控制对话框显示的属性
             invitationCode: '', // 存储输入的邀请码
-            disableInput: true,
+            disableEnterpriseInput: true,
+            disableCampusInput: true,
+            disablePersonInput: true,
             showRecommendationDialog: false,//用于控制建议弹窗的显示
         }
     },
@@ -111,8 +113,16 @@ export default {
             });
         },
         allowInput(value){
-            this.disableInput=false;
-            ElMessage.success("请开始填写问卷")
+            if(value == '企业'){
+                this.disableEnterpriseInput = false
+                ElMessage.success("请填写企业版问卷")
+            } else if(value == '大学'){
+                this.disableCampusInput = false
+                ElMessage.success("请填写高校版问卷")
+            } else if(value == '个人'){
+                this.disablePersonInput = false
+                ElMessage.success("请填写个人版问卷")
+            }
         },
         checkScreenWidth() {
             if (window.innerWidth < 500) {

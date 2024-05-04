@@ -9,6 +9,7 @@
             专利申请号为：CN
             <el-input size="small" style="width: 250px;" v-model="form.patentNo" @input="updatePatentNo"
                 @keyup.enter="getPatentByNo(form.patentNo)"></el-input>
+            
             <el-button v-if="form.patentNo&&!patentDetail.name" type="primary" @click="getPatentByNo(form.patentNo)" style="margin-left: 1vw;">确认</el-button>
             <el-button v-if="patentDetail.name&&form.patentNo" type="primary" @click="allowInput()" style="margin-left: 1vw;">专利正确，继续问卷</el-button>
             <br>
@@ -82,13 +83,17 @@ const getPatentByNo = async (no) => {
         ElMessage.error("抱歉，专利号有误或专利不存在")
     } else if (response.data.code == 1) {
         patentDetail.value = response.data.data
+        if(patentDetail.status == 1){
+            ElMessage.error("问卷已填写")
+            patentDetail.value = {}
+        }
     }
 }
 
 const emits = defineEmits(['allow-input']);
 
 const allowInput = () => {
-    emits('allow-input', false);
+    emits('allow-input', patentDetail.value.type);
 }
 
 const searchPatents = ref([]);
