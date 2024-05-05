@@ -90,8 +90,8 @@ public class PatentServiceImpl implements PatentService {
     }
 
     @Override
-    public List<Map<String, String>> getPatentByKey(String company, String no) {
-        List<Map<String, String>> key = patentMapper.getPatentByKey(company,no);
+    public List<Patent> getPatentByKey(String company) {
+        List<Patent> key = patentMapper.getPatentsByKey(company);
         System.out.println(key);
         return key;
     }

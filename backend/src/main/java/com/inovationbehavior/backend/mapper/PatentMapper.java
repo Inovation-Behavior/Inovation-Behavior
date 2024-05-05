@@ -30,11 +30,11 @@ public interface PatentMapper {
     List<String> getCompanyByKey(String Key);
 
     @Select("""
-    SELECT DISTINCT appln_ID no,title_zn name, appln_application application FROM patent
-    WHERE appln_application LIKE CONCAT('%', #{company}, '%')
-    AND appln_ID LIKE CONCAT('%', #{no}, '%')
+    SELECT DISTINCT appln_ID no,title_zn name, appln_application,type,status FROM patent
+    WHERE exist = 1
+    AND appln_application LIKE CONCAT('%', #{key}, '%')
 """)
-    List<Map<String, String>> getPatentByKey(String company, String no);
+    List<Patent> getPatentsByKey(String key);
 
     @Update(
             """

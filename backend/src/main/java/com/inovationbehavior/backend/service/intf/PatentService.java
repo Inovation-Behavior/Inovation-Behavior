@@ -12,7 +12,7 @@ import java.util.Map;
 public interface PatentService {
     Patent getPatentByNo(String No);
 
-    List<Map<String, String>> getPatentByKey(String company, String no);
+    List<Patent> getPatentByKey(String company);
 
     List<String> getCompanyByKey(String key);
 }
