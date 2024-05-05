@@ -106,17 +106,22 @@
             v-model="dialogVisible" :before-close="handleClose">
             <el-card style="gap: 6px;border: none;align-items: center;justify-content: center;display: flex;"
                 shadow="never">
-                <el-container style="margin-bottom: 2vh;">为感谢您的参与，我们为您准备了一份纪念品。</el-container>
+                <el-container
+                    style="margin-bottom: 2vh;">感谢您的配合与支持，请填写您的邮寄方式或联系我们（opi_survey@tongji.edu.cn），我们将邮寄纪念品咖啡杯一份。</el-container>
                 <el-container>
                     <el-image :src="award"></el-image>
                 </el-container>
-                <el-container style="margin-top: 2vh">
+                <!-- <el-container style="margin-top: 2vh">
                     您可以选择:
                 </el-container>
                 <el-radio-group v-model="awardForm.award">
                     <el-radio class="answer" label="直接获得一份纪念品" />
                     <el-radio class="answer" label="选择抛硬币游戏：如果抛出正面，获得两份纪念品。" />
-                </el-radio-group>
+                </el-radio-group> -->
+                <el-container style="margin-top: 2vh">
+                    <el-text>请输入邮寄地址</el-text>
+                    <el-input v-model="awardForm.address" style="width: 60%;margin-left: 2vw;"></el-input>
+                </el-container>
             </el-card>
             <template #footer>
                 <div class="dialog-footer">

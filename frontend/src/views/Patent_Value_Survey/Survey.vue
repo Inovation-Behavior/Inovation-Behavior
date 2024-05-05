@@ -33,7 +33,7 @@
                             style="margin-bottom: 20px;">输入邀请码后确认填写资格</el-button>
                         <introduction @allow-input="allowInput" />
                     </el-tab-pane>
-                    <el-tab-pane label="企业版问卷" name="enterprise" :disabled="disableEnterpriseInput">
+                    <el-tab-pane label="企业版问卷" name="enterprise" >
                         <enterprise />
                     </el-tab-pane>
                     <el-tab-pane label="高校版问卷" name="campus" :disabled="disableCampusInput">
@@ -91,7 +91,7 @@ export default {
         checkInvitationCode() {
             const survey = surveyStore();
             // 这里实现邀请码的检查逻辑
-            if (this.surveyInfo.curInvitationCode === survey.surveyInfo.invitationCode
+            if (this.surveyInfo.curInvitationCode === survey.surveyInfo.invitationCode 
                 || this.surveyInfo.curInvitationCode === survey.surveyInfo.testInvitationCode) {
                 this.dialogVisible = false; // 如果邀请码正确，关闭对话框
                 this.disableInput = false;
@@ -112,17 +112,23 @@ export default {
                 behavior: "smooth" // 使用平滑滚动
             });
         },
-        allowInput(value) {
-            if (value == '企业') {
+        allowInput(value){
+            if(value == '企业'){
                 this.disableEnterpriseInput = false
+                this.disableCampusInput = true
+                this.disablePersonInput = true
                 this.activeName = "enterprise"
                 ElMessage.success("请填写企业版问卷")
-            } else if (value == '大学') {
+            } else if(value == '大学'){
                 this.disableCampusInput = false
+                this.disableEnterpriseInput = true
+                this.disablePersonInput = true
                 this.activeName = "campus"
                 ElMessage.success("请填写高校版问卷")
-            } else if (value == '个人') {
+            } else if(value == '个人'){
                 this.disablePersonInput = false
+                this.disableEnterpriseInput = true
+                this.disableCampusInput = true
                 this.activeName = "person"
                 ElMessage.success("请填写个人版问卷")
             }

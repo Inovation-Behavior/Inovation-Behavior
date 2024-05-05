@@ -83,7 +83,7 @@ const getPatentByNo = async (no) => {
         ElMessage.error("抱歉，专利号有误或专利不存在")
     } else if (response.data.code == 1) {
         patentDetail.value = response.data.data
-        if(patentDetail.status == 1){
+        if(patentDetail.value.status == 1){
             ElMessage.error("问卷已填写")
             patentDetail.value = {}
         }
