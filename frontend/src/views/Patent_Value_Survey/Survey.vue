@@ -33,7 +33,7 @@
                             style="margin-bottom: 20px;">输入邀请码后确认填写资格</el-button>
                         <introduction @allow-input="allowInput" />
                     </el-tab-pane>
-                    <el-tab-pane label="企业版问卷" name="enterprise" >
+                    <el-tab-pane label="企业版问卷" name="enterprise" :disabled="disableEnterpriseInput">
                         <enterprise />
                     </el-tab-pane>
                     <el-tab-pane label="高校版问卷" name="campus" :disabled="disableCampusInput">
