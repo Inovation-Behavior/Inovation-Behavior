@@ -16,8 +16,10 @@ public class Patent {
     String name;
     String summary;
     String link;
+    String appln_application;
     Timestamp update_time;
     List<String> pdfs;
     String type;
     Integer status;
+    Integer exist;
 }

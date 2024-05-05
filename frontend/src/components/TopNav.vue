@@ -24,6 +24,8 @@
                                     @click="redirectToSurveyResults">{{ $t('topnav.Survey_Results') }} </el-menu-item>
                                 <el-menu-item index="5-4" @click="redirectToData">{{
                         $t('topnav.DataUsageInstructions') }}</el-menu-item>
+                        <el-menu-item index="5-5" @click="redirectToUtils">{{
+                        $t('topnav.Survey_Utils') }}</el-menu-item>
                             </el-menu-item-group>
                         </el-sub-menu>
                         <el-menu-item index="2" @click="redirectToNews" :class="{ 'blue-text': menutextcolor === 2 }">{{
@@ -89,6 +91,9 @@
                                             <el-dropdown-item index="9" @click="redirectToData"
                                                 :class="{ 'blue-text': menutextcolor === 9 }">{{
                         $t('topnav.DataUsageInstructions') }}</el-dropdown-item>
+                        <el-dropdown-item index="10" @click="redirectToUtils"
+                                                :class="{ 'blue-text': menutextcolor === 10 }">{{
+                        $t('topnav.Survey_Utils') }}</el-dropdown-item>
                                         </el-dropdown-menu>
                                     </template>
                                 </el-dropdown>
@@ -182,6 +187,9 @@ const redirectToSurveyResults = () => {
     router.push('/survey-results');
 };
 
+const redirectToUtils = () => {
+    router.push('/survey-utils');
+};
 const redirectToData = () => {
     router.push('/data-usage-instructions');
 };
