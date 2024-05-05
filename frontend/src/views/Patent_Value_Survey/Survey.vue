@@ -26,7 +26,7 @@
                 </el-card>
             </el-dialog> -->
             <el-container style="margin-top: 10px;margin-right: 5px; width: 100%;">
-                <el-tabs style="width: 100%;" v-model="activeName" tab-position="left" class="demo-tabs"
+                <el-tabs style="width: 100%;" v-model="activeName" tab-position="top" class="demo-tabs"
                     @tab-click="handleClick" stretch="true">
                     <el-tab-pane label="专利确认" name="专利信息确认">
                         <el-button type="primary" @click="showInput" v-show="false"
@@ -91,7 +91,7 @@ export default {
         checkInvitationCode() {
             const survey = surveyStore();
             // 这里实现邀请码的检查逻辑
-            if (this.surveyInfo.curInvitationCode === survey.surveyInfo.invitationCode 
+            if (this.surveyInfo.curInvitationCode === survey.surveyInfo.invitationCode
                 || this.surveyInfo.curInvitationCode === survey.surveyInfo.testInvitationCode) {
                 this.dialogVisible = false; // 如果邀请码正确，关闭对话框
                 this.disableInput = false;
@@ -112,15 +112,18 @@ export default {
                 behavior: "smooth" // 使用平滑滚动
             });
         },
-        allowInput(value){
-            if(value == '企业'){
+        allowInput(value) {
+            if (value == '企业') {
                 this.disableEnterpriseInput = false
+                this.activeName = "enterprise"
                 ElMessage.success("请填写企业版问卷")
-            } else if(value == '大学'){
+            } else if (value == '大学') {
                 this.disableCampusInput = false
+                this.activeName = "campus"
                 ElMessage.success("请填写高校版问卷")
-            } else if(value == '个人'){
+            } else if (value == '个人') {
                 this.disablePersonInput = false
+                this.activeName = "person"
                 ElMessage.success("请填写个人版问卷")
             }
         },
