@@ -13,10 +13,10 @@
             <el-button v-if="form.patentNo&&!patentDetail.name" type="primary" @click="getPatentByNo(form.patentNo)" style="margin-left: 1vw;">确认</el-button>
             <el-button v-if="patentDetail.name&&form.patentNo" type="primary" @click="allowInput()" style="margin-left: 1vw;">专利正确，继续问卷</el-button>
             <br>
-            如果与该专利无关，请提供您所在单位的名称：
+            <!-- 如果与该专利无关，请提供您所在单位的名称：
             <el-input size="small" style="width: 10vw;" v-model="form.companyName" @input="updateCompanyName"
                 @keyup.enter="getPatentNoByCompany(form.companyName)"></el-input>
-            ，我们将为您推荐其他专利。
+            ，我们将为您推荐其他专利。 -->
         </p>
         <template v-if="patentDetail.no != ''">
             <div v-if="patentDetail.name">
