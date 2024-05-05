@@ -106,8 +106,9 @@
             v-model="dialogVisible" :before-close="handleClose">
             <el-card style="gap: 6px;border: none;align-items: center;justify-content: center;display: flex;"
                 shadow="never">
-                <el-container
-                    style="margin-bottom: 2vh;">感谢您的配合与支持，请填写您的邮寄方式或联系我们（opi_survey@tongji.edu.cn），我们将邮寄纪念品咖啡杯一份。</el-container>
+                <el-container style="margin-bottom: 2vh;">
+                    <el-text style="line-height: 5vh;">感谢您的配合与支持，请填写您的邮寄方式或联系我们<span
+                            style="color: blue;">（opi_survey@tongji.edu.cn）</span>，我们将邮寄纪念品咖啡杯一份。</el-text></el-container>
                 <el-container>
                     <el-image :src="award"></el-image>
                 </el-container>
