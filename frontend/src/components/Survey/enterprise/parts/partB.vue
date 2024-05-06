@@ -106,7 +106,7 @@
                     <el-radio class="answer" label="设置在研发部下" />
                     <el-radio class="answer" label="设置在法务部下" />
                     <el-radio class="answer" label="其他，请注明"><el-input size="small"
-                            placeholder="其他，请注明"></el-input></el-radio>
+                            placeholder="其他，请注明" v-model="extraInput4"></el-input></el-radio>
                 </el-radio-group>
             </el-form-item>
 
@@ -239,6 +239,7 @@ const form = reactive({
 const extraInput1 = ref('')
 const extraInput2 = ref('')
 const extraInput3 = ref('')
+const extraInput4 = ref('')
 
 //跳转以及互斥
 const showPBQ07 = ref(false);
@@ -337,6 +338,7 @@ const submit = async () => {
     form.pBq08.pop()
     form.pBq10.pop()
     form.pBq1001.pop()
+    form.pBq0702.push(extraInput4.value)
     form.pBq08.push(extraInput1.value)
     form.pBq10.push(extraInput2.value)
     form.pBq1001.push(extraInput3.value)
