@@ -320,6 +320,7 @@ const submitAward = async () => {
             ElMessage.error("您已选择奖励")
         }
     }
+    window.location.reload()
 }
 </script>
 

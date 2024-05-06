@@ -5,11 +5,11 @@
                 style="font-family:SimHei;font-size: 2rem;font-weight: bolder;display: flex;justify-content: center;align-items: center; width: 100%; overflow: auto;margin-bottom: 2vh;">
                 开放专利与创新调查：上海2024
             </el-container>
-            <!-- <el-dialog title="提示" v-model="showRecommendationDialog"
+            <el-dialog title="提示" v-model="showRecommendationDialog"
                 style="font-family: SimSun;width: 300px;align-items: center;justify-content: center;position: absolute; left: 20px;"
                 :before-close="handleRecommendationDialogClose">
                 <p style=" margin-top: -10px">建议手机横屏或在PC端填写调查问卷</p>
-            </el-dialog> -->
+            </el-dialog>
             <!-- <el-dialog :modal="false" center :close-on-click-modal="false" :close-on-press-escape="false"
                 style="font-family: SimSun;width: 400px;align-items: center;justify-content: center;"
                 title="欢迎参加问卷调研，请输入邀请码" v-model="dialogVisible" :before-close="handleClose">

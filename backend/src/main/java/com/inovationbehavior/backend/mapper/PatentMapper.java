@@ -42,11 +42,8 @@ public interface PatentMapper {
     SET patent.status = 1
     where patent.appln_ID = #{patentNo}
     AND survey.patent_no = #{patentNo}
-    AND survey.identification is not null
-    AND survey.enterprise is not null
     AND survey.value is not null
     AND survey.use is not null
-    AND survey.policy is not null
 """
     )
     void updateStatus(String patentNo);
