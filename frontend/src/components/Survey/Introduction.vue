@@ -6,17 +6,21 @@
         <p style="margin-top: 2vh;padding-left: 2em;">
             在回答问卷前，请确认您所在单位持有附件发明专利
             <br>
+            <!-- 输入企业名称查看名下专利信息：
+            <el-input size="small" style="width: 10vw;" v-model="form.companyName" @input="updateCompanyName"
+                @keyup.enter="getPatentNoByCompany(form.companyName)"></el-input>
+            <el-button type="primary"
+                @click="getPatentNoByCompany(form.companyName)" style="margin-left: 1vw;">确认</el-button>
+            <br> -->
             专利申请号为：CN
             <el-input size="small" style="width: 250px;" v-model="form.patentNo" @input="updatePatentNo"
                 @keyup.enter="getPatentByNo(form.patentNo)"></el-input>
-            
-            <el-button v-if="form.patentNo&&!patentDetail.name" type="primary" @click="getPatentByNo(form.patentNo)" style="margin-left: 1vw;">确认</el-button>
-            <el-button v-if="patentDetail.name&&form.patentNo" type="primary" @click="allowInput()" style="margin-left: 1vw;">专利正确，继续问卷</el-button>
+
+            <el-button v-if="form.patentNo&&!patentDetail.name" type="primary" @click="getPatentByNo(form.patentNo)"
+                style="margin-left: 1vw;">确认</el-button>
+            <el-button v-if="patentDetail.name&&form.patentNo" type="primary" @click="allowInput()"
+                style="margin-left: 1vw;">专利正确，继续问卷</el-button>
             <br>
-            <!-- 如果与该专利无关，请提供您所在单位的名称：
-            <el-input size="small" style="width: 10vw;" v-model="form.companyName" @input="updateCompanyName"
-                @keyup.enter="getPatentNoByCompany(form.companyName)"></el-input>
-            ，我们将为您推荐其他专利。 -->
         </p>
         <template v-if="patentDetail.no != ''">
             <div v-if="patentDetail.name">
