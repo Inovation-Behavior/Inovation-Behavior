@@ -4,7 +4,7 @@
         <!-- <el-card style="border: 1px solid black;"> -->
         <!-- 初步调整，可以确认一下 -->
         <p style="margin-top: 2vh;padding-left: 2em;">
-            在回答问卷前，请确认您所在单位持有附件发明专利
+            请输入您所在企业（学校）名称，确认需填写的专利
             <br>
             输入企业名称查看名下专利信息：
             <el-input size="small" style="width: 10vw;" v-model="form.companyName" @input="updateCompanyName"
@@ -12,14 +12,18 @@
             <el-button type="primary" size="small" @click="getPatentNoByCompany(form.companyName)"
                 style="margin-left: 1vw;">确认</el-button>
             <br>
-            专利申请号为：CN
+            或
+            <br>
+            直接输入邀请函上的专利号：CN
             <el-input size="small" style="width: 250px;" v-model="form.patentNo" @input="updatePatentNo"
                 @keyup.enter="getPatentByNo(form.patentNo)"></el-input>
 
-            <el-button v-if="form.patentNo&&!patentDetail.name" type="primary" @click="getPatentByNo(form.patentNo)"
+            <!-- <el-button v-if="form.patentNo&&!patentDetail.name" type="primary" @click="getPatentByNo(form.patentNo)"
+                style="margin-left: 1vw;">确认</el-button> -->
+            <el-button type="primary" @click="getPatentByNo(form.patentNo)" size="small"
                 style="margin-left: 1vw;">确认</el-button>
-            <el-button v-if="patentDetail.name&&form.patentNo" type="primary"
-                @click="allowInput(patentDetail.value.type)" style="margin-left: 1vw;">专利正确，继续问卷</el-button>
+            <el-button v-if="patentDetail.name&&form.patentNo" type="primary" size="small"
+                @click="allowInput(patentDetail.type)" style="margin-left: 1vw;">专利正确，继续问卷</el-button>
             <br>
         </p>
         <template v-if="patentDetail.no != ''">
@@ -43,15 +47,16 @@
             </el-table>
         </template>
 
-        <el-dialog v-model="dialogVisible" title="确定专利信息" :before-close="handleClose">
-            <p><strong>专利名称:</strong> {{ patentDetail.name }}</p>
-            <p><strong>专利概述:</strong> {{ patentDetail.summary }}</p>
-            <p><strong>专利链接:</strong> <a :href="patentDetail.pdfs[0]" target="blank">{{ patentDetail.pdfs[0]
+        <el-dialog v-model="dialogVisible" title="确定专利信息">
+            <p><strong>专利名称:</strong> {{ boxPatent.name }}</p>
+            <p><strong>专利概述:</strong> {{ boxPatent.summary }}</p>
+            <p><strong>专利链接:</strong> <a v-if="boxPatent.pdfs" :href="boxPatent.pdfs[0]" target="blank">{{
+                    boxPatent.pdfs[0]
                     }}</a></p>
             <template #footer>
                 <div class="dialog-footer">
                     <el-button @click="dialogVisible = false">取消</el-button>
-                    <el-button type="primary" @click="dialogVisible = false">
+                    <el-button type="primary" @click="confirm()">
                         专利无误，开始填写
                     </el-button>
                 </div>
@@ -117,25 +122,47 @@ const getPatentByNo = async (no) => {
 }
 
 const dialogVisible = ref(false)
+const boxPatent = ref({})
 const handleClick = async(scope) => {
     console.log('Selected Patent No:', scope.row.no);
-    ElMessageBox.confirm('确定填写'+scope.row.no+'的专利问卷?')
-    .then(async () => {
-        updatePatentNo(scope.row.no)
-        if (!scope.row.no.startsWith("CN")) {
-            scope.row.no = "CN" + scope.row.no;
-        }
-        let response = await axios.get('api/patents/' + scope.row.no);
-        if (response.data.code == 0) {
-            ElMessage.error("抱歉，专利号有误或专利不存在")
-        } else if (response.data.code == 1) {
-            allowInput(response.data.data.type)
-        }
-        done()
-    })
-    .catch(() => {
-        // catch error
-    })
+    updatePatentNo(scope.row.no)
+    if (!scope.row.no.startsWith("CN")) {
+        scope.row.no = "CN" + scope.row.no;
+    }
+    let response = await axios.get('api/patents/' + scope.row.no);
+    if (response.data.code == 0) {
+        ElMessage.error("抱歉，专利号有误或专利不存在")
+    } else if (response.data.code == 1) {
+        boxPatent.value = response.data.data
+        console.log(boxPatent.value)
+    }
+    dialogVisible.value = true
+    // ElMessageBox.confirm('确定填写'+scope.row.no+'的专利问卷?')
+    // .then(async () => {
+    //     updatePatentNo(scope.row.no)
+    //     if (!scope.row.no.startsWith("CN")) {
+    //         scope.row.no = "CN" + scope.row.no;
+    //     }
+    //     let response = await axios.get('api/patents/' + scope.row.no);
+    //     if (response.data.code == 0) {
+    //         ElMessage.error("抱歉，专利号有误或专利不存在")
+    //     } else if (response.data.code == 1) {
+
+    //         allowInput(response.data.data.type)
+    //     }
+    //     done()
+    // })
+    // .catch(() => {
+    //     // catch error
+    // })
+}
+
+const confirm = async() => {
+    dialogVisible.value = false
+    updatePatentNo(boxPatent.value.no)
+    form.patentNo = boxPatent.value.no
+    patentDetail.value = boxPatent.value
+    allowInput(boxPatent.value.type)
 }
 
 const emits = defineEmits(['allow-input']);
