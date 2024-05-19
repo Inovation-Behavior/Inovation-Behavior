@@ -158,7 +158,7 @@ const getPatentNoByCompany = async (name) => {
         if (response.data.data.length == 0) {
             ElMessage.error("抱歉，公司名有误或专利不存在，请确保输入公司全名")
         } else if (response.data.code == 1) {
-            searchPatents.value = response.data.data.slice(0, 10)
+            searchPatents.value = response.data.data
         }
         return;
     } catch (error) {
