@@ -33,6 +33,7 @@ public interface PatentMapper {
     @Select("""
 SELECT DISTINCT appln_ID no, title_zn name, appln_application, type, status FROM patent
 WHERE exist = 1
+AND status = 0
 AND appln_application REGEXP CONCAT('^.*', #{regexKey}, '.*$')
 """)
     List<Patent> getPatentsByKey(String regexKey);
