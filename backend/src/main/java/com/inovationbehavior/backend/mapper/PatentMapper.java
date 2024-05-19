@@ -14,6 +14,7 @@ public interface PatentMapper {
     @Select("""
     SELECT appln_ID no, title_zn name,abstract_zn summary, link,update_time,type,status FROM patent
     WHERE appln_ID = #{No}
+    AND exist = 1
     """)
     Patent getPatentByNo(String No);
 
@@ -48,4 +49,10 @@ AND appln_application REGEXP CONCAT('^.*', #{regexKey}, '.*$')
 """
     )
     void updateStatus(String patentNo);
+
+    @Select("""
+    SELECT appln_ID no, title_zn name,abstract_zn summary FROM patent
+    WHERE exist = 1
+    """)
+    List<Patent> getAllExistPatents();
 }

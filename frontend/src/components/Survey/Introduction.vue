@@ -119,8 +119,7 @@ const getPatentByNo = async (no) => {
 const dialogVisible = ref(false)
 const handleClick = async(scope) => {
     console.log('Selected Patent No:', scope.row.no);
-    // 在这里你可以添加更多逻辑，比如根据专利号查询更多信息
-    ElMessageBox.confirm('确定填写此专利问卷?')
+    ElMessageBox.confirm('确定填写'+scope.row.no+'的专利问卷?')
     .then(async () => {
         updatePatentNo(scope.row.no)
         if (!scope.row.no.startsWith("CN")) {

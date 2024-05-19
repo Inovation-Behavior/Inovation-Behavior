@@ -10,6 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+
 @Slf4j
 @RestController
 @RequiredArgsConstructor
@@ -38,5 +40,12 @@ public class PatentController {
     public Result getCompanyByKey(@PathParam("key") String key){
         System.out.println(key);
         return Result.success(patentService.getCompanyByKey(key));
+    }
+
+    @LogAnnotation("开始无可用pdf论文统计")
+    @GetMapping("/pdfs")
+    public Result getAllPatentIdWithoutPdfs() throws IOException {
+        patentService.getAllPatentIdWithoutPdfs();
+        return  Result.success();
     }
 }

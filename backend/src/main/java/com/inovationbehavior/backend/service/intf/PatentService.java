@@ -5,6 +5,7 @@ import com.inovationbehavior.backend.model.Patent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -15,4 +16,6 @@ public interface PatentService {
     List<Patent> getPatentByKey(String company);
 
     List<String> getCompanyByKey(String key);
+
+    void getAllPatentIdWithoutPdfs() throws IOException;
 }
