@@ -338,7 +338,9 @@ const submit = async () => {
     //form.pBq08.pop()
     form.pBq10.pop()
     form.pBq1001.pop()
-    form.pBq0702 = extraInput4.value
+    if(extraInput4.value){
+        form.pBq0702 = extraInput4.value
+    }
     //form.pBq08.push(extraInput1.value)
     form.pBq10.push(extraInput2.value)
     form.pBq1001.push(extraInput3.value)
