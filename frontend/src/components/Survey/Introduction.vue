@@ -4,13 +4,12 @@
         <!-- <el-card style="border: 1px solid black;"> -->
         <!-- 初步调整，可以确认一下 -->
         <p style="margin-top: 2vh;padding-left: 2em;">
-            请输入您所在企业（学校）名称，确认需填写的专利
-            <br>
-            输入企业名称查看名下专利信息：
+            请输入您所在企业（学校）名称
             <el-input size="small" style="width: 10vw;" v-model="form.companyName" @input="updateCompanyName"
                 @keyup.enter="getPatentNoByCompany(form.companyName)"></el-input>
             <el-button type="primary" size="small" @click="getPatentNoByCompany(form.companyName)"
                 style="margin-left: 1vw;">确认</el-button>
+            ，确认需填写的专利
             <br>
             或
             <br>
