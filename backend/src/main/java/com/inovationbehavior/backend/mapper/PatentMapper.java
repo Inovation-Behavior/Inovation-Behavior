@@ -30,11 +30,12 @@ public interface PatentMapper {
     List<String> getCompanyByKey(String Key);
 
     @Select("""
-    SELECT DISTINCT appln_ID no,title_zn name, appln_application,type,status FROM patent
-    WHERE exist = 1
-    AND appln_application LIKE CONCAT('%', #{key}, '%')
+SELECT DISTINCT appln_ID no, title_zn name, appln_application, type, status FROM patent
+WHERE exist = 1
+AND appln_application REGEXP CONCAT('^.*', #{regexKey}, '.*$')
 """)
-    List<Patent> getPatentsByKey(String key);
+    List<Patent> getPatentsByKey(String regexKey);
+
 
     @Update(
             """

@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 import static com.inovationbehavior.backend.constants.CosConstants.PdfUrl;
 
@@ -90,11 +91,14 @@ public class PatentServiceImpl implements PatentService {
     }
 
     @Override
-    public List<Patent> getPatentByKey(String company) {
-        List<Patent> key = patentMapper.getPatentsByKey(company);
-        System.out.println(key);
-        return key;
+    public List<Patent> getPatentByKey(String key) {
+        // 将 key 转换为正则表达式模式
+        String regexKey = key.chars()
+                .mapToObj(c -> (char) c + ".*")
+                .collect(Collectors.joining("", "^.*", ".*$"));
+        return patentMapper.getPatentsByKey(regexKey);
     }
+
 
     @Override
     public List<String> getCompanyByKey(String key) {
