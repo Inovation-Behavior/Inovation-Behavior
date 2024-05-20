@@ -38,7 +38,7 @@
                 <!-- <el-table-column prop="no" label="专利申请号" width="180" /> -->
                 <el-table-column prop="no" label="专利申请号" width="180">
                     <template v-slot:default="scope">
-                        <span @click="handleClick(scope)">{{ scope.row.no }}</span>
+                        <span @click="handleClick(scope)" style="color:#0000FF;cursor: pointer;">{{ scope.row.no }}</span>
                     </template>
                 </el-table-column>
                 <el-table-column prop="appln_application" label="单位名称" width="200" />

@@ -1,5 +1,7 @@
 <template>
+    <h4 style="color: blue;">如已经填过“企业研发与知识产权管理"，可直接跳过该部分</h4>
     <el-card style="border-radius: 15px;width: 100%;">
+
         <p style="font-family: STKaiti;color: blue;font-weight: bold;">
             （在B部分，我们想了解下您所在机构/公司的经营与研发情况，部分信息需要您提供2018年与2023年的历史信息，谢谢支持！）
         </p>
@@ -105,8 +107,8 @@
                     <el-radio class="answer" label="完全独立" />
                     <el-radio class="answer" label="设置在研发部下" />
                     <el-radio class="answer" label="设置在法务部下" />
-                    <el-radio class="answer" label="其他，请注明"><el-input size="small"
-                            placeholder="其他，请注明" v-model="extraInput4"></el-input></el-radio>
+                    <el-radio class="answer" label="其他，请注明"><el-input size="small" placeholder="其他，请注明"
+                            v-model="extraInput4"></el-input></el-radio>
                 </el-radio-group>
             </el-form-item>
 

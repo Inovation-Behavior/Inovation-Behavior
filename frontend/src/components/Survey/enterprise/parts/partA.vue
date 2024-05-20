@@ -1,8 +1,11 @@
 <template>
+    <h4 style="color: blue;">如已经填过“个人信息"，可直接跳过该部分</h4>
     <el-card style="border-radius: 15px;width: 100%;">
+
         <el-form :model="form" size="large" label-position="top">
             <el-form-item class="question" label="A01.您与所选专利的关系是">
-                <el-checkbox-group v-model="form.pAq01" style="display: flex;flex-wrap: wrap;" @change="handlePAQ01Change">
+                <el-checkbox-group v-model="form.pAq01" style="display: flex;flex-wrap: wrap;"
+                    @change="handlePAQ01Change">
                     <el-checkbox class="answer" label="专利发明人之一" />
                     <el-checkbox class="answer" label="参与该专利技术的研发，未列发明人" />
                     <el-checkbox class="answer" label="参与该相关技术的研发，未列发明人" />
@@ -22,7 +25,7 @@
 
             <el-form-item class="question" style="font-weight: bolder;" label="A03.您的学历背景是？">
                 <el-table :data="tablePAQ3" style="width: 100%" :row-style="{ height: '10px' }"
-                :cell-style="{ padding: '0px' }">
+                    :cell-style="{ padding: '0px' }">
                     <el-table-column class="answer" width="180%">
                         <template #default="{ row }">
                             {{ row.name }}
@@ -32,7 +35,8 @@
                         v-for="(column, colIndex) in colPAQ3" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
                             <!-- 在每个单元格内放置一个可选中的组件 -->
-                            <el-checkbox class="table-container1" v-model="row.selection[colIndex]"  @change="handlePAQ3(row, colIndex)"></el-checkbox>
+                            <el-checkbox class="table-container1" v-model="row.selection[colIndex]"
+                                @change="handlePAQ3(row, colIndex)"></el-checkbox>
                         </template>
                     </el-table-column>
                 </el-table>
@@ -91,7 +95,7 @@
                             <template v-if="$index !== tablePAQ6.length - 1">
                                 {{ row.name }}
                             </template>
-                               <template v-else>
+                            <template v-else>
                                 <el-input v-model="tablePAQ6[$index].name" style="height: 3vh;"
                                     placeholder="其他，请说明"></el-input>
                             </template>
@@ -108,8 +112,9 @@
             </el-form-item>
 
             <el-form-item class="question" style="font-weight: bolder;" label="A0601. 您在当前单位工作了几年?">
-                <el-text class="answer" style="font-family: Kaiti;font-weight: 100;text-indent: 2em;"><el-input size="small"
-                        v-model="form.pAq0601" style="width: 5vw;margin-left: 0.5vw;" placeholder="" />年</el-text>
+                <el-text class="answer" style="font-family: Kaiti;font-weight: 100;text-indent: 2em;"><el-input
+                        size="small" v-model="form.pAq0601" style="width: 5vw;margin-left: 0.5vw;"
+                        placeholder="" />年</el-text>
             </el-form-item>
 
             <el-form-item class="question" style="font-weight: bolder;" label="A07. 您（的岗位）过去五年的年收入如何？(单位：人民币)">
@@ -135,7 +140,7 @@
 
             <el-form-item class="question" style="font-weight: bolder;" label="A09.如果成功实施该专利（例如签订许可合同等），您是否能获得以下奖励？">
                 <el-checkbox-group v-model="form.pAq09" style="display: flex;flex-wrap: wrap;"
-                @change="handlePAQ09Change">
+                    @change="handlePAQ09Change">
                     <el-checkbox class="answer" label="没有额外奖励，是必须完成的考核指标" />
                     <el-checkbox class="answer" label="更快的职业晋升" />
                     <el-checkbox class="answer" label="获得一次性现金奖励" />
@@ -145,7 +150,7 @@
                             v-model="extraInput2"></el-input></el-checkbox>
                 </el-checkbox-group>
             </el-form-item>
-            
+
             <el-form-item class="question" v-if="showPAQ10" style="font-weight: bolder;" label="A10.如果有奖励，贵司如何进行计数？">
                 <el-radio-group v-model="form.pAq10">
                     <el-radio class="answer" label="根据所完成的专利商业化合同数量" />
