@@ -2,6 +2,7 @@ package com.inovationbehavior.backend.service.intf;
 
 import com.inovationbehavior.backend.mapper.PatentMapper;
 import com.inovationbehavior.backend.model.Patent;
+import com.inovationbehavior.backend.model.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,4 +19,6 @@ public interface PatentService {
     List<String> getCompanyByKey(String key);
 
     void getAllPatentIdWithoutPdfs() throws IOException;
+
+    Result clearPatentByNo(String no);
 }

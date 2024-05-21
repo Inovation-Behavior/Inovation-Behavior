@@ -7,6 +7,12 @@
                 <el-button style="height: 50px;" @click="checkSID">确定</el-button>
             </div>
             <div v-if="login" style="display: flex;gap: 5px;">
+                <p>输入专利号删除问卷记录：</p>
+                <el-input v-model="clearPatentNo" style="width: 240px;height: 50px;" placeholder="Please input" />
+                <el-button style="height: 50px;" @click="clearSurvey">确定</el-button>
+                <p style="color: red;font-size: large;">【危险操作】请注意核查</p>
+            </div>
+            <div v-if="login" style="display: flex;gap: 5px;">
                 <p>输入企业/高校名称查看名下专利信息：</p>
                 <el-input v-model="appln_applicant" style="width: 240px;height: 50px;" placeholder="Please input" />
                 <el-button style="height: 50px;" @click="getPatentByApplicant">确定</el-button>
@@ -51,6 +57,7 @@ import axios from 'axios'
 import { ElMessage } from 'element-plus'
 
 let SID = ref("");
+let clearPatentNo = ref("");
 let patent_no = ref("");
 let appln_applicant = ref("");
 let login = ref(false);
@@ -106,6 +113,18 @@ const getPatentByNo = async () => {
         ElMessage.error("抱歉，专利号有误或专利不存在")
     } else if (response.data.code == 1) {
         patentData.value = response.data.data;
+    }
+}
+
+const clearSurvey = async () => {
+    if (clearPatentNo.value == '') {
+        return;
+    }
+    let response = await axios.get('api/patents/clear/' + clearPatentNo.value);
+    if (response.data.code == 0) {
+        ElMessage.error("请求失败")
+    } else if (response.data.code == 1) {
+        ElMessage.success("请求成功")
     }
 }
 const clearPatentByApplicant = () => {

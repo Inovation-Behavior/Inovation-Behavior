@@ -8,7 +8,7 @@
             <el-dialog title="提示" v-model="showRecommendationDialog"
                 style="font-family: SimSun;width: 300px;align-items: center;justify-content: center;position: absolute; left: 20px;"
                 :before-close="handleRecommendationDialogClose">
-                <p style=" margin-top: -10px">建议手机横屏或在PC端填写调查问卷</p>
+                <p style=" margin-top: -10px">为方便阅读，请用手机横屏或PC端填写，谢谢</p>
             </el-dialog>
             <!-- <el-dialog :modal="false" center :close-on-click-modal="false" :close-on-press-escape="false"
                 style="font-family: SimSun;width: 400px;align-items: center;justify-content: center;"

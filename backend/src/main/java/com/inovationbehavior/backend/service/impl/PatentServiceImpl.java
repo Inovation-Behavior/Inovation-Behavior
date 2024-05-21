@@ -3,7 +3,10 @@ package com.inovationbehavior.backend.service.impl;
 import com.google.gson.Gson;
 import com.inovationbehavior.backend.constants.CosConstants;
 import com.inovationbehavior.backend.mapper.PatentMapper;
+import com.inovationbehavior.backend.mapper.SurveyMapper;
 import com.inovationbehavior.backend.model.Patent;
+import com.inovationbehavior.backend.model.Result;
+import com.inovationbehavior.backend.model.survey.Survey;
 import com.inovationbehavior.backend.service.intf.IntelligenceService;
 import com.inovationbehavior.backend.service.intf.PatentService;
 import lombok.extern.slf4j.Slf4j;
@@ -35,6 +38,9 @@ import static com.inovationbehavior.backend.constants.CosConstants.PdfUrl;
 public class PatentServiceImpl implements PatentService {
     @Autowired
     private PatentMapper patentMapper;
+
+    @Autowired
+    private SurveyMapper surveyMapper;
 
     @Autowired
     private RedisTemplate<String, String> redisTemplate;
@@ -168,5 +174,12 @@ public class PatentServiceImpl implements PatentService {
             throw new RuntimeException(e);
         }
         workbook.close();
+    }
+
+    @Override
+    public Result clearPatentByNo(String no) {
+        surveyMapper.deleteSurvey(no);
+        patentMapper.refreshStatus(no);
+        return Result.success();
     }
 }

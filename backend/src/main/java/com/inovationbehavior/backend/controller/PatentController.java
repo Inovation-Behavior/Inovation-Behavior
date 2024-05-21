@@ -48,4 +48,10 @@ public class PatentController {
         patentService.getAllPatentIdWithoutPdfs();
         return  Result.success();
     }
+
+    @LogAnnotation("清空填写记录")
+    @GetMapping("/clear/{No}")
+    public Result clearPatentByNo(@PathVariable String No) {
+        return Result.success(patentService.clearPatentByNo(No));
+    }
 }

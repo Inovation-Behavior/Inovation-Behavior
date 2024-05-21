@@ -2,10 +2,7 @@ package com.inovationbehavior.backend.mapper;
 
 import com.inovationbehavior.backend.model.survey.AwardInfo;
 import com.inovationbehavior.backend.model.survey.Survey;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.time.LocalDateTime;
 
@@ -47,4 +44,10 @@ public interface SurveyMapper {
 
     @Select("SELECT COUNT(*) FROM survey WHERE patent_no = #{patentNo} AND award IS NOT NULL")
     int checkAward(String patentNo);
+
+    @Select("SELECT * FROM survey WHERE patent_no = #{patentNo}")
+    Survey getSurvey(String patentNo);
+
+    @Delete("DELETE FROM survey WHERE patent_no = #{patentNo}")
+    void deleteSurvey(String patentNo);
 }
