@@ -178,6 +178,7 @@ public class PatentServiceImpl implements PatentService {
 
     @Override
     public Result clearPatentByNo(String no) {
+        surveyMapper.copySurvey(no);
         surveyMapper.deleteSurvey(no);
         patentMapper.refreshStatus(no);
         return Result.success();

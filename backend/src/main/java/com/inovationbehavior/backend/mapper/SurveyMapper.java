@@ -50,4 +50,7 @@ public interface SurveyMapper {
 
     @Delete("DELETE FROM survey WHERE patent_no = #{patentNo}")
     void deleteSurvey(String patentNo);
+
+    @Insert("INSERT INTO survey_copy SELECT * FROM survey WHERE patent_no = #{patentNo}")
+    void copySurvey(String patentNo);
 }
