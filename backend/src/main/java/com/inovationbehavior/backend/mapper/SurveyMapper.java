@@ -51,6 +51,23 @@ public interface SurveyMapper {
     @Delete("DELETE FROM survey WHERE patent_no = #{patentNo}")
     void deleteSurvey(String patentNo);
 
-    @Insert("INSERT INTO survey_copy SELECT * FROM survey WHERE patent_no = #{patentNo}")
+    @Insert("""
+    INSERT INTO survey_copy (patent_no, identification, enterprise, value, `use`, policy, award, address, time, invitationCode, type)
+    SELECT patent_no, identification, enterprise, value, `use`, policy, award, address, time, invitationCode, type
+    FROM survey
+    WHERE patent_no = #{patentNo}
+    ON DUPLICATE KEY UPDATE
+        identification = VALUES(identification),
+        enterprise = VALUES(enterprise),
+        value = VALUES(value),
+        `use` = VALUES(`use`),
+        policy = VALUES(policy),
+        award = VALUES(award),
+        address = VALUES(address),
+        time = VALUES(time),
+        invitationCode = VALUES(invitationCode),
+        type = VALUES(type)
+""")
     void copySurvey(String patentNo);
+
 }
