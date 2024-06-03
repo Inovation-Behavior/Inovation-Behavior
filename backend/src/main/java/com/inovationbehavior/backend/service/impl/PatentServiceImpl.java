@@ -24,11 +24,9 @@ import org.springframework.web.client.RestTemplate;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import static com.inovationbehavior.backend.constants.CosConstants.PdfUrl;
@@ -55,8 +53,8 @@ public class PatentServiceImpl implements PatentService {
         String redisKey = "patent:" + no;
 
         // 尝试从Redis中获取记录
-//        String patentJson = redisTemplate.opsForValue().get(redisKey);
-        String patentJson = "";
+        String patentJson = redisTemplate.opsForValue().get(redisKey);
+//        String patentJson = "";
         Patent patent = null;
         Gson gson = new Gson();
         if (patentJson != null && !patentJson.isEmpty()) {
@@ -114,7 +112,10 @@ public class PatentServiceImpl implements PatentService {
         String regexKey = key.chars()
                 .mapToObj(c -> (char) c + ".*")
                 .collect(Collectors.joining("", "^.*", ".*$"));
-        return patentMapper.getPatentsByKey(regexKey);
+        Set<Patent> result = new HashSet<>(patentMapper.getPatentsByKey(regexKey));
+        result.addAll(patentMapper.getPatentsByKeyFromAgency(regexKey));
+
+        return new ArrayList<>(result);
     }
 
 

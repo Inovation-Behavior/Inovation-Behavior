@@ -22,4 +22,5 @@ public class Patent {
     String type;
     Integer status;
     Integer exist;
+    String agency;
 }

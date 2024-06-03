@@ -37,6 +37,13 @@ AND appln_application REGEXP CONCAT('^.*', #{regexKey}, '.*$')
 """)
     List<Patent> getPatentsByKey(String regexKey);
 
+    @Select("""
+SELECT DISTINCT p.appln_ID no, title_zn name, appln_application, p.type, status,pa.agency FROM patent p
+LEFT JOIN patent_agency pa on p.appln_ID = pa.appln_id
+WHERE p.exist = 1
+AND pa.agency REGEXP CONCAT('^.*', #{regexKey}, '.*$')
+""")
+    List<Patent> getPatentsByKeyFromAgency(String regexKey);
 
     @Update(
             """

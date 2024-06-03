@@ -29,7 +29,7 @@ public class PatentController {
         }
         return Result.error("未找到No：" + No);
     }
-    @LogAnnotation("根据Company范围查询专利号")
+    @LogAnnotation("根据key范围查询专利号")
     @GetMapping("")
     public Result getPatentByKey(@PathParam("company") String company) {
 
