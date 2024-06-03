@@ -4,7 +4,7 @@
         <!-- <el-card style="border: 1px solid black;"> -->
         <!-- 初步调整，可以确认一下 -->
         <p style="margin-top: 2vh;padding-left: 2em;">
-            请输入您所在企业（学校）名称
+            请输入您所在企业/学校/代理所名称
             <el-input size="small" style="width: 10vw;" v-model="form.companyName" @input="updateCompanyName"
                 @keyup.enter="getPatentNoByCompany(form.companyName)"></el-input>
             <el-button type="primary" size="small" @click="getPatentNoByCompany(form.companyName)"
@@ -38,10 +38,11 @@
                 <!-- <el-table-column prop="no" label="专利申请号" width="180" /> -->
                 <el-table-column prop="no" label="专利申请号" width="180">
                     <template v-slot:default="scope">
-                        <span @click="handleClick(scope)" style="color:#0000FF;cursor: pointer;">{{ scope.row.no }}</span>
+                        <span @click="handleClick(scope)" style="color:#0000FF;cursor: pointer;">{{ scope.row.no
+                            }}</span>
                     </template>
                 </el-table-column>
-                <el-table-column prop="appln_application" label="单位名称" width="200" />
+                <el-table-column prop="appln_application" label="单位/代理人" width="200"/>
                 <el-table-column prop="name" label="专利标题" />
             </el-table>
         </template>
