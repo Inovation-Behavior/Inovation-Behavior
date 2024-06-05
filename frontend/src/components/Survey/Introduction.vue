@@ -42,7 +42,7 @@
                             }}</span>
                     </template>
                 </el-table-column>
-                <el-table-column prop="appln_application" label="单位/代理人" width="200"/>
+                <el-table-column prop="appln_application" label="单位/申请人" width="200"/>
                 <el-table-column prop="name" label="专利标题" />
             </el-table>
         </template>
