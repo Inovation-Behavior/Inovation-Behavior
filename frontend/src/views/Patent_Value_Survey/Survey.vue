@@ -76,6 +76,7 @@ export default {
             disableCampusInput: true,
             disablePersonInput: true,
             showRecommendationDialog: false,//用于控制建议弹窗的显示
+            showRecommendationAgain: false,
         }
     },
     mounted() {
@@ -134,7 +135,7 @@ export default {
             }
         },
         checkScreenWidth() {
-            if (window.innerWidth < 500) {
+            if (window.innerWidth < 500 && this.showRecommendationAgain == false ) {
                 this.showRecommendationDialog = true;
             } else {
                 this.showRecommendationDialog = false;
@@ -142,6 +143,7 @@ export default {
         },
         handleRecommendationDialogClose(done) {
             this.showRecommendationDialog = false;
+            this.showRecommendationAgain = true;
             done();
         },
     },

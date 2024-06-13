@@ -1,7 +1,7 @@
 <template>
     <div id="whole-box">
         <div class="nav-container">
-            <div v-show="false" class="nav-logo">
+            <div v-show="true" class="nav-logo">
                 <img id="logo-img" src="../public/img/蓝色-前.png">
                 <!-- <p>Innovation&Behavior</p> -->
                 <!-- <p>占个logo位</p> -->
