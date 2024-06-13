@@ -1,5 +1,5 @@
 <template>
-    <el-card style="border-radius: 15px;width: 100%;font-size: 1rem;font-family: SimSun;width:70vw">
+    <el-card style="border-radius: 15px;width: 100%;font-size: 1rem;font-family: SimSun;width:100%">
 
         <!-- <el-card style="border: 1px solid black;"> -->
         <!-- 初步调整，可以确认一下 -->

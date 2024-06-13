@@ -25,7 +25,7 @@
                     </el-container>
                 </el-card>
             </el-dialog> -->
-            <el-container style="margin-top: 10px;margin-right: 5px; width: 100%;">
+            <el-container style="margin-top: 10px; width: 100%;">
                 <el-tabs style="width: 100%;" v-model="activeName" tab-position="top" class="demo-tabs"
                     @tab-click="handleClick" stretch="true">
                     <el-tab-pane label="专利确认" name="专利信息确认">
@@ -172,6 +172,13 @@ export default {
     padding-right: 20px;
 }
 
-/* Style for portrait mode */
-@media screen and (orientation: portrait) {}
+/* 响应式设计调整 */
+@media(max-width: 500px) {
+    .whole-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+}
+}
 </style>
